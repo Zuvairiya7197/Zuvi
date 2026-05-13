@@ -1,0 +1,14 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#050403"/>
+  <rect x="96" y="94" width="1008" height="612" rx="28" fill="#0D0C0A" stroke="#D5AD6F" stroke-opacity=".28"/>
+  <path d="M180 570L356 430L508 492L704 278L892 354L1040 222" stroke="#D5AD6F" stroke-width="10" stroke-linecap="round"/>
+  <g opacity=".5" stroke="#F4D79D">
+    <path d="M210 208H990"/>
+    <path d="M210 314H990"/>
+    <path d="M210 420H990"/>
+    <path d="M210 526H990"/>
+  </g>
+  <rect x="232" y="180" width="190" height="86" rx="14" fill="#D5AD6F" fill-opacity=".16" stroke="#D5AD6F" stroke-opacity=".35"/>
+  <rect x="760" y="500" width="210" height="94" rx="14" fill="#F4D79D" fill-opacity=".13" stroke="#F4D79D" stroke-opacity=".35"/>
+  <text x="600" y="660" fill="#F8F4EB" font-family="Arial" font-size="36" font-weight="700" text-anchor="middle" letter-spacing="8">NORTHLINE</text>
+</svg>

@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050403;
+  --foreground: #f8f4eb;
+  --muted: #a8a19a;
+  --panel: rgba(255, 255, 255, 0.045);
+  --stroke: rgba(211, 172, 103, 0.18);
+  --accent: #d5ad6f;
+  --accent-strong: #f4d79d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--background);
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--foreground);
+  background:
+    radial-gradient(circle at 76% 10%, rgba(213, 173, 111, 0.18), transparent 28rem),
+    radial-gradient(circle at 22% 22%, rgba(255, 255, 255, 0.045), transparent 18rem),
+    linear-gradient(180deg, #020202 0%, #0b0907 48%, #030303 100%);
+  font-family: var(--font-inter), Arial, sans-serif;
+}
+
+body::selection {
+  background: rgba(213, 173, 111, 0.34);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-inter), sans-serif;
+}
+
+.glass {
+  border: 1px solid var(--stroke);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.018)),
+    linear-gradient(180deg, rgba(213, 173, 111, 0.045), transparent);
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(18px);
+}
+
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(244, 215, 157, 0.56), rgba(213, 173, 111, 0.25), transparent 68%);
+  content: "";
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+.noise {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+.gold-text {
+  color: var(--accent);
+}
+
+.section-line {
+  border-top: 1px solid rgba(213, 173, 111, 0.12);
+}
+
+.marquee {
+  animation: marquee 26s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

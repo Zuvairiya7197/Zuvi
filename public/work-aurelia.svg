@@ -1,0 +1,15 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#050403"/>
+  <rect x="110" y="92" width="980" height="616" rx="34" fill="#11100E" stroke="#D5AD6F" stroke-opacity=".32"/>
+  <circle cx="602" cy="388" r="190" fill="url(#g)" opacity=".8"/>
+  <rect x="380" y="218" width="440" height="330" rx="28" fill="#080806" stroke="#F4D79D" stroke-opacity=".45"/>
+  <path d="M600 279L690 475H510L600 279Z" fill="#D5AD6F"/>
+  <circle cx="600" cy="444" r="52" fill="#050403"/>
+  <text x="600" y="626" fill="#F8F4EB" font-family="Arial" font-size="38" font-weight="700" text-anchor="middle" letter-spacing="10">AURELIA</text>
+  <defs>
+    <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 390) rotate(90) scale(265)">
+      <stop stop-color="#F4D79D" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#D5AD6F" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
