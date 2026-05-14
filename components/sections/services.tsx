@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowLeft, ArrowRight, FileText, Globe2, Lightbulb, Monitor, Play, Smartphone } from "lucide-react";
+import { FileText, Globe2, Lightbulb, Monitor, Play, Smartphone } from "lucide-react";
 
 const leftServices = [
   {
@@ -170,20 +170,6 @@ export function ServicesPreview() {
 
           <DesignImageFrame x={smoothX} y={smoothY} />
 
-          <button
-            type="button"
-            aria-label="Previous service"
-            className="absolute bottom-[28%] left-[6%] z-30 hidden h-14 w-14 place-items-center rounded-full bg-white/10 text-[#f5f1e8]/75 backdrop-blur-md transition hover:bg-[#d6b36a] hover:text-black xl:grid"
-          >
-            <ArrowLeft size={24} strokeWidth={1.6} />
-          </button>
-          <button
-            type="button"
-            aria-label="Next service"
-            className="absolute bottom-[28%] right-[6%] z-30 hidden h-14 w-14 place-items-center rounded-full bg-white/10 text-[#f5f1e8]/75 backdrop-blur-md transition hover:bg-[#d6b36a] hover:text-black xl:grid"
-          >
-            <ArrowRight size={24} strokeWidth={1.6} />
-          </button>
         </div>
 
         <div className="mt-8 grid gap-3 lg:hidden">
