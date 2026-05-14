@@ -4,37 +4,56 @@ import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { FileText, Globe2, Lightbulb, Monitor, Play, Smartphone } from "lucide-react";
 
-const serviceGoals = [
+const serviceCards = [
   {
     title: "Brand Identity",
     pill: "Premium Systems",
     icon: Lightbulb,
+    metric: "94%",
+    current: "Strategy",
+    ideal: "Identity",
     detail: "Logo suites, visual language, and brand rules built for consistency.",
+    meals: [
+      ["Audit", "Visual Positioning"],
+      ["System", "Logo & Identity Rules"],
+      ["Launch", "Brand Application Kit"]
+    ],
+    images: ["/project-organise-with-kopal.webp", "/project-zarrar-palekar.webp"],
     muted: true
   },
   {
     title: "Website Design",
     pill: "Built to Convert",
     icon: Monitor,
+    metric: "89%",
+    current: "UX Flow",
+    ideal: "Website",
     detail: "Landing pages and portfolio sites with clear journeys and premium polish.",
+    meals: [
+      ["Map", "Conversion Structure"],
+      ["Design", "Responsive Page System"],
+      ["Launch", "Live Website Direction"]
+    ],
+    images: ["/project-sm-classes.webp", "/project-organise-with-kopal.webp"],
+    muted: true
+  },
+  {
+    title: "UI/UX Design",
+    pill: "Clear Experiences",
+    icon: Smartphone,
+    metric: "92%",
+    current: "Product",
+    ideal: "Clarity",
+    detail: "Interface systems that make complex actions feel sharp, simple, and premium.",
+    meals: [
+      ["Research", "User Pathways"],
+      ["Interface", "Product UI System"],
+      ["Prototype", "Interaction Direction"]
+    ],
+    images: ["/project-zarrar-palekar.webp", "/project-little-ilmies.webp"],
     muted: true
   }
 ];
-
-const featuredService = {
-  title: "UI/UX Design",
-  pill: "Clear Experiences",
-  icon: Smartphone,
-  metric: "92%",
-  current: "Strategy",
-  ideal: "Design",
-  meals: [
-    ["Branding", "Identity Systems"],
-    ["Web", "Responsive Website Design"],
-    ["Motion", "Launch Visuals & Reels"]
-  ],
-  images: ["/project-zarrar-palekar.webp", "/project-little-ilmies.webp"]
-};
 
 const leftServices = [
   {
@@ -136,12 +155,10 @@ function DesignImageFrame({
 }
 
 export function ServicesPreview() {
-  const FeaturedIcon = featuredService.icon;
-
   return (
     <section
       id="services"
-      className="section-line relative overflow-hidden bg-[#030303] px-5 py-[clamp(3.5rem,7svh,5.5rem)] md:px-8"
+      className="section-line relative overflow-hidden bg-[#030303] px-5 py-[clamp(4rem,8svh,6.5rem)] md:px-8"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.12]"
@@ -155,31 +172,31 @@ export function ServicesPreview() {
       />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_58%_38%,rgba(214,179,106,0.1),transparent_34%),linear-gradient(90deg,rgba(0,0,0,0.98),transparent_40%,rgba(0,0,0,0.9))]" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto min-h-[clamp(45rem,92svh,58rem)] max-w-[1680px]">
+      <div className="relative z-10 mx-auto min-h-[clamp(47rem,96svh,60rem)] max-w-[1680px]">
         <motion.div
-          className="max-w-[23rem] pt-2 lg:absolute lg:bottom-8 lg:left-0"
+          className="max-w-[18rem] pt-2 lg:absolute lg:bottom-8 lg:left-0"
           initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="mb-4 text-[0.65rem] font-black uppercase tracking-[0.22em] text-[#d6b36a]">Services</p>
-          <h2 className="font-sans text-[clamp(2.6rem,5.4vw,4.1rem)] font-medium leading-[0.95] tracking-[-0.055em] text-[#f5f1e8]">
+          <p className="mb-3 text-[0.62rem] font-black uppercase tracking-[0.2em] text-[#d6b36a]">Services</p>
+          <h2 className="font-sans text-[clamp(2rem,3.2vw,2.85rem)] font-medium leading-[1.02] tracking-[-0.045em] text-[#f5f1e8]">
             Whatever Your
             <span className="block bg-gradient-to-b from-[#f5f1e8] to-[#d6b36a] bg-clip-text text-transparent">Design Goal</span>
           </h2>
-          <p className="mt-4 max-w-xs text-sm leading-6 text-[#f5f1e8]/44">
+          <p className="mt-3 max-w-[15rem] text-xs leading-5 text-[#f5f1e8]/42">
             Premium visual systems for brands that need clarity, presence, and momentum.
           </p>
         </motion.div>
 
-        <div className="relative mx-auto flex w-full max-w-[760px] flex-col gap-5 pt-[clamp(2rem,6svh,3.5rem)] lg:pt-4">
-          {serviceGoals.map((item, index) => {
+        <div className="relative mx-auto flex w-full max-w-[640px] flex-col gap-4 pt-[clamp(2rem,5svh,3rem)] lg:pt-3">
+          {serviceCards.map((item, index) => {
             const Icon = item.icon;
             return (
               <motion.article
                 key={item.title}
-                className="group relative ml-auto min-h-[4.55rem] w-[min(100%,46rem)] overflow-hidden rounded-[2rem] border border-white/7 bg-[#1b1a18]/88 px-6 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_22px_70px_rgba(0,0,0,0.38)] backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-[#d6b36a]/28 hover:bg-[#211f1b]/94 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_28px_86px_rgba(0,0,0,0.46),0_0_28px_rgba(214,179,106,0.08)]"
+                className="group relative ml-auto min-h-[3.8rem] w-[min(100%,40rem)] overflow-hidden rounded-[1.65rem] border border-white/7 bg-[#1b1a18]/88 px-5 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_18px_56px_rgba(0,0,0,0.34)] backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-[#d6b36a]/28 hover:bg-[#211f1b]/94 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_22px_66px_rgba(0,0,0,0.42),0_0_24px_rgba(214,179,106,0.08)]"
                 initial={{ opacity: 0, x: 50, filter: "blur(8px)" }}
                 whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, margin: "-120px" }}
@@ -187,92 +204,69 @@ export function ServicesPreview() {
               >
                 <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(105,58,37,0.42),rgba(214,179,106,0.09))] opacity-75 transition duration-500 group-hover:opacity-100" />
                 <div className="relative flex items-center justify-between gap-5">
-                  <div className="flex items-center gap-4">
-                    <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/[0.06] text-[#d6b36a]/70 transition duration-500 group-hover:bg-[#d6b36a]/16 group-hover:text-[#f3d694]">
-                      <Icon size={20} strokeWidth={1.7} />
+                  <div className="flex items-center gap-3">
+                    <span className="grid h-8 w-8 place-items-center rounded-[0.7rem] bg-white/[0.06] text-[#d6b36a]/70 transition duration-500 group-hover:bg-[#d6b36a]/16 group-hover:text-[#f3d694]">
+                      <Icon size={17} strokeWidth={1.7} />
                     </span>
-                    <h3 className="text-base font-medium text-[#f5f1e8] md:text-lg">{item.title}</h3>
+                    <h3 className="text-sm font-medium text-[#f5f1e8] md:text-base">{item.title}</h3>
                   </div>
-                  <span className="hidden rounded-full border border-white/20 px-5 py-2 text-sm font-medium text-[#f5f1e8] transition duration-500 group-hover:border-[#d6b36a]/38 group-hover:bg-[#d6b36a]/8 sm:inline-flex">
+                  <span className="hidden rounded-full border border-white/20 px-4 py-1.5 text-xs font-medium text-[#f5f1e8] transition duration-500 group-hover:border-[#d6b36a]/38 group-hover:bg-[#d6b36a]/8 sm:inline-flex">
                     • {item.pill}
                   </span>
                 </div>
-                <p className="relative max-h-0 max-w-md overflow-hidden pl-[3.25rem] text-sm leading-6 text-[#f5f1e8]/0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mt-3 group-hover:max-h-16 group-hover:text-[#f5f1e8]/52">
-                  {item.detail}
-                </p>
+
+                <div className="relative grid max-h-0 gap-4 overflow-hidden text-[#f5f1e8]/0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mt-4 group-hover:max-h-[22rem] group-hover:text-[#f5f1e8]">
+                  <div className="absolute inset-0 rounded-[1.3rem] bg-[radial-gradient(circle_at_55%_0%,rgba(214,179,106,0.2),transparent_38%),linear-gradient(135deg,rgba(129,56,33,0.34),rgba(214,179,106,0.12),rgba(50,24,21,0.2))] opacity-0 transition duration-500 group-hover:opacity-100" />
+                  <div className="relative grid gap-4 rounded-[1.3rem] border border-white/0 p-0 transition-all duration-500 group-hover:border-white/8 group-hover:p-4">
+                    <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
+                      <div>
+                        <p className="text-[0.65rem] text-white/0 transition duration-500 group-hover:text-white/46">Core focus</p>
+                        <p className="mt-1 text-[clamp(1.45rem,3vw,2rem)] font-light leading-none tracking-[-0.04em] text-white/0 transition duration-500 group-hover:text-white">
+                          {item.current}
+                        </p>
+                      </div>
+                      <div className="hidden h-14 w-14 place-items-center rounded-full border-[3px] border-white/0 text-xs font-semibold transition duration-500 group-hover:border-white/38 group-hover:text-white sm:grid">
+                        {item.metric}
+                      </div>
+                      <div className="sm:text-right">
+                        <p className="text-[0.65rem] text-white/0 transition duration-500 group-hover:text-white/46">Outcome</p>
+                        <p className="mt-1 text-[clamp(1.45rem,3vw,2rem)] font-light leading-none tracking-[-0.04em] text-white/0 transition duration-500 group-hover:text-white">
+                          {item.ideal}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="relative h-5 rounded-full bg-black/0 transition duration-500 group-hover:bg-black/18">
+                      <div className="absolute inset-y-0 left-0 w-[68%] rounded-full bg-gradient-to-r from-[#9c4f2b] via-[#d6b36a] to-[#f5ddb1] opacity-0 transition duration-500 group-hover:opacity-100" />
+                      <div className="absolute left-[66%] top-1/2 h-8 w-8 -translate-y-1/2 rounded-full border-[5px] border-[#f2d694]/0 bg-[#fff2d2]/0 shadow-[0_0_0_rgba(214,179,106,0)] transition duration-500 group-hover:border-[#f2d694] group-hover:bg-[#fff2d2] group-hover:shadow-[0_0_28px_rgba(214,179,106,0.45)]" />
+                    </div>
+
+                    <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
+                      <div className="border-l-4 border-[#d6b36a]/0 pl-5 transition duration-500 group-hover:border-[#d6b36a]">
+                        {item.meals.map(([label, value]) => (
+                          <div key={label} className="grid grid-cols-[4.5rem_1fr] gap-3 py-1 text-xs">
+                            <span className="text-white/0 transition duration-500 group-hover:text-white/46">{label}</span>
+                            <span className="text-white/0 transition duration-500 group-hover:text-white/82">{value}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex gap-2">
+                        {item.images.map((src) => (
+                          <div key={src} className="relative h-0 w-20 overflow-hidden rounded-2xl opacity-0 transition-all duration-500 group-hover:h-20 group-hover:opacity-100 md:w-24 group-hover:md:h-24">
+                            <Image src={src} alt="" fill sizes="96px" className="object-cover saturate-75" />
+                            <div className="absolute inset-0 bg-black/12" />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <p className="text-xs leading-5 text-white/0 transition duration-500 group-hover:text-white/58">
+                      {item.detail}
+                    </p>
+                  </div>
+                </div>
               </motion.article>
             );
           })}
-
-          <motion.article
-            className="group relative mt-1 overflow-hidden rounded-[2rem] border-[9px] border-[#171615] bg-[radial-gradient(circle_at_54%_12%,rgba(248,214,151,0.5),transparent_31%),linear-gradient(135deg,#813821,#c8964a_48%,#321815)] p-[clamp(1.35rem,3.4vw,2.25rem)] shadow-[0_34px_100px_rgba(0,0,0,0.58),inset_0_1px_0_rgba(255,255,255,0.12)]"
-            initial={{ opacity: 0, y: 42, scale: 0.97, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-            viewport={{ once: true, margin: "-120px" }}
-            transition={{ duration: 0.86, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ y: -6, scale: 1.012 }}
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_26%,rgba(255,255,255,0.16),transparent_22%),linear-gradient(180deg,transparent,rgba(0,0,0,0.46))]" />
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
-            <div className="relative grid gap-7">
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <span className="grid h-8 w-8 place-items-center rounded-lg bg-[#f3c56f] text-black/72 shadow-[0_0_20px_rgba(214,179,106,0.2)]">
-                    <FeaturedIcon size={18} strokeWidth={2} />
-                  </span>
-                  <h3 className="text-lg font-medium text-white">{featuredService.title}</h3>
-                </div>
-                <div className="absolute left-1/2 top-5 hidden h-20 w-20 -translate-x-1/2 place-items-center rounded-full border-[5px] border-white/35 text-base font-semibold text-white transition duration-500 group-hover:border-white/55 group-hover:shadow-[0_0_26px_rgba(255,255,255,0.15)] md:grid">
-                  {featuredService.metric}
-                </div>
-                <span className="rounded-full border border-white/30 px-5 py-2 text-sm font-medium text-white">
-                  • {featuredService.pill}
-                </span>
-              </div>
-
-              <div className="grid gap-5 pt-3 sm:grid-cols-2">
-                <div>
-                  <p className="text-sm text-white/48">Core focus</p>
-                  <p className="mt-1 text-[clamp(2.2rem,5vw,3rem)] font-light leading-none tracking-[-0.04em] text-white">
-                    {featuredService.current}
-                  </p>
-                </div>
-                <div className="sm:text-right">
-                  <p className="text-sm text-white/48">Outcome</p>
-                  <p className="mt-1 text-[clamp(2.2rem,5vw,3rem)] font-light leading-none tracking-[-0.04em] text-white">
-                    {featuredService.ideal}
-                  </p>
-                </div>
-              </div>
-
-              <div className="relative h-8 rounded-full bg-black/14">
-                <div className="absolute inset-y-0 left-0 w-[68%] rounded-full bg-gradient-to-r from-[#9c4f2b] via-[#d6b36a] to-[#f5ddb1]" />
-                <div className="absolute left-[66%] top-1/2 h-12 w-12 -translate-y-1/2 rounded-full border-[7px] border-[#f2d694] bg-[#fff2d2] shadow-[0_0_32px_rgba(214,179,106,0.5)]" />
-              </div>
-
-              <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
-                <div className="border-l-4 border-[#d6b36a] pl-6">
-                  {featuredService.meals.map(([label, value]) => (
-                    <div key={label} className="grid grid-cols-[5rem_1fr] gap-4 py-1.5 text-sm md:text-base">
-                      <span className="text-white/48">{label}</span>
-                      <span className="text-white/86">{value}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  {featuredService.images.map((src) => (
-                    <div key={src} className="relative h-24 w-24 overflow-hidden rounded-2xl md:h-28 md:w-28">
-                      <Image src={src} alt="" fill sizes="112px" className="object-cover saturate-75" />
-                      <div className="absolute inset-0 bg-black/12" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <p className="max-h-0 overflow-hidden text-sm leading-6 text-white/0 transition-all duration-500 group-hover:max-h-16 group-hover:text-white/58">
-                Hovered service cards reveal the thinking behind each offer: strategy first, then visuals that feel refined across every touchpoint.
-              </p>
-            </div>
-          </motion.article>
         </div>
       </div>
     </section>
