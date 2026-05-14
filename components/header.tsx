@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { useState } from "react";
 
@@ -74,12 +75,30 @@ export function Header() {
         </Link>
 
         <div className="hidden items-start justify-end gap-3 xl:col-start-3 xl:flex 2xl:gap-4">
-          <span className="mt-3 whitespace-nowrap text-sm font-medium leading-tight text-[#f5f1e8]/52 2xl:text-[0.95rem]">Available for Work?</span>
+          <Link
+            href="https://www.webuildyourbrands.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative mt-1 inline-flex h-11 items-center overflow-hidden rounded-full border border-[#d6b36a]/18 bg-black/28 px-4 text-sm font-medium leading-none text-[#d6b36a]/88 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_14px_34px_rgba(0,0,0,0.24)] backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] before:absolute before:inset-[-1px] before:rounded-full before:bg-[linear-gradient(115deg,rgba(214,179,106,0.34),rgba(22,216,255,0),rgba(124,60,255,0),rgba(214,179,106,0.28))] before:opacity-0 before:transition-opacity before:duration-500 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-transparent hover:bg-[#0b0b0b]/86 hover:text-white hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_18px_48px_rgba(0,0,0,0.38),0_0_30px_rgba(214,179,106,0.16)] hover:before:opacity-100 2xl:text-[0.95rem]"
+          >
+            <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(214,179,106,0.16),transparent_36%),radial-gradient(circle_at_82%_15%,rgba(124,60,255,0),transparent_38%)] opacity-0 transition duration-500 group-hover:opacity-100 group-hover:bg-[radial-gradient(circle_at_20%_50%,rgba(214,179,106,0.2),transparent_36%),radial-gradient(circle_at_82%_15%,rgba(124,60,255,0.16),transparent_38%)]" />
+            <span className="pointer-events-none absolute inset-y-0 -left-14 w-12 rotate-12 bg-white/18 blur-md transition-transform duration-700 ease-out group-hover:translate-x-44" />
+            <span className="relative grid h-7 w-0 place-items-center overflow-hidden rounded-full border border-[#d6b36a]/0 bg-white/[0.04] opacity-0 transition-all duration-500 group-hover:mr-2 group-hover:w-12 group-hover:border-white/12 group-hover:opacity-100 group-hover:shadow-[0_0_18px_rgba(214,179,106,0.18)]">
+              <Image
+                src="/wbyblogo.webp"
+                alt="WBYB"
+                fill
+                sizes="48px"
+                className="object-contain px-1.5 opacity-0 saturate-125 transition duration-500 group-hover:opacity-100"
+              />
+            </span>
+            <span className="relative whitespace-nowrap transition duration-500 group-hover:text-white">Need a Website?</span>
+          </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full border border-[#d6b36a]/35 bg-black/20 py-1 pl-1 pr-4 text-sm font-medium text-[#d6b36a] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md transition hover:border-[#d6b36a]/70 hover:bg-[#d6b36a]/10 2xl:gap-3 2xl:pr-5 2xl:text-[0.95rem]"
+            className="group inline-flex items-center gap-3 rounded-full bg-[#242424] py-1 pl-1 pr-5 text-sm font-medium text-[#f5f1e8] shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_18px_38px_rgba(0,0,0,0.28)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#2c2c2c] hover:text-white hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_22px_46px_rgba(0,0,0,0.36)] 2xl:pr-6 2xl:text-[0.95rem]"
           >
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-[#ffd08a] to-[#f18932] text-black 2xl:h-10 2xl:w-10">
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-[#f2d27e] via-[#d6b36a] to-[#b68035] text-black shadow-[0_0_18px_rgba(214,179,106,0.24)] transition duration-300 group-hover:scale-105 2xl:h-10 2xl:w-10">
               <ArrowRight size={18} />
             </span>
             Let&apos;s Connect

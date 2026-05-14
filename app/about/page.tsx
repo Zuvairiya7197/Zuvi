@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AboutPreview } from "@/components/sections/about";
+import { AboutServicesOrbit } from "@/components/sections/services";
 import { SectionHeading } from "@/components/section-heading";
 import { processSteps } from "@/lib/data";
 
@@ -12,6 +13,7 @@ export default function AboutPage() {
   return (
     <main className="pb-[clamp(4rem,8svh,6rem)] pt-[clamp(5.5rem,12svh,7rem)]">
       <AboutPreview />
+      <AboutServicesOrbit />
       <section id="process" className="px-4 md:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading

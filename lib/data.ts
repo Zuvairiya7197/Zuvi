@@ -55,7 +55,8 @@ export const projects = [
       "Created a calm service website with clearer messaging, trust-led structure, premium first impression, and an easy next step.",
     results: "A clean, premium website with strong first impression, clear brand positioning, and faster trust around the offer.",
     image: "/project-organise-with-kopal.webp",
-    accent: "from-[#d6b36a] to-[#8c6a3b]"
+    accent: "from-[#d6b36a] to-[#8c6a3b]",
+    liveUrl: "https://www.organisewithkopal.com/"
   },
   {
     slug: "sm-classes",
@@ -66,7 +67,8 @@ export const projects = [
       "Structured the education website so parents and students can find key information without confusion.",
     results: "Clear layout, easier navigation, improved program clarity, and smoother inquiry decisions.",
     image: "/project-sm-classes.webp",
-    accent: "from-[#d6b36a] to-[#111111]"
+    accent: "from-[#d6b36a] to-[#111111]",
+    liveUrl: "https://smclasses.in/"
   },
   {
     slug: "little-ilmies",
@@ -77,7 +79,8 @@ export const projects = [
       "Designed a friendly learning platform with simple pathways that make exploring and understanding easy for users.",
     results: "Clearer learner pathways and a smoother first experience that keeps families moving forward.",
     image: "/project-little-ilmies.webp",
-    accent: "from-[#7c3cff] to-[#16d8ff]"
+    accent: "from-[#7c3cff] to-[#16d8ff]",
+    liveUrl: "https://littleilmies.com/"
   },
   {
     slug: "zarrar-palekar",
@@ -88,7 +91,8 @@ export const projects = [
       "Built a focused portfolio to present work clearly, create credibility, and make projects easier to understand.",
     results: "Structured portfolio presentation, sharper positioning, stronger trust, and instant credibility around the work.",
     image: "/project-zarrar-palekar.webp",
-    accent: "from-[#16d8ff] to-[#7c3cff]"
+    accent: "from-[#16d8ff] to-[#7c3cff]",
+    liveUrl: "https://zarrarpalekar.vercel.app/"
   }
 ];
 

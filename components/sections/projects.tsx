@@ -91,7 +91,9 @@ export function FeaturedProjects() {
                     {activeProject.solution}
                   </p>
                   <Link
-                    href={`/work/${activeProject.slug}`}
+                    href={activeProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="mt-[clamp(1rem,2.5svh,1.5rem)] inline-flex items-center gap-3 rounded-full bg-[#8c4f36]/70 py-2 pl-2 pr-6 text-sm font-medium text-[#f5f1e8] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md transition hover:bg-[#d6b36a] hover:text-black md:text-base"
                   >
                     <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-[#f7d79a] to-[#a67235] text-black">
@@ -107,6 +109,13 @@ export function FeaturedProjects() {
         </div>
 
         <div className="absolute inset-x-0 bottom-[clamp(5rem,12svh,8rem)] z-30 mx-auto max-w-[960px] px-2 text-center">
+          <Link
+            href="/work"
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#d6b36a]/25 bg-white/[0.04] px-5 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#d6b36a] backdrop-blur-md transition hover:border-[#d6b36a]/55 hover:bg-[#d6b36a]/10 hover:text-[#f5f1e8]"
+          >
+            View all projects
+            <ArrowRight size={15} />
+          </Link>
           <h2 className="font-sans text-[clamp(3rem,5vw,5.2rem)] font-medium leading-[0.96] tracking-[-0.055em] text-[#f5f1e8] drop-shadow-[0_12px_32px_rgba(0,0,0,0.72)]">
             Designs That Connect,
             <span className="block bg-gradient-to-b from-[#f4d79d] via-[#d6b36a] to-[#8c6a3b] bg-clip-text text-transparent">Stories That Last.</span>
