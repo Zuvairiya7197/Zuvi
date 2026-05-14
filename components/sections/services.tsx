@@ -158,7 +158,7 @@ export function ServicesPreview() {
   return (
     <section
       id="services"
-      className="section-line relative overflow-hidden bg-[#030303] px-5 py-[clamp(4rem,8svh,6.5rem)] md:px-8"
+      className="section-line relative overflow-hidden bg-[#030303] px-5 py-[clamp(3rem,6svh,4.5rem)] md:px-8"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.12]"
@@ -172,9 +172,9 @@ export function ServicesPreview() {
       />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_58%_38%,rgba(214,179,106,0.1),transparent_34%),linear-gradient(90deg,rgba(0,0,0,0.98),transparent_40%,rgba(0,0,0,0.9))]" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto min-h-[clamp(47rem,96svh,60rem)] max-w-[1680px]">
+      <div className="relative z-10 mx-auto grid max-w-[1680px] gap-8 lg:grid-cols-[minmax(15rem,0.55fr)_minmax(34rem,40rem)_0.35fr] lg:items-end">
         <motion.div
-          className="max-w-[18rem] pt-2 lg:absolute lg:bottom-8 lg:left-0"
+          className="max-w-[18rem] pt-2 lg:pb-3"
           initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-120px" }}
@@ -190,7 +190,7 @@ export function ServicesPreview() {
           </p>
         </motion.div>
 
-        <div className="relative mx-auto flex w-full max-w-[640px] flex-col gap-4 pt-[clamp(2rem,5svh,3rem)] lg:pt-3">
+        <div className="relative mx-auto flex w-full max-w-[640px] flex-col gap-4 pt-[clamp(2rem,5svh,3rem)] lg:pt-0">
           {serviceCards.map((item, index) => {
             const Icon = item.icon;
             return (
@@ -202,7 +202,7 @@ export function ServicesPreview() {
                 viewport={{ once: true, margin: "-120px" }}
                 transition={{ duration: 0.72, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(105,58,37,0.42),rgba(214,179,106,0.09))] opacity-75 transition duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(214,179,106,0.14),rgba(245,241,232,0.035))] opacity-75 transition duration-500 group-hover:opacity-100" />
                 <div className="relative flex items-center justify-between gap-5">
                   <div className="flex items-center gap-3">
                     <span className="grid h-8 w-8 place-items-center rounded-[0.7rem] bg-white/[0.06] text-[#d6b36a]/70 transition duration-500 group-hover:bg-[#d6b36a]/16 group-hover:text-[#f3d694]">
@@ -216,9 +216,8 @@ export function ServicesPreview() {
                 </div>
 
                 <div className="relative grid max-h-0 gap-4 overflow-hidden text-[#f5f1e8]/0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mt-4 group-hover:max-h-[22rem] group-hover:text-[#f5f1e8]">
-                  <div className="absolute inset-0 rounded-[1.3rem] bg-[radial-gradient(circle_at_55%_0%,rgba(214,179,106,0.2),transparent_38%),linear-gradient(135deg,rgba(129,56,33,0.34),rgba(214,179,106,0.12),rgba(50,24,21,0.2))] opacity-0 transition duration-500 group-hover:opacity-100" />
-                  <div className="relative grid gap-4 rounded-[1.3rem] border border-white/0 p-0 transition-all duration-500 group-hover:border-white/8 group-hover:p-4">
-                    <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
+                  <div className="relative grid gap-4">
+                    <div className="grid gap-4 border-t border-white/0 pt-0 transition-all duration-500 group-hover:border-white/10 group-hover:pt-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
                       <div>
                         <p className="text-[0.65rem] text-white/0 transition duration-500 group-hover:text-white/46">Core focus</p>
                         <p className="mt-1 text-[clamp(1.45rem,3vw,2rem)] font-light leading-none tracking-[-0.04em] text-white/0 transition duration-500 group-hover:text-white">
@@ -236,8 +235,8 @@ export function ServicesPreview() {
                       </div>
                     </div>
 
-                    <div className="relative h-5 rounded-full bg-black/0 transition duration-500 group-hover:bg-black/18">
-                      <div className="absolute inset-y-0 left-0 w-[68%] rounded-full bg-gradient-to-r from-[#9c4f2b] via-[#d6b36a] to-[#f5ddb1] opacity-0 transition duration-500 group-hover:opacity-100" />
+                    <div className="relative h-5 rounded-full bg-black/0 transition duration-500 group-hover:bg-black/22">
+                      <div className="absolute inset-y-0 left-0 w-[68%] rounded-full bg-gradient-to-r from-[#8c6a3b] via-[#d6b36a] to-[#f5e7bd] opacity-0 transition duration-500 group-hover:opacity-100" />
                       <div className="absolute left-[66%] top-1/2 h-8 w-8 -translate-y-1/2 rounded-full border-[5px] border-[#f2d694]/0 bg-[#fff2d2]/0 shadow-[0_0_0_rgba(214,179,106,0)] transition duration-500 group-hover:border-[#f2d694] group-hover:bg-[#fff2d2] group-hover:shadow-[0_0_28px_rgba(214,179,106,0.45)]" />
                     </div>
 
@@ -268,6 +267,7 @@ export function ServicesPreview() {
             );
           })}
         </div>
+        <div aria-hidden="true" />
       </div>
     </section>
   );
