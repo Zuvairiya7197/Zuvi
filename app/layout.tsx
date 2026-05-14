@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import Script from "next/script";
 import { CustomCursor } from "@/components/custom-cursor";
-import { Footer } from "@/components/footer";
+import { FloatingSectionNav } from "@/components/floating-section-nav";
 import { Header } from "@/components/header";
 import { PageTransition } from "@/components/page-transition";
 import "./globals.css";
@@ -96,8 +96,8 @@ export default function RootLayout({
         <div className="noise" aria-hidden="true" />
         <CustomCursor />
         <Header />
+        <FloatingSectionNav />
         <PageTransition>{children}</PageTransition>
-        <Footer />
       </body>
     </html>
   );

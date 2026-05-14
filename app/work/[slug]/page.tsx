@@ -46,31 +46,31 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
 
   return (
     <main>
-      <section className="min-h-screen px-6 pb-16 pt-32 md:px-8">
+      <section className="min-h-[100svh] px-4 pb-[clamp(3rem,7svh,4rem)] pt-[clamp(7rem,14svh,8rem)] md:px-8">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-cyan-200">{project.industry}</p>
-            <h1 className="mt-5 font-display text-5xl font-semibold leading-tight md:text-7xl">{project.title}</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-300">{project.solution}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#d5ad6f]">{project.industry}</p>
+            <h1 className="mt-5 font-display text-[clamp(3rem,10vw,4.5rem)] font-semibold leading-tight">{project.title}</h1>
+            <p className="mt-6 max-w-2xl text-[clamp(1rem,2vw,1.125rem)] leading-8 text-neutral-300">{project.solution}</p>
           </div>
-          <div className="h-[420px] md:h-[620px]">
+          <div className="h-[clamp(22rem,58svh,38.75rem)]">
             <CaseStudyLaptop title={project.title} />
           </div>
         </div>
       </section>
-      <section className="px-6 py-24 md:px-8">
+      <section className="px-4 py-[clamp(4rem,8svh,6rem)] md:px-8">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-3">
           {story.map((item, index) => (
             <Reveal key={item.label} delay={index * 0.08}>
-              <article className="glass h-full rounded-[1.5rem] p-7">
-                <p className="text-sm uppercase tracking-[0.28em] text-cyan-200">{item.label}</p>
-                <p className="mt-6 text-lg leading-8 text-neutral-200">{item.text}</p>
+              <article className="glass h-full rounded-[1.25rem] p-[clamp(1.25rem,3vw,1.75rem)]">
+                <p className="text-sm uppercase tracking-[0.28em] text-[#d5ad6f]">{item.label}</p>
+                <p className="mt-6 text-[clamp(1rem,2vw,1.125rem)] leading-8 text-neutral-200">{item.text}</p>
               </article>
             </Reveal>
           ))}
         </div>
       </section>
-      <section className="px-6 py-24 md:px-8">
+      <section className="px-4 py-[clamp(4rem,8svh,6rem)] md:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-5 lg:grid-cols-2">
             <Reveal>

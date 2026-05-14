@@ -31,16 +31,17 @@ export function MagneticButton({ className, children, variant = "primary", ...pr
     >
       <Link
         className={cn(
-          "inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition",
+          "group relative inline-flex min-h-12 items-center gap-3 overflow-hidden rounded-full px-6 py-3 text-xs font-black uppercase tracking-[0.16em] transition duration-500",
+          "before:absolute before:inset-0 before:translate-x-[-110%] before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:transition before:duration-700 hover:before:translate-x-[110%]",
           variant === "primary"
-            ? "rounded bg-gradient-to-br from-[#f4d79d] to-[#9b7040] text-black hover:brightness-110"
-            : "rounded border border-[#d5ad6f]/45 bg-transparent text-white hover:bg-[#d5ad6f]/10",
+            ? "border border-[#f4d79d]/40 bg-[#f5f1e8] text-[#070707] shadow-[0_18px_55px_rgba(213,173,111,0.22)] hover:bg-[#d5ad6f]"
+            : "border border-[#d5ad6f]/45 bg-black/25 text-white backdrop-blur-md hover:bg-[#d5ad6f]/12",
           className
         )}
         {...props}
       >
-        {children}
-        <ArrowUpRight size={16} aria-hidden="true" />
+        <span className="relative z-10">{children}</span>
+        <ArrowUpRight size={16} className="relative z-10 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
       </Link>
     </motion.div>
   );

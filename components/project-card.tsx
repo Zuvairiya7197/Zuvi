@@ -30,15 +30,10 @@ export function ProjectCard({ project, priority = false }: { project: Project; p
               <ArrowUpRight size={16} aria-hidden="true" />
             </span>
           </div>
-          <div className="sr-only mt-6 grid gap-4 text-sm leading-6 text-neutral-300">
-            <p>
-              <span className="text-white">Problem:</span> {project.problem}
-            </p>
-            <p>
-              <span className="text-white">Solution:</span> {project.solution}
-            </p>
-            <p>
-              <span className="text-white">Results:</span> {project.results}
+          <div className="mt-5 grid gap-4 text-sm leading-6 text-neutral-300">
+            <p>{project.problem}</p>
+            <p className="border-t border-white/10 pt-4">
+              <span className="text-[#d5ad6f]">Result:</span> {project.results}
             </p>
           </div>
         </div>

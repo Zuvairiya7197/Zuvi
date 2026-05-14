@@ -48,48 +48,48 @@ export const services = [
 
 export const projects = [
   {
-    slug: "aurelia-labs",
-    title: "Aurelia Labs",
-    industry: "Beauty Technology",
-    problem: "A premium skincare startup needed to look clinical, desirable, and trustworthy before retail launch.",
+    slug: "organise-with-kopal",
+    title: "Organise With Kopal",
+    industry: "Service Brand",
+    problem: "The brand was being built from scratch with no existing structure or system to explain the offer clearly.",
     solution:
-      "Built a luminous identity system, product page direction, and a flexible social launch kit with motion cues.",
-    results: "2.8x increase in waitlist conversion and a retail buyer deck approved in the first round.",
-    image: "/work-aurelia.svg",
-    accent: "from-cyan-300 to-violet-400"
+      "Created a calm service website with clearer messaging, trust-led structure, premium first impression, and an easy next step.",
+    results: "A clean, premium website with strong first impression, clear brand positioning, and faster trust around the offer.",
+    image: "/project-organise-with-kopal.webp",
+    accent: "from-[#d6b36a] to-[#8c6a3b]"
   },
   {
-    slug: "northline-capital",
-    title: "Northline Capital",
-    industry: "Fintech",
-    problem: "The fund’s old identity felt generic and lacked the confidence required for institutional clients.",
+    slug: "sm-classes",
+    title: "SM Classes",
+    industry: "Education",
+    problem: "The old structure made parents search around to understand programs, details, and the right next step.",
     solution:
-      "Designed a restrained identity, editorial website, investor presentation system, and data-led visual language.",
-    results: "Raised perceived credibility, shortened pitch prep time by 46%, and improved partner recall.",
-    image: "/work-northline.svg",
-    accent: "from-blue-300 to-cyan-200"
+      "Structured the education website so parents and students can find key information without confusion.",
+    results: "Clear layout, easier navigation, improved program clarity, and smoother inquiry decisions.",
+    image: "/project-sm-classes.webp",
+    accent: "from-[#d6b36a] to-[#111111]"
   },
   {
-    slug: "velora-studio",
-    title: "Velora Studio",
-    industry: "Interior Design",
-    problem: "A boutique interiors team needed a portfolio that matched the value of their luxury residential work.",
+    slug: "little-ilmies",
+    title: "Little Ilmies",
+    industry: "Learning Platform",
+    problem: "The platform needed a clear structure and guided learning flow for families exploring the experience.",
     solution:
-      "Created a tactile brand refresh, immersive case study templates, and art-directed image treatments.",
-    results: "Booked three high-ticket consultations within two weeks of launch.",
-    image: "/work-velora.svg",
-    accent: "from-violet-300 to-fuchsia-300"
+      "Designed a friendly learning platform with simple pathways that make exploring and understanding easy for users.",
+    results: "Clearer learner pathways and a smoother first experience that keeps families moving forward.",
+    image: "/project-little-ilmies.webp",
+    accent: "from-[#7c3cff] to-[#16d8ff]"
   },
   {
-    slug: "motive-grid",
-    title: "Motive Grid",
-    industry: "SaaS",
-    problem: "A B2B platform had powerful features, but the interface and marketing visuals felt dense and cold.",
+    slug: "zarrar-palekar",
+    title: "Zarrar Palekar",
+    industry: "Portfolio",
+    problem: "Work was scattered and hard to present professionally, which made the portfolio harder to trust quickly.",
     solution:
-      "Rebuilt the UI hierarchy, crafted product storytelling visuals, and designed a scalable component language.",
-    results: "Reduced demo drop-off by 31% and lifted trial signups by 64%.",
-    image: "/work-motive.svg",
-    accent: "from-cyan-200 to-blue-500"
+      "Built a focused portfolio to present work clearly, create credibility, and make projects easier to understand.",
+    results: "Structured portfolio presentation, sharper positioning, stronger trust, and instant credibility around the work.",
+    image: "/project-zarrar-palekar.webp",
+    accent: "from-[#16d8ff] to-[#7c3cff]"
   }
 ];
 

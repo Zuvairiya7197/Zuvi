@@ -10,19 +10,19 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <main className="px-6 pb-24 pt-32 md:px-8">
+    <main className="px-4 pb-[clamp(4rem,8svh,6rem)] pt-[clamp(7rem,14svh,8rem)] md:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Blog"
           title="Notes on premium branding, UI UX, and design systems."
           text="A search-friendly content hub designed to grow topical authority around high-value design services."
         />
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <div className="mt-[clamp(2rem,5svh,3rem)] grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {blogPosts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className="group glow-border rounded-[1.5rem]">
-              <article className="glass h-full rounded-[1.5rem] p-6">
-                <p className="text-sm text-cyan-200">{post.category}</p>
-                <h2 className="mt-5 font-display text-2xl font-semibold transition group-hover:text-cyan-100">
+              <article className="glass h-full rounded-[1.25rem] p-[clamp(1.25rem,3vw,1.5rem)]">
+                <p className="text-sm text-[#d5ad6f]">{post.category}</p>
+                <h2 className="mt-5 font-display text-2xl font-semibold transition group-hover:text-[#f4d79d]">
                   {post.title}
                 </h2>
                 <p className="mt-4 text-sm leading-7 text-neutral-300">{post.excerpt}</p>

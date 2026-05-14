@@ -5,19 +5,19 @@ import { projects } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "Selected branding, UI UX, web design, and campaign design case studies by Zuvi Studio."
+  description: "Selected website and brand experience projects by Zuvi Studio."
 };
 
 export default function WorkPage() {
   return (
-    <main className="px-6 pb-24 pt-32 md:px-8">
+    <main className="px-4 pb-[clamp(4rem,8svh,6rem)] pt-[clamp(7rem,14svh,8rem)] md:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Work"
-          title="Premium design work built around business movement."
-          text="Explore case studies across beauty technology, fintech, interiors, and SaaS."
+          title="Websites built to earn trust faster."
+          text="Explore real projects across service brands, education, learning platforms, and portfolio experiences."
         />
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <div className="mt-[clamp(2rem,5svh,3rem)] grid gap-6 lg:grid-cols-2">
           {projects.map((project, index) => (
             <ProjectCard key={project.slug} project={project} priority={index < 2} />
           ))}
