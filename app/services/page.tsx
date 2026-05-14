@@ -4,7 +4,7 @@ import { services } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Services",
-  description: "Freelance graphic design services for brand identity, social media, website design, UI UX, and motion graphics."
+  description: "Freelance graphic design services for logo design, business cards, posters, flyers, social media posts, advertisements, product labels, and website design."
 };
 
 export default function ServicesPage() {

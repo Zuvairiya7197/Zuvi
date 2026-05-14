@@ -2,102 +2,166 @@
 
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { FileText, Globe2, Lightbulb, Monitor, Play, Smartphone } from "lucide-react";
+import { CreditCard, FileText, Globe2, Lightbulb, Megaphone, Monitor, PenTool, Play, ScrollText, Smartphone, Tags } from "lucide-react";
 
 const serviceCards = [
   {
-    title: "Brand Identity",
-    pill: "Premium Systems",
-    icon: Lightbulb,
+    title: "Logo Design",
+    pill: "Brand Marks",
+    icon: PenTool,
     metric: "94%",
-    current: "Strategy",
-    ideal: "Identity",
-    detail: "Logo suites, visual language, and brand rules built for consistency.",
+    current: "Concept",
+    ideal: "Logo",
+    detail: "Distinct logo systems built for recall, clarity, and premium brand presence.",
     meals: [
-      ["Audit", "Visual Positioning"],
-      ["System", "Logo & Identity Rules"],
-      ["Launch", "Brand Application Kit"]
+      ["Sketch", "Logo Concepts"],
+      ["Refine", "Color & Type"],
+      ["Deliver", "Final Logo Files"]
     ],
     images: ["/project-organise-with-kopal.webp", "/project-zarrar-palekar.webp"],
     muted: true
   },
   {
-    title: "Website Design",
-    pill: "Built to Convert",
-    icon: Monitor,
+    title: "Poster/Flyer Design",
+    pill: "Promotional Layouts",
+    icon: ScrollText,
     metric: "89%",
-    current: "UX Flow",
-    ideal: "Website",
-    detail: "Landing pages and portfolio sites with clear journeys and premium polish.",
+    current: "Message",
+    ideal: "Flyer",
+    detail: "Posters and flyers with clear hierarchy, strong contrast, and quick communication.",
     meals: [
-      ["Map", "Conversion Structure"],
-      ["Design", "Responsive Page System"],
-      ["Launch", "Live Website Direction"]
+      ["Plan", "Offer Structure"],
+      ["Design", "Poster/Flyer Visual"],
+      ["Export", "Print & Digital File"]
     ],
-    images: ["/project-sm-classes.webp", "/project-organise-with-kopal.webp"],
+    images: ["/project-graphic-educational-flyer.png", "/project-graphic-home-tuition.png"],
     muted: true
   },
   {
-    title: "UI/UX Design",
-    pill: "Clear Experiences",
+    title: "Social Media Post Design",
+    pill: "Content Visuals",
     icon: Smartphone,
     metric: "92%",
-    current: "Product",
-    ideal: "Clarity",
-    detail: "Interface systems that make complex actions feel sharp, simple, and premium.",
+    current: "Content",
+    ideal: "Post",
+    detail: "Scroll-ready social designs for announcements, promotions, and brand campaigns.",
     meals: [
-      ["Research", "User Pathways"],
-      ["Interface", "Product UI System"],
-      ["Prototype", "Interaction Direction"]
+      ["Theme", "Campaign Direction"],
+      ["Design", "Post & Story Visual"],
+      ["Share", "Platform-Ready Files"]
     ],
-    images: ["/project-zarrar-palekar.webp", "/project-little-ilmies.webp"],
+    images: ["/project-graphic-smm-marketing-agency.png", "/project-graphic-sm-classes-poster.png"],
+    muted: true
+  },
+  {
+    title: "Business Card Design",
+    pill: "Print Identity",
+    icon: CreditCard,
+    metric: "88%",
+    current: "Identity",
+    ideal: "Card",
+    detail: "Elegant business cards with clear hierarchy, premium spacing, and print-ready finish.",
+    meals: [
+      ["Info", "Contact Hierarchy"],
+      ["Style", "Front & Back Layout"],
+      ["Export", "Print-Ready Artwork"]
+    ],
+    images: ["/project-graphic-organise-with-kopal.png", "/project-zarrar-palekar.webp"],
+    muted: true
+  },
+  {
+    title: "Advertisement Design",
+    pill: "Campaign Creatives",
+    icon: Megaphone,
+    metric: "90%",
+    current: "Offer",
+    ideal: "Ad",
+    detail: "Focused ad creatives with direct messaging, premium layout, and strong visual pull.",
+    meals: [
+      ["Hook", "Ad Message"],
+      ["Visual", "Campaign Creative"],
+      ["Adapt", "Digital Variants"]
+    ],
+    images: ["/project-graphic-sm-classes-11th.png", "/project-graphic-smm-marketing-agency.png"],
+    muted: true
+  },
+  {
+    title: "Product Label Design",
+    pill: "Packaging Detail",
+    icon: Tags,
+    metric: "86%",
+    current: "Product",
+    ideal: "Label",
+    detail: "Premium label designs with careful typography, shelf appeal, and brand consistency.",
+    meals: [
+      ["Read", "Product Details"],
+      ["Design", "Label Layout"],
+      ["Finish", "Print Artwork"]
+    ],
+    images: ["/project-graphic-organise-with-kopal.png", "/project-graphic-educational-flyer.png"],
+    muted: true
+  },
+  {
+    title: "Website Design",
+    pill: "Digital Presence",
+    icon: Monitor,
+    metric: "91%",
+    current: "Structure",
+    ideal: "Website",
+    detail: "Premium website layouts with clear sections, responsive thinking, and conversion-focused flow.",
+    meals: [
+      ["Map", "Page Structure"],
+      ["Design", "Website Layout"],
+      ["Adapt", "Responsive Direction"]
+    ],
+    images: ["/project-organise-with-kopal.webp", "/project-zarrar-palekar.webp"],
     muted: true
   }
 ];
 
-const leftServices = [
+const aboutLeftItems = [
   {
-    title: "Brand Identity",
-    text: "Memorable brand systems",
+    title: "Visual Strategy",
+    text: "Clear direction before design",
     icon: Lightbulb,
     className: "left-[23%] top-[15%]"
   },
   {
-    title: "UI/UX Design",
-    text: "Interfaces that feel clear",
+    title: "Design Systems",
+    text: "Consistent visual decisions",
     icon: Smartphone,
     className: "left-[16%] top-[39%]"
   },
   {
-    title: "Web Design",
-    text: "Responsive sites that convert",
+    title: "Digital Presence",
+    text: "Polished screens and flow",
     icon: Monitor,
     className: "left-[11%] top-[63%]"
   }
 ];
 
-const rightServices = [
+const aboutRightItems = [
   {
-    title: "Social Media",
-    text: "Campaign visuals with rhythm",
+    title: "Brand Worlds",
+    text: "Distinct visual atmospheres",
     icon: Globe2,
     className: "right-[23%] top-[15%]"
   },
   {
-    title: "Motion Graphics",
-    text: "Launch motion and reveals",
+    title: "Motion Sense",
+    text: "Subtle rhythm and reveal",
     icon: Play,
     className: "right-[16%] top-[39%]"
   },
   {
-    title: "Print Design",
-    text: "Tactile editorial systems",
+    title: "Editorial Detail",
+    text: "Spacing, type, and finish",
     icon: FileText,
     className: "right-[11%] top-[63%]"
   }
 ];
 
-function ServiceChip({ item, index }: { item: (typeof leftServices)[number]; index: number }) {
+function ServiceChip({ item, index }: { item: (typeof aboutLeftItems)[number]; index: number }) {
   const Icon = item.icon;
   const isRight = item.className.includes("right");
 
@@ -298,7 +362,7 @@ export function AboutServicesOrbit() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Designing Brands That Connect
+          About Zuvi Studio
         </motion.div>
 
         <motion.div
@@ -310,16 +374,14 @@ export function AboutServicesOrbit() {
           transition={{ duration: 0.86, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="font-sans text-[clamp(3rem,5vw,5.2rem)] font-medium leading-[0.96] tracking-[-0.055em] text-[#f5f1e8]">
-            Strategic Design For
-            <span className="block">Brands That Move</span>
-            <span className="block bg-gradient-to-b from-[#f4d59b] to-[#a87435] bg-clip-text text-transparent">
-              With Purpose
-            </span>
+            Design Thinking
+            <span className="block">With Visual</span>
+            <span className="block bg-gradient-to-b from-[#f4d59b] to-[#a87435] bg-clip-text text-transparent">Purpose</span>
           </h2>
         </motion.div>
 
         <div className="relative mx-auto mt-[clamp(1.5rem,3svh,2rem)] h-[clamp(25rem,54svh,35rem)] max-w-[min(94vw,1280px)]">
-          {[...leftServices, ...rightServices].map((item, index) => (
+          {[...aboutLeftItems, ...aboutRightItems].map((item, index) => (
             <ServiceChip key={item.title} item={item} index={index} />
           ))}
 
@@ -328,7 +390,7 @@ export function AboutServicesOrbit() {
         </div>
 
         <div className="mt-8 grid gap-3 lg:hidden">
-          {[...leftServices, ...rightServices].map((item) => {
+          {[...aboutLeftItems, ...aboutRightItems].map((item) => {
             const Icon = item.icon;
             return (
               <article key={item.title} className="flex items-center gap-4 rounded-2xl bg-white/[0.075] p-4 backdrop-blur-md">

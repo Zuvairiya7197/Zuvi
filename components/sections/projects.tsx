@@ -99,13 +99,13 @@ export function FeaturedProjects() {
         )
         .fromTo(
           titleRef.current?.querySelectorAll("[data-title-line]") ?? [],
-          { y: direction > 0 ? -92 : 92, opacity: 0, filter: "blur(12px)" },
+          { y: -92, opacity: 0, filter: "blur(12px)" },
           { y: 0, opacity: 1, filter: "blur(0px)", stagger: 0.08, duration: 0.95 },
           0.18
         )
         .fromTo(
-          sectionRef.current?.querySelectorAll("[data-project-cta]") ?? [],
-          { y: direction > 0 ? 58 : -58, opacity: 0, filter: "blur(10px)" },
+          sectionRef.current?.querySelectorAll("[data-project-meta], [data-project-cta]") ?? [],
+          { y: 58, opacity: 0, filter: "blur(10px)" },
           { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.85 },
           0.36
         )
@@ -188,7 +188,7 @@ export function FeaturedProjects() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <p className="mb-5 text-xs font-black uppercase tracking-[0.22em] text-[#d6b36a]">
+                  <p data-project-meta className="mb-5 text-xs font-black uppercase tracking-[0.22em] text-[#d6b36a]">
                     {activeProject.industry}
                   </p>
                   <h2 ref={titleRef} className="max-w-[44rem] font-sans text-[clamp(3.6rem,8vw,7.9rem)] font-black leading-[0.88] tracking-[-0.075em] text-white drop-shadow-[0_14px_24px_rgba(0,0,0,0.55)]">

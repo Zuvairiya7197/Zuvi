@@ -1,4 +1,4 @@
-import { ArrowUpRight, BadgeCheck, Brush, Clapperboard, Gem, Globe2, Layout, PenTool, Sparkles } from "lucide-react";
+import { ArrowUpRight, BadgeCheck, Brush, Box, CreditCard, Globe2, Megaphone, PenTool, ScrollText, Sparkles, Tags } from "lucide-react";
 
 export const navItems = [
   { href: "/work", label: "Work" },
@@ -9,43 +9,123 @@ export const navItems = [
 
 export const services = [
   {
-    title: "Brand Identity",
-    slug: "brand-identity",
-    icon: Gem,
-    summary: "Premium visual systems with logos, typography, color, and launch-ready guidelines.",
-    deliverables: ["Logo systems", "Brand guidelines", "Launch assets"]
+    title: "Logo Design",
+    slug: "logo-design",
+    icon: PenTool,
+    summary: "Distinct logo marks and wordmarks designed for clear recall and premium brand presence.",
+    deliverables: ["Logo concepts", "Color versions", "Final logo files"]
   },
   {
-    title: "Social Media Design",
-    slug: "social-media-design",
+    title: "Business Card Design",
+    slug: "business-card-design",
+    icon: CreditCard,
+    summary: "Elegant business cards with clean hierarchy, strong spacing, and print-ready polish.",
+    deliverables: ["Front and back design", "Print-ready file", "Brand styling"]
+  },
+  {
+    title: "Poster/Flyer Design",
+    slug: "poster-flyer-design",
+    icon: ScrollText,
+    summary: "Promotional posters and flyers built to communicate offers quickly and beautifully.",
+    deliverables: ["Poster layout", "Flyer layout", "Digital sharing file"]
+  },
+  {
+    title: "Social Media Post Design",
+    slug: "social-media-post-design",
     icon: Brush,
-    summary: "Scroll-stopping campaign visuals built as repeatable templates for fast teams.",
-    deliverables: ["Campaign kits", "Content systems", "Ad creatives"]
+    summary: "Scroll-ready post designs for announcements, campaigns, promotions, and brand content.",
+    deliverables: ["Post creatives", "Story formats", "Campaign visuals"]
+  },
+  {
+    title: "Advertisement Design",
+    slug: "advertisement-design",
+    icon: Megaphone,
+    summary: "Clean ad creatives with focused messaging, strong visual pull, and conversion-minded layout.",
+    deliverables: ["Ad layouts", "Campaign variants", "Digital ad files"]
+  },
+  {
+    title: "Product Label Design",
+    slug: "product-label-design",
+    icon: Tags,
+    summary: "Premium product labels with thoughtful typography, shelf appeal, and brand consistency.",
+    deliverables: ["Label design", "Packaging direction", "Print-ready artwork"]
   },
   {
     title: "Website Design",
     slug: "website-design",
     icon: Globe2,
-    summary: "Cinematic web experiences with clear conversion paths and responsive polish.",
-    deliverables: ["Landing pages", "Web art direction", "Design systems"]
-  },
-  {
-    title: "UI UX Design",
-    slug: "ui-ux-design",
-    icon: Layout,
-    summary: "Sharp product interfaces that reduce friction and make complex actions feel simple.",
-    deliverables: ["Wireframes", "Product UI", "Prototype flows"]
-  },
-  {
-    title: "Motion Graphics",
-    slug: "motion-graphics",
-    icon: Clapperboard,
-    summary: "Elegant motion assets for launches, social stories, product reveals, and brand films.",
-    deliverables: ["Logo motion", "Launch reels", "Microinteractions"]
+    summary: "Polished portfolio, service, and landing page designs with clear structure and premium visual direction.",
+    deliverables: ["Landing page design", "Website layout", "Responsive direction"]
   }
 ];
 
 export const projects = [
+  {
+    slug: "graphic-sm-classes-11th",
+    title: "SM Classes",
+    industry: "Graphic Design",
+    problem: "The class promotion needed a clear academic visual that could communicate the offer quickly.",
+    solution: "Designed an education-focused poster for SM Classes with direct messaging, structured hierarchy, and a polished academic tone.",
+    results: "A focused promotional graphic built for fast recognition and easy sharing across digital channels.",
+    image: "/project-graphic-sm-classes-11th.png",
+    accent: "from-[#d6b36a] to-[#111111]",
+    liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/graphic-designs"
+  },
+  {
+    slug: "educational-flyer",
+    title: "Educational Flyer",
+    industry: "Graphic Design",
+    problem: "A home tutor needed a flyer that felt professional while keeping the message simple and approachable.",
+    solution: "Created a clean educational flyer with strong contrast, readable details, and a confident visual structure.",
+    results: "A practical promotional flyer designed to help parents and students understand the tutoring offer quickly.",
+    image: "/project-graphic-educational-flyer.png",
+    accent: "from-[#d6b36a] to-[#8c6a3b]",
+    liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/graphic-designs"
+  },
+  {
+    slug: "smm-marketing-agency",
+    title: "SMM Marketing Agency",
+    industry: "Graphic Design",
+    problem: "The marketing agency owner needed a social cover graphic that presented the brand with more authority.",
+    solution: "Designed a bold social media cover with clear positioning, high-impact layout, and campaign-ready visual energy.",
+    results: "A stronger profile presence for social platforms with an immediate marketing-focused first impression.",
+    image: "/project-graphic-smm-marketing-agency.png",
+    accent: "from-[#d6b36a] to-[#111111]",
+    liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/graphic-designs"
+  },
+  {
+    slug: "sm-classes-poster",
+    title: "SM Classes Poster",
+    industry: "Graphic Design",
+    problem: "The professor needed a poster that could make class information easy to notice and trust.",
+    solution: "Designed a structured academic poster for SM Classes with a clear offer, readable hierarchy, and strong recall.",
+    results: "A clean class-promotion visual that supports inquiries and presents the education brand professionally.",
+    image: "/project-graphic-sm-classes-poster.png",
+    accent: "from-[#d6b36a] to-[#111111]",
+    liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/graphic-designs"
+  },
+  {
+    slug: "organise-with-kopal-graphic",
+    title: "Organise with Kopal",
+    industry: "Graphic Design",
+    problem: "The home organizer brand needed a visual that felt calm, helpful, and aligned with professional organization.",
+    solution: "Designed a square brand graphic with soft structure, neat composition, and an approachable service-led feel.",
+    results: "A clean visual asset that supports the brand's organized, trustworthy, and friendly positioning.",
+    image: "/project-graphic-organise-with-kopal.png",
+    accent: "from-[#d6b36a] to-[#8c6a3b]",
+    liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/graphic-designs"
+  },
+  {
+    slug: "home-tuition-flyer",
+    title: "Home Tuition",
+    industry: "Graphic Design",
+    problem: "The tutor needed a promotional design that made the offer visible and easy to understand.",
+    solution: "Created a home tuition flyer with clear academic messaging, direct information flow, and strong visual contrast.",
+    results: "A straightforward flyer that makes the tutoring service easier to promote and remember.",
+    image: "/project-graphic-home-tuition.png",
+    accent: "from-[#d6b36a] to-[#8c6a3b]",
+    liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/graphic-designs"
+  },
   {
     slug: "organise-with-kopal",
     title: "Organise With Kopal",
