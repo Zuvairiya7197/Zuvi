@@ -24,7 +24,6 @@ export function CaseStudyPreview() {
 
   return (
     <section ref={ref} className="section-line relative overflow-hidden px-5 py-[clamp(3rem,8svh,6rem)] md:px-8">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(214,179,106,0.13),transparent_32rem)]" aria-hidden="true" />
       <div className="relative mx-auto grid max-w-7xl gap-[clamp(2rem,5vw,3rem)] lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.24em] text-[#d6b36a]">Interactive case study</p>
@@ -46,7 +45,6 @@ export function CaseStudyPreview() {
         </div>
 
         <motion.div style={{ y: cameraShift }} className="relative min-h-[clamp(24rem,58svh,35rem)] max-sm:overflow-hidden">
-          <div className="absolute inset-x-12 bottom-16 h-32 rounded-full bg-[#d6b36a]/14 blur-3xl" />
           <motion.div
             style={{ rotate: rotateA, x: spread }}
             className="absolute right-0 top-8 w-[70%] overflow-hidden rounded-[1.25rem] border border-white/10 bg-[#f5f1e8] p-2 shadow-[0_36px_110px_rgba(0,0,0,0.42)] md:right-2 md:top-12 md:rounded-[2rem] md:p-3"

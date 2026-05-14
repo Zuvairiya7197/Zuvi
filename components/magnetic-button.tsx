@@ -34,7 +34,7 @@ export function MagneticButton({ className, children, variant = "primary", ...pr
           "group relative inline-flex min-h-12 items-center gap-3 overflow-hidden rounded-full px-6 py-3 text-xs font-black uppercase tracking-[0.16em] transition duration-500",
           "before:absolute before:inset-0 before:translate-x-[-110%] before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:transition before:duration-700 hover:before:translate-x-[110%]",
           variant === "primary"
-            ? "border border-[#f4d79d]/40 bg-[#f5f1e8] text-[#070707] shadow-[0_18px_55px_rgba(213,173,111,0.22)] hover:bg-[#d5ad6f]"
+            ? "border border-[#f4d79d]/40 bg-[#f5f1e8] text-[#070707] shadow-[0_18px_55px_rgba(0,0,0,0.28)] hover:bg-[#d5ad6f]"
             : "border border-[#d5ad6f]/45 bg-black/25 text-white backdrop-blur-md hover:bg-[#d5ad6f]/12",
           className
         )}

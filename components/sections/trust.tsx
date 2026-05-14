@@ -7,7 +7,7 @@ export function Trust() {
     <section id="trust" className="section-line overflow-hidden border-b border-[#d5ad6f]/12 bg-[#f5f1e8] py-[clamp(1.25rem,3svh,2rem)] text-[#10100e]">
       <div className="mx-auto mb-[clamp(1rem,2svh,1.5rem)] flex max-w-7xl items-center gap-6 px-5 text-center md:px-8">
         <span className="h-px flex-1 bg-black/12" />
-        <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#8c6a3b]">Trusted systems, memorable launches</p>
+        <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#8c6a3b]">Design systems, visual experiences</p>
         <span className="h-px flex-1 bg-black/12" />
       </div>
       <div className="marquee flex w-max gap-16">

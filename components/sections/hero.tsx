@@ -24,11 +24,6 @@ export function Hero() {
         pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
       }}
     >
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute left-1/2 top-[43%] h-[30rem] w-[68rem] -translate-x-1/2 rounded-full bg-[#d6b36a]/8 blur-3xl" />
-        <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-[#050505] to-transparent" />
-      </div>
-
       <div className="relative z-10 mx-auto min-h-[calc(100svh-6.75rem)] max-w-[1680px] max-xl:flex max-xl:flex-col max-xl:items-center max-xl:justify-between 2xl:min-h-[calc(100svh-9rem)] 2xl:max-w-[1820px]">
         <motion.div
           style={{ x: headlineX, y: headlineY }}
@@ -48,18 +43,18 @@ export function Hero() {
           </h1>
           <Link
             href="/contact"
-            className="mx-auto mt-5 inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-br from-[#f7d79a] to-[#a67235] px-5 py-3 text-sm font-bold text-black shadow-[0_18px_55px_rgba(214,179,106,0.22)] xl:hidden"
+            className="mx-auto mt-5 inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-br from-[#f7d79a] to-[#a67235] px-5 py-3 text-sm font-bold text-black shadow-[0_18px_55px_rgba(0,0,0,0.32)] xl:hidden"
           >
             Start a Project <ArrowRight size={18} />
           </Link>
         </motion.div>
 
-        <div className="absolute bottom-0 left-0 z-40 hidden max-w-[24rem] items-end gap-6 xl:flex 2xl:max-w-[28rem]">
-          <div className="grid w-28 shrink-0 gap-2.5 2xl:w-32 2xl:gap-3">
+        <div className="absolute bottom-[clamp(1.75rem,5svh,3.5rem)] left-0 z-40 hidden max-w-[18rem] flex-col items-start xl:flex 2xl:max-w-[20rem]">
+          <div className="mb-5 flex max-w-[15rem] flex-wrap gap-2.5">
             {traits.map((trait, index) => (
               <motion.span
                 key={trait}
-                className="rounded-full border border-[#d6b36a]/35 bg-black/18 px-4 py-2 text-center text-sm text-[#f5f1e8] backdrop-blur-sm 2xl:px-6 2xl:py-2.5 2xl:text-base"
+                className="rounded-full border border-white/16 bg-black px-4 py-2 text-center text-sm font-medium leading-none text-[#f5f1e8] backdrop-blur-sm"
                 initial={{ opacity: 0, x: -24 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.55, delay: 0.55 + index * 0.08 }}
@@ -69,13 +64,13 @@ export function Hero() {
             ))}
           </div>
           <motion.div
-            className="max-w-[15rem] pb-1 2xl:max-w-[19rem]"
+            className="max-w-[17rem]"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.9 }}
           >
-            <h2 className="text-[clamp(1.5rem,2vw,2rem)] font-bold leading-tight text-[#f5f1e8]">From Concept to Connection.</h2>
-            <p className="mt-3 text-sm leading-6 text-[#f5f1e8]/50 2xl:mt-4 2xl:text-lg 2xl:leading-8">
+            <h2 className="text-[clamp(1.45rem,1.9vw,1.9rem)] font-semibold leading-[1.08] tracking-[-0.035em] text-[#f5f1e8]">From Concept to Connection.</h2>
+            <p className="mt-3 text-sm leading-5 text-[#f5f1e8]/46">
               I create visual experiences that inspire, engage & elevate brands.
             </p>
           </motion.div>
@@ -89,7 +84,7 @@ export function Hero() {
         >
           <Link
             href="/contact"
-            className="inline-flex min-w-[12.5rem] items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-[#f7d79a] to-[#a67235] px-6 py-4 text-base font-bold text-black shadow-[0_22px_70px_rgba(214,179,106,0.22)] transition hover:-translate-y-1 hover:shadow-[0_28px_90px_rgba(214,179,106,0.34)] 2xl:min-w-[15rem] 2xl:gap-5 2xl:px-8 2xl:py-5 2xl:text-lg"
+            className="inline-flex min-w-[12.5rem] items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-[#f7d79a] to-[#a67235] px-6 py-4 text-base font-bold text-black shadow-[0_22px_70px_rgba(0,0,0,0.32)] transition hover:-translate-y-1 hover:shadow-[0_28px_90px_rgba(0,0,0,0.42)] 2xl:min-w-[15rem] 2xl:gap-5 2xl:px-8 2xl:py-5 2xl:text-lg"
           >
             <ArrowUpRight size={30} />
             Start a Project

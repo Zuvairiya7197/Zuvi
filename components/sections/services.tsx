@@ -9,19 +9,19 @@ const leftServices = [
     title: "Brand Identity",
     text: "Memorable brand systems",
     icon: Lightbulb,
-    className: "left-[12%] top-[22%]"
+    className: "left-[23%] top-[15%]"
   },
   {
     title: "UI/UX Design",
     text: "Interfaces that feel clear",
     icon: Smartphone,
-    className: "left-[6%] top-[42%]"
+    className: "left-[16%] top-[39%]"
   },
   {
     title: "Web Design",
     text: "Responsive sites that convert",
     icon: Monitor,
-    className: "left-[11%] top-[62%]"
+    className: "left-[11%] top-[63%]"
   }
 ];
 
@@ -30,19 +30,19 @@ const rightServices = [
     title: "Social Media",
     text: "Campaign visuals with rhythm",
     icon: Globe2,
-    className: "right-[12%] top-[22%]"
+    className: "right-[23%] top-[15%]"
   },
   {
     title: "Motion Graphics",
     text: "Launch motion and reveals",
     icon: Play,
-    className: "right-[6%] top-[42%]"
+    className: "right-[16%] top-[39%]"
   },
   {
     title: "Print Design",
     text: "Tactile editorial systems",
     icon: FileText,
-    className: "right-[11%] top-[62%]"
+    className: "right-[11%] top-[63%]"
   }
 ];
 
@@ -52,19 +52,18 @@ function ServiceChip({ item, index }: { item: (typeof leftServices)[number]; ind
 
   return (
     <motion.article
-      className={`absolute z-30 hidden w-[clamp(11rem,15vw,14rem)] items-center gap-3 rounded-[1.05rem] bg-white/[0.095] p-2.5 pr-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_18px_60px_rgba(0,0,0,0.22)] backdrop-blur-md xl:flex ${item.className}`}
+      className={`absolute z-30 hidden h-14 w-[clamp(9.5rem,12vw,11.5rem)] items-center gap-3 rounded-[0.95rem] border border-white/10 bg-[#1d1c1a]/92 p-2 pr-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_18px_56px_rgba(0,0,0,0.34)] backdrop-blur-xl xl:flex ${item.className}`}
       initial={{ opacity: 0, y: 20, x: isRight ? 18 : -18 }}
       whileInView={{ opacity: 1, y: 0, x: 0 }}
       viewport={{ once: true, margin: "-120px" }}
       transition={{ duration: 0.68, delay: 0.14 + index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -4, backgroundColor: "rgba(255,255,255,0.13)" }}
+      whileHover={{ y: -4, backgroundColor: "rgba(38,36,32,0.96)" }}
     >
-      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[0.8rem] bg-white/10 text-[#d6b36a]">
-        <Icon size={20} strokeWidth={1.7} />
+      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[0.75rem] bg-white/[0.08] text-[#d6b36a] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+        <Icon size={18} strokeWidth={1.7} />
       </span>
       <span className="min-w-0">
         <h3 className="truncate text-sm font-semibold text-[#f5f1e8]">{item.title}</h3>
-        <p className="mt-0.5 truncate text-xs text-[#f5f1e8]/42">{item.text}</p>
       </span>
     </motion.article>
   );
@@ -89,7 +88,7 @@ function DesignImageFrame({
       viewport={{ once: true, margin: "-120px" }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="absolute inset-0 overflow-hidden rounded-full border border-[#d6b36a]/28 bg-[#070706] shadow-[inset_0_4px_0_rgba(255,255,255,0.1),inset_0_-34px_80px_rgba(0,0,0,0.82),0_34px_110px_rgba(0,0,0,0.68),0_0_70px_rgba(214,179,106,0.12)]">
+      <div className="absolute inset-0 overflow-hidden rounded-full bg-[#070706] shadow-[inset_0_-34px_80px_rgba(0,0,0,0.82),0_34px_110px_rgba(0,0,0,0.68)]">
         <Image
           src="/project-organise-with-kopal.webp"
           alt="Premium graphic design work preview"
@@ -100,8 +99,6 @@ function DesignImageFrame({
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,transparent,rgba(0,0,0,0.34)_44%,rgba(0,0,0,0.9)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black to-transparent" />
       </div>
-      <div className="absolute inset-[-12%] -z-10 rounded-full bg-[radial-gradient(circle_at_50%_40%,rgba(214,179,106,0.22),rgba(214,179,106,0.07)_42%,transparent_70%)] blur-2xl" />
-      <div className="absolute inset-x-[18%] bottom-[-8%] h-10 rounded-[50%] bg-[#d6b36a]/14 blur-2xl" />
     </motion.div>
   );
 }
@@ -152,18 +149,6 @@ export function ServicesPreview() {
         </motion.div>
 
         <div className="relative mx-auto mt-[clamp(1.5rem,3svh,2rem)] h-[clamp(25rem,54svh,35rem)] max-w-[min(94vw,1280px)]">
-          <div className="absolute left-1/2 top-[52%] h-[92%] w-[92%] -translate-x-1/2 -translate-y-1/2 rounded-t-full border border-white/10 border-b-transparent" />
-          <div className="absolute left-1/2 top-[55%] h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-t-full border border-[#d6b36a]/16 border-b-transparent" />
-          <motion.div
-            className="absolute left-1/2 top-[58%] z-10 h-[clamp(18rem,43svh,28rem)] w-[clamp(18rem,43svh,28rem)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d6b36a]/28 shadow-[0_0_70px_rgba(214,179,106,0.08),inset_0_0_42px_rgba(214,179,106,0.045)]"
-            initial={{ opacity: 0, scale: 0.92 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-120px" }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          />
-          <div className="absolute left-1/2 top-[58%] z-10 h-[clamp(14rem,34svh,22rem)] w-[clamp(14rem,34svh,22rem)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10" />
-          <div className="absolute left-1/2 top-[58%] z-10 h-[clamp(21rem,50svh,32rem)] w-[clamp(21rem,50svh,32rem)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.035]" />
-
           {[...leftServices, ...rightServices].map((item, index) => (
             <ServiceChip key={item.title} item={item} index={index} />
           ))}

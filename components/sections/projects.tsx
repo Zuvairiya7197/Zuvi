@@ -12,7 +12,10 @@ function mod(index: number, length: number) {
 }
 
 export function FeaturedProjects() {
-  const [activeIndex, setActiveIndex] = useState(2);
+  const [activeIndex, setActiveIndex] = useState(() => {
+    const index = projects.findIndex((project) => project.slug === "zarrar-palekar");
+    return index >= 0 ? index : 0;
+  });
   const activeProject = projects[activeIndex];
   const previousProject = projects[mod(activeIndex - 1, projects.length)];
   const nextProject = projects[mod(activeIndex + 1, projects.length)];
@@ -54,7 +57,7 @@ export function FeaturedProjects() {
           <AnimatePresence mode="wait">
             <motion.article
               key={activeProject.slug}
-              className="absolute left-1/2 top-0 z-20 w-[min(92vw,760px)] -translate-x-1/2 cursor-grab overflow-hidden rounded-[1.7rem] border-[10px] border-[#1f1d1a] bg-[#080807] shadow-[0_34px_120px_rgba(0,0,0,0.72),0_0_80px_rgba(214,179,106,0.1)] active:cursor-grabbing md:border-[12px] xl:w-[min(54vw,880px)]"
+              className="absolute left-1/2 top-0 z-20 w-[min(92vw,760px)] -translate-x-1/2 cursor-grab overflow-hidden rounded-[1.7rem] border-[10px] border-[#1f1d1a] bg-[#080807] shadow-[0_34px_120px_rgba(0,0,0,0.72)] active:cursor-grabbing md:border-[12px] xl:w-[min(54vw,880px)]"
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.18}

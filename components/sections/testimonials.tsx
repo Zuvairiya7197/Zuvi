@@ -51,7 +51,7 @@ export function Testimonials() {
           </FloatingArtifact>
 
           <FloatingArtifact className="left-[13%] top-[16%] h-[clamp(5rem,10svh,7.5rem)] w-[clamp(5rem,10svh,7.5rem)] rotate-[-12deg]" delay={0.18}>
-            <div className="grid h-full w-full place-items-center border border-[#d6b36a]/45 bg-black/35 text-[clamp(2.5rem,5vw,4.5rem)] font-semibold text-[#d6b36a] shadow-[0_20px_70px_rgba(214,179,106,0.14)] backdrop-blur-md">
+            <div className="grid h-full w-full place-items-center border border-[#d6b36a]/45 bg-black/35 text-[clamp(2.5rem,5vw,4.5rem)] font-semibold text-[#d6b36a] shadow-[0_20px_70px_rgba(0,0,0,0.38)] backdrop-blur-md">
               T
             </div>
           </FloatingArtifact>
@@ -72,7 +72,7 @@ export function Testimonials() {
           </FloatingArtifact>
 
           <FloatingArtifact className="right-[17%] bottom-[20%] h-[clamp(5.5rem,11svh,7rem)] w-[clamp(5.5rem,11svh,7rem)] rotate-[12deg]" delay={0.28}>
-            <div className="grid h-full w-full place-items-center border border-[#d6b36a]/35 bg-black/35 text-[clamp(2.4rem,4.5vw,4rem)] font-serif text-white/45 shadow-[0_20px_70px_rgba(214,179,106,0.13)] backdrop-blur-md">
+            <div className="grid h-full w-full place-items-center border border-[#d6b36a]/35 bg-black/35 text-[clamp(2.4rem,4.5vw,4rem)] font-serif text-white/45 shadow-[0_20px_70px_rgba(0,0,0,0.38)] backdrop-blur-md">
               Aa
             </div>
           </FloatingArtifact>
@@ -119,7 +119,7 @@ export function Testimonials() {
 
             <motion.a
               href="#contact"
-              className="group mx-auto mt-[clamp(1.4rem,3.2svh,2.2rem)] inline-flex items-center gap-4 rounded-full border border-[#d6b36a]/45 bg-black/35 px-5 py-3 text-[clamp(0.95rem,1.2vw,1.1rem)] font-semibold text-[#f5f1e8] shadow-[0_20px_70px_rgba(214,179,106,0.12)] backdrop-blur-md"
+              className="group mx-auto mt-[clamp(1.4rem,3.2svh,2.2rem)] inline-flex items-center gap-4 rounded-full border border-[#d6b36a]/45 bg-black/35 px-5 py-3 text-[clamp(0.95rem,1.2vw,1.1rem)] font-semibold text-[#f5f1e8] shadow-[0_20px_70px_rgba(0,0,0,0.38)] backdrop-blur-md"
               whileHover={{ y: -3, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               variants={{
@@ -147,7 +147,7 @@ export function Testimonials() {
               whileHover={{ y: -8, rotateX: 2 }}
               className="relative min-h-[clamp(14rem,26svh,17rem)] rounded-[1.15rem] border border-[#d6b36a]/35 bg-black/52 p-[clamp(1.25rem,2vw,1.75rem)] shadow-[0_22px_90px_rgba(0,0,0,0.55)] backdrop-blur-xl"
             >
-              <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_18%_0%,rgba(214,179,106,0.14),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.055),transparent_42%)]" />
+              <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[linear-gradient(145deg,rgba(255,255,255,0.055),transparent_42%)]" />
               <div className="relative flex items-start justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <div className="grid size-[clamp(3.6rem,6vw,4.8rem)] place-items-center rounded-full border border-[#d6b36a]/45 bg-gradient-to-br from-[#282018] to-[#050505] text-lg font-semibold text-[#f4d79d]">

@@ -9,7 +9,6 @@ import { stats, testimonials } from "@/lib/data";
 export function AboutPreview() {
   return (
     <section className="section-line relative overflow-hidden px-5 py-[clamp(3rem,8svh,6rem)] md:px-8">
-      <div className="absolute right-0 top-20 h-72 w-72 rounded-full bg-[#d6b36a]/10 blur-3xl" aria-hidden="true" />
       <div className="mx-auto grid max-w-7xl gap-[clamp(2rem,5vw,3rem)] lg:grid-cols-[0.78fr_1.45fr_1fr] lg:items-center">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.24em] text-[#d5ad6f]">About the studio</p>

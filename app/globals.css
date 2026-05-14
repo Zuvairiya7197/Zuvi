@@ -24,10 +24,7 @@ body {
   margin: 0;
   overflow-x: hidden;
   color: var(--foreground);
-  background:
-    radial-gradient(circle at 76% 10%, rgba(213, 173, 111, 0.18), transparent 28rem),
-    radial-gradient(circle at 22% 22%, rgba(255, 255, 255, 0.045), transparent 18rem),
-    linear-gradient(180deg, #020202 0%, #0b0907 48%, #030303 100%);
+  background: linear-gradient(180deg, #020202 0%, #0b0907 48%, #030303 100%);
   font-family: var(--font-inter), Arial, sans-serif;
 }
 
@@ -52,9 +49,7 @@ textarea {
 
 .glass {
   border: 1px solid var(--stroke);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.018)),
-    linear-gradient(180deg, rgba(213, 173, 111, 0.045), transparent);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.018));
   box-shadow: 0 24px 90px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(18px);
 }
@@ -68,7 +63,7 @@ textarea {
   inset: -1px;
   z-index: -1;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(244, 215, 157, 0.56), rgba(213, 173, 111, 0.25), transparent 68%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.08), transparent 68%);
   content: "";
   opacity: 0;
   transition: opacity 240ms ease;
@@ -93,18 +88,12 @@ textarea {
 
 .brand-orbit-hero {
   isolation: isolate;
-  background:
-    radial-gradient(circle at 50% 45%, rgba(214, 179, 106, 0.1), transparent 27rem),
-    radial-gradient(circle at 50% 86%, rgba(245, 241, 232, 0.09), transparent 28rem),
-    linear-gradient(180deg, #050505 0%, #070707 52%, #030303 100%);
+  background: linear-gradient(180deg, #050505 0%, #070707 52%, #030303 100%);
 }
 
 .projects-stage {
   isolation: isolate;
-  background:
-    radial-gradient(circle at 50% 24%, rgba(214, 179, 106, 0.12), transparent 27rem),
-    radial-gradient(circle at 50% 65%, rgba(245, 241, 232, 0.06), transparent 24rem),
-    linear-gradient(180deg, #050505 0%, #070707 52%, #030303 100%);
+  background: linear-gradient(180deg, #050505 0%, #070707 52%, #030303 100%);
 }
 
 .projects-stage::before {
@@ -134,24 +123,11 @@ textarea {
 
 .services-orbit-section {
   isolation: isolate;
-  background:
-    radial-gradient(circle at 50% 42%, rgba(214, 179, 106, 0.11), transparent 27rem),
-    radial-gradient(circle at 50% 78%, rgba(245, 241, 232, 0.09), transparent 28rem),
-    linear-gradient(180deg, #050505 0%, #070707 52%, #030303 100%);
+  background: linear-gradient(180deg, #050505 0%, #070707 52%, #030303 100%);
 }
 
 .services-orbit-section::before {
-  position: absolute;
-  inset: 0 8% 0 11%;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.38;
-  background-image:
-    linear-gradient(rgba(245, 241, 232, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245, 241, 232, 0.045) 1px, transparent 1px);
-  background-size: 88px 88px;
-  mask-image: radial-gradient(circle at 50% 46%, black 0 44%, transparent 78%);
-  content: "";
+  content: none;
 }
 
 .services-orbit-section::after {
@@ -167,11 +143,7 @@ textarea {
 
 .testimonial-stage {
   isolation: isolate;
-  background:
-    radial-gradient(circle at 72% 17%, rgba(214, 179, 106, 0.14), transparent 15rem),
-    radial-gradient(circle at 12% 48%, rgba(214, 179, 106, 0.12), transparent 18rem),
-    radial-gradient(circle at 84% 66%, rgba(245, 241, 232, 0.08), transparent 20rem),
-    linear-gradient(180deg, #030303 0%, #060606 54%, #030303 100%);
+  background: linear-gradient(180deg, #030303 0%, #060606 54%, #030303 100%);
 }
 
 .testimonial-stage::before {
@@ -201,10 +173,7 @@ textarea {
 
 .contact-stage {
   isolation: isolate;
-  background:
-    radial-gradient(circle at 50% 92%, rgba(214, 179, 106, 0.24), transparent 28rem),
-    radial-gradient(circle at 62% 52%, rgba(214, 179, 106, 0.09), transparent 20rem),
-    linear-gradient(180deg, #050505 0%, #060606 46%, #030303 100%);
+  background: linear-gradient(180deg, #050505 0%, #060606 46%, #030303 100%);
 }
 
 .contact-stage::before {
@@ -263,7 +232,6 @@ textarea {
 
 .brand-orbit-ring {
   transform-style: preserve-3d;
-  box-shadow: 0 0 28px rgba(214, 179, 106, 0.14);
 }
 
 .brand-orbit-ring-a {
@@ -283,10 +251,7 @@ textarea {
 
 .purpose-hero {
   isolation: isolate;
-  background:
-    radial-gradient(circle at 55% 40%, rgba(255, 122, 36, 0.12), transparent 24rem),
-    radial-gradient(circle at 48% 76%, rgba(214, 179, 106, 0.1), transparent 34rem),
-    linear-gradient(180deg, #030303 0%, #050505 55%, #030303 100%);
+  background: linear-gradient(180deg, #030303 0%, #050505 55%, #030303 100%);
 }
 
 .purpose-hero::before {
@@ -316,43 +281,12 @@ textarea {
 
 .story-hero {
   isolation: isolate;
-  background:
-    radial-gradient(circle at 50% 54%, rgba(214, 179, 106, 0.12), transparent 26rem),
-    radial-gradient(circle at 50% 100%, rgba(245, 241, 232, 0.1), transparent 30rem),
-    linear-gradient(180deg, #010101 0%, #050505 42%, #020202 100%);
-}
-
-.story-hero::before {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at center, transparent 0 32%, rgba(0, 0, 0, 0.58) 70%),
-    linear-gradient(90deg, rgba(214, 179, 106, 0.06), transparent 22%, transparent 78%, rgba(214, 179, 106, 0.05));
-  content: "";
-}
-
-.story-hero::after {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.16;
-  background-image:
-    linear-gradient(rgba(245, 241, 232, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245, 241, 232, 0.04) 1px, transparent 1px);
-  background-size: 120px 120px;
-  mask-image: radial-gradient(circle at 50% 50%, black, transparent 72%);
-  content: "";
+  background: #000;
 }
 
 .vault-hero {
   isolation: isolate;
-  background:
-    radial-gradient(circle at 62% 48%, rgba(245, 241, 232, 0.075), transparent 19rem),
-    radial-gradient(circle at 76% 24%, rgba(214, 179, 106, 0.1), transparent 16rem),
-    linear-gradient(180deg, #050505 0%, #0e0d0a 54%, #050505 100%);
+  background: linear-gradient(180deg, #050505 0%, #0e0d0a 54%, #050505 100%);
 }
 
 .vault-hero::before {
@@ -375,7 +309,7 @@ textarea {
   z-index: 0;
   height: 1px;
   pointer-events: none;
-  background: linear-gradient(90deg, transparent, rgba(213, 173, 111, 0.55), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
   content: "";
 }
 

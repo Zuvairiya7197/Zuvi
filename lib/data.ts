@@ -4,7 +4,6 @@ export const navItems = [
   { href: "/work", label: "Work" },
   { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" }
 ];
 
@@ -120,34 +119,7 @@ export const stats = [
   { value: "92", suffix: "%", label: "repeat client rate" }
 ];
 
-export const blogPosts = [
-  {
-    slug: "premium-brand-identity-system",
-    title: "How to Build a Premium Brand Identity System",
-    category: "Branding",
-    excerpt: "A practical framework for making a brand feel elevated, consistent, and commercially useful.",
-    date: "2026-04-18",
-    readTime: "6 min read"
-  },
-  {
-    slug: "ui-ux-portfolio-conversions",
-    title: "UI UX Details That Make Portfolio Sites Convert",
-    category: "UI UX",
-    excerpt: "The interaction, hierarchy, and proof points that turn visual admiration into qualified inquiries.",
-    date: "2026-03-22",
-    readTime: "5 min read"
-  },
-  {
-    slug: "social-media-design-systems",
-    title: "Why Social Media Design Needs Systems, Not One-Off Posts",
-    category: "Social Media Marketing",
-    excerpt: "How repeatable visual systems protect quality while keeping content production fast.",
-    date: "2026-02-14",
-    readTime: "4 min read"
-  }
-];
-
-export const trustLogos = ["NOVA", "MONO", "AURELIA", "NORTHLINE", "VELORA", "MOTIVE", "KIN"];
+export const trustLogos = ["BRANDING", "UI/UX", "MOTION", "EDITORIAL", "PACKAGING", "VISUALS", "IDENTITY", "DIGITAL"];
 
 export const processSteps = [
   { title: "Discover", text: "Audit the market, audience, offer, and visual gaps before design begins.", icon: PenTool },
