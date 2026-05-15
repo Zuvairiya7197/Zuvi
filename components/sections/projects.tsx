@@ -9,6 +9,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { projects } from "@/lib/data";
 
 const AUTOPLAY_DELAY = 6200;
+const homeProjectCategories = ["Social Media Designs", "Costumised Print Design"];
 
 function mod(index: number, length: number) {
   return ((index % length) + length) % length;
@@ -22,10 +23,14 @@ function splitTitle(title: string) {
 }
 
 export function FeaturedProjects() {
+  const featuredProjects = useMemo(
+    () => projects.filter((project) => homeProjectCategories.includes(project.category)),
+    []
+  );
   const initialIndex = useMemo(() => {
-    const index = projects.findIndex((project) => project.slug === "zarrar-palekar");
-    return index >= 0 ? index : 0;
-  }, []);
+    const socialIndex = featuredProjects.findIndex((project) => project.category === "Social Media Designs");
+    return socialIndex >= 0 ? socialIndex : 0;
+  }, [featuredProjects]);
   const [activeIndex, setActiveIndex] = useState(initialIndex);
   const [direction, setDirection] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -37,8 +42,8 @@ export function FeaturedProjects() {
   const lightRef = useRef<HTMLDivElement | null>(null);
   const progressRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const wheelLockRef = useRef(false);
-  const activeProject = projects[activeIndex];
-  const nextProject = projects[mod(activeIndex + 1, projects.length)];
+  const activeProject = featuredProjects[activeIndex];
+  const nextProject = featuredProjects[mod(activeIndex + 1, featuredProjects.length)];
   const titleLines = splitTitle(activeProject.title);
   const activeProjectHref =
     activeProject.industry === "Graphic Design"
@@ -49,14 +54,14 @@ export function FeaturedProjects() {
 
   const changeSlide = useCallback((nextIndex: number) => {
     setActiveIndex((current) => {
-      const normalized = mod(nextIndex, projects.length);
+      const normalized = mod(nextIndex, featuredProjects.length);
       if (normalized === current) return current;
-      const forwardDistance = mod(normalized - current, projects.length);
-      const backwardDistance = mod(current - normalized, projects.length);
+      const forwardDistance = mod(normalized - current, featuredProjects.length);
+      const backwardDistance = mod(current - normalized, featuredProjects.length);
       setDirection(forwardDistance <= backwardDistance ? 1 : -1);
       return normalized;
     });
-  }, []);
+  }, [featuredProjects.length]);
 
   const goToNext = useCallback(() => changeSlide(activeIndex + 1), [activeIndex, changeSlide]);
   const goToPrevious = useCallback(() => changeSlide(activeIndex - 1), [activeIndex, changeSlide]);
@@ -274,7 +279,7 @@ export function FeaturedProjects() {
 
         <div className="pb-2">
           <div className="flex items-center gap-3">
-            {projects.map((project, index) => (
+            {featuredProjects.map((project, index) => (
               <button
                 key={project.slug}
                 type="button"

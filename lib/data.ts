@@ -83,6 +83,7 @@ const logoProjectImages = [
   "/mz-logo-03.jpg",
   "/mz-logo-04.jpg",
   "/mz-logo-05.jpg",
+  "/mz-logo-05.png",
   "/mz-logo-06.jpg",
   "/mz-logo-07.jpg",
   "/mz-logo-08.jpg",
@@ -179,6 +180,31 @@ const socialMediaDesignProjects = [
     slug: "social-media-post-09",
     title: "Social Media Post 09",
     image: "/post 9.png"
+  },
+  {
+    slug: "social-media-post-11",
+    title: "Social Media Post 11",
+    image: "/post 11.png"
+  },
+  {
+    slug: "social-media-post-12",
+    title: "Social Media Post 12",
+    image: "/post 12.png"
+  },
+  {
+    slug: "social-media-post-13",
+    title: "Social Media Post 13",
+    image: "/post 13.png"
+  },
+  {
+    slug: "social-media-post-14",
+    title: "Social Media Post 14",
+    image: "/post 14.png"
+  },
+  {
+    slug: "social-media-post-15",
+    title: "Social Media Post 15",
+    image: "/post 15.png"
   }
 ].map((project, index) => ({
   ...project,
