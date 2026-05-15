@@ -36,10 +36,10 @@ function TabButton({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-full border px-5 py-3 text-sm font-semibold transition duration-300 ${
+      className={`rounded-full border px-5 py-2.5 text-sm font-medium transition duration-300 ${
         active
-          ? "border-[#d5ad6f]/60 bg-[#d5ad6f] text-black shadow-[0_0_34px_rgba(213,173,111,0.22)]"
-          : "border-white/10 bg-white/[0.035] text-neutral-300 hover:border-[#d5ad6f]/35 hover:text-[#f5f1e8]"
+          ? "border-[#d5ad6f]/45 bg-[#d5ad6f] text-black shadow-[0_14px_42px_rgba(213,173,111,0.18)]"
+          : "border-white/10 bg-white/[0.025] text-neutral-300 hover:border-[#d5ad6f]/30 hover:bg-white/[0.045] hover:text-[#f5f1e8]"
       }`}
     >
       {children}
@@ -63,10 +63,10 @@ function CategoryButton({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] transition duration-300 ${
+      className={`rounded-full border px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] transition duration-300 ${
         active
-          ? "border-[#d5ad6f]/55 bg-[#d5ad6f]/16 text-[#f5d89d]"
-          : "border-white/10 bg-black/20 text-neutral-500 hover:border-[#d5ad6f]/30 hover:text-neutral-200"
+          ? "border-[#d5ad6f]/50 bg-[#d5ad6f]/12 text-[#f5d89d]"
+          : "border-white/10 bg-black/10 text-neutral-500 hover:border-[#d5ad6f]/25 hover:bg-white/[0.025] hover:text-neutral-200"
       }`}
     >
       {label}
@@ -115,40 +115,40 @@ export function WorkPageContent({
       <div className="pointer-events-none absolute inset-0 opacity-[0.035] [background-image:linear-gradient(rgba(245,241,232,0.75)_1px,transparent_1px),linear-gradient(90deg,rgba(245,241,232,0.75)_1px,transparent_1px)] [background-size:84px_84px]" />
 
       <div className="relative mx-auto max-w-7xl">
-        <section className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#0b0a08]/62 px-[clamp(1.25rem,4vw,3rem)] py-[clamp(2rem,6svh,4rem)] shadow-[0_30px_110px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl">
-          <div className="pointer-events-none absolute inset-x-[10%] top-0 h-px bg-gradient-to-r from-transparent via-[#d5ad6f]/70 to-transparent" />
-          <div className="grid gap-8 lg:grid-cols-[1fr_0.78fr] lg:items-end">
+        <section className="relative overflow-hidden rounded-[1.25rem] border border-white/[0.07] bg-black/34 px-[clamp(1.5rem,5vw,4.5rem)] py-[clamp(2.25rem,6svh,4.5rem)] shadow-[0_28px_90px_rgba(0,0,0,0.28)] backdrop-blur-sm">
+          <div className="pointer-events-none absolute inset-x-[6%] top-0 h-px bg-gradient-to-r from-transparent via-[#d5ad6f]/45 to-transparent" />
+          <div className="grid gap-[clamp(2rem,5vw,4.5rem)] lg:grid-cols-[1fr_0.72fr] lg:items-end">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#d5ad6f]">Selected Work</p>
-              <h1 className="mt-4 font-sans text-[clamp(2rem,3.2vw,2.85rem)] font-medium leading-[1.02] tracking-[-0.045em] text-[#f5f1e8]">
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.32em] text-[#d5ad6f]">Selected Work</p>
+              <h1 className="mt-5 font-sans text-[clamp(2.35rem,4.4vw,4.6rem)] font-medium leading-[0.96] tracking-[-0.055em] text-[#f5f1e8]">
                 Zuvairiya Maryam&apos;s
                 <span className="block bg-gradient-to-b from-[#f5f1e8] to-[#d6b36a] bg-clip-text text-transparent">
                   portfolio.
                 </span>
               </h1>
-              <p className="mt-6 max-w-2xl text-[clamp(1rem,2vw,1.18rem)] leading-8 text-neutral-300">
+              <p className="mt-7 max-w-2xl text-[clamp(0.98rem,1.4vw,1.08rem)] leading-8 text-neutral-300/86">
                 A curated gallery of graphic design work under MZ Designs and website projects under We Build Your
                 Brands, shaped with clear positioning, polished visuals, and practical business purpose.
               </p>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               <button
                 type="button"
                 onClick={() => setActiveMode("graphic")}
-                className="rounded-[1.1rem] border border-[#d5ad6f]/20 bg-[#d5ad6f]/8 p-5 text-left transition hover:-translate-y-1 hover:border-[#d5ad6f]/35 hover:bg-[#d5ad6f]/12"
+                className="rounded-[1rem] border border-[#d5ad6f]/22 bg-[#d5ad6f]/[0.055] p-6 text-left transition hover:-translate-y-1 hover:border-[#d5ad6f]/34 hover:bg-[#d5ad6f]/10"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#d5ad6f]">MZ Designs</p>
-                <p className="mt-4 font-display text-4xl font-semibold text-[#f5f1e8]">{graphicProjects.length}</p>
+                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-[#d5ad6f]">MZ Designs</p>
+                <p className="mt-7 font-display text-[clamp(2.25rem,4vw,3rem)] font-semibold leading-none text-[#f5f1e8]">{graphicProjects.length}</p>
                 <p className="mt-1 text-sm text-neutral-400">graphic design projects</p>
               </button>
               <Link
                 href="https://www.webuildyourbrands.com/"
                 target="_blank"
                 rel="noreferrer"
-                className="group rounded-[1.1rem] border border-white/10 bg-white/[0.035] p-5 transition hover:-translate-y-1 hover:border-[#d5ad6f]/30 hover:bg-white/[0.055]"
+                className="group rounded-[1rem] border border-white/10 bg-white/[0.025] p-6 transition hover:-translate-y-1 hover:border-[#d5ad6f]/25 hover:bg-white/[0.045]"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#d5ad6f]">WBYB</p>
-                <p className="mt-4 font-display text-4xl font-semibold text-[#f5f1e8]">{websiteProjects.length}</p>
+                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-[#d5ad6f]">WBYB</p>
+                <p className="mt-7 font-display text-[clamp(2.25rem,4vw,3rem)] font-semibold leading-none text-[#f5f1e8]">{websiteProjects.length}</p>
                 <p className="mt-1 text-sm text-neutral-400 transition group-hover:text-neutral-200">website projects</p>
               </Link>
             </div>
@@ -156,8 +156,8 @@ export function WorkPageContent({
         </section>
 
         <section className="mt-[clamp(3rem,7svh,5rem)]">
-          <div className="mb-7 flex flex-col gap-5 border-b border-white/10 pb-6">
-            <div className="flex flex-wrap gap-3">
+          <div className="mb-9 flex flex-col items-center gap-5 border-y border-white/[0.08] py-6">
+            <div className="flex flex-wrap justify-center gap-3">
               <TabButton active={activeMode === "website"} count={websiteProjects.length} onClick={() => setActiveMode("website")}>
                 Website Design Work
               </TabButton>
@@ -166,7 +166,7 @@ export function WorkPageContent({
               </TabButton>
             </div>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex max-w-6xl flex-wrap justify-center gap-2.5">
               {activeMode === "website"
                 ? websiteCategories.map((category) => {
                     const count = websiteProjects.filter((project) => project.category === category).length;
@@ -225,7 +225,7 @@ export function WorkPageContent({
                   {activeGraphicProjects.length} project{activeGraphicProjects.length === 1 ? "" : "s"}
                 </p>
               </div>
-              <div className="overflow-hidden rounded-[1.2rem] border border-[#1f1a12] bg-[#11100d] px-[clamp(1rem,4vw,3rem)] py-[clamp(1rem,3vw,2.25rem)] shadow-[0_30px_90px_rgba(0,0,0,0.38)] [column-gap:1rem] [column-count:2] sm:[column-count:3] lg:[column-count:4] xl:[column-count:5]">
+              <div className="overflow-hidden rounded-[1.2rem] border border-[#1f1a12] bg-[#11100d] shadow-[0_30px_90px_rgba(0,0,0,0.38)] [column-gap:0] [column-count:2] sm:[column-count:3] lg:[column-count:4] xl:[column-count:5]">
                 {activeGraphicProjects.map((project) => (
                   <GraphicGalleryTile key={project.slug} project={project} />
                 ))}
