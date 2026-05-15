@@ -472,10 +472,12 @@ export function AboutServicesOrbit() {
           transition={{ duration: 0.86, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="font-sans text-[clamp(3rem,5vw,5.2rem)] font-medium leading-[0.96] tracking-[-0.055em] text-[#f5f1e8]">
-            Design Thinking
-            <span className="block">With Visual</span>
-            <span className="block bg-gradient-to-b from-[#f4d59b] to-[#a87435] bg-clip-text text-transparent">
-              Purpose
+            Design Thinking With
+            <span className="block">
+              Visual{" "}
+              <span className="bg-gradient-to-b from-[#f4d59b] to-[#a87435] bg-clip-text text-transparent">
+                Purpose
+              </span>
             </span>
           </h2>
           <p className="mx-auto mt-6 max-w-[42rem] text-sm leading-7 text-[#f5f1e8]/56 md:text-base md:leading-8">
