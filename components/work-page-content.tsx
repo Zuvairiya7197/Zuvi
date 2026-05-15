@@ -110,9 +110,7 @@ export function WorkPageContent({
   const activeGraphicProjects = graphicProjects.filter((project) => project.category === activeGraphicCategory);
 
   return (
-    <main className="relative overflow-hidden px-4 pb-[clamp(4rem,8svh,6rem)] pt-[clamp(7rem,14svh,8rem)] md:px-8">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_22%_8%,rgba(213,173,111,0.12),transparent_30%),radial-gradient(circle_at_80%_16%,rgba(245,241,232,0.045),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_26%)]" />
-      <div className="pointer-events-none absolute inset-0 opacity-[0.035] [background-image:linear-gradient(rgba(245,241,232,0.75)_1px,transparent_1px),linear-gradient(90deg,rgba(245,241,232,0.75)_1px,transparent_1px)] [background-size:84px_84px]" />
+    <main className="relative overflow-hidden bg-black px-4 pb-[clamp(4rem,8svh,6rem)] pt-[clamp(7rem,14svh,8rem)] md:px-8">
 
       <div className="relative mx-auto max-w-7xl">
         <section className="relative overflow-hidden rounded-[1.25rem] border border-white/[0.07] bg-black/34 px-[clamp(1.5rem,5vw,4.5rem)] py-[clamp(2.25rem,6svh,4.5rem)] shadow-[0_28px_90px_rgba(0,0,0,0.28)] backdrop-blur-sm">

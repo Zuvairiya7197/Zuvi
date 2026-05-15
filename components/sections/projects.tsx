@@ -159,12 +159,10 @@ export function FeaturedProjects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="section-line relative min-h-[116svh] overflow-hidden bg-[#111111] px-[clamp(1.5rem,4vw,4rem)] py-[clamp(3rem,6vw,5rem)] text-[#f5f1e8]"
+      className="section-line relative min-h-[116svh] overflow-hidden bg-black px-[clamp(1.5rem,4vw,4rem)] py-[clamp(3rem,6vw,5rem)] text-[#f5f1e8]"
       onWheel={handleWheel}
     >
-      <div ref={lightRef} className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_18%,rgba(214,179,106,0.11),transparent_30%),radial-gradient(circle_at_78%_64%,rgba(140,106,59,0.13),transparent_36%),linear-gradient(135deg,#151418_0%,#111111_42%,#070707_100%)]" />
-      <div className="pointer-events-none absolute inset-0 opacity-[0.045] [background-image:linear-gradient(rgba(255,255,255,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.8)_1px,transparent_1px)] [background-size:72px_72px]" />
-      <div className="pointer-events-none absolute inset-0 opacity-[0.12] [background-image:radial-gradient(circle_at_center,rgba(255,255,255,0.7)_0.7px,transparent_0.7px)] [background-size:18px_18px]" />
+      <div ref={lightRef} className="pointer-events-none absolute inset-0 bg-black" />
       <div className="pointer-events-none absolute -left-[18vw] top-0 h-[140vh] w-[70vw] rotate-[-42deg] bg-black/18" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent" />
 

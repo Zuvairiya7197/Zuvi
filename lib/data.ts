@@ -449,7 +449,7 @@ export const projects = [
     image: "/PlumbingServices.png",
     category: "Website Design",
     accent: "from-[#16d8ff] to-[#0f766e]",
-    liveUrl: "https://lightgoldenrodyellow-fox-787789.hostingersite.com/"
+    liveUrl: "https://plumbing-services-wbyb.vercel.app/"
   },
   {
     slug: "emlak-real-estate",
