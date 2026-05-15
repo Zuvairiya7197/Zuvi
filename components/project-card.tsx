@@ -15,7 +15,6 @@ export function ProjectCard({
   openLiveUrl?: boolean;
 }) {
   const href = openLiveUrl ? project.liveUrl : `/work/${project.slug}`;
-  const isWebsiteProject = project.industry !== "Graphic Design";
 
   return (
     <Link
@@ -32,9 +31,9 @@ export function ProjectCard({
             fill
             priority={priority}
             sizes="(min-width: 1024px) 45vw, 100vw"
-            className={`${isWebsiteProject ? "object-contain p-4 md:p-5" : "object-cover"} saturate-[0.92] transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.025] group-hover:saturate-100`}
+            className="object-cover saturate-[0.92] transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.025] group-hover:saturate-100"
           />
-          <div className={`absolute inset-0 ${isWebsiteProject ? "bg-[linear-gradient(180deg,transparent_62%,rgba(0,0,0,0.28))]" : "bg-[linear-gradient(180deg,transparent_45%,rgba(0,0,0,0.54))]"}`} />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(0,0,0,0.54))]" />
           <div className="absolute left-4 top-4 rounded-full border border-white/10 bg-black/45 px-3 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[#f5f1e8]/72 backdrop-blur-md">
             {project.industry === "Graphic Design" ? "MZ Designs" : "WBYB"}
           </div>

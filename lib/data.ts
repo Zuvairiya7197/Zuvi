@@ -462,7 +462,7 @@ export const projects = [
     image: "/Emlak.png",
     category: "Website Design",
     accent: "from-[#d6b36a] to-[#8c6a3b]",
-    liveUrl: "https://emlakdesign.com/"
+    liveUrl: "https://emlakrealestatellc.vercel.app/"
   },
   {
     slug: "sm-classes",
