@@ -5,9 +5,24 @@ import type { projects } from "@/lib/data";
 
 type Project = (typeof projects)[number];
 
-export function ProjectCard({ project, priority = false }: { project: Project; priority?: boolean }) {
+export function ProjectCard({
+  project,
+  priority = false,
+  openLiveUrl = false
+}: {
+  project: Project;
+  priority?: boolean;
+  openLiveUrl?: boolean;
+}) {
+  const href = openLiveUrl ? project.liveUrl : `/work/${project.slug}`;
+
   return (
-    <Link href={`/work/${project.slug}`} className="group block">
+    <Link
+      href={href}
+      target={openLiveUrl ? "_blank" : undefined}
+      rel={openLiveUrl ? "noreferrer" : undefined}
+      className="group block"
+    >
       <article className="relative overflow-hidden rounded-[1.35rem] border border-white/10 bg-[#0d0c0a]/72 shadow-[0_24px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.055)] backdrop-blur-xl transition duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:border-[#d5ad6f]/35 hover:shadow-[0_34px_110px_rgba(0,0,0,0.48),0_0_42px_rgba(213,173,111,0.1),inset_0_1px_0_rgba(255,255,255,0.08)]">
         <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${project.accent} opacity-0 mix-blend-screen transition duration-500 group-hover:opacity-15`} />
         <div className="relative aspect-[1.18/1] overflow-hidden md:aspect-[16/10]">

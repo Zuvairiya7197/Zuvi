@@ -134,6 +134,63 @@ const customisedPrintProjects = customisedPrintProjectImages.map((image, index) 
   };
 });
 
+const socialMediaDesignProjects = [
+  {
+    slug: "wbyb-social-media-cover",
+    title: "WBYB Social Media Cover",
+    image: "/WBYB Social media cover.png"
+  },
+  {
+    slug: "sm-classes-social-post",
+    title: "SM Classes Social Post",
+    image: "/sm classes post.png"
+  },
+  {
+    slug: "sm-classes-score-card-post-01",
+    title: "SM Classes Score Card Post 01",
+    image: "/SM Classes Score card flyer 1.png"
+  },
+  {
+    slug: "sm-classes-score-card-post-02",
+    title: "SM Classes Score Card Post 02",
+    image: "/SM Classes Score card flyer 2.png"
+  },
+  {
+    slug: "sm-classes-score-card-post-03",
+    title: "SM Classes Score Card Post 03",
+    image: "/SM Classes Score card flyer 3.png"
+  },
+  {
+    slug: "sm-classes-score-card-post-04",
+    title: "SM Classes Score Card Post 04",
+    image: "/SM Classes Score card flyer 4.png"
+  },
+  {
+    slug: "social-media-post-06",
+    title: "Social Media Post 06",
+    image: "/6th post.png"
+  },
+  {
+    slug: "social-media-post-08",
+    title: "Social Media Post 08",
+    image: "/post 8.png"
+  },
+  {
+    slug: "social-media-post-09",
+    title: "Social Media Post 09",
+    image: "/post 9.png"
+  }
+].map((project, index) => ({
+  ...project,
+  industry: "Graphic Design",
+  problem: "The social creative needed a clear, scroll-ready visual that could communicate quickly in-feed.",
+  solution: "Designed a social media graphic with focused hierarchy, platform-friendly sizing, and polished visual balance.",
+  results: "A ready-to-post social asset that improves campaign visibility and brand presentation.",
+  category: "Social Media Designs",
+  accent: index % 2 === 0 ? "from-[#d6b36a] to-[#111111]" : "from-[#d6b36a] to-[#8c6a3b]",
+  liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/fbcoverdesign"
+}));
+
 export const projects = [
   {
     slug: "graphic-sm-classes-11th",
@@ -169,7 +226,7 @@ export const projects = [
     solution: "Designed a bold social media cover with clear positioning, high-impact layout, and campaign-ready visual energy.",
     results: "A stronger profile presence for social platforms with an immediate marketing-focused first impression.",
     image: "/mz-social-cover-smm.png",
-    category: "Social Media Cover",
+    category: "Social Media Designs",
     accent: "from-[#d6b36a] to-[#111111]",
     liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/fbcoverdesign"
   },
@@ -181,10 +238,11 @@ export const projects = [
     solution: "Designed a clean social cover layout with clear contact hierarchy, soft visual styling, and direct information flow.",
     results: "A practical social media cover that presents contact details with a more polished brand impression.",
     image: "/mz-social-cover-contact.png",
-    category: "Social Media Cover",
+    category: "Social Media Designs",
     accent: "from-[#d6b36a] to-[#8c6a3b]",
     liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/fbcoverdesign"
   },
+  ...socialMediaDesignProjects,
   {
     slug: "sm-classes-poster",
     title: "SM Classes Poster",
@@ -208,18 +266,6 @@ export const projects = [
     category: "Flyer Design",
     accent: "from-[#d6b36a] to-[#111111]",
     liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/poster-flyerdesign"
-  },
-  {
-    slug: "organise-with-kopal-graphic",
-    title: "Organise with Kopal",
-    industry: "Graphic Design",
-    problem: "The home organizer brand needed a visual that felt calm, helpful, and aligned with professional organization.",
-    solution: "Designed a square brand graphic with soft structure, neat composition, and an approachable service-led feel.",
-    results: "A clean visual asset that supports the brand's organized, trustworthy, and friendly positioning.",
-    image: "/project-graphic-organise-with-kopal.png",
-    category: "Brand Graphic",
-    accent: "from-[#d6b36a] to-[#8c6a3b]",
-    liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/graphic-designs"
   },
   {
     slug: "business-card-design-01",
@@ -380,6 +426,45 @@ export const projects = [
     liveUrl: "https://www.organisewithkopal.com/"
   },
   {
+    slug: "we-build-your-brands",
+    title: "We Build Your Brands",
+    industry: "Website Agency",
+    problem: "The agency needed a high-converting website presence that could explain the offer quickly and push visitors toward booking a call.",
+    solution:
+      "Built a dark, conversion-focused website with strong positioning, service pathways, project proof, and clear inquiry actions.",
+    results: "A sharper WBYB presence with a premium first impression, clearer lead-generation message, and direct booking flow.",
+    image: "/WBYB website.png",
+    category: "Website Design",
+    accent: "from-[#4c078e] to-[#00ff5a]",
+    liveUrl: "https://www.webuildyourbrands.com/"
+  },
+  {
+    slug: "plumbing-services",
+    title: "Plumbing Services",
+    industry: "Home Service",
+    problem: "The plumbing business needed a service website that could explain repairs, emergency support, and booking options quickly.",
+    solution:
+      "Created a clean service website with direct service sections, trust-focused messaging, and a simple inquiry path for local customers.",
+    results: "A practical service website that makes plumbing help easier to understand, trust, and request.",
+    image: "/PlumbingServices.png",
+    category: "Website Design",
+    accent: "from-[#16d8ff] to-[#0f766e]",
+    liveUrl: "https://lightgoldenrodyellow-fox-787789.hostingersite.com/"
+  },
+  {
+    slug: "emlak-real-estate",
+    title: "Emlak",
+    industry: "Real Estate",
+    problem: "The real estate brand needed a premium website presence to present properties and build buyer confidence.",
+    solution:
+      "Built a real estate website experience with strong visual hierarchy, property-focused presentation, and polished browsing flow.",
+    results: "A sharper property website that supports trust, discovery, and stronger real estate inquiries.",
+    image: "/Emlak.png",
+    category: "Website Design",
+    accent: "from-[#d6b36a] to-[#8c6a3b]",
+    liveUrl: "https://emlakdesign.com/"
+  },
+  {
     slug: "sm-classes",
     title: "SM Classes",
     industry: "Education",
@@ -427,8 +512,7 @@ export const graphicWorkCategories = [
   "Business Card Design",
   "Costumised Print Design",
   "Minimals",
-  "Social Media Cover",
-  "Brand Graphic"
+  "Social Media Designs"
 ];
 
 export const testimonials = [

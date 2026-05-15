@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { ProjectCard } from "@/components/project-card";
 import { graphicWorkCategories, projects } from "@/lib/data";
 
@@ -11,29 +10,14 @@ type WorkMode = "website" | "graphic";
 
 function GraphicGalleryTile({ project }: { project: Project }) {
   return (
-    <Link
-      href={`/work/${project.slug}`}
-      className="group relative mb-0 block break-inside-avoid overflow-hidden border border-[#11100d] bg-[#f8f4ea]"
-    >
+    <figure className="mb-0 break-inside-avoid overflow-hidden border border-[#11100d] bg-[#f8f4ea]">
       <img
         src={project.image}
         alt={`${project.title} ${project.category}`}
         loading="lazy"
-        className="h-auto w-full transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.025]"
+        className="h-auto w-full"
       />
-      <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(213,173,111,0.14),transparent_45%),linear-gradient(180deg,transparent_45%,rgba(0,0,0,0.62))]" />
-        <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-3">
-          <div>
-            <p className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[#d5ad6f]">MZ Designs</p>
-            <h3 className="mt-1 text-sm font-semibold leading-tight text-white">{project.title}</h3>
-          </div>
-          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[#d5ad6f]/45 bg-black/55 text-[#d5ad6f] backdrop-blur-md">
-            <ArrowUpRight size={14} aria-hidden="true" />
-          </span>
-        </div>
-      </div>
-    </Link>
+    </figure>
   );
 }
 
@@ -205,7 +189,7 @@ export function WorkPageContent() {
               </div>
               <div className="grid gap-6 lg:grid-cols-2">
                 {activeWebsiteProjects.map((project) => (
-                  <ProjectCard key={project.slug} project={project} />
+                  <ProjectCard key={project.slug} project={project} openLiveUrl />
                 ))}
               </div>
             </div>
