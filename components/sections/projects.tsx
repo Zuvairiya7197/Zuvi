@@ -153,7 +153,7 @@ export function FeaturedProjects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="section-line relative min-h-[116svh] overflow-hidden bg-[#111111] px-5 py-8 text-[#f5f1e8] md:px-8"
+      className="section-line relative min-h-[116svh] overflow-hidden bg-[#111111] px-[clamp(1.5rem,4vw,4rem)] py-[clamp(3rem,6vw,5rem)] text-[#f5f1e8]"
       onWheel={handleWheel}
     >
       <div ref={lightRef} className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_18%,rgba(214,179,106,0.11),transparent_30%),radial-gradient(circle_at_78%_64%,rgba(140,106,59,0.13),transparent_36%),linear-gradient(135deg,#151418_0%,#111111_42%,#070707_100%)]" />
@@ -162,7 +162,7 @@ export function FeaturedProjects() {
       <div className="pointer-events-none absolute -left-[18vw] top-0 h-[140vh] w-[70vw] rotate-[-42deg] bg-black/18" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent" />
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(116svh-4rem)] max-w-[1780px] flex-col">
+      <div className="relative z-10 mx-auto flex min-h-[calc(116svh-10rem)] max-w-[1700px] flex-col">
         <motion.div
           className="relative flex flex-1 cursor-grab items-center active:cursor-grabbing"
           drag="x"

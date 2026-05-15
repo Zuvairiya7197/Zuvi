@@ -25,32 +25,35 @@ const siteUrl = "https://zuvi.studio";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Zuvi Studio | Freelance Graphic Designer Portfolio",
-    template: "%s | Zuvi Studio"
+    default: "Zuvairiya Maryam | Graphic Design & Website Portfolio",
+    template: "%s | Zuvairiya Maryam"
   },
   description:
-    "Premium portfolio of Zuvi Studio, a freelance graphic designer crafting brand identities, websites, UI UX systems, social content, and motion-led campaigns.",
+    "Portfolio of Zuvairiya Maryam, featuring graphic design work under MZ Designs and website projects under We Build Your Brands.",
   keywords: [
+    "Zuvairiya Maryam portfolio",
+    "MZ Designs",
+    "We Build Your Brands",
     "freelance graphic designer",
     "brand identity designer",
-    "UI UX designer",
     "website design portfolio",
-    "social media design"
+    "social media design",
+    "WBYB"
   ],
-  authors: [{ name: "Zuvi Studio" }],
-  creator: "Zuvi Studio",
+  authors: [{ name: "Zuvairiya Maryam" }],
+  creator: "Zuvairiya Maryam",
   openGraph: {
-    title: "Zuvi Studio | Cinematic Graphic Design Portfolio",
+    title: "Zuvairiya Maryam | Graphic Design & Website Portfolio",
     description:
-      "Luxury graphic design, branding, website design, and interactive visual systems for ambitious brands.",
+      "Graphic design work under MZ Designs and website work under We Build Your Brands.",
     url: siteUrl,
-    siteName: "Zuvi Studio",
+    siteName: "Zuvairiya Maryam Portfolio",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Zuvi Studio premium graphic design portfolio"
+        alt: "Zuvairiya Maryam graphic design and website portfolio"
       }
     ],
     locale: "en_US",
@@ -58,8 +61,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zuvi Studio | Freelance Graphic Designer",
-    description: "Premium branding, UI UX, social media, website, and motion design portfolio.",
+    title: "Zuvairiya Maryam | Portfolio",
+    description: "Graphic work under MZ Designs and website work under WBYB.",
     images: ["/opengraph-image"]
   },
   robots: {
@@ -75,14 +78,14 @@ export default function RootLayout({
 }>) {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: "Zuvi Studio",
+    "@type": "Person",
+    name: "Zuvairiya Maryam",
     url: siteUrl,
     image: `${siteUrl}/opengraph-image`,
     description:
-      "Freelance graphic design studio specializing in brand identity, social media design, website design, UI UX design, and motion graphics.",
+      "Graphic and web designer. Founder behind MZ Designs and co-founder at We Build Your Brands.",
     areaServed: "Worldwide",
-    sameAs: ["https://www.behance.net", "https://www.instagram.com", "https://www.linkedin.com"]
+    sameAs: ["https://zuvairiyamaryam.wixsite.com/my-site", "https://www.webuildyourbrands.com/"]
   };
 
   return (

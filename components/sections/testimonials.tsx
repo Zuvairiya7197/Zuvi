@@ -1,194 +1,186 @@
 "use client";
 
-import { ArrowRight, ChevronLeft, ChevronRight, PenTool, Quote, Sparkle, Star } from "lucide-react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { testimonials } from "@/lib/data";
 
-const premiumEase = [0.22, 1, 0.36, 1] as const;
+const avatarPositions = [
+  "left-[20%] top-[18%] size-[4.15rem] md:size-[4.85rem]",
+  "left-[34%] top-[59%] size-[4.85rem] md:size-[5.55rem]",
+  "left-1/2 top-[30%] size-[5.55rem] -translate-x-1/2 md:size-[6.15rem]",
+  "right-[21%] top-[18%] size-[4.85rem] md:size-[5.55rem]"
+];
 
-const cardMotion = {
-  hidden: { opacity: 0, y: 34, scale: 0.96 },
-  show: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { delay: 0.22 + index * 0.1, duration: 0.75, ease: premiumEase }
-  })
-};
-
-function FloatingArtifact({
-  className,
-  children,
-  delay = 0
-}: {
-  className: string;
-  children: React.ReactNode;
-  delay?: number;
-}) {
-  return (
-    <motion.div
-      className={`pointer-events-none absolute hidden lg:block ${className}`}
-      initial={{ opacity: 0, y: 28, rotate: -6 }}
-      whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-      viewport={{ once: true, margin: "-20%" }}
-      transition={{ delay, duration: 0.9, ease: premiumEase }}
-      animate={{ y: [0, -10, 0], rotate: [0, 2, 0] }}
-    >
-      {children}
-    </motion.div>
-  );
-}
+const dotPositions = [
+  "left-[24%] top-[57%]",
+  "left-[36.7%] top-[33%]",
+  "left-[56%] top-[39%]",
+  "right-[30.8%] top-[72%]",
+  "right-[21.2%] top-[20%]",
+  "right-[7.9%] top-[46%]"
+];
 
 export function Testimonials() {
+  const [activeAvatarIndex, setActiveAvatarIndex] = useState(2);
+  const activeIndex = activeAvatarIndex % testimonials.length;
+  const featured = testimonials[activeIndex];
+  const nextTestimonial = () => setActiveAvatarIndex((index) => (index + 1) % testimonials.length);
+  const previousTestimonial = () => setActiveAvatarIndex((index) => (index - 1 + testimonials.length) % testimonials.length);
+
   return (
-    <section className="testimonial-stage section-line relative overflow-hidden px-5 py-[clamp(3rem,7svh,5rem)] md:px-8">
-      <div className="relative z-10 mx-auto flex min-h-[clamp(43rem,90svh,54rem)] max-w-[min(94vw,1760px)] flex-col justify-between">
-        <div className="relative flex flex-1 items-center justify-center pt-[clamp(4.5rem,10svh,7rem)]">
-          <FloatingArtifact className="left-[3%] top-[20%] h-[clamp(12rem,26svh,18rem)] w-[clamp(4rem,7vw,6rem)] -rotate-[28deg]" delay={0.1}>
-            <div className="h-full w-full rounded-full border border-white/10 bg-gradient-to-b from-neutral-900 via-black to-neutral-950 shadow-[0_30px_80px_rgba(0,0,0,0.65)]">
-              <div className="mx-auto mt-4 h-[82%] w-4 rounded-full bg-gradient-to-b from-[#1d1c1a] via-[#050505] to-[#d6b36a]" />
-            </div>
-          </FloatingArtifact>
-
-          <FloatingArtifact className="left-[13%] top-[16%] h-[clamp(5rem,10svh,7.5rem)] w-[clamp(5rem,10svh,7.5rem)] rotate-[-12deg]" delay={0.18}>
-            <div className="grid h-full w-full place-items-center border border-[#d6b36a]/45 bg-black/35 text-[clamp(2.5rem,5vw,4.5rem)] font-semibold text-[#d6b36a] shadow-[0_20px_70px_rgba(0,0,0,0.38)] backdrop-blur-md">
-              T
-            </div>
-          </FloatingArtifact>
-
-          <FloatingArtifact className="right-[4%] top-[16%] h-[clamp(12rem,25svh,17rem)] w-[clamp(11rem,17vw,15rem)] rotate-[13deg]" delay={0.14}>
-            <div className="relative h-full rounded-[1.15rem] border border-white/10 bg-gradient-to-br from-[#181715] to-[#040404] shadow-[0_28px_100px_rgba(0,0,0,0.7)]">
-              <div className="absolute left-4 top-0 h-full w-6 rounded-full border-l border-[#d6b36a]/55" />
-              <PenTool className="absolute right-7 top-8 size-12 rotate-[-28deg] text-[#d6b36a]" strokeWidth={1.4} />
-            </div>
-          </FloatingArtifact>
-
-          <FloatingArtifact className="left-[5%] bottom-[14%] h-[clamp(3.5rem,8svh,5.5rem)] w-[clamp(14rem,20vw,20rem)] rotate-[12deg]" delay={0.24}>
-            <div className="flex h-full items-center gap-3 rounded-[0.9rem] border border-white/10 bg-black/55 p-3 shadow-[0_28px_90px_rgba(0,0,0,0.65)] backdrop-blur-md">
-              {["#f5f1e8", "#837763", "#3f3320", "#d6b36a", "#111111"].map((color) => (
-                <span key={color} className="h-full flex-1 rounded-[0.35rem]" style={{ backgroundColor: color }} />
-              ))}
-            </div>
-          </FloatingArtifact>
-
-          <FloatingArtifact className="right-[17%] bottom-[20%] h-[clamp(5.5rem,11svh,7rem)] w-[clamp(5.5rem,11svh,7rem)] rotate-[12deg]" delay={0.28}>
-            <div className="grid h-full w-full place-items-center border border-[#d6b36a]/35 bg-black/35 text-[clamp(2.4rem,4.5vw,4rem)] font-serif text-white/45 shadow-[0_20px_70px_rgba(0,0,0,0.38)] backdrop-blur-md">
-              Aa
-            </div>
-          </FloatingArtifact>
-
-          <motion.div
-            className="relative mx-auto max-w-[min(92vw,930px)] text-center"
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-20%" }}
+    <section className="section-line testimonial-luxe-stage relative overflow-hidden px-[clamp(1rem,5vw,4.5rem)] py-[clamp(3rem,7svh,5rem)] text-[#f7efe0]">
+      <div className="relative z-10 mx-auto min-h-[clamp(39rem,82svh,47rem)] max-w-[1500px] px-[clamp(1.25rem,4vw,4rem)] py-[clamp(4.75rem,8svh,7rem)]">
+        <motion.div
+          className="relative mx-auto max-w-[620px] text-center"
+          initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h2 className="font-display text-[clamp(2.3rem,4.4vw,3.9rem)] font-medium leading-none text-[#fbf2df] drop-shadow-[0_0_30px_rgba(244,215,157,0.12)]">
+            What Clients Experience
+          </h2>
+          <p className="mx-auto mt-5 max-w-[31rem] text-sm leading-6 text-[#f8edd7]/54 md:text-base">
+            Refined brand systems, precise execution, and digital moments that feel unmistakably considered.
+          </p>
+          <motion.a
+            href="#contact"
+            className="group relative mt-6 inline-flex overflow-hidden rounded-full border border-[#f8dca5]/40 bg-gradient-to-br from-[#f8dca5] via-[#d6b36a] to-[#8b6534] px-6 py-2.5 text-sm font-semibold text-[#070604] shadow-[0_12px_34px_rgba(214,179,106,0.24)]"
+            whileHover={{ y: -3, scale: 1.035 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 260, damping: 18 }}
           >
-            <motion.div
-              className="mx-auto inline-flex items-center gap-4 rounded-full border border-[#d6b36a]/35 bg-black/35 px-[clamp(1rem,2vw,1.55rem)] py-3 text-[clamp(0.68rem,0.85vw,0.86rem)] font-semibold uppercase tracking-[0.32em] text-[#d6b36a] backdrop-blur-md"
-              variants={{
-                hidden: { opacity: 0, y: 16 },
-                show: { opacity: 1, y: 0, transition: { duration: 0.65 } }
-              }}
-            >
-              Design that connects
-              <Sparkle className="size-4" strokeWidth={1.5} />
-            </motion.div>
+            <span className="absolute inset-0 -translate-x-full bg-[linear-gradient(110deg,transparent,rgba(255,255,255,0.58),transparent)] transition-transform duration-700 ease-out group-hover:translate-x-full" />
+            <span className="relative">Book Now</span>
+          </motion.a>
+        </motion.div>
 
-            <motion.h2
-              className="mt-[clamp(1.2rem,3svh,2rem)] text-[clamp(3.2rem,7vw,7.5rem)] font-semibold leading-[0.94] tracking-[-0.04em] text-[#f5f1e8]"
-              variants={{
-                hidden: { opacity: 0, y: 34, filter: "blur(10px)" },
-                show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.85, ease: premiumEase } }
-              }}
-            >
-              Ready To Elevate
-              <span className="block bg-gradient-to-b from-[#f4d79d] via-[#d6b36a] to-[#8c6a3b] bg-clip-text text-transparent">
-                Your Brand?
-              </span>
-            </motion.h2>
+        <div className="relative -mx-[clamp(1.25rem,4vw,4rem)] mt-[clamp(3.25rem,7svh,4.75rem)] h-[clamp(17.5rem,31svh,20.5rem)]">
+          <svg
+            className="absolute left-1/2 top-[50%] h-full w-[112%] -translate-x-1/2 -translate-y-1/2 overflow-visible drop-shadow-[0_0_10px_rgba(214,179,106,0.18)]"
+            viewBox="0 0 1600 360"
+            fill="none"
+            aria-hidden="true"
+          >
+            <motion.path
+              d="M-70 142 C 54 154, 104 101, 188 61 C 271 21, 351 52, 358 155 C 365 257, 433 314, 522 273 C 618 229, 535 79, 648 40 C 745 6, 809 85, 787 178 C 767 264, 842 293, 923 236 C 1002 181, 983 41, 1101 53 C 1231 66, 1190 205, 1191 222 C 1197 316, 1291 303, 1338 242 C 1384 181, 1369 71, 1488 63 C 1598 56, 1570 184, 1668 188"
+              stroke="rgba(244,215,157,0.16)"
+              strokeWidth="1.15"
+              strokeDasharray="2.5 8"
+              strokeLinecap="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 1 }}
+              viewport={{ once: true, margin: "-120px" }}
+              transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+              animate={{ y: [0, -2, 0] }}
+            />
+            <motion.path
+              d="M-70 142 C 54 154, 104 101, 188 61 C 271 21, 351 52, 358 155 C 365 257, 433 314, 522 273 C 618 229, 535 79, 648 40 C 745 6, 809 85, 787 178 C 767 264, 842 293, 923 236 C 1002 181, 983 41, 1101 53 C 1231 66, 1190 205, 1191 222 C 1197 316, 1291 303, 1338 242 C 1384 181, 1369 71, 1488 63 C 1598 56, 1570 184, 1668 188"
+              stroke="url(#testimonialGoldShimmer)"
+              strokeWidth="0.95"
+              strokeDasharray="14 260"
+              strokeLinecap="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 0.78 }}
+              viewport={{ once: true, margin: "-120px" }}
+              animate={{ strokeDashoffset: [274, 0], y: [0, -2, 0] }}
+              transition={{ strokeDashoffset: { duration: 6.6, repeat: Infinity, ease: "linear" }, y: { duration: 6, repeat: Infinity, ease: "easeInOut" } }}
+            />
+            <defs>
+              <linearGradient id="testimonialGoldShimmer" x1="0" x2="1600" y1="0" y2="0" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#8b6534" stopOpacity="0" />
+                <stop offset="0.5" stopColor="#f8dca5" />
+                <stop offset="1" stopColor="#8b6534" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+          </svg>
 
-            <motion.p
-              className="mx-auto mt-[clamp(1rem,2.4svh,1.6rem)] max-w-[min(88vw,610px)] text-[clamp(1rem,1.45vw,1.35rem)] leading-[1.55] text-neutral-300"
-              variants={{
-                hidden: { opacity: 0, y: 18 },
-                show: { opacity: 1, y: 0, transition: { delay: 0.12, duration: 0.7 } }
-              }}
-            >
-              Thoughtful design solutions that tell your story, engage your audience and drive real impact.
-            </motion.p>
-
-            <motion.a
-              href="#contact"
-              className="group mx-auto mt-[clamp(1.4rem,3.2svh,2.2rem)] inline-flex items-center gap-4 rounded-full border border-[#d6b36a]/45 bg-black/35 px-5 py-3 text-[clamp(0.95rem,1.2vw,1.1rem)] font-semibold text-[#f5f1e8] shadow-[0_20px_70px_rgba(0,0,0,0.38)] backdrop-blur-md"
-              whileHover={{ y: -3, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              variants={{
-                hidden: { opacity: 0, y: 18 },
-                show: { opacity: 1, y: 0, transition: { delay: 0.22, duration: 0.7 } }
-              }}
-            >
-              <span className="grid size-12 place-items-center rounded-full bg-gradient-to-br from-[#f4d79d] to-[#d6b36a] text-black transition-transform duration-300 group-hover:translate-x-1">
-                <ArrowRight className="size-5" />
-              </span>
-              Start a Project
-            </motion.a>
-          </motion.div>
-        </div>
-
-        <div className="grid gap-5 pb-[clamp(0.25rem,1svh,1rem)] lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <motion.article
-              key={testimonial.name}
-              custom={index}
-              variants={cardMotion}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-10%" }}
-              whileHover={{ y: -8, rotateX: 2 }}
-              className="relative min-h-[clamp(14rem,26svh,17rem)] rounded-[1.15rem] border border-[#d6b36a]/35 bg-black/52 p-[clamp(1.25rem,2vw,1.75rem)] shadow-[0_22px_90px_rgba(0,0,0,0.55)] backdrop-blur-xl"
-            >
-              <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[linear-gradient(145deg,rgba(255,255,255,0.055),transparent_42%)]" />
-              <div className="relative flex items-start justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="grid size-[clamp(3.6rem,6vw,4.8rem)] place-items-center rounded-full border border-[#d6b36a]/45 bg-gradient-to-br from-[#282018] to-[#050505] text-lg font-semibold text-[#f4d79d]">
-                    {testimonial.name
-                      .split(" ")
-                      .map((part) => part[0])
-                      .join("")}
-                  </div>
-                  <div>
-                    <h3 className="text-[clamp(1rem,1.2vw,1.25rem)] font-semibold text-white">{testimonial.name}</h3>
-                    <p className="mt-1 text-[clamp(0.78rem,0.95vw,0.92rem)] text-[#d6b36a]">{testimonial.role}</p>
-                  </div>
-                </div>
-                <Quote className="size-5 text-[#8c6a3b]" />
-              </div>
-
-              <div className="relative mt-[clamp(1.1rem,2svh,1.6rem)] flex gap-1 text-[#d6b36a]">
-                {Array.from({ length: 5 }).map((_, starIndex) => (
-                  <Star key={starIndex} className="size-4 fill-current" strokeWidth={1.4} />
-                ))}
-              </div>
-
-              <p className="relative mt-[clamp(1rem,2svh,1.5rem)] text-[clamp(0.95rem,1.1vw,1.1rem)] leading-[1.55] text-neutral-300">
-                “{testimonial.quote}”
-              </p>
-              <span className="relative mt-[clamp(1rem,2svh,1.5rem)] block h-px w-9 bg-[#d6b36a]" />
-            </motion.article>
+          {dotPositions.map((position, index) => (
+            <motion.span
+              key={position}
+              className={`absolute z-20 size-2.5 rounded-full bg-[#f4d79d] shadow-[0_0_12px_rgba(244,215,157,0.56),0_0_22px_rgba(214,179,106,0.24)] md:size-3.5 ${position}`}
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              animate={{ opacity: [0.45, 0.85, 0.45], scale: [1, 1.12, 1] }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.35 + index * 0.08, duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+            />
           ))}
+
+          {testimonials.map((testimonial, index) => {
+            const position = avatarPositions[index];
+            const isActive = index === activeAvatarIndex;
+
+            return (
+            <motion.button
+              key={testimonial.name}
+              type="button"
+              aria-label={`Show testimonial from ${testimonial.name}`}
+              className={`absolute z-30 overflow-hidden rounded-full border bg-[#060503] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f8dca5]/80 ${isActive ? "border-[#f8dca5]/80 ring-2 ring-[#f8dca5]/70 ring-offset-[3px] ring-offset-[#080604] shadow-[0_18px_48px_rgba(0,0,0,0.5),0_0_28px_rgba(244,215,157,0.2)]" : "border-[#f4d79d]/42 shadow-[0_14px_34px_rgba(0,0,0,0.42),0_0_16px_rgba(214,179,106,0.1)]"} ${position}`}
+              onClick={() => setActiveAvatarIndex(index)}
+              initial={{ opacity: 0, y: 24, scale: 0.88 }}
+              whileInView={{ opacity: 1 }}
+              animate={{ y: index % 2 === 0 ? [0, -5, 0] : [0, 5, 0], scale: isActive ? 1.04 : 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{
+                opacity: { delay: 0.16 + index * 0.08, duration: 0.65, ease: [0.16, 1, 0.3, 1] },
+                scale: { delay: 0.16 + index * 0.08, duration: 0.65, ease: [0.16, 1, 0.3, 1] },
+                y: { duration: 6.2 + index * 0.35, repeat: Infinity, ease: "easeInOut" }
+              }}
+              whileHover={{ y: -7, scale: isActive ? 1.08 : 1.05 }}
+            >
+              <Image
+                src={testimonial.image}
+                alt=""
+                fill
+                sizes="128px"
+                className="object-cover saturate-[0.82] contrast-[1.08]"
+              />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_20%,rgba(255,255,255,0.22),transparent_28%),linear-gradient(180deg,transparent,rgba(0,0,0,0.24))]" />
+            </motion.button>
+            );
+          })}
         </div>
 
-        <div className="relative z-10 mt-[clamp(1rem,2svh,1.5rem)] flex items-center justify-center gap-6">
-          <span className="h-2 w-8 rounded-full bg-[#d6b36a]" />
-          <span className="h-2 w-4 rounded-full bg-white/25" />
-          <span className="h-2 w-4 rounded-full bg-white/25" />
-          <button aria-label="Previous testimonials" className="grid size-9 place-items-center rounded-full text-[#d6b36a] transition-colors hover:bg-white/10">
-            <ChevronLeft className="size-5" />
-          </button>
-          <button aria-label="Next testimonials" className="grid size-9 place-items-center rounded-full text-[#d6b36a] transition-colors hover:bg-white/10">
-            <ChevronRight className="size-5" />
-          </button>
-        </div>
+        <motion.div
+          className="relative mx-auto mt-[clamp(2rem,4svh,3rem)] grid max-w-[820px] grid-cols-[auto_1fr_auto] items-center gap-6 text-center"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.75, delay: 0.28 }}
+        >
+          <motion.button
+            aria-label="Previous testimonial"
+            className="grid size-12 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/20 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8"
+            onClick={previousTestimonial}
+            whileHover={{ x: -3, scale: 1.06 }}
+            whileTap={{ scale: 0.94 }}
+            transition={{ type: "spring", stiffness: 260, damping: 18 }}
+          >
+            <ChevronLeft size={24} />
+          </motion.button>
+          <motion.p
+            key={featured.quote}
+            className="mx-auto max-w-[46rem] text-sm leading-6 text-[#f8edd7]/64 md:text-[1.05rem] md:leading-7"
+            initial={{ opacity: 0, y: 12, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          >
+            "{featured.quote}"
+          </motion.p>
+          <motion.button
+            aria-label="Next testimonial"
+            className="grid size-12 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/20 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8"
+            onClick={nextTestimonial}
+            whileHover={{ x: 3, scale: 1.06 }}
+            whileTap={{ scale: 0.94 }}
+            transition={{ type: "spring", stiffness: 260, damping: 18 }}
+          >
+            <ChevronRight size={24} />
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

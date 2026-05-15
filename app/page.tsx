@@ -2,6 +2,7 @@ import { ContactSection } from "@/components/sections/contact";
 import { FeaturedProjects } from "@/components/sections/projects";
 import { Hero } from "@/components/sections/hero";
 import { ServicesPreview } from "@/components/sections/services";
+import { Testimonials } from "@/components/sections/testimonials";
 import { Trust } from "@/components/sections/trust";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <Trust />
       <ServicesPreview />
       <FeaturedProjects />
+      <Testimonials />
       <ContactSection />
     </main>
   );

@@ -121,20 +121,20 @@ const serviceCards = [
 
 const aboutLeftItems = [
   {
-    title: "Visual Strategy",
-    text: "Clear direction before design",
+    title: "Graphic Designer",
+    text: "Brand visuals and layouts",
     icon: Lightbulb,
     className: "left-[23%] top-[15%]"
   },
   {
-    title: "Design Systems",
-    text: "Consistent visual decisions",
+    title: "Website Designer",
+    text: "Polished digital presence",
     icon: Smartphone,
     className: "left-[16%] top-[39%]"
   },
   {
-    title: "Digital Presence",
-    text: "Polished screens and flow",
+    title: "Brand Identity",
+    text: "Logos, cards, and systems",
     icon: Monitor,
     className: "left-[11%] top-[63%]"
   }
@@ -142,20 +142,20 @@ const aboutLeftItems = [
 
 const aboutRightItems = [
   {
-    title: "Brand Worlds",
-    text: "Distinct visual atmospheres",
+    title: "Social Media Design",
+    text: "Posts, covers, and campaigns",
     icon: Globe2,
     className: "right-[23%] top-[15%]"
   },
   {
-    title: "Motion Sense",
-    text: "Subtle rhythm and reveal",
+    title: "Flyer & Poster Design",
+    text: "Promotional print creatives",
     icon: Play,
     className: "right-[16%] top-[39%]"
   },
   {
-    title: "Editorial Detail",
-    text: "Spacing, type, and finish",
+    title: "Co-Founder at WBYB",
+    text: "Websites that convert",
     icon: FileText,
     className: "right-[11%] top-[63%]"
   }
@@ -179,6 +179,7 @@ function ServiceChip({ item, index }: { item: (typeof aboutLeftItems)[number]; i
       </span>
       <span className="min-w-0">
         <h3 className="truncate text-sm font-semibold text-[#f5f1e8]">{item.title}</h3>
+        <p className="mt-0.5 truncate text-[0.68rem] leading-4 text-[#f5f1e8]/46">{item.text}</p>
       </span>
     </motion.article>
   );
@@ -222,7 +223,7 @@ export function ServicesPreview() {
   return (
     <section
       id="services"
-      className="section-line relative overflow-hidden bg-[#030303] px-5 py-[clamp(3rem,6svh,4.5rem)] md:px-8"
+      className="section-line relative min-h-screen overflow-hidden bg-[#030303] px-5 py-[clamp(3rem,6svh,4.5rem)] md:px-8"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.12]"
@@ -236,7 +237,7 @@ export function ServicesPreview() {
       />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_58%_38%,rgba(214,179,106,0.1),transparent_34%),linear-gradient(90deg,rgba(0,0,0,0.98),transparent_40%,rgba(0,0,0,0.9))]" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto grid max-w-[1680px] gap-8 lg:grid-cols-[minmax(15rem,0.55fr)_minmax(34rem,40rem)_0.35fr] lg:items-end">
+      <div className="relative z-10 mx-auto grid min-h-[calc(100svh-9rem)] max-w-[1680px] gap-8 lg:grid-cols-[minmax(15rem,0.55fr)_minmax(34rem,40rem)_0.35fr] lg:items-end">
         <motion.div
           className="max-w-[18rem] pt-2 lg:pb-3"
           initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
@@ -378,6 +379,23 @@ export function AboutServicesOrbit() {
             <span className="block">With Visual</span>
             <span className="block bg-gradient-to-b from-[#f4d59b] to-[#a87435] bg-clip-text text-transparent">Purpose</span>
           </h2>
+          <p className="mx-auto mt-6 max-w-[42rem] text-sm leading-7 text-[#f5f1e8]/56 md:text-base md:leading-8">
+            Zuvairiya Maryam is a graphic and web designer, and the founder behind MZ Designs and Co founder at{" "}
+            <a
+              href="https://www.webuildyourbrands.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-[#f4d59b] underline decoration-[#d6b36a]/45 underline-offset-4 transition hover:text-[#fff1c8]"
+            >
+              We Build Your Brands
+            </a>
+            . Her work helps businesses shape a clear identity, present their services, and build polished digital
+            spaces that feel purposeful from the first impression.
+          </p>
+          <p className="mx-auto mt-3 max-w-[38rem] text-xs leading-6 text-[#f5f1e8]/40 md:text-sm">
+            From logo design, business cards, flyers, and social media posts to websites and online stores, the process
+            is built around quality work, thoughtful revisions, and designs clients can feel fully satisfied with.
+          </p>
         </motion.div>
 
         <div className="relative mx-auto mt-[clamp(1.5rem,3svh,2rem)] h-[clamp(25rem,54svh,35rem)] max-w-[min(94vw,1280px)]">

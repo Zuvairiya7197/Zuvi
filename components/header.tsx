@@ -9,7 +9,6 @@ const heroNavItems = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   { href: "/work", label: "Projects" },
-  { href: "/about#process", label: "Process" },
   { href: "/contact", label: "Contact" }
 ];
 
@@ -51,25 +50,25 @@ export function Header() {
               />
             </span>
           </button>
-          <Link href="/" className="flex items-start gap-3 leading-none" aria-label="Zuvi Studio home">
+          <Link href="/" className="flex items-start gap-3 leading-none" aria-label="Zuvairiya Maryam portfolio home">
             <span>
               <span className="block font-display text-[clamp(2rem,8vw,2.65rem)] font-bold tracking-[0.04em] text-[#d6b36a] 2xl:text-[3.2rem]">
                 ZUVI.
               </span>
               <span className="mt-1 block text-xs font-medium tracking-[0.04em] text-[#f5f1e8]/45 2xl:text-sm">
-                Graphic Designer
+                Zuvairiya Maryam
               </span>
             </span>
           </Link>
         </div>
 
-        <Link href="/" className="flex items-start gap-3 leading-none xl:hidden" aria-label="Zuvi Studio home">
+        <Link href="/" className="flex items-start gap-3 leading-none xl:hidden" aria-label="Zuvairiya Maryam portfolio home">
           <span>
             <span className="block font-display text-[clamp(2rem,8vw,2.65rem)] font-bold tracking-[0.04em] text-[#d6b36a] 2xl:text-[3.2rem]">
               ZUVI.
             </span>
             <span className="mt-1 block text-xs font-medium tracking-[0.04em] text-[#f5f1e8]/45 2xl:text-sm">
-              Graphic Designer
+              Zuvairiya Maryam
             </span>
           </span>
         </Link>
