@@ -82,7 +82,8 @@ export function Header() {
           >
             <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(214,179,106,0.16),transparent_36%),radial-gradient(circle_at_82%_15%,rgba(124,60,255,0),transparent_38%)] opacity-0 transition duration-500 group-hover:opacity-100 group-hover:bg-[radial-gradient(circle_at_20%_50%,rgba(214,179,106,0.2),transparent_36%),radial-gradient(circle_at_82%_15%,rgba(124,60,255,0.16),transparent_38%)]" />
             <span className="pointer-events-none absolute inset-y-0 -left-14 w-12 rotate-12 bg-white/18 blur-md transition-transform duration-700 ease-out group-hover:translate-x-44" />
-            <span className="relative grid h-7 w-0 place-items-center overflow-hidden rounded-full border border-[#d6b36a]/0 bg-white/[0.04] opacity-0 transition-all duration-500 group-hover:mr-2 group-hover:w-12 group-hover:border-white/12 group-hover:opacity-100 group-hover:shadow-[0_0_18px_rgba(214,179,106,0.18)]">
+            <span className="relative whitespace-nowrap transition duration-500 group-hover:text-white">Need a Website?</span>
+            <span className="relative ml-0 grid h-7 w-0 place-items-center overflow-hidden rounded-full border border-white/0 bg-white/[0.04] opacity-0 shadow-[0_0_18px_rgba(214,179,106,0.14)] transition-all duration-500 group-hover:ml-2 group-hover:w-12 group-hover:translate-x-0.5 group-hover:border-white/12 group-hover:opacity-100 group-hover:shadow-[0_0_22px_rgba(214,179,106,0.22)]">
               <Image
                 src="/wbyblogo.webp"
                 alt="WBYB"
@@ -91,7 +92,6 @@ export function Header() {
                 className="object-contain px-1.5 opacity-0 saturate-125 transition duration-500 group-hover:opacity-100"
               />
             </span>
-            <span className="relative whitespace-nowrap transition duration-500 group-hover:text-white">Need a Website?</span>
           </Link>
           <Link
             href="/contact"
