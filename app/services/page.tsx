@@ -13,7 +13,14 @@ export default function ServicesPage() {
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Services"
-          title="A compact creative studio for premium brand execution."
+          title={
+            <>
+              A compact creative studio for
+              <span className="block bg-gradient-to-b from-[#f5f1e8] to-[#d6b36a] bg-clip-text text-transparent">
+                premium brand execution.
+              </span>
+            </>
+          }
           text="Choose a focused design sprint or combine services into a full launch system."
         />
         <div className="mt-[clamp(2rem,5svh,3rem)] grid gap-5 md:grid-cols-2">

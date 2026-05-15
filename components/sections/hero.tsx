@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Sparkle } from "lucide-react";
@@ -24,6 +25,17 @@ export function Hero() {
         pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
       }}
     >
+      <div className="pointer-events-none absolute bottom-0 left-1/2 z-0 aspect-[1672/941] w-[min(82vw,58rem)] -translate-x-1/2">
+        <Image
+          src="/Hero Image.png"
+          alt=""
+          fill
+          priority
+          sizes="(min-width: 1280px) 58rem, 82vw"
+          className="object-contain"
+          aria-hidden="true"
+        />
+      </div>
       <div className="relative z-10 mx-auto min-h-[calc(100svh-6.75rem)] max-w-[1680px] max-xl:flex max-xl:flex-col max-xl:items-center max-xl:justify-between 2xl:min-h-[calc(100svh-9rem)] 2xl:max-w-[1820px]">
         <motion.div
           style={{ x: headlineX, y: headlineY }}

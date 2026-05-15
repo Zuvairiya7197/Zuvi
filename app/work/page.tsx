@@ -6,6 +6,20 @@ export const metadata: Metadata = {
   description: "Graphic design work by MZ Designs and website projects by We Build Your Brands."
 };
 
-export default function WorkPage() {
-  return <WorkPageContent />;
+type WorkPageProps = {
+  searchParams: Promise<{
+    mode?: string;
+    category?: string;
+  }>;
+};
+
+export default async function WorkPage({ searchParams }: WorkPageProps) {
+  const params = await searchParams;
+
+  return (
+    <WorkPageContent
+      initialMode={params.mode === "graphic" ? "graphic" : "website"}
+      initialCategory={params.category}
+    />
+  );
 }

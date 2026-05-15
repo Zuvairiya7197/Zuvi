@@ -39,8 +39,11 @@ export function Testimonials() {
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="font-display text-[clamp(2.3rem,4.4vw,3.9rem)] font-medium leading-none text-[#fbf2df] drop-shadow-[0_0_30px_rgba(244,215,157,0.12)]">
-            What Clients Experience
+          <h2 className="font-sans text-[clamp(2rem,3.2vw,2.85rem)] font-medium leading-[1.02] tracking-[-0.045em] text-[#f5f1e8] drop-shadow-[0_0_30px_rgba(244,215,157,0.12)]">
+            What Clients
+            <span className="block bg-gradient-to-b from-[#f5f1e8] to-[#d6b36a] bg-clip-text text-transparent">
+              Experience
+            </span>
           </h2>
           <p className="mx-auto mt-5 max-w-[31rem] text-sm leading-6 text-[#f8edd7]/54 md:text-base">
             Refined brand systems, precise execution, and digital moments that feel unmistakably considered.

@@ -32,7 +32,7 @@ export function FeaturedProjects() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const numberRef = useRef<HTMLDivElement | null>(null);
-  const imageShellRef = useRef<HTMLDivElement | null>(null);
+  const imageShellRef = useRef<HTMLAnchorElement | null>(null);
   const previewRef = useRef<HTMLDivElement | null>(null);
   const lightRef = useRef<HTMLDivElement | null>(null);
   const progressRefs = useRef<Array<HTMLSpanElement | null>>([]);
@@ -40,6 +40,12 @@ export function FeaturedProjects() {
   const activeProject = projects[activeIndex];
   const nextProject = projects[mod(activeIndex + 1, projects.length)];
   const titleLines = splitTitle(activeProject.title);
+  const activeProjectHref =
+    activeProject.industry === "Graphic Design"
+      ? `/work?mode=graphic&category=${encodeURIComponent(activeProject.category)}`
+      : activeProject.liveUrl;
+  const activeProjectTarget = activeProject.industry === "Graphic Design" ? undefined : "_blank";
+  const activeProjectRel = activeProject.industry === "Graphic Design" ? undefined : "noopener noreferrer";
 
   const changeSlide = useCallback((nextIndex: number) => {
     setActiveIndex((current) => {
@@ -200,9 +206,9 @@ export function FeaturedProjects() {
                   </h2>
                   <Link
                     data-project-cta
-                    href={activeProject.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={activeProjectHref}
+                    target={activeProjectTarget}
+                    rel={activeProjectRel}
                     className="group mt-8 inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.16em] text-[#f5f1e8]"
                   >
                     View Project
@@ -215,7 +221,14 @@ export function FeaturedProjects() {
               </AnimatePresence>
             </div>
 
-            <div ref={imageShellRef} className="relative z-20">
+            <Link
+              ref={imageShellRef}
+              href={activeProjectHref}
+              target={activeProjectTarget}
+              rel={activeProjectRel}
+              aria-label={`Open ${activeProject.title}`}
+              className="relative z-20 block"
+            >
               <div className={`relative aspect-[1.55] overflow-hidden border border-white/10 bg-black shadow-[0_38px_120px_rgba(0,0,0,0.58)] transition duration-700 ${isAnimating ? "blur-[1px]" : "blur-0"}`}>
                 <AnimatePresence initial={false} mode="popLayout">
                   <motion.div
@@ -240,7 +253,7 @@ export function FeaturedProjects() {
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/55 to-transparent" />
               </div>
               <div className="pointer-events-none absolute inset-x-10 -bottom-8 h-14 rounded-full bg-[#d6b36a]/14 blur-2xl" />
-            </div>
+            </Link>
 
             <div ref={previewRef} className="relative z-10 hidden h-[18rem] overflow-hidden border border-white/8 bg-black/50 shadow-[0_24px_80px_rgba(0,0,0,0.4)] lg:block">
               <AnimatePresence mode="wait">

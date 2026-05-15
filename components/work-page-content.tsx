@@ -75,7 +75,13 @@ function CategoryButton({
   );
 }
 
-export function WorkPageContent() {
+export function WorkPageContent({
+  initialMode,
+  initialCategory
+}: {
+  initialMode?: WorkMode;
+  initialCategory?: string;
+}) {
   const graphicProjects = projects.filter((project) => project.industry === "Graphic Design");
   const websiteProjects = projects.filter((project) => project.industry !== "Graphic Design");
   const websiteCategories = useMemo(
@@ -86,9 +92,19 @@ export function WorkPageContent() {
     graphicProjects.some((project) => project.category === category)
   );
 
-  const [activeMode, setActiveMode] = useState<WorkMode>("website");
-  const [activeWebsiteCategory, setActiveWebsiteCategory] = useState(websiteCategories[0] ?? "Website Design");
-  const [activeGraphicCategory, setActiveGraphicCategory] = useState(visibleGraphicCategories[0] ?? "Logo Design");
+  const requestedMode = initialMode === "graphic" ? "graphic" : "website";
+  const requestedWebsiteCategory =
+    initialCategory && websiteCategories.includes(initialCategory)
+      ? initialCategory
+      : websiteCategories[0] ?? "Website Design";
+  const requestedGraphicCategory =
+    initialCategory && visibleGraphicCategories.includes(initialCategory)
+      ? initialCategory
+      : visibleGraphicCategories[0] ?? "Logo Design";
+
+  const [activeMode, setActiveMode] = useState<WorkMode>(requestedMode);
+  const [activeWebsiteCategory, setActiveWebsiteCategory] = useState(requestedWebsiteCategory);
+  const [activeGraphicCategory, setActiveGraphicCategory] = useState(requestedGraphicCategory);
 
   const activeWebsiteProjects = websiteProjects.filter((project) => project.category === activeWebsiteCategory);
   const activeGraphicProjects = graphicProjects.filter((project) => project.category === activeGraphicCategory);
@@ -104,8 +120,11 @@ export function WorkPageContent() {
           <div className="grid gap-8 lg:grid-cols-[1fr_0.78fr] lg:items-end">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#d5ad6f]">Selected Work</p>
-              <h1 className="mt-4 font-display text-[clamp(3rem,9vw,5.9rem)] font-semibold leading-[0.88] text-[#f5f1e8]">
-                Zuvairiya Maryam&apos;s portfolio.
+              <h1 className="mt-4 font-sans text-[clamp(2rem,3.2vw,2.85rem)] font-medium leading-[1.02] tracking-[-0.045em] text-[#f5f1e8]">
+                Zuvairiya Maryam&apos;s
+                <span className="block bg-gradient-to-b from-[#f5f1e8] to-[#d6b36a] bg-clip-text text-transparent">
+                  portfolio.
+                </span>
               </h1>
               <p className="mt-6 max-w-2xl text-[clamp(1rem,2vw,1.18rem)] leading-8 text-neutral-300">
                 A curated gallery of graphic design work under MZ Designs and website projects under We Build Your
@@ -206,7 +225,7 @@ export function WorkPageContent() {
                   {activeGraphicProjects.length} project{activeGraphicProjects.length === 1 ? "" : "s"}
                 </p>
               </div>
-              <div className="overflow-hidden rounded-[1.2rem] border border-[#1f1a12] bg-[#11100d] shadow-[0_30px_90px_rgba(0,0,0,0.38)] [column-gap:0] [column-count:2] sm:[column-count:3] lg:[column-count:4] xl:[column-count:5]">
+              <div className="overflow-hidden rounded-[1.2rem] border border-[#1f1a12] bg-[#11100d] px-[clamp(1rem,4vw,3rem)] py-[clamp(1rem,3vw,2.25rem)] shadow-[0_30px_90px_rgba(0,0,0,0.38)] [column-gap:1rem] [column-count:2] sm:[column-count:3] lg:[column-count:4] xl:[column-count:5]">
                 {activeGraphicProjects.map((project) => (
                   <GraphicGalleryTile key={project.slug} project={project} />
                 ))}

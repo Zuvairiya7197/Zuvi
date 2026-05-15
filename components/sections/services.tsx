@@ -2,7 +2,19 @@
 
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { CreditCard, FileText, Globe2, Lightbulb, Megaphone, Monitor, PenTool, Play, ScrollText, Smartphone, Tags } from "lucide-react";
+import {
+  CreditCard,
+  FileText,
+  Globe2,
+  Lightbulb,
+  Megaphone,
+  Monitor,
+  PenTool,
+  Play,
+  ScrollText,
+  Smartphone,
+  Tags,
+} from "lucide-react";
 
 const serviceCards = [
   {
@@ -12,14 +24,18 @@ const serviceCards = [
     metric: "94%",
     current: "Concept",
     ideal: "Logo",
-    detail: "Distinct logo systems built for recall, clarity, and premium brand presence.",
+    detail:
+      "Distinct logo systems built for recall, clarity, and premium brand presence.",
     meals: [
       ["Sketch", "Logo Concepts"],
       ["Refine", "Color & Type"],
-      ["Deliver", "Final Logo Files"]
+      ["Deliver", "Final Logo Files"],
     ],
-    images: ["/project-organise-with-kopal.webp", "/project-zarrar-palekar.webp"],
-    muted: true
+    images: [
+      "/ZP-Logo.webp",
+      "/wbyblogo.png",
+    ],
+    muted: true,
   },
   {
     title: "Poster/Flyer Design",
@@ -28,14 +44,18 @@ const serviceCards = [
     metric: "89%",
     current: "Message",
     ideal: "Flyer",
-    detail: "Posters and flyers with clear hierarchy, strong contrast, and quick communication.",
+    detail:
+      "Posters and flyers with clear hierarchy, strong contrast, and quick communication.",
     meals: [
       ["Plan", "Offer Structure"],
       ["Design", "Poster/Flyer Visual"],
-      ["Export", "Print & Digital File"]
+      ["Export", "Print & Digital File"],
     ],
-    images: ["/project-graphic-educational-flyer.png", "/project-graphic-home-tuition.png"],
-    muted: true
+    images: [
+      "/project-graphic-educational-flyer.png",
+      "/project-graphic-home-tuition.png",
+    ],
+    muted: true,
   },
   {
     title: "Social Media Post Design",
@@ -44,14 +64,18 @@ const serviceCards = [
     metric: "92%",
     current: "Content",
     ideal: "Post",
-    detail: "Scroll-ready social designs for announcements, promotions, and brand campaigns.",
+    detail:
+      "Scroll-ready social designs for announcements, promotions, and brand campaigns.",
     meals: [
       ["Theme", "Campaign Direction"],
       ["Design", "Post & Story Visual"],
-      ["Share", "Platform-Ready Files"]
+      ["Share", "Platform-Ready Files"],
     ],
-    images: ["/project-graphic-smm-marketing-agency.png", "/project-graphic-sm-classes-poster.png"],
-    muted: true
+    images: [
+      "/sm classes post.png",
+      "/6th post.png",
+    ],
+    muted: true,
   },
   {
     title: "Business Card Design",
@@ -60,14 +84,18 @@ const serviceCards = [
     metric: "88%",
     current: "Identity",
     ideal: "Card",
-    detail: "Elegant business cards with clear hierarchy, premium spacing, and print-ready finish.",
+    detail:
+      "Elegant business cards with clear hierarchy, premium spacing, and print-ready finish.",
     meals: [
       ["Info", "Contact Hierarchy"],
       ["Style", "Front & Back Layout"],
-      ["Export", "Print-Ready Artwork"]
+      ["Export", "Print-Ready Artwork"],
     ],
-    images: ["/project-graphic-organise-with-kopal.png", "/project-zarrar-palekar.webp"],
-    muted: true
+    images: [
+      "/mz-business-card-01.jpg",
+      "/mz-business-card-02.png",
+    ],
+    muted: true,
   },
   {
     title: "Advertisement Design",
@@ -76,14 +104,18 @@ const serviceCards = [
     metric: "90%",
     current: "Offer",
     ideal: "Ad",
-    detail: "Focused ad creatives with direct messaging, premium layout, and strong visual pull.",
+    detail:
+      "Focused ad creatives with direct messaging, premium layout, and strong visual pull.",
     meals: [
       ["Hook", "Ad Message"],
       ["Visual", "Campaign Creative"],
-      ["Adapt", "Digital Variants"]
+      ["Adapt", "Digital Variants"],
     ],
-    images: ["/project-graphic-sm-classes-11th.png", "/project-graphic-smm-marketing-agency.png"],
-    muted: true
+    images: [
+      "/project-graphic-sm-classes-11th.png",
+      "/project-graphic-smm-marketing-agency.png",
+    ],
+    muted: true,
   },
   {
     title: "Product Label Design",
@@ -92,14 +124,18 @@ const serviceCards = [
     metric: "86%",
     current: "Product",
     ideal: "Label",
-    detail: "Premium label designs with careful typography, shelf appeal, and brand consistency.",
+    detail:
+      "Premium label designs with careful typography, shelf appeal, and brand consistency.",
     meals: [
       ["Read", "Product Details"],
       ["Design", "Label Layout"],
-      ["Finish", "Print Artwork"]
+      ["Finish", "Print Artwork"],
     ],
-    images: ["/project-graphic-organise-with-kopal.png", "/project-graphic-educational-flyer.png"],
-    muted: true
+    images: [
+      "/mz-customised-print-01.jpg",
+      "/mz-customised-print-02.jpg",
+    ],
+    muted: true,
   },
   {
     title: "Website Design",
@@ -108,15 +144,19 @@ const serviceCards = [
     metric: "91%",
     current: "Structure",
     ideal: "Website",
-    detail: "Premium website layouts with clear sections, responsive thinking, and conversion-focused flow.",
+    detail:
+      "Premium website layouts with clear sections, responsive thinking, and conversion-focused flow.",
     meals: [
       ["Map", "Page Structure"],
       ["Design", "Website Layout"],
-      ["Adapt", "Responsive Direction"]
+      ["Adapt", "Responsive Direction"],
     ],
-    images: ["/project-organise-with-kopal.webp", "/project-zarrar-palekar.webp"],
-    muted: true
-  }
+    images: [
+      "/project-organise-with-kopal.webp",
+      "/project-zarrar-palekar.webp",
+    ],
+    muted: true,
+  },
 ];
 
 const aboutLeftItems = [
@@ -124,20 +164,20 @@ const aboutLeftItems = [
     title: "Graphic Designer",
     text: "Brand visuals and layouts",
     icon: Lightbulb,
-    className: "left-[23%] top-[15%]"
+    className: "left-[23%] top-[15%]",
   },
   {
     title: "Website Designer",
     text: "Polished digital presence",
     icon: Smartphone,
-    className: "left-[16%] top-[39%]"
+    className: "left-[16%] top-[39%]",
   },
   {
     title: "Brand Identity",
     text: "Logos, cards, and systems",
     icon: Monitor,
-    className: "left-[11%] top-[63%]"
-  }
+    className: "left-[11%] top-[63%]",
+  },
 ];
 
 const aboutRightItems = [
@@ -145,41 +185,55 @@ const aboutRightItems = [
     title: "Social Media Design",
     text: "Posts, covers, and campaigns",
     icon: Globe2,
-    className: "right-[23%] top-[15%]"
+    className: "right-[23%] top-[15%]",
   },
   {
-    title: "Flyer & Poster Design",
-    text: "Promotional print creatives",
+    title: "7 Years Experience",
+    text: "Design and web projects",
     icon: Play,
-    className: "right-[16%] top-[39%]"
+    className: "right-[16%] top-[39%]",
   },
   {
     title: "Co-Founder at WBYB",
     text: "Websites that convert",
     icon: FileText,
-    className: "right-[11%] top-[63%]"
-  }
+    className: "right-[11%] top-[63%]",
+  },
 ];
 
-function ServiceChip({ item, index }: { item: (typeof aboutLeftItems)[number]; index: number }) {
+function ServiceChip({
+  item,
+  index,
+}: {
+  item: (typeof aboutLeftItems)[number];
+  index: number;
+}) {
   const Icon = item.icon;
   const isRight = item.className.includes("right");
 
   return (
     <motion.article
-      className={`absolute z-30 hidden h-14 w-[clamp(9.5rem,12vw,11.5rem)] items-center gap-3 rounded-[0.95rem] border border-white/10 bg-[#1d1c1a]/92 p-2 pr-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_18px_56px_rgba(0,0,0,0.34)] backdrop-blur-xl xl:flex ${item.className}`}
+      className={`absolute z-30 hidden min-h-14 w-[clamp(13.5rem,17vw,17rem)] items-center gap-2.5 rounded-[0.95rem] border border-white/10 bg-[#1d1c1a]/92 p-2 pr-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_18px_56px_rgba(0,0,0,0.34)] backdrop-blur-xl xl:flex ${item.className}`}
       initial={{ opacity: 0, y: 20, x: isRight ? 18 : -18 }}
       whileInView={{ opacity: 1, y: 0, x: 0 }}
       viewport={{ once: true, margin: "-120px" }}
-      transition={{ duration: 0.68, delay: 0.14 + index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      transition={{
+        duration: 0.68,
+        delay: 0.14 + index * 0.08,
+        ease: [0.16, 1, 0.3, 1],
+      }}
       whileHover={{ y: -4, backgroundColor: "rgba(38,36,32,0.96)" }}
     >
       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[0.75rem] bg-white/[0.08] text-[#d6b36a] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
-        <Icon size={18} strokeWidth={1.7} />
+        <Icon size={16} strokeWidth={1.7} />
       </span>
       <span className="min-w-0">
-        <h3 className="truncate text-sm font-semibold text-[#f5f1e8]">{item.title}</h3>
-        <p className="mt-0.5 truncate text-[0.68rem] leading-4 text-[#f5f1e8]/46">{item.text}</p>
+        <h3 className="text-[0.78rem] font-semibold leading-4 text-[#f5f1e8]">
+          {item.title}
+        </h3>
+        <p className="mt-0.5 text-[0.62rem] leading-3 text-[#f5f1e8]/50">
+          {item.text}
+        </p>
       </span>
     </motion.article>
   );
@@ -187,7 +241,7 @@ function ServiceChip({ item, index }: { item: (typeof aboutLeftItems)[number]; i
 
 function DesignImageFrame({
   x,
-  y
+  y,
 }: {
   x: ReturnType<typeof useSpring>;
   y: ReturnType<typeof useSpring>;
@@ -198,21 +252,21 @@ function DesignImageFrame({
   return (
     <motion.div
       style={{ x: orbX, y: orbY }}
-      className="absolute left-1/2 top-[58%] z-20 h-[clamp(16rem,38svh,25rem)] w-[clamp(16rem,38svh,25rem)] -translate-x-1/2 -translate-y-1/2"
+      className="absolute left-1/2 top-[58%] z-20 aspect-[3/2] w-[clamp(30rem,60svh,50rem)] -translate-x-1/2 -translate-y-1/2"
       initial={{ opacity: 0, y: 80, scale: 0.94 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-120px" }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="absolute inset-0 overflow-hidden rounded-full bg-[#070706] shadow-[inset_0_-34px_80px_rgba(0,0,0,0.82),0_34px_110px_rgba(0,0,0,0.68)]">
+      <div className="absolute inset-0 overflow-hidden">
         <Image
-          src="/project-organise-with-kopal.webp"
+          src="/About Image.png"
           alt="Premium graphic design work preview"
           fill
-          sizes="(min-width: 1024px) 25rem, 16rem"
-          className="object-cover opacity-80 saturate-75"
+          sizes="(min-width: 1024px) 24rem, 15rem"
+          className="object-cover opacity-86 saturate-75"
         />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,transparent,rgba(0,0,0,0.34)_44%,rgba(0,0,0,0.9)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,transparent,rgba(0,0,0,0.18)_54%,rgba(0,0,0,0.72)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black to-transparent" />
       </div>
     </motion.div>
@@ -223,7 +277,7 @@ export function ServicesPreview() {
   return (
     <section
       id="services"
-      className="section-line relative min-h-screen overflow-hidden bg-[#030303] px-5 py-[clamp(3rem,6svh,4.5rem)] md:px-8"
+      className="section-line relative min-h-screen overflow-hidden bg-black px-5 py-[clamp(3rem,6svh,4.5rem)] md:px-8"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.12]"
@@ -231,11 +285,15 @@ export function ServicesPreview() {
           backgroundImage:
             "linear-gradient(rgba(245,241,232,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(245,241,232,0.09) 1px, transparent 1px)",
           backgroundSize: "88px 88px",
-          maskImage: "linear-gradient(90deg, transparent, black 18%, black 82%, transparent)"
+          maskImage:
+            "linear-gradient(90deg, transparent, black 18%, black 82%, transparent)",
         }}
         aria-hidden="true"
       />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_58%_38%,rgba(214,179,106,0.1),transparent_34%),linear-gradient(90deg,rgba(0,0,0,0.98),transparent_40%,rgba(0,0,0,0.9))]" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_58%_38%,rgba(214,179,106,0.1),transparent_34%),linear-gradient(90deg,rgba(0,0,0,0.98),transparent_40%,rgba(0,0,0,0.9))]"
+        aria-hidden="true"
+      />
 
       <div className="relative z-10 mx-auto grid min-h-[calc(100svh-9rem)] max-w-[1680px] gap-8 lg:grid-cols-[minmax(15rem,0.55fr)_minmax(34rem,40rem)_0.35fr] lg:items-end">
         <motion.div
@@ -245,13 +303,18 @@ export function ServicesPreview() {
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="mb-3 text-[0.62rem] font-black uppercase tracking-[0.2em] text-[#d6b36a]">Services</p>
+          <p className="mb-3 text-[0.62rem] font-black uppercase tracking-[0.2em] text-[#d6b36a]">
+            Services
+          </p>
           <h2 className="font-sans text-[clamp(2rem,3.2vw,2.85rem)] font-medium leading-[1.02] tracking-[-0.045em] text-[#f5f1e8]">
             Whatever Your
-            <span className="block bg-gradient-to-b from-[#f5f1e8] to-[#d6b36a] bg-clip-text text-transparent">Design Goal</span>
+            <span className="block bg-gradient-to-b from-[#f5f1e8] to-[#d6b36a] bg-clip-text text-transparent">
+              Design Goal
+            </span>
           </h2>
           <p className="mt-3 max-w-[15rem] text-xs leading-5 text-[#f5f1e8]/42">
-            Premium visual systems for brands that need clarity, presence, and momentum.
+            Premium visual systems for brands that need clarity, presence, and
+            momentum.
           </p>
         </motion.div>
 
@@ -265,7 +328,11 @@ export function ServicesPreview() {
                 initial={{ opacity: 0, x: 50, filter: "blur(8px)" }}
                 whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, margin: "-120px" }}
-                transition={{ duration: 0.72, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                transition={{
+                  duration: 0.72,
+                  delay: index * 0.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
               >
                 <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(214,179,106,0.14),rgba(245,241,232,0.035))] opacity-75 transition duration-500 group-hover:opacity-100" />
                 <div className="relative flex items-center justify-between gap-5">
@@ -273,7 +340,9 @@ export function ServicesPreview() {
                     <span className="grid h-8 w-8 place-items-center rounded-[0.7rem] bg-white/[0.06] text-[#d6b36a]/70 transition duration-500 group-hover:bg-[#d6b36a]/16 group-hover:text-[#f3d694]">
                       <Icon size={17} strokeWidth={1.7} />
                     </span>
-                    <h3 className="text-sm font-medium text-[#f5f1e8] md:text-base">{item.title}</h3>
+                    <h3 className="text-sm font-medium text-[#f5f1e8] md:text-base">
+                      {item.title}
+                    </h3>
                   </div>
                   <span className="hidden rounded-full border border-white/20 px-4 py-1.5 text-xs font-medium text-[#f5f1e8] transition duration-500 group-hover:border-[#d6b36a]/38 group-hover:bg-[#d6b36a]/8 sm:inline-flex">
                     • {item.pill}
@@ -284,7 +353,9 @@ export function ServicesPreview() {
                   <div className="relative grid gap-4">
                     <div className="grid gap-4 border-t border-white/0 pt-0 transition-all duration-500 group-hover:border-white/10 group-hover:pt-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
                       <div>
-                        <p className="text-[0.65rem] text-white/0 transition duration-500 group-hover:text-white/46">Core focus</p>
+                        <p className="text-[0.65rem] text-white/0 transition duration-500 group-hover:text-white/46">
+                          Core focus
+                        </p>
                         <p className="mt-1 text-[clamp(1.45rem,3vw,2rem)] font-light leading-none tracking-[-0.04em] text-white/0 transition duration-500 group-hover:text-white">
                           {item.current}
                         </p>
@@ -293,7 +364,9 @@ export function ServicesPreview() {
                         {item.metric}
                       </div>
                       <div className="sm:text-right">
-                        <p className="text-[0.65rem] text-white/0 transition duration-500 group-hover:text-white/46">Outcome</p>
+                        <p className="text-[0.65rem] text-white/0 transition duration-500 group-hover:text-white/46">
+                          Outcome
+                        </p>
                         <p className="mt-1 text-[clamp(1.45rem,3vw,2rem)] font-light leading-none tracking-[-0.04em] text-white/0 transition duration-500 group-hover:text-white">
                           {item.ideal}
                         </p>
@@ -308,16 +381,32 @@ export function ServicesPreview() {
                     <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
                       <div className="border-l-4 border-[#d6b36a]/0 pl-5 transition duration-500 group-hover:border-[#d6b36a]">
                         {item.meals.map(([label, value]) => (
-                          <div key={label} className="grid grid-cols-[4.5rem_1fr] gap-3 py-1 text-xs">
-                            <span className="text-white/0 transition duration-500 group-hover:text-white/46">{label}</span>
-                            <span className="text-white/0 transition duration-500 group-hover:text-white/82">{value}</span>
+                          <div
+                            key={label}
+                            className="grid grid-cols-[4.5rem_1fr] gap-3 py-1 text-xs"
+                          >
+                            <span className="text-white/0 transition duration-500 group-hover:text-white/46">
+                              {label}
+                            </span>
+                            <span className="text-white/0 transition duration-500 group-hover:text-white/82">
+                              {value}
+                            </span>
                           </div>
                         ))}
                       </div>
                       <div className="flex gap-2">
                         {item.images.map((src) => (
-                          <div key={src} className="relative h-0 w-20 overflow-hidden rounded-2xl opacity-0 transition-all duration-500 group-hover:h-20 group-hover:opacity-100 md:w-24 group-hover:md:h-24">
-                            <Image src={src} alt="" fill sizes="96px" className="object-cover saturate-75" />
+                          <div
+                            key={src}
+                            className="relative h-0 w-20 overflow-hidden rounded-2xl opacity-0 transition-all duration-500 group-hover:h-20 group-hover:opacity-100 md:w-24 group-hover:md:h-24"
+                          >
+                            <Image
+                              src={src}
+                              alt=""
+                              fill
+                              sizes="96px"
+                              className="object-cover saturate-75"
+                            />
                             <div className="absolute inset-0 bg-black/12" />
                           </div>
                         ))}
@@ -341,8 +430,16 @@ export function ServicesPreview() {
 export function AboutServicesOrbit() {
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
-  const smoothX = useSpring(pointerX, { stiffness: 80, damping: 24, mass: 0.7 });
-  const smoothY = useSpring(pointerY, { stiffness: 80, damping: 24, mass: 0.7 });
+  const smoothX = useSpring(pointerX, {
+    stiffness: 80,
+    damping: 24,
+    mass: 0.7,
+  });
+  const smoothY = useSpring(pointerY, {
+    stiffness: 80,
+    damping: 24,
+    mass: 0.7,
+  });
   const headlineY = useTransform(smoothY, [-0.5, 0.5], [5, -5]);
 
   return (
@@ -363,7 +460,7 @@ export function AboutServicesOrbit() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          About Zuvi Studio
+          About Zuvairiya Maryam
         </motion.div>
 
         <motion.div
@@ -377,10 +474,13 @@ export function AboutServicesOrbit() {
           <h2 className="font-sans text-[clamp(3rem,5vw,5.2rem)] font-medium leading-[0.96] tracking-[-0.055em] text-[#f5f1e8]">
             Design Thinking
             <span className="block">With Visual</span>
-            <span className="block bg-gradient-to-b from-[#f4d59b] to-[#a87435] bg-clip-text text-transparent">Purpose</span>
+            <span className="block bg-gradient-to-b from-[#f4d59b] to-[#a87435] bg-clip-text text-transparent">
+              Purpose
+            </span>
           </h2>
           <p className="mx-auto mt-6 max-w-[42rem] text-sm leading-7 text-[#f5f1e8]/56 md:text-base md:leading-8">
-            Zuvairiya Maryam is a graphic and web designer, and the founder behind MZ Designs and Co founder at{" "}
+            Zuvairiya Maryam is a graphic and web designer, and the founder
+            behind MZ Designs and Co founder at{" "}
             <a
               href="https://www.webuildyourbrands.com/"
               target="_blank"
@@ -389,12 +489,15 @@ export function AboutServicesOrbit() {
             >
               We Build Your Brands
             </a>
-            . Her work helps businesses shape a clear identity, present their services, and build polished digital
-            spaces that feel purposeful from the first impression.
+            . Her work helps businesses shape a clear identity, present their
+            services, and build polished digital spaces that feel purposeful
+            from the first impression.
           </p>
           <p className="mx-auto mt-3 max-w-[38rem] text-xs leading-6 text-[#f5f1e8]/40 md:text-sm">
-            From logo design, business cards, flyers, and social media posts to websites and online stores, the process
-            is built around quality work, thoughtful revisions, and designs clients can feel fully satisfied with.
+            From logo design, business cards, flyers, and social media posts to
+            websites and online stores, the process is built around quality
+            work, thoughtful revisions, and designs clients can feel fully
+            satisfied with.
           </p>
         </motion.div>
 
@@ -404,20 +507,26 @@ export function AboutServicesOrbit() {
           ))}
 
           <DesignImageFrame x={smoothX} y={smoothY} />
-
         </div>
 
         <div className="mt-8 grid gap-3 lg:hidden">
           {[...aboutLeftItems, ...aboutRightItems].map((item) => {
             const Icon = item.icon;
             return (
-              <article key={item.title} className="flex items-center gap-4 rounded-2xl bg-white/[0.075] p-4 backdrop-blur-md">
+              <article
+                key={item.title}
+                className="flex items-center gap-4 rounded-2xl bg-white/[0.075] p-4 backdrop-blur-md"
+              >
                 <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white/10 text-[#d6b36a]">
                   <Icon size={22} strokeWidth={1.8} />
                 </span>
                 <span>
-                  <h3 className="text-sm font-semibold text-[#f5f1e8]">{item.title}</h3>
-                  <p className="mt-1 text-xs leading-5 text-[#f5f1e8]/48">{item.text}</p>
+                  <h3 className="text-sm font-semibold text-[#f5f1e8]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-xs leading-5 text-[#f5f1e8]/48">
+                    {item.text}
+                  </p>
                 </span>
               </article>
             );
