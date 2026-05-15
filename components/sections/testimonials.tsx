@@ -7,19 +7,19 @@ import { useState } from "react";
 import { testimonials } from "@/lib/data";
 
 const avatarPositions = [
-  "left-[20%] top-[18%] size-[4.15rem] md:size-[4.85rem]",
-  "left-[34%] top-[59%] size-[4.85rem] md:size-[5.55rem]",
-  "left-1/2 top-[30%] size-[5.55rem] -translate-x-1/2 md:size-[6.15rem]",
-  "right-[21%] top-[18%] size-[4.85rem] md:size-[5.55rem]"
+  "left-[18%] top-[20%] size-[4rem] md:size-[4.7rem]",
+  "left-[36%] top-[58%] size-[4.5rem] md:size-[5.15rem]",
+  "left-1/2 top-[32%] size-[5.2rem] -translate-x-1/2 md:size-[5.9rem]",
+  "right-[18%] top-[22%] size-[4.55rem] md:size-[5.25rem]"
 ];
 
 const dotPositions = [
-  "left-[24%] top-[57%]",
-  "left-[36.7%] top-[33%]",
-  "left-[56%] top-[39%]",
-  "right-[30.8%] top-[72%]",
-  "right-[21.2%] top-[20%]",
-  "right-[7.9%] top-[46%]"
+  "left-[23%] top-[58%]",
+  "left-[37.4%] top-[34%]",
+  "left-[56%] top-[41%]",
+  "right-[31%] top-[70%]",
+  "right-[21%] top-[24%]",
+  "right-[7.5%] top-[47%]"
 ];
 
 export function Testimonials() {
@@ -30,8 +30,8 @@ export function Testimonials() {
   const previousTestimonial = () => setActiveAvatarIndex((index) => (index - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="section-line testimonial-luxe-stage relative overflow-hidden px-[clamp(1rem,5vw,4.5rem)] py-[clamp(3rem,7svh,5rem)] text-[#f7efe0]">
-      <div className="relative z-10 mx-auto min-h-[clamp(39rem,82svh,47rem)] max-w-[1500px] px-[clamp(1.25rem,4vw,4rem)] py-[clamp(4.75rem,8svh,7rem)]">
+    <section className="section-line testimonial-luxe-stage relative overflow-hidden px-[clamp(1rem,5vw,4.5rem)] py-[clamp(2.5rem,6svh,4.25rem)] text-[#f7efe0]">
+      <div className="relative z-10 mx-auto min-h-[clamp(36rem,78svh,43rem)] max-w-[1500px] px-[clamp(1.25rem,4vw,4rem)] py-[clamp(3.5rem,6svh,5.25rem)]">
         <motion.div
           className="relative mx-auto max-w-[620px] text-center"
           initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
@@ -60,7 +60,7 @@ export function Testimonials() {
           </motion.a>
         </motion.div>
 
-        <div className="relative -mx-[clamp(1.25rem,4vw,4rem)] mt-[clamp(3.25rem,7svh,4.75rem)] h-[clamp(17.5rem,31svh,20.5rem)]">
+        <div className="relative -mx-[clamp(1.25rem,4vw,4rem)] mt-[clamp(2rem,4svh,3rem)] h-[clamp(16rem,28svh,18.75rem)]">
           <svg
             className="absolute left-1/2 top-[50%] h-full w-[112%] -translate-x-1/2 -translate-y-1/2 overflow-visible drop-shadow-[0_0_10px_rgba(214,179,106,0.18)]"
             viewBox="0 0 1600 360"
@@ -148,7 +148,7 @@ export function Testimonials() {
         </div>
 
         <motion.div
-          className="relative mx-auto mt-[clamp(2rem,4svh,3rem)] grid max-w-[820px] grid-cols-[auto_1fr_auto] items-center gap-6 text-center"
+          className="relative mx-auto mt-[clamp(1.35rem,3svh,2.15rem)] grid max-w-[980px] grid-cols-[auto_1fr_auto] items-center gap-[clamp(1rem,3vw,2rem)] rounded-full border border-white/[0.07] bg-black/20 px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.75rem,2vw,1rem)] text-center shadow-[0_18px_70px_rgba(0,0,0,0.24)] backdrop-blur-sm"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
@@ -156,7 +156,7 @@ export function Testimonials() {
         >
           <motion.button
             aria-label="Previous testimonial"
-            className="grid size-12 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/20 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8"
+            className="grid size-11 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/25 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8 md:size-12"
             onClick={previousTestimonial}
             whileHover={{ x: -3, scale: 1.06 }}
             whileTap={{ scale: 0.94 }}
@@ -166,7 +166,7 @@ export function Testimonials() {
           </motion.button>
           <motion.p
             key={featured.quote}
-            className="mx-auto max-w-[46rem] text-sm leading-6 text-[#f8edd7]/64 md:text-[1.05rem] md:leading-7"
+            className="mx-auto max-w-[52rem] text-sm leading-6 text-[#f8edd7]/68 md:text-[1.02rem] md:leading-7"
             initial={{ opacity: 0, y: 12, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
@@ -175,7 +175,7 @@ export function Testimonials() {
           </motion.p>
           <motion.button
             aria-label="Next testimonial"
-            className="grid size-12 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/20 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8"
+            className="grid size-11 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/25 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8 md:size-12"
             onClick={nextTestimonial}
             whileHover={{ x: 3, scale: 1.06 }}
             whileTap={{ scale: 0.94 }}

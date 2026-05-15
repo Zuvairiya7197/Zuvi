@@ -1,29 +1,29 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
 
 const navItems = [
-  { id: "top", label: "Overview" },
-  { id: "trust", label: "Trust" },
-  { id: "services", label: "Services" },
-  { id: "projects", label: "Projects" },
-  { id: "contact", label: "Contact" }
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  { href: "/work", label: "Projects" },
+  { href: "/contact", label: "Contact" }
 ];
 
 function NavItem({
-  id,
+  href,
   label,
   active
 }: {
-  id: string;
+  href: string;
   label: string;
   active: boolean;
 }) {
   return (
-    <a
-      href={`#${id}`}
+    <Link
+      href={href}
       aria-current={active ? "true" : undefined}
       className="group grid grid-cols-[4.4rem_2rem] items-center gap-2 outline-none"
     >
@@ -41,42 +41,12 @@ function NavItem({
           }`}
         />
       </span>
-    </a>
+    </Link>
   );
 }
 
 export function FloatingSectionNav() {
   const pathname = usePathname();
-  const [activeId, setActiveId] = useState("top");
-  const ids = useMemo(() => navItems.map((item) => item.id), []);
-
-  useEffect(() => {
-    if (pathname !== "/") return;
-
-    const sections = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
-    if (!sections.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible?.target.id) {
-          setActiveId(visible.target.id);
-        }
-      },
-      {
-        rootMargin: "-35% 0px -45% 0px",
-        threshold: [0.08, 0.18, 0.32, 0.5]
-      }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, [ids, pathname]);
-
-  if (pathname !== "/") return null;
 
   return (
     <motion.nav
@@ -88,7 +58,12 @@ export function FloatingSectionNav() {
     >
       <div className="grid gap-3">
         {navItems.map((item) => (
-          <NavItem key={item.id} id={item.id} label={item.label} active={activeId === item.id} />
+          <NavItem
+            key={item.href}
+            href={item.href}
+            label={item.label}
+            active={item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)}
+          />
         ))}
       </div>
     </motion.nav>

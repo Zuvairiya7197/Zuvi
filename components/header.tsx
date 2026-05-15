@@ -3,9 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const heroNavItems = [
+  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   { href: "/work", label: "Projects" },
@@ -14,9 +15,23 @@ const heroNavItems = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [open]);
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 px-4 pt-4 md:px-6 xl:px-8 xl:pt-5">
+    <header ref={headerRef} className="fixed left-0 right-0 top-0 z-50 px-4 pt-4 md:px-6 xl:px-8 xl:pt-5">
       <div className="mx-auto grid max-w-[1820px] grid-cols-[1fr_auto] items-start gap-4 xl:grid-cols-[auto_1fr_auto]">
         <div className="hidden items-start gap-5 xl:flex">
           <button

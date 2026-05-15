@@ -183,12 +183,20 @@ const socialMediaDesignProjects = [
 ].map((project, index) => ({
   ...project,
   industry: "Graphic Design",
-  problem: "The social creative needed a clear, scroll-ready visual that could communicate quickly in-feed.",
-  solution: "Designed a social media graphic with focused hierarchy, platform-friendly sizing, and polished visual balance.",
-  results: "A ready-to-post social asset that improves campaign visibility and brand presentation.",
-  category: "Social Media Designs",
+  problem: project.slug.includes("score-card")
+    ? "The score card creative needed a clear academic promotional layout that could present results and details quickly."
+    : "The social creative needed a clear, scroll-ready visual that could communicate quickly in-feed.",
+  solution: project.slug.includes("score-card")
+    ? "Designed a score card flyer with structured information, bold class branding, and share-ready visual hierarchy."
+    : "Designed a social media graphic with focused hierarchy, platform-friendly sizing, and polished visual balance.",
+  results: project.slug.includes("score-card")
+    ? "A polished score card flyer built for quick recognition and easy digital circulation."
+    : "A ready-to-post social asset that improves campaign visibility and brand presentation.",
+  category: project.slug.includes("score-card") ? "Flyer Design" : "Social Media Designs",
   accent: index % 2 === 0 ? "from-[#d6b36a] to-[#111111]" : "from-[#d6b36a] to-[#8c6a3b]",
-  liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/fbcoverdesign"
+  liveUrl: project.slug.includes("score-card")
+    ? "https://zuvairiyamaryam.wixsite.com/my-site/poster-flyerdesign"
+    : "https://zuvairiyamaryam.wixsite.com/my-site/fbcoverdesign"
 }));
 
 export const projects = [
@@ -538,7 +546,7 @@ export const testimonials = [
       "Hi, I'm Kopal and I run my business called Organise with Kopal. I needed a website for my business and I already knew that Zuvairiya would be the right call. She delivered the website within 2 days - at an affordable price. All edits were done within minutes.",
     name: "Kopal Dhir",
     role: "Founder at Organise With Kopal",
-    image: "/project-organise-with-kopal.webp"
+    image: "/avatar-kopal.svg"
   },
   {
     title: "She understood my brand and made it look polished fast.",
@@ -546,7 +554,7 @@ export const testimonials = [
       "I own an appointment setting agency and get a lot of my leads from Facebook and LinkedIn, so I had an urgent requirement for professional covers. Zuvairiya delivered exceptionally beautiful and professional designs in no time, making sure everything matched my brand palette perfectly. Her turnaround time, quick edits, and patience were amazing. I can't recommend her enough - she's my go-to for all things graphic design.",
     name: "Shreya Batra",
     role: "Co-Founder @ Organic Appointments Agency",
-    image: "/project-graphic-smm-marketing-agency.png"
+    image: "/avatar-shreya.svg"
   }
 ];
 
