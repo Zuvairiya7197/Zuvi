@@ -6,12 +6,16 @@ import { motion, type PanInfo } from "framer-motion";
 import { useState } from "react";
 import { testimonials } from "@/lib/data";
 
-const avatarPositions = [
-  "left-[12%] top-[10%] size-[3.45rem] sm:left-[14%] sm:top-[20%] sm:size-[4rem] md:left-[8%] md:top-[20%] md:size-[4.7rem] lg:left-[16%] lg:top-[16%]",
-  "left-[18%] top-[58%] size-[3.65rem] sm:left-[34%] sm:top-[60%] sm:size-[4.5rem] md:left-[31%] md:top-[61%] md:size-[5.15rem] lg:left-[36%] lg:top-[62%]",
-  "right-[23%] top-[22%] size-[4rem] sm:left-[50%] sm:right-auto sm:top-[32%] sm:size-[5.2rem] sm:-translate-x-1/2 md:left-[55%] md:top-[30%] md:size-[5.9rem] lg:left-1/2 lg:top-[33%]",
-  "right-[12%] top-[60%] size-[3.6rem] sm:right-[14%] sm:top-[22%] sm:size-[4.55rem] md:right-[8%] md:top-[22%] md:size-[5.25rem] lg:right-[16%] lg:top-[18%]"
+const avatarSlots = [
+  "sm:left-1/2 sm:top-[32%] sm:size-[5.2rem] sm:-translate-x-1/2 md:top-[30%] md:size-[5.9rem] lg:top-[31%] lg:size-[6.35rem]",
+  "sm:left-[74%] sm:top-[20%] sm:size-[4.55rem] md:left-[82%] md:top-[22%] md:size-[5.25rem] lg:left-[73%] lg:top-[19%] lg:size-[5.1rem]",
+  "sm:left-[62%] sm:top-[61%] sm:size-[4.5rem] md:left-[70%] md:top-[62%] md:size-[5.15rem] lg:left-[64%] lg:top-[62%] lg:size-[4.85rem]",
+  "sm:left-[22%] sm:top-[60%] sm:size-[4.5rem] md:left-[16%] md:top-[61%] md:size-[5.15rem] lg:left-[28%] lg:top-[60%] lg:size-[4.85rem]"
 ];
+
+function getAvatarSlot(index: number, activeIndex: number) {
+  return avatarSlots[(index - activeIndex + testimonials.length) % testimonials.length];
+}
 
 const dotPositions = [
   "left-[23%] top-[58%] md:left-[18%] md:top-[59%] lg:left-[23%]",
@@ -23,7 +27,7 @@ const dotPositions = [
 ];
 
 export function Testimonials() {
-  const [activeAvatarIndex, setActiveAvatarIndex] = useState(2);
+  const [activeAvatarIndex, setActiveAvatarIndex] = useState(0);
   const activeIndex = activeAvatarIndex % testimonials.length;
   const featured = testimonials[activeIndex];
   const nextTestimonial = () => setActiveAvatarIndex((index) => (index + 1) % testimonials.length);
@@ -66,7 +70,7 @@ export function Testimonials() {
 
         <div className="relative -mx-4 mt-[clamp(2.25rem,4svh,3rem)] h-[17rem] sm:-mx-[clamp(1.25rem,4vw,4rem)] sm:mt-[clamp(2rem,4svh,3rem)] sm:h-[clamp(16rem,28svh,18.75rem)] md:h-[20rem] lg:h-[clamp(16rem,28svh,18.75rem)]">
           <svg
-            className="absolute left-1/2 top-[50%] h-full w-[145%] -translate-x-1/2 -translate-y-1/2 overflow-visible drop-shadow-[0_0_10px_rgba(214,179,106,0.18)] sm:w-[112%] md:w-[104%] lg:w-[112%]"
+            className="absolute left-1/2 top-[50%] h-full w-[112%] -translate-x-1/2 -translate-y-1/2 overflow-visible drop-shadow-[0_0_10px_rgba(214,179,106,0.18)]"
             viewBox="0 0 1600 360"
             fill="none"
             aria-hidden="true"
@@ -107,7 +111,7 @@ export function Testimonials() {
           {dotPositions.map((position, index) => (
             <motion.span
               key={position}
-              className={`absolute z-20 size-2.5 rounded-full bg-[#f4d79d] shadow-[0_0_12px_rgba(244,215,157,0.56),0_0_22px_rgba(214,179,106,0.24)] md:size-3.5 ${position}`}
+              className={`absolute z-20 size-3.5 rounded-full bg-[#f4d79d] shadow-[0_0_12px_rgba(244,215,157,0.56),0_0_22px_rgba(214,179,106,0.24)] ${position}`}
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
               animate={{ opacity: [0.45, 0.85, 0.45], scale: [1, 1.12, 1] }}
@@ -116,7 +120,7 @@ export function Testimonials() {
             />
           ))}
 
-          <div className="absolute left-1/2 top-1/2 z-40 size-[5.8rem] -translate-x-1/2 -translate-y-1/2 sm:hidden">
+          <div className="absolute left-1/2 top-1/2 z-40 size-[6.7rem] -translate-x-1/2 -translate-y-1/2 sm:hidden">
             <motion.button
               key={featured.name}
               type="button"
@@ -134,7 +138,7 @@ export function Testimonials() {
                 src={featured.image}
                 alt=""
                 fill
-                sizes="96px"
+                sizes="108px"
                 className="object-cover saturate-[0.82] contrast-[1.08]"
               />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_20%,rgba(255,255,255,0.22),transparent_28%),linear-gradient(180deg,transparent,rgba(0,0,0,0.24))]" />
@@ -142,7 +146,7 @@ export function Testimonials() {
           </div>
 
           {testimonials.map((testimonial, index) => {
-            const position = avatarPositions[index];
+            const position = getAvatarSlot(index, activeIndex);
             const isActive = index === activeAvatarIndex;
 
             return (
@@ -150,7 +154,7 @@ export function Testimonials() {
               key={testimonial.name}
               type="button"
               aria-label={`Show testimonial from ${testimonial.name}`}
-              className={`absolute z-30 hidden overflow-hidden rounded-full border bg-[#060503] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f8dca5]/80 sm:block ${isActive ? "border-[#f8dca5]/80 ring-2 ring-[#f8dca5]/70 ring-offset-[3px] ring-offset-[#080604] shadow-[0_18px_48px_rgba(0,0,0,0.5),0_0_28px_rgba(244,215,157,0.2)]" : "border-[#f4d79d]/42 shadow-[0_14px_34px_rgba(0,0,0,0.42),0_0_16px_rgba(214,179,106,0.1)]"} ${position}`}
+              className={`absolute z-30 hidden overflow-hidden rounded-full border bg-[#060503] transition-all duration-500 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f8dca5]/80 sm:block ${isActive ? "border-[#f8dca5]/80 ring-2 ring-[#f8dca5]/70 ring-offset-[3px] ring-offset-[#080604] shadow-[0_18px_48px_rgba(0,0,0,0.5),0_0_28px_rgba(244,215,157,0.2)]" : "border-[#f4d79d]/42 shadow-[0_14px_34px_rgba(0,0,0,0.42),0_0_16px_rgba(214,179,106,0.1)]"} ${position}`}
               onClick={() => setActiveAvatarIndex(index)}
               initial={{ opacity: 0, y: 24, scale: 0.88 }}
               whileInView={{ opacity: 1 }}
@@ -177,7 +181,7 @@ export function Testimonials() {
         </div>
 
         <motion.div
-          className="relative mx-auto mt-[clamp(1.25rem,3svh,2.15rem)] grid max-w-[980px] grid-cols-[auto_1fr_auto] items-center gap-3 rounded-3xl border border-white/[0.07] bg-black/20 px-3 py-3 text-center shadow-[0_18px_70px_rgba(0,0,0,0.24)] backdrop-blur-sm sm:gap-[clamp(1rem,3vw,2rem)] sm:rounded-full sm:px-[clamp(0.75rem,2vw,1rem)] sm:py-[clamp(0.75rem,2vw,1rem)]"
+          className="relative mx-auto mt-[clamp(1.25rem,3svh,2.15rem)] grid max-w-[980px] grid-cols-[auto_1fr_auto] items-center gap-3 px-0 py-3 text-center sm:gap-[clamp(1rem,3vw,2rem)] sm:px-[clamp(0.75rem,2vw,1rem)] sm:py-[clamp(0.75rem,2vw,1rem)]"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}

@@ -551,20 +551,20 @@ export const graphicWorkCategories = [
 
 export const testimonials = [
   {
-    title: "Our coaching website finally had everything parents needed.",
-    quote:
-      "WBYB (we build your brands) develop our classes website (smclasses.in) which exceeds our expectations.. Website covers all informative content which were basically required for growth of any coaching classes..the best part is whenever modifications required they do immediately and with lots of ideas.. We recommend WBYB for anyone who like to build best website for their business..",
-    name: "Saquib Dalvi",
-    role: "Education Brand",
-    image: "/wbyb-sm-classes-founder.webp"
-  },
-  {
     title: "My work now feels easier to share and explain.",
     quote:
       "The portfolio website gave my work a sharper, more polished presence online. It became much easier to share my projects, explain what I do, and make a strong first impression with clients.",
     name: "Zarrar Palekar",
     role: "Portfolio Website Client",
     image: "/wbyb-zarrar-photo.webp"
+  },
+  {
+    title: "Our coaching website finally had everything parents needed.",
+    quote:
+      "WBYB (we build your brands) develop our classes website (smclasses.in) which exceeds our expectations.. Website covers all informative content which were basically required for growth of any coaching classes..the best part is whenever modifications required they do immediately and with lots of ideas.. We recommend WBYB for anyone who like to build best website for their business..",
+    name: "Saquib Dalvi",
+    role: "Education Brand",
+    image: "/wbyb-sm-classes-founder.webp"
   },
   {
     title: "My website was live in two days, without the stress.",
