@@ -69,14 +69,18 @@ function LinkedInLogo({ className }: SocialIconProps) {
 }
 
 const footerSocials = [
-  { label: "WhatsApp", href: "https://wa.me/19092765351", icon: WhatsAppLogo },
+  { label: "WhatsApp", href: "https://wa.me/919987448073", icon: WhatsAppLogo },
   {
     label: "Instagram",
-    href: "https://www.instagram.com",
+    href: "https://www.instagram.com/_zuvi___/",
     icon: InstagramLogo,
   },
-  { label: "Email", href: "mailto:hello@zuvi.studio", icon: MailLogo },
-  { label: "LinkedIn", href: "https://www.linkedin.com", icon: LinkedInLogo },
+  { label: "Email", href: "mailto:zuvairiyamaryam@gmail.com", icon: MailLogo },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/zuvairiya-maryam/",
+    icon: LinkedInLogo,
+  },
 ];
 
 export function ContactSection() {
@@ -124,6 +128,14 @@ export function ContactSection() {
             <span className="text-[#d6b36a]">(c)</span> Zuvairiya Maryam. All
             rights reserved 2026
           </p>
+          <div className="flex flex-col gap-1 md:items-center">
+            <a
+              href="mailto:zuvairiyamaryam@gmail.com"
+              className="transition hover:text-[#d6b36a]"
+            >
+              zuvairiyamaryam@gmail.com
+            </a>
+          </div>
           <div className="flex items-center gap-3">
             {footerSocials.map((social) => {
               const Icon = social.icon;

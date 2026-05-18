@@ -47,7 +47,7 @@ export function Hero() {
       <div className="relative z-10 mx-auto min-h-[calc(100svh-6.25rem)] max-w-[1680px] max-xl:flex max-xl:flex-col max-xl:items-center max-xl:justify-between md:min-h-[calc(100svh-6.75rem)] 2xl:min-h-[calc(100svh-9rem)] 2xl:max-w-[1820px]">
         <motion.div
           style={{ x: headlineX, y: headlineY }}
-          className="mx-auto max-w-[760px] text-center max-sm:pt-4 2xl:max-w-[940px]"
+          className="mx-auto max-w-[760px] pt-8 text-center sm:pt-10 md:pt-12 xl:pt-6 2xl:max-w-[940px]"
           initial={{ opacity: 0, y: 36, filter: "blur(12px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}

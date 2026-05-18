@@ -31,7 +31,7 @@ export function Header() {
   }, [open]);
 
   return (
-    <header ref={headerRef} className="fixed left-0 right-0 top-0 z-50 border-b border-[#d6b36a]/12 bg-black/78 px-4 pb-3 pt-3 shadow-[0_16px_45px_rgba(0,0,0,0.28)] backdrop-blur-xl md:px-6 md:pb-4 md:pt-4 xl:border-b-0 xl:bg-transparent xl:px-8 xl:pb-0 xl:pt-5 xl:shadow-none xl:backdrop-blur-none">
+    <header ref={headerRef} className="fixed left-0 right-0 top-0 z-50 border-b border-[#d6b36a]/12 bg-black/78 px-4 pb-3 pt-3 shadow-[0_16px_45px_rgba(0,0,0,0.28)] backdrop-blur-xl md:px-6 md:pb-4 md:pt-4 xl:px-8 xl:pb-4 xl:pt-5">
       <div className="mx-auto grid max-w-[1820px] grid-cols-[1fr_auto] items-start gap-4 xl:grid-cols-[auto_1fr_auto]">
         <div className="hidden items-start gap-5 xl:flex">
           <button
