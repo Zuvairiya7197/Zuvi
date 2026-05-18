@@ -31,7 +31,7 @@ export function Header() {
   }, [open]);
 
   return (
-    <header ref={headerRef} className="fixed left-0 right-0 top-0 z-50 px-4 pt-4 md:px-6 xl:px-8 xl:pt-5">
+    <header ref={headerRef} className="fixed left-0 right-0 top-0 z-50 px-4 pt-3 md:px-6 md:pt-4 xl:px-8 xl:pt-5">
       <div className="mx-auto grid max-w-[1820px] grid-cols-[1fr_auto] items-start gap-4 xl:grid-cols-[auto_1fr_auto]">
         <div className="hidden items-start gap-5 xl:flex">
           <button
@@ -79,10 +79,10 @@ export function Header() {
 
         <Link href="/" className="flex items-start gap-3 leading-none xl:hidden" aria-label="Zuvairiya Maryam portfolio home">
           <span>
-            <span className="block font-display text-[clamp(2rem,8vw,2.65rem)] font-bold tracking-[0.04em] text-[#d6b36a] 2xl:text-[3.2rem]">
+            <span className="block font-display text-[clamp(1.8rem,7vw,2.65rem)] font-bold tracking-[0.04em] text-[#d6b36a] 2xl:text-[3.2rem]">
               ZUVI.
             </span>
-            <span className="mt-1 block text-xs font-medium tracking-[0.04em] text-[#f5f1e8]/45 2xl:text-sm">
+            <span className="mt-0.5 block text-[0.68rem] font-medium tracking-[0.04em] text-[#f5f1e8]/45 sm:mt-1 sm:text-xs 2xl:text-sm">
               Zuvairiya Maryam
             </span>
           </span>
@@ -121,7 +121,7 @@ export function Header() {
 
         <button
           type="button"
-          className="mt-2 inline-flex h-11 w-11 items-center justify-center justify-self-end rounded-full border border-white/15 xl:hidden"
+          className="mt-1 inline-flex h-11 w-11 items-center justify-center justify-self-end rounded-full border border-white/15 bg-black/25 backdrop-blur-md xl:hidden"
           aria-label="Toggle navigation"
           onClick={() => setOpen((value) => !value)}
         >

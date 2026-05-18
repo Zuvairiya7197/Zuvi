@@ -7,19 +7,19 @@ import { useState } from "react";
 import { testimonials } from "@/lib/data";
 
 const avatarPositions = [
-  "left-[18%] top-[20%] size-[4rem] md:size-[4.7rem]",
-  "left-[36%] top-[58%] size-[4.5rem] md:size-[5.15rem]",
-  "left-1/2 top-[32%] size-[5.2rem] -translate-x-1/2 md:size-[5.9rem]",
-  "right-[18%] top-[22%] size-[4.55rem] md:size-[5.25rem]"
+  "left-[7%] top-[16%] size-[3.85rem] sm:left-[18%] sm:top-[20%] sm:size-[4rem] md:size-[4.7rem]",
+  "left-[29%] top-[58%] size-[4.1rem] sm:left-[36%] sm:size-[4.5rem] md:size-[5.15rem]",
+  "left-[50%] top-[29%] size-[4.85rem] -translate-x-1/2 sm:top-[32%] sm:size-[5.2rem] md:size-[5.9rem]",
+  "right-[7%] top-[17%] size-[4.05rem] sm:right-[18%] sm:top-[22%] sm:size-[4.55rem] md:size-[5.25rem]"
 ];
 
 const dotPositions = [
-  "left-[23%] top-[58%]",
-  "left-[37.4%] top-[34%]",
-  "left-[56%] top-[41%]",
-  "right-[31%] top-[70%]",
-  "right-[21%] top-[24%]",
-  "right-[7.5%] top-[47%]"
+  "left-[12%] top-[62%] sm:left-[23%] sm:top-[58%]",
+  "left-[31%] top-[34%] sm:left-[37.4%]",
+  "left-[58%] top-[42%] sm:left-[56%] sm:top-[41%]",
+  "right-[25%] top-[70%] sm:right-[31%]",
+  "right-[12%] top-[25%] sm:right-[21%] sm:top-[24%]",
+  "right-[3%] top-[48%] sm:right-[7.5%] sm:top-[47%]"
 ];
 
 export function Testimonials() {
@@ -30,8 +30,8 @@ export function Testimonials() {
   const previousTestimonial = () => setActiveAvatarIndex((index) => (index - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="section-line testimonial-luxe-stage relative overflow-hidden px-[clamp(1rem,5vw,4.5rem)] py-[clamp(2.5rem,6svh,4.25rem)] text-[#f7efe0]">
-      <div className="relative z-10 mx-auto min-h-[clamp(36rem,78svh,43rem)] max-w-[1500px] px-[clamp(1.25rem,4vw,4rem)] py-[clamp(3.5rem,6svh,5.25rem)]">
+    <section className="section-line testimonial-luxe-stage relative overflow-hidden px-4 pb-[clamp(3rem,7svh,4.25rem)] pt-[clamp(6.5rem,14svh,7.5rem)] text-[#f7efe0] sm:px-[clamp(1rem,5vw,4.5rem)] md:py-[clamp(2.5rem,6svh,4.25rem)]">
+      <div className="relative z-10 mx-auto min-h-[clamp(38rem,78svh,43rem)] max-w-[1500px] px-0 py-0 sm:px-[clamp(1.25rem,4vw,4rem)] sm:py-[clamp(3.5rem,6svh,5.25rem)]">
         <motion.div
           className="relative mx-auto max-w-[620px] text-center"
           initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
@@ -39,18 +39,18 @@ export function Testimonials() {
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="font-sans text-[clamp(2rem,3.2vw,2.85rem)] font-medium leading-[1.02] tracking-[-0.045em] text-[#f5f1e8] drop-shadow-[0_0_30px_rgba(244,215,157,0.12)]">
+          <h2 className="font-sans text-[clamp(2.35rem,11vw,3.4rem)] font-medium leading-[0.98] tracking-[-0.04em] text-[#f5f1e8] drop-shadow-[0_0_30px_rgba(244,215,157,0.12)] sm:text-[clamp(2rem,3.2vw,2.85rem)] sm:leading-[1.02] sm:tracking-[-0.045em]">
             What Clients
             <span className="block bg-gradient-to-b from-[#f5f1e8] to-[#d6b36a] bg-clip-text text-transparent">
               Experience
             </span>
           </h2>
-          <p className="mx-auto mt-5 max-w-[31rem] text-sm leading-6 text-[#f8edd7]/54 md:text-base">
+          <p className="mx-auto mt-4 max-w-[28rem] text-sm leading-6 text-[#f8edd7]/54 sm:mt-5 sm:max-w-[31rem] md:text-base">
             Refined brand systems, precise execution, and digital moments that feel unmistakably considered.
           </p>
           <motion.a
             href="#contact"
-            className="group relative mt-6 inline-flex overflow-hidden rounded-full border border-[#f8dca5]/40 bg-gradient-to-br from-[#f8dca5] via-[#d6b36a] to-[#8b6534] px-6 py-2.5 text-sm font-semibold text-[#070604] shadow-[0_12px_34px_rgba(214,179,106,0.24)]"
+            className="group relative mt-6 inline-flex min-h-12 overflow-hidden rounded-full border border-[#f8dca5]/40 bg-gradient-to-br from-[#f8dca5] via-[#d6b36a] to-[#8b6534] px-8 py-3 text-base font-semibold text-[#070604] shadow-[0_12px_34px_rgba(214,179,106,0.24)] sm:min-h-0 sm:px-6 sm:py-2.5 sm:text-sm"
             whileHover={{ y: -3, scale: 1.035 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 260, damping: 18 }}
@@ -60,9 +60,9 @@ export function Testimonials() {
           </motion.a>
         </motion.div>
 
-        <div className="relative -mx-[clamp(1.25rem,4vw,4rem)] mt-[clamp(2rem,4svh,3rem)] h-[clamp(16rem,28svh,18.75rem)]">
+        <div className="relative -mx-4 mt-[clamp(2.25rem,4svh,3rem)] h-[clamp(15rem,29svh,18.75rem)] sm:-mx-[clamp(1.25rem,4vw,4rem)] sm:mt-[clamp(2rem,4svh,3rem)] sm:h-[clamp(16rem,28svh,18.75rem)]">
           <svg
-            className="absolute left-1/2 top-[50%] h-full w-[112%] -translate-x-1/2 -translate-y-1/2 overflow-visible drop-shadow-[0_0_10px_rgba(214,179,106,0.18)]"
+            className="absolute left-1/2 top-[50%] h-full w-[145%] -translate-x-1/2 -translate-y-1/2 overflow-visible drop-shadow-[0_0_10px_rgba(214,179,106,0.18)] sm:w-[112%]"
             viewBox="0 0 1600 360"
             fill="none"
             aria-hidden="true"
@@ -148,7 +148,7 @@ export function Testimonials() {
         </div>
 
         <motion.div
-          className="relative mx-auto mt-[clamp(1.35rem,3svh,2.15rem)] grid max-w-[980px] grid-cols-[auto_1fr_auto] items-center gap-[clamp(1rem,3vw,2rem)] rounded-full border border-white/[0.07] bg-black/20 px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.75rem,2vw,1rem)] text-center shadow-[0_18px_70px_rgba(0,0,0,0.24)] backdrop-blur-sm"
+          className="relative mx-auto mt-[clamp(1.25rem,3svh,2.15rem)] grid max-w-[980px] grid-cols-[auto_1fr_auto] items-center gap-3 rounded-3xl border border-white/[0.07] bg-black/20 px-3 py-3 text-center shadow-[0_18px_70px_rgba(0,0,0,0.24)] backdrop-blur-sm sm:gap-[clamp(1rem,3vw,2rem)] sm:rounded-full sm:px-[clamp(0.75rem,2vw,1rem)] sm:py-[clamp(0.75rem,2vw,1rem)]"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
@@ -156,7 +156,7 @@ export function Testimonials() {
         >
           <motion.button
             aria-label="Previous testimonial"
-            className="grid size-11 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/25 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8 md:size-12"
+            className="grid size-10 shrink-0 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/25 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8 sm:size-11 md:size-12"
             onClick={previousTestimonial}
             whileHover={{ x: -3, scale: 1.06 }}
             whileTap={{ scale: 0.94 }}
@@ -175,7 +175,7 @@ export function Testimonials() {
           </motion.p>
           <motion.button
             aria-label="Next testimonial"
-            className="grid size-11 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/25 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8 md:size-12"
+            className="grid size-10 shrink-0 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/25 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8 sm:size-11 md:size-12"
             onClick={nextTestimonial}
             whileHover={{ x: 3, scale: 1.06 }}
             whileTap={{ scale: 0.94 }}

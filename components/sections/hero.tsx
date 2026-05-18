@@ -18,14 +18,14 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="story-hero relative min-h-[100svh] overflow-hidden px-4 pb-5 pt-[clamp(6.25rem,13svh,7.5rem)] md:px-6 xl:px-8 2xl:pt-32"
+      className="story-hero relative min-h-[100svh] overflow-hidden px-4 pb-5 pt-[clamp(5.9rem,15svh,7.5rem)] md:px-6 md:pt-[clamp(6.25rem,13svh,7.5rem)] xl:px-8 2xl:pt-32"
       onPointerMove={(event) => {
         const rect = event.currentTarget.getBoundingClientRect();
         pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
         pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
       }}
     >
-      <div className="pointer-events-none absolute bottom-0 left-1/2 z-0 aspect-[1672/941] w-[min(82vw,58rem)] -translate-x-1/2">
+      <div className="pointer-events-none absolute bottom-0 left-1/2 z-0 aspect-[1672/941] w-[min(93vw,58rem)] -translate-x-1/2 md:w-[min(82vw,58rem)]">
         <Image
           src="/Hero Image.png"
           alt=""
@@ -36,18 +36,18 @@ export function Hero() {
           aria-hidden="true"
         />
       </div>
-      <div className="relative z-10 mx-auto min-h-[calc(100svh-6.75rem)] max-w-[1680px] max-xl:flex max-xl:flex-col max-xl:items-center max-xl:justify-between 2xl:min-h-[calc(100svh-9rem)] 2xl:max-w-[1820px]">
+      <div className="relative z-10 mx-auto min-h-[calc(100svh-6.25rem)] max-w-[1680px] max-xl:flex max-xl:flex-col max-xl:items-center max-xl:justify-between md:min-h-[calc(100svh-6.75rem)] 2xl:min-h-[calc(100svh-9rem)] 2xl:max-w-[1820px]">
         <motion.div
           style={{ x: headlineX, y: headlineY }}
-          className="mx-auto max-w-[760px] text-center 2xl:max-w-[940px]"
+          className="mx-auto max-w-[760px] text-center max-sm:pt-4 2xl:max-w-[940px]"
           initial={{ opacity: 0, y: 36, filter: "blur(12px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="mx-auto flex max-w-[92vw] items-center justify-center gap-3 text-[0.62rem] font-black uppercase tracking-[0.26em] text-[#d6b36a] md:text-xs md:tracking-[0.44em] 2xl:text-sm">
+          <p className="mx-auto flex max-w-[92vw] items-center justify-center gap-2 text-[0.58rem] font-black uppercase tracking-[0.22em] text-[#d6b36a] sm:gap-3 md:text-xs md:tracking-[0.44em] 2xl:text-sm">
             Design is thinking made visual. <Sparkle size={18} />
           </p>
-          <h1 className="mt-4 font-sans text-[clamp(3rem,14vw,8rem)] font-black uppercase leading-[0.9] tracking-[-0.045em] text-[#f5f1e8] md:text-[clamp(4rem,9vw,8rem)] xl:text-[clamp(3.2rem,5.7vw,6.8rem)] 2xl:mt-6 2xl:text-[clamp(4rem,6.9vw,8.4rem)] 2xl:leading-[0.96]">
+          <h1 className="mt-4 font-sans text-[clamp(3.35rem,13.4vw,8rem)] font-black uppercase leading-[0.9] tracking-[-0.035em] text-[#f5f1e8] md:text-[clamp(4rem,9vw,8rem)] md:tracking-[-0.045em] xl:text-[clamp(3.2rem,5.7vw,6.8rem)] 2xl:mt-6 2xl:text-[clamp(4rem,6.9vw,8.4rem)] 2xl:leading-[0.96]">
             Designs that
             <span className="block">
               tell <span className="bg-gradient-to-b from-[#f8ddb0] to-[#9a6a30] bg-clip-text text-transparent">stories.</span>
@@ -55,7 +55,7 @@ export function Hero() {
           </h1>
           <Link
             href="/contact"
-            className="mx-auto mt-5 inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-br from-[#f7d79a] to-[#a67235] px-5 py-3 text-sm font-bold text-black shadow-[0_18px_55px_rgba(0,0,0,0.32)] xl:hidden"
+            className="mx-auto mt-5 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-gradient-to-br from-[#f7d79a] to-[#a67235] px-6 py-3 text-sm font-bold text-black shadow-[0_18px_55px_rgba(0,0,0,0.32)] sm:px-7 xl:hidden"
           >
             Start a Project <ArrowRight size={18} />
           </Link>

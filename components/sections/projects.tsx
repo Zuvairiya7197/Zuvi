@@ -164,16 +164,16 @@ export function FeaturedProjects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="section-line relative min-h-[116svh] overflow-hidden bg-black px-[clamp(1.5rem,4vw,4rem)] py-[clamp(3rem,6vw,5rem)] text-[#f5f1e8]"
+      className="section-line relative min-h-[100svh] overflow-hidden bg-black px-[clamp(1.25rem,4vw,4rem)] py-[clamp(4.75rem,10svh,5rem)] text-[#f5f1e8] lg:min-h-[116svh] lg:py-[clamp(3rem,6vw,5rem)]"
       onWheel={handleWheel}
     >
       <div ref={lightRef} className="pointer-events-none absolute inset-0 bg-black" />
       <div className="pointer-events-none absolute -left-[18vw] top-0 h-[140vh] w-[70vw] rotate-[-42deg] bg-black/18" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent" />
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(116svh-10rem)] max-w-[1700px] flex-col">
+      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-9.5rem)] max-w-[1700px] flex-col lg:min-h-[calc(116svh-10rem)]">
         <motion.div
-          className="relative flex flex-1 cursor-grab items-center active:cursor-grabbing"
+          className="relative flex flex-1 cursor-grab items-center active:cursor-grabbing max-lg:items-start"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.12}
@@ -182,13 +182,13 @@ export function FeaturedProjects() {
         >
           <div
             ref={numberRef}
-            className="pointer-events-none absolute left-[8vw] top-[2svh] z-0 font-sans text-[clamp(8rem,18vw,19rem)] font-black leading-none tracking-[-0.09em] text-[#f5f1e8]/[0.075]"
+            className="pointer-events-none absolute left-[2vw] top-0 z-0 font-sans text-[clamp(7rem,38vw,10rem)] font-black leading-none tracking-[-0.08em] text-[#f5f1e8]/[0.06] md:left-[8vw] md:top-[2svh] md:text-[clamp(8rem,18vw,19rem)] md:tracking-[-0.09em] md:text-[#f5f1e8]/[0.075]"
           >
             {String(activeIndex + 1).padStart(2, "0")}
           </div>
 
-          <div className="relative z-10 mx-auto grid w-full max-w-[1360px] items-center gap-8 lg:grid-cols-[1fr_minmax(28rem,48rem)_0.52fr]">
-            <div className="relative z-30 min-h-[12rem] lg:-mr-[11rem]">
+          <div className="relative z-10 mx-auto grid w-full max-w-[1360px] items-start gap-8 lg:grid-cols-[1fr_minmax(28rem,48rem)_0.52fr] lg:items-center">
+            <div className="relative z-30 min-h-0 lg:-mr-[11rem] lg:min-h-[12rem]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeProject.slug}
@@ -197,10 +197,10 @@ export function FeaturedProjects() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <p data-project-meta className="mb-5 text-xs font-black uppercase tracking-[0.22em] text-[#d6b36a]">
+                  <p data-project-meta className="mb-5 text-[0.68rem] font-black uppercase tracking-[0.22em] text-[#d6b36a] sm:text-xs">
                     {activeProject.industry}
                   </p>
-                  <h2 ref={titleRef} className="max-w-[44rem] font-sans text-[clamp(3.6rem,8vw,7.9rem)] font-black leading-[0.88] tracking-[-0.075em] text-white drop-shadow-[0_14px_24px_rgba(0,0,0,0.55)]">
+                  <h2 ref={titleRef} className="max-w-[44rem] font-sans text-[clamp(3rem,15.5vw,4.7rem)] font-black leading-[0.9] tracking-[-0.055em] text-white drop-shadow-[0_14px_24px_rgba(0,0,0,0.55)] md:text-[clamp(3.6rem,8vw,7.9rem)] md:leading-[0.88] md:tracking-[-0.075em]">
                     {titleLines.map((line) => (
                       <span key={line} data-title-line className="block">
                         {line}
@@ -212,10 +212,10 @@ export function FeaturedProjects() {
                     href={activeProjectHref}
                     target={activeProjectTarget}
                     rel={activeProjectRel}
-                    className="group mt-8 inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.16em] text-[#f5f1e8]"
+                    className="group mt-7 inline-flex items-center gap-3 text-[0.68rem] font-black uppercase tracking-[0.16em] text-[#f5f1e8] sm:text-xs"
                   >
                     View Project
-                    <span className="relative h-px w-20 overflow-hidden bg-white/28">
+                    <span className="relative h-px w-14 overflow-hidden bg-white/28 sm:w-20">
                       <span className="absolute inset-y-0 left-0 w-full origin-left scale-x-50 bg-[#d6b36a] transition duration-500 group-hover:scale-x-100" />
                     </span>
                     <ArrowUpRight size={16} className="text-[#d6b36a] transition duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -230,9 +230,9 @@ export function FeaturedProjects() {
               target={activeProjectTarget}
               rel={activeProjectRel}
               aria-label={`Open ${activeProject.title}`}
-              className="relative z-20 block"
+              className="relative z-20 block w-full"
             >
-              <div className={`relative aspect-[1.55] overflow-hidden border border-white/10 bg-black shadow-[0_38px_120px_rgba(0,0,0,0.58)] transition duration-700 ${isAnimating ? "blur-[1px]" : "blur-0"}`}>
+              <div className={`relative aspect-[1.55] overflow-hidden border border-white/10 bg-black shadow-[0_24px_70px_rgba(0,0,0,0.52)] transition duration-700 md:shadow-[0_38px_120px_rgba(0,0,0,0.58)] ${isAnimating ? "blur-[1px]" : "blur-0"}`}>
                 <AnimatePresence initial={false} mode="popLayout">
                   <motion.div
                     key={activeProject.image}
@@ -277,15 +277,15 @@ export function FeaturedProjects() {
           </div>
         </motion.div>
 
-        <div className="pb-2">
-          <div className="flex items-center gap-3">
+        <div className="pb-2 pt-5 lg:pt-0">
+          <div className="flex items-center justify-center gap-2 sm:justify-start sm:gap-3">
             {featuredProjects.map((project, index) => (
               <button
                 key={project.slug}
                 type="button"
                 aria-label={`Show ${project.title}`}
                 onClick={() => changeSlide(index)}
-                className="group h-6 w-14 py-2"
+                className="group h-6 w-10 py-2 sm:w-14"
               >
                 <span className="block h-px origin-left rounded-full bg-white/22">
                   <span
