@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, type PanInfo } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { testimonials } from "@/lib/data";
 
 const avatarSlots = [
@@ -15,6 +15,34 @@ const avatarSlots = [
 
 function getAvatarSlot(index: number, activeIndex: number) {
   return avatarSlots[(index - activeIndex + testimonials.length) % testimonials.length];
+}
+
+function TestimonialAvatarImage({ src, sizes }: { src?: string; sizes: string }) {
+  const [failed, setFailed] = useState(!src);
+
+  useEffect(() => {
+    setFailed(!src);
+  }, [src]);
+
+  if (failed || !src) {
+    return (
+      <div
+        className="absolute inset-0 bg-[radial-gradient(circle_at_35%_24%,rgba(248,220,165,0.16),transparent_34%),linear-gradient(145deg,rgba(245,241,232,0.08),rgba(214,179,106,0.08)_42%,rgba(0,0,0,0.34))]"
+        aria-hidden="true"
+      />
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt=""
+      fill
+      sizes={sizes}
+      className="object-cover saturate-[0.82] contrast-[1.08]"
+      onError={() => setFailed(true)}
+    />
+  );
 }
 
 const dotPositions = [
@@ -134,13 +162,7 @@ export function Testimonials() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             >
-              <Image
-                src={featured.image}
-                alt=""
-                fill
-                sizes="108px"
-                className="object-cover saturate-[0.82] contrast-[1.08]"
-              />
+              <TestimonialAvatarImage src={featured.image} sizes="108px" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_20%,rgba(255,255,255,0.22),transparent_28%),linear-gradient(180deg,transparent,rgba(0,0,0,0.24))]" />
             </motion.button>
           </div>
@@ -167,13 +189,7 @@ export function Testimonials() {
               }}
               whileHover={{ y: -7, scale: isActive ? 1.08 : 1.05 }}
             >
-              <Image
-                src={testimonial.image}
-                alt=""
-                fill
-                sizes="128px"
-                className="object-cover saturate-[0.82] contrast-[1.08]"
-              />
+              <TestimonialAvatarImage src={testimonial.image} sizes="128px" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_20%,rgba(255,255,255,0.22),transparent_28%),linear-gradient(180deg,transparent,rgba(0,0,0,0.24))]" />
             </motion.button>
             );
