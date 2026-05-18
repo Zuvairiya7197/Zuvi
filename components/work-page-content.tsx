@@ -169,14 +169,14 @@ function CategoryButton({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-full border px-3 py-1.5 text-[0.56rem] font-semibold uppercase tracking-[0.12em] transition duration-300 sm:px-3.5 sm:text-[0.62rem] ${
+      className={`whitespace-nowrap rounded-full border px-2.5 py-1.5 text-[0.5rem] font-semibold uppercase tracking-[0.08em] transition duration-300 sm:px-3 sm:text-[0.58rem] sm:tracking-[0.1em] md:px-3.5 md:text-[0.62rem] md:tracking-[0.12em] ${
         active
           ? "border-[#d5ad6f]/50 bg-[#d5ad6f]/12 text-[#f5d89d]"
           : "border-white/10 bg-black/10 text-neutral-500 hover:border-[#d5ad6f]/25 hover:bg-white/[0.025] hover:text-neutral-200"
       }`}
     >
       {label}
-      <span className="ml-2 opacity-60">{count}</span>
+      <span className="ml-1.5 opacity-60 sm:ml-2">{count}</span>
     </button>
   );
 }
@@ -287,7 +287,7 @@ export function WorkPageContent({
               </TabButton>
             </div>
 
-            <div className="flex max-w-5xl flex-wrap justify-center gap-2">
+            <div className="flex max-w-5xl flex-wrap justify-center gap-1.5 sm:gap-2">
               {activeMode === "website"
                 ? websiteCategories.map((category) => {
                     const count = websiteProjects.filter((project) => project.category === category).length;
