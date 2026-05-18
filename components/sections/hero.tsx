@@ -25,7 +25,7 @@ export function Hero() {
         pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
       }}
     >
-      <div className="pointer-events-none absolute bottom-0 left-1/2 z-0 aspect-[1672/941] w-[min(93vw,58rem)] -translate-x-1/2 md:w-[min(82vw,58rem)]">
+      <div className="pointer-events-none absolute bottom-0 left-1/2 z-0 aspect-[1672/941] w-[min(122vw,34rem)] -translate-x-1/2 md:w-[min(82vw,58rem)]">
         <Image
           src="/Hero Image.png"
           alt=""
