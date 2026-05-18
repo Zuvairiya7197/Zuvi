@@ -188,14 +188,25 @@ export function WorkPageContent({
   initialMode?: WorkMode;
   initialCategory?: string;
 }) {
-  const graphicProjects = projects.filter((project) => project.industry === "Graphic Design");
-  const websiteProjects = projects.filter((project) => project.industry !== "Graphic Design");
+  const graphicProjects = useMemo(() => projects.filter((project) => project.industry === "Graphic Design"), []);
+  const websiteProjects = useMemo(() => projects.filter((project) => project.industry !== "Graphic Design"), []);
   const websiteCategories = useMemo(
     () => Array.from(new Set(websiteProjects.map((project) => project.category))),
     [websiteProjects]
   );
-  const visibleGraphicCategories = graphicWorkCategories.filter((category) =>
-    graphicProjects.some((project) => project.category === category)
+  const websiteCategoryCounts = useMemo(
+    () => new Map(websiteCategories.map((category) => [category, websiteProjects.filter((project) => project.category === category).length])),
+    [websiteCategories, websiteProjects]
+  );
+  const visibleGraphicCategories = useMemo(
+    () => graphicWorkCategories.filter((category) =>
+      graphicProjects.some((project) => project.category === category)
+    ),
+    [graphicProjects]
+  );
+  const graphicCategoryCounts = useMemo(
+    () => new Map(visibleGraphicCategories.map((category) => [category, graphicProjects.filter((project) => project.category === category).length])),
+    [graphicProjects, visibleGraphicCategories]
   );
 
   const requestedMode = initialMode === "graphic" ? "graphic" : "website";
@@ -290,7 +301,7 @@ export function WorkPageContent({
             <div className="flex max-w-5xl flex-wrap justify-center gap-1.5 sm:gap-2">
               {activeMode === "website"
                 ? websiteCategories.map((category) => {
-                    const count = websiteProjects.filter((project) => project.category === category).length;
+                    const count = websiteCategoryCounts.get(category) ?? 0;
                     return (
                       <CategoryButton
                         key={category}
@@ -302,7 +313,7 @@ export function WorkPageContent({
                     );
                   })
                 : visibleGraphicCategories.map((category) => {
-                    const count = graphicProjects.filter((project) => project.category === category).length;
+                    const count = graphicCategoryCounts.get(category) ?? 0;
                     return (
                       <CategoryButton
                         key={category}

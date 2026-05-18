@@ -1,4 +1,4 @@
-import { ArrowUpRight, BadgeCheck, Brush, Box, CreditCard, Globe2, Megaphone, PenTool, ScrollText, Sparkles, Tags } from "lucide-react";
+import { ArrowUpRight, BadgeCheck, Brush, CreditCard, Globe2, Megaphone, PenTool, ScrollText, Sparkles, Tags } from "lucide-react";
 
 export const navItems = [
   { href: "/work", label: "Work" },
