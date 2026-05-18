@@ -169,7 +169,7 @@ function CategoryButton({
     <button
       type="button"
       onClick={onClick}
-      className={`whitespace-nowrap rounded-full border px-2.5 py-1.5 text-[0.5rem] font-semibold uppercase tracking-[0.08em] transition duration-300 sm:px-3 sm:text-[0.58rem] sm:tracking-[0.1em] md:px-3.5 md:text-[0.62rem] md:tracking-[0.12em] ${
+      className={`whitespace-nowrap rounded-full border px-2 py-1.5 text-[0.44rem] font-semibold tracking-[0.06em] transition duration-300 sm:px-3 sm:text-[0.58rem] sm:tracking-[0.1em] md:px-3.5 md:text-[0.62rem] md:tracking-[0.12em] ${
         active
           ? "border-[#d5ad6f]/50 bg-[#d5ad6f]/12 text-[#f5d89d]"
           : "border-white/10 bg-black/10 text-neutral-500 hover:border-[#d5ad6f]/25 hover:bg-white/[0.025] hover:text-neutral-200"
