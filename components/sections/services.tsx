@@ -277,7 +277,7 @@ export function ServicesPreview() {
   return (
     <section
       id="services"
-      className="section-line relative min-h-screen overflow-hidden bg-black px-5 py-[clamp(3rem,6svh,4.5rem)] md:px-8"
+      className="section-line relative overflow-hidden bg-black px-5 py-[clamp(2.25rem,5svh,3.25rem)] md:px-8 lg:min-h-screen lg:py-[clamp(3rem,6svh,4.5rem)]"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.12]"
@@ -295,7 +295,7 @@ export function ServicesPreview() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 mx-auto grid min-h-[calc(100svh-9rem)] max-w-[1680px] gap-8 lg:grid-cols-[minmax(15rem,0.55fr)_minmax(34rem,40rem)_0.35fr] lg:items-end">
+      <div className="relative z-10 mx-auto grid max-w-[1680px] gap-6 lg:min-h-[calc(100svh-9rem)] lg:grid-cols-[minmax(15rem,0.55fr)_minmax(34rem,40rem)_0.35fr] lg:items-end lg:gap-8">
         <motion.div
           className="max-w-[18rem] pt-2 lg:pb-3"
           initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
@@ -318,7 +318,7 @@ export function ServicesPreview() {
           </p>
         </motion.div>
 
-        <div className="relative mx-auto flex w-full max-w-[640px] flex-col gap-4 pt-[clamp(2rem,5svh,3rem)] lg:pt-0">
+        <div className="relative mx-auto flex w-full max-w-[640px] flex-col gap-4 pt-5 lg:pt-0">
           {serviceCards.map((item, index) => {
             const Icon = item.icon;
             return (
@@ -445,14 +445,14 @@ export function AboutServicesOrbit() {
   return (
     <section
       id="about-services"
-      className="services-orbit-section section-line relative overflow-hidden px-4 py-[clamp(2.5rem,6svh,4rem)] md:px-8 lg:min-h-[92svh]"
+      className="services-orbit-section section-line relative overflow-hidden px-4 py-[clamp(2rem,5svh,3rem)] md:px-8 lg:min-h-[92svh] lg:py-[clamp(2.5rem,6svh,4rem)]"
       onPointerMove={(event) => {
         const rect = event.currentTarget.getBoundingClientRect();
         pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
         pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
       }}
     >
-      <div className="relative z-10 mx-auto min-h-[clamp(40rem,84svh,48rem)] max-w-[1540px]">
+      <div className="relative z-10 mx-auto min-h-0 max-w-[1540px] lg:min-h-[clamp(40rem,84svh,48rem)]">
         <motion.div
           className="mx-auto flex w-fit items-center rounded-full border border-white/28 bg-black/20 px-6 py-3 text-sm text-[#f5f1e8] backdrop-blur-md"
           initial={{ opacity: 0, y: 18 }}

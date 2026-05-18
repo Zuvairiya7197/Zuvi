@@ -66,8 +66,8 @@ export function Testimonials() {
   };
 
   return (
-    <section className="section-line testimonial-luxe-stage relative overflow-hidden px-4 pb-[clamp(3rem,7svh,4.25rem)] pt-[clamp(6.5rem,14svh,7.5rem)] text-[#f7efe0] sm:px-[clamp(1rem,5vw,4.5rem)] md:py-[clamp(2.5rem,6svh,4.25rem)]">
-      <div className="relative z-10 mx-auto min-h-[clamp(38rem,78svh,43rem)] max-w-[1500px] px-0 py-0 sm:px-[clamp(1.25rem,4vw,4rem)] sm:py-[clamp(3.5rem,6svh,5.25rem)]">
+    <section className="section-line testimonial-luxe-stage relative overflow-hidden px-4 py-[clamp(3rem,7svh,4rem)] text-[#f7efe0] sm:px-[clamp(1rem,5vw,4.5rem)] lg:py-[clamp(2.5rem,6svh,4.25rem)]">
+      <div className="relative z-10 mx-auto max-w-[1500px] px-0 py-0 sm:px-[clamp(1.25rem,4vw,4rem)] lg:min-h-[clamp(38rem,78svh,43rem)] lg:py-[clamp(3.5rem,6svh,5.25rem)]">
         <motion.div
           className="relative mx-auto max-w-[620px] text-center"
           initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}

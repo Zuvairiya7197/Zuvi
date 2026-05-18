@@ -87,10 +87,10 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="contact-stage section-line relative overflow-hidden px-5 py-[clamp(2rem,5svh,3.5rem)] md:px-8"
+      className="contact-stage section-line relative overflow-hidden px-5 py-[clamp(2rem,5svh,3rem)] md:px-8 lg:py-[clamp(2rem,5svh,3.5rem)]"
     >
-      <div className="relative z-10 mx-auto flex min-h-[clamp(36rem,82svh,48rem)] max-w-[min(94vw,1660px)] flex-col 2xl:max-w-[min(94vw,1760px)]">
-        <div className="relative mt-auto flex flex-1 items-end justify-center pb-[clamp(2.75rem,6svh,4.5rem)] pt-[clamp(2.25rem,6svh,4rem)]">
+      <div className="relative z-10 mx-auto flex min-h-[clamp(25rem,62svh,34rem)] max-w-[min(94vw,1660px)] flex-col lg:min-h-[clamp(36rem,82svh,48rem)] 2xl:max-w-[min(94vw,1760px)]">
+        <div className="relative mt-auto flex flex-1 items-end justify-center pb-[clamp(1.75rem,4svh,2.75rem)] pt-[clamp(1.5rem,4svh,2.5rem)] lg:pb-[clamp(2.75rem,6svh,4.5rem)] lg:pt-[clamp(2.25rem,6svh,4rem)]">
           <motion.h2
             className="relative z-10 max-w-[min(92vw,1120px)] text-center text-[clamp(3.3rem,13vw,10rem)] font-black uppercase leading-[0.82] tracking-[-0.065em] sm:text-[clamp(4rem,9.2vw,10rem)] 2xl:max-w-[min(92vw,1340px)] 2xl:text-[clamp(4.5rem,10.5vw,12.5rem)]"
             initial={{ opacity: 0, y: 52, filter: "blur(12px)" }}
