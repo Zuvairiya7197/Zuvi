@@ -52,10 +52,10 @@ export function Hero() {
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="mx-auto flex max-w-[92vw] items-center justify-center gap-2 text-[0.58rem] font-black uppercase tracking-[0.22em] text-[#d6b36a] sm:gap-3 md:text-xs md:tracking-[0.44em] 2xl:text-sm">
+          <p className="mx-auto flex max-w-[92vw] items-center justify-center gap-2 text-[0.56rem] font-black uppercase tracking-[0.18em] text-[#d6b36a] sm:gap-3 sm:text-[0.68rem] sm:tracking-[0.28em] md:text-xs md:tracking-[0.34em] 2xl:text-sm">
             Design is thinking made visual. <Sparkle size={18} />
           </p>
-          <h1 className="mt-4 font-sans text-[clamp(3.35rem,13.4vw,8rem)] font-black uppercase leading-[0.9] tracking-[-0.035em] text-[#f5f1e8] md:text-[clamp(4rem,9vw,8rem)] md:tracking-[-0.045em] xl:text-[clamp(3.2rem,5.7vw,6.8rem)] 2xl:mt-6 2xl:text-[clamp(4rem,6.9vw,8.4rem)] 2xl:leading-[0.96]">
+          <h1 className="mt-4 font-sans text-[clamp(2.8rem,11.5vw,4.2rem)] font-black uppercase leading-[0.92] tracking-normal text-[#f5f1e8] sm:text-[clamp(3.4rem,10vw,5.25rem)] md:text-[clamp(4.35rem,8vw,6.15rem)] xl:text-[clamp(3.2rem,5.7vw,6.8rem)] 2xl:mt-6 2xl:text-[clamp(4rem,6.9vw,8.4rem)] 2xl:leading-[0.96]">
             Designs that
             <span className="block">
               tell{" "}
