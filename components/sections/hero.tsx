@@ -33,13 +33,13 @@ export function Hero() {
         pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
       }}
     >
-      <div className="pointer-events-none absolute bottom-0 left-1/2 z-0 aspect-[1672/941] w-[min(160vw,34rem)] -translate-x-1/2 md:w-[min(160vw,64rem)] xl:w-[min(160vw,58rem)]">
+      <div className="pointer-events-none absolute bottom-0 left-1/2 z-0 aspect-[1672/941] w-[min(160vw,34rem)] -translate-x-1/2 md:w-[min(175vw,76rem)] xl:w-[min(160vw,58rem)]">
         <Image
           src="/Hero Image.png"
           alt=""
           fill
           priority
-          sizes="(min-width: 1280px) 58rem, (min-width: 768px) 64rem, 160vw"
+          sizes="(min-width: 1280px) 58rem, (min-width: 768px) 76rem, 160vw"
           className="object-contain"
           aria-hidden="true"
         />
