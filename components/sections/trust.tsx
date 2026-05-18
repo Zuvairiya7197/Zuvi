@@ -1,4 +1,4 @@
-import { trustLogos } from "@/lib/data";
+import { trustLogos } from "@/lib/social-proof";
 
 export function Trust() {
   const logos = [...trustLogos, ...trustLogos];

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, type PanInfo } from "framer-motion";
 import { useEffect, useState } from "react";
-import { testimonials } from "@/lib/data";
+import { testimonials } from "@/lib/social-proof";
 
 const avatarSlots = [
   "sm:left-1/2 sm:top-[32%] sm:size-[5.2rem] sm:-translate-x-1/2 md:top-[30%] md:size-[5.9rem] lg:top-[31%] lg:size-[6.35rem]",

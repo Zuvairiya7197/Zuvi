@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Quote } from "lucide-react";
 import Link from "next/link";
-import { stats, testimonials } from "@/lib/data";
+import { stats, testimonials } from "@/lib/social-proof";
 
 export function AboutPreview() {
   return (

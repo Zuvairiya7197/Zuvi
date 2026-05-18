@@ -36,7 +36,7 @@ export function Hero() {
       >
       <div className="pointer-events-none absolute bottom-0 left-1/2 z-0 aspect-[1672/941] w-[min(160vw,34rem)] -translate-x-1/2 md:w-[min(175vw,76rem)] xl:w-[min(160vw,58rem)]">
         <Image
-          src="/Hero Image.png"
+          src="/hero-image.webp"
           alt=""
           fill
           priority
