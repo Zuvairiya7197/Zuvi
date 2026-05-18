@@ -84,16 +84,6 @@ export function Testimonials() {
           <p className="mx-auto mt-4 max-w-[28rem] text-sm leading-6 text-[#f8edd7]/54 sm:mt-5 sm:max-w-[31rem] md:text-base">
             Refined brand systems, precise execution, and digital moments that feel unmistakably considered.
           </p>
-          <motion.a
-            href="#contact"
-            className="group relative mt-6 inline-flex min-h-12 overflow-hidden rounded-full border border-[#f8dca5]/40 bg-gradient-to-br from-[#f8dca5] via-[#d6b36a] to-[#8b6534] px-8 py-3 text-base font-semibold text-[#070604] shadow-[0_12px_34px_rgba(214,179,106,0.24)] sm:min-h-0 sm:px-6 sm:py-2.5 sm:text-sm"
-            whileHover={{ y: -3, scale: 1.035 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 260, damping: 18 }}
-          >
-            <span className="absolute inset-0 -translate-x-full bg-[linear-gradient(110deg,transparent,rgba(255,255,255,0.58),transparent)] transition-transform duration-700 ease-out group-hover:translate-x-full" />
-            <span className="relative">Book Now</span>
-          </motion.a>
         </motion.div>
 
         <div className="relative -mx-4 mt-[clamp(2.25rem,4svh,3rem)] h-[17rem] sm:-mx-[clamp(1.25rem,4vw,4rem)] sm:mt-[clamp(2rem,4svh,3rem)] sm:h-[clamp(16rem,28svh,18.75rem)] md:h-[20rem] lg:h-[clamp(16rem,28svh,18.75rem)]">
