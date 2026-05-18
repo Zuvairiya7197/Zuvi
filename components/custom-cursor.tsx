@@ -13,6 +13,8 @@ export function CustomCursor() {
   const smoothY = useSpring(y, { stiffness: 420, damping: 38 });
 
   useEffect(() => {
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+
     const move = (event: PointerEvent) => {
       setVisible(event.pointerType === "mouse");
       setDragCursor(Boolean((event.target as Element | null)?.closest("[data-drag-cursor]")));

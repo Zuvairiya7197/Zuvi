@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { LazyMotion, domAnimation, m, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Sparkle } from "lucide-react";
 
 const traits = ["Strategic", "Creative", "Impactful"];
@@ -24,15 +24,16 @@ export function Hero() {
   const headlineY = useTransform(smoothY, [-0.5, 0.5], [-7, 7]);
 
   return (
-    <section
-      id="top"
-      className="story-hero relative min-h-[100svh] overflow-hidden px-4 pb-5 pt-[clamp(5.9rem,15svh,7.5rem)] md:px-6 md:pt-[clamp(6.25rem,13svh,7.5rem)] xl:px-8 2xl:pt-32"
-      onPointerMove={(event) => {
-        const rect = event.currentTarget.getBoundingClientRect();
-        pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
-        pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
-      }}
-    >
+    <LazyMotion features={domAnimation}>
+      <section
+        id="top"
+        className="story-hero relative min-h-[100svh] overflow-hidden px-4 pb-5 pt-[clamp(5.9rem,15svh,7.5rem)] md:px-6 md:pt-[clamp(6.25rem,13svh,7.5rem)] xl:px-8 2xl:pt-32"
+        onPointerMove={(event) => {
+          const rect = event.currentTarget.getBoundingClientRect();
+          pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
+          pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
+        }}
+      >
       <div className="pointer-events-none absolute bottom-0 left-1/2 z-0 aspect-[1672/941] w-[min(160vw,34rem)] -translate-x-1/2 md:w-[min(175vw,76rem)] xl:w-[min(160vw,58rem)]">
         <Image
           src="/Hero Image.png"
@@ -45,7 +46,7 @@ export function Hero() {
         />
       </div>
       <div className="relative z-10 mx-auto min-h-[calc(100svh-6.25rem)] max-w-[1680px] max-xl:flex max-xl:flex-col max-xl:items-center max-xl:justify-between md:min-h-[calc(100svh-6.75rem)] 2xl:min-h-[calc(100svh-9rem)] 2xl:max-w-[1820px]">
-        <motion.div
+        <m.div
           style={{ x: headlineX, y: headlineY }}
           className="mx-auto max-w-[760px] pt-8 text-center sm:pt-10 md:pt-12 xl:pt-6 2xl:max-w-[940px]"
           initial={{ opacity: 0, y: 36, filter: "blur(12px)" }}
@@ -70,12 +71,12 @@ export function Hero() {
           >
             Start a Project <ArrowRight size={18} />
           </Link>
-        </motion.div>
+        </m.div>
 
         <div className="absolute bottom-[clamp(1.75rem,5svh,3.5rem)] left-0 z-40 hidden max-w-[18rem] flex-col items-start xl:flex 2xl:max-w-[20rem]">
           <div className="mb-5 flex max-w-[15rem] flex-wrap gap-2.5">
             {traits.map((trait, index) => (
-              <motion.span
+              <m.span
                 key={trait}
                 className="rounded-full border border-white/16 bg-black px-4 py-2 text-center text-sm font-medium leading-none text-[#f5f1e8] backdrop-blur-sm"
                 initial={{ opacity: 0, x: -24 }}
@@ -83,10 +84,10 @@ export function Hero() {
                 transition={{ duration: 0.55, delay: 0.55 + index * 0.08 }}
               >
                 {trait}
-              </motion.span>
+              </m.span>
             ))}
           </div>
-          <motion.div
+          <m.div
             className="max-w-[17rem]"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -98,10 +99,10 @@ export function Hero() {
             <p className="mt-3 text-sm leading-5 text-[#f5f1e8]/46">
               I create visual experiences that inspire, engage & elevate brands.
             </p>
-          </motion.div>
+          </m.div>
         </div>
 
-        <motion.div
+        <m.div
           className="absolute bottom-0 right-0 z-40 hidden xl:block"
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
@@ -114,8 +115,9 @@ export function Hero() {
             <ArrowUpRight size={30} />
             Start a Project
           </Link>
-        </motion.div>
+        </m.div>
       </div>
-    </section>
+      </section>
+    </LazyMotion>
   );
 }

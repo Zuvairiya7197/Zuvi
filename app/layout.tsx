@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import Script from "next/script";
-import { CustomCursor } from "@/components/custom-cursor";
-import { FloatingSectionNav } from "@/components/floating-section-nav";
+import { CustomCursorLoader } from "@/components/custom-cursor-loader";
+import { FloatingSectionNavLoader } from "@/components/floating-section-nav-loader";
 import { Header } from "@/components/header";
 import { PageTransition } from "@/components/page-transition";
 import "./globals.css";
@@ -97,9 +97,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
         <div className="noise" aria-hidden="true" />
-        <CustomCursor />
+        <CustomCursorLoader />
         <Header />
-        <FloatingSectionNav />
+        <FloatingSectionNavLoader />
         <PageTransition>{children}</PageTransition>
       </body>
     </html>

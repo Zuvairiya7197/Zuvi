@@ -246,7 +246,6 @@ export function FeaturedProjects() {
                       src={activeProject.image}
                       alt={`${activeProject.title} featured project`}
                       fill
-                      priority
                       sizes="(min-width: 1024px) 48rem, 92vw"
                       className="object-cover saturate-[0.82] transition duration-[1400ms] ease-out hover:scale-[1.035]"
                     />
