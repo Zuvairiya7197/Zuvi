@@ -33,7 +33,7 @@ const serviceCards = [
     ],
     images: [
       "/ZP-Logo.webp",
-      "/wbyblogo.png",
+      "/wbyblogo.webp",
     ],
     muted: true,
   },
@@ -52,8 +52,8 @@ const serviceCards = [
       ["Export", "Print & Digital File"],
     ],
     images: [
-      "/project-graphic-educational-flyer.png",
-      "/project-graphic-home-tuition.png",
+      "/project-graphic-educational-flyer.webp",
+      "/project-graphic-home-tuition.webp",
     ],
     muted: true,
   },
@@ -72,8 +72,8 @@ const serviceCards = [
       ["Share", "Platform-Ready Files"],
     ],
     images: [
-      "/sm classes post.png",
-      "/6th post.png",
+      "/sm classes post.webp",
+      "/6th post.webp",
     ],
     muted: true,
   },
@@ -93,7 +93,7 @@ const serviceCards = [
     ],
     images: [
       "/mz-business-card-01.jpg",
-      "/mz-business-card-02.png",
+      "/mz-business-card-02.webp",
     ],
     muted: true,
   },
@@ -112,8 +112,8 @@ const serviceCards = [
       ["Adapt", "Digital Variants"],
     ],
     images: [
-      "/project-graphic-sm-classes-11th.png",
-      "/project-graphic-smm-marketing-agency.png",
+      "/project-graphic-sm-classes-11th.webp",
+      "/project-graphic-smm-marketing-agency.webp",
     ],
     muted: true,
   },
@@ -260,7 +260,7 @@ function DesignImageFrame({
     >
       <div className="absolute inset-0 overflow-hidden">
         <Image
-          src="/About Image.png"
+          src="/About Image.webp"
           alt="Premium graphic design work preview"
           fill
           sizes="(min-width: 1024px) 24rem, 15rem"

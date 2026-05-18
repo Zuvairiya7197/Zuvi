@@ -17,12 +17,12 @@ const minimalProjects = Array.from({ length: 54 }, (_, index) => {
 });
 
 const logoProjectImages = [
-  "/mz-logo-01.png",
-  "/mz-logo-02.png",
+  "/mz-logo-01.webp",
+  "/mz-logo-02.webp",
   "/mz-logo-03.jpg",
   "/mz-logo-04.jpg",
   "/mz-logo-05.jpg",
-  "/mz-logo-05.png",
+  "/mz-logo-05.webp",
   "/mz-logo-06.jpg",
   "/mz-logo-07.jpg",
   "/mz-logo-08.jpg",
@@ -30,8 +30,8 @@ const logoProjectImages = [
   "/mz-logo-10.jpg",
   "/mz-logo-11.jpg",
   "/mz-logo-12.jpg",
-  "/mz-logo-03.png",
-  "/mz-logo-04.png"
+  "/mz-logo-03.webp",
+  "/mz-logo-04.webp"
 ];
 
 const logoProjects = logoProjectImages.map((image, index) => {
@@ -78,72 +78,72 @@ const socialMediaDesignProjects = [
   {
     slug: "wbyb-social-media-cover",
     title: "WBYB Social Media Cover",
-    image: "/WBYB Social media cover.png"
+    image: "/WBYB Social media cover.webp"
   },
   {
     slug: "sm-classes-social-post",
     title: "SM Classes Social Post",
-    image: "/sm classes post.png"
+    image: "/sm classes post.webp"
   },
   {
     slug: "sm-classes-score-card-post-01",
     title: "SM Classes Score Card Post 01",
-    image: "/SM Classes Score card flyer 1.png"
+    image: "/SM Classes Score card flyer 1.webp"
   },
   {
     slug: "sm-classes-score-card-post-02",
     title: "SM Classes Score Card Post 02",
-    image: "/SM Classes Score card flyer 2.png"
+    image: "/SM Classes Score card flyer 2.webp"
   },
   {
     slug: "sm-classes-score-card-post-03",
     title: "SM Classes Score Card Post 03",
-    image: "/SM Classes Score card flyer 3.png"
+    image: "/SM Classes Score card flyer 3.webp"
   },
   {
     slug: "sm-classes-score-card-post-04",
     title: "SM Classes Score Card Post 04",
-    image: "/SM Classes Score card flyer 4.png"
+    image: "/SM Classes Score card flyer 4.webp"
   },
   {
     slug: "social-media-post-06",
     title: "Social Media Post 06",
-    image: "/6th post.png"
+    image: "/6th post.webp"
   },
   {
     slug: "social-media-post-08",
     title: "Social Media Post 08",
-    image: "/post 8.png"
+    image: "/post 8.webp"
   },
   {
     slug: "social-media-post-09",
     title: "Social Media Post 09",
-    image: "/post 9.png"
+    image: "/post 9.webp"
   },
   {
     slug: "social-media-post-11",
     title: "Social Media Post 11",
-    image: "/post 11.png"
+    image: "/post 11.webp"
   },
   {
     slug: "social-media-post-12",
     title: "Social Media Post 12",
-    image: "/post 12.png"
+    image: "/post 12.webp"
   },
   {
     slug: "social-media-post-13",
     title: "Social Media Post 13",
-    image: "/post 13.png"
+    image: "/post 13.webp"
   },
   {
     slug: "social-media-post-14",
     title: "Social Media Post 14",
-    image: "/post 14.png"
+    image: "/post 14.webp"
   },
   {
     slug: "social-media-post-15",
     title: "Social Media Post 15",
-    image: "/post 15.png"
+    image: "/post 15.webp"
   }
 ].map((project, index) => ({
   ...project,
@@ -172,7 +172,7 @@ export const projects = [
     problem: "The class promotion needed a clear academic visual that could communicate the offer quickly.",
     solution: "Designed an education-focused poster for SM Classes with direct messaging, structured hierarchy, and a polished academic tone.",
     results: "A focused promotional graphic built for fast recognition and easy sharing across digital channels.",
-    image: "/mz-flyer-sm-classes-11th.png",
+    image: "/mz-flyer-sm-classes-11th.webp",
     category: "Flyer Design",
     accent: "from-[#d6b36a] to-[#111111]",
     liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/poster-flyerdesign"
@@ -186,7 +186,7 @@ export const projects = [
     problem: "A home tutor needed a flyer that felt professional while keeping the message simple and approachable.",
     solution: "Created a clean educational flyer with strong contrast, readable details, and a confident visual structure.",
     results: "A practical promotional flyer designed to help parents and students understand the tutoring offer quickly.",
-    image: "/project-graphic-educational-flyer.png",
+    image: "/project-graphic-educational-flyer.webp",
     category: "Flyer Design",
     accent: "from-[#d6b36a] to-[#8c6a3b]",
     liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/graphic-designs"
@@ -198,7 +198,7 @@ export const projects = [
     problem: "The marketing agency owner needed a social cover graphic that presented the brand with more authority.",
     solution: "Designed a bold social media cover with clear positioning, high-impact layout, and campaign-ready visual energy.",
     results: "A stronger profile presence for social platforms with an immediate marketing-focused first impression.",
-    image: "/mz-social-cover-smm.png",
+    image: "/mz-social-cover-smm.webp",
     category: "Social Media Designs",
     accent: "from-[#d6b36a] to-[#111111]",
     liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/fbcoverdesign"
@@ -210,7 +210,7 @@ export const projects = [
     problem: "The brand needed a contact-focused social cover that could make inquiry details easy to find.",
     solution: "Designed a clean social cover layout with clear contact hierarchy, soft visual styling, and direct information flow.",
     results: "A practical social media cover that presents contact details with a more polished brand impression.",
-    image: "/mz-social-cover-contact.png",
+    image: "/mz-social-cover-contact.webp",
     category: "Social Media Designs",
     accent: "from-[#d6b36a] to-[#8c6a3b]",
     liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/fbcoverdesign"
@@ -223,7 +223,7 @@ export const projects = [
     problem: "The professor needed a poster that could make class information easy to notice and trust.",
     solution: "Designed a structured academic poster for SM Classes with a clear offer, readable hierarchy, and strong recall.",
     results: "A clean class-promotion visual that supports inquiries and presents the education brand professionally.",
-    image: "/mz-flyer-sm-classes-4.png",
+    image: "/mz-flyer-sm-classes-4.webp",
     category: "Flyer Design",
     accent: "from-[#d6b36a] to-[#111111]",
     liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/poster-flyerdesign"
@@ -235,7 +235,7 @@ export const projects = [
     problem: "The property listing needed a clear sales graphic with quick details and a visible call-to-action.",
     solution: "Designed a real estate promotional flyer with bold listing information, image-led layout, and clear contact emphasis.",
     results: "A share-ready property flyer that makes the offer easier to scan and promote.",
-    image: "/mz-flyer-real-estate.png",
+    image: "/mz-flyer-real-estate.webp",
     category: "Flyer Design",
     accent: "from-[#d6b36a] to-[#111111]",
     liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/poster-flyerdesign"
@@ -259,7 +259,7 @@ export const projects = [
     problem: "The design needed to organize contact and brand details into a cleaner, more premium card format.",
     solution: "Created a balanced business card composition with strong contrast, readable details, and a refined visual finish.",
     results: "A polished card design that supports professional introductions and stronger brand recall.",
-    image: "/mz-business-card-02.png",
+    image: "/mz-business-card-02.webp",
     category: "Business Card Design",
     accent: "from-[#d6b36a] to-[#8c6a3b]",
     liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/businesscarddesign"
@@ -271,7 +271,7 @@ export const projects = [
     problem: "The tutor needed a promotional design that made the offer visible and easy to understand.",
     solution: "Created a home tuition flyer with clear academic messaging, direct information flow, and strong visual contrast.",
     results: "A straightforward flyer that makes the tutoring service easier to promote and remember.",
-    image: "/mz-flyer-home-tuition.png",
+    image: "/mz-flyer-home-tuition.webp",
     category: "Flyer Design",
     accent: "from-[#d6b36a] to-[#8c6a3b]",
     liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/poster-flyerdesign"
@@ -295,7 +295,7 @@ export const projects = [
     problem: "The workshop needed an inviting flyer that could highlight the offer while keeping details readable.",
     solution: "Created a refined event flyer with decorative styling, balanced spacing, and a clear workshop callout.",
     results: "A polished workshop creative built for social sharing and audience interest.",
-    image: "/mz-flyer-jewellery-workshop.png",
+    image: "/mz-flyer-jewellery-workshop.webp",
     category: "Flyer Design",
     accent: "from-[#d6b36a] to-[#8c6a3b]",
     liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/poster-flyerdesign"
@@ -406,7 +406,7 @@ export const projects = [
     solution:
       "Built a dark, conversion-focused website with strong positioning, service pathways, project proof, and clear inquiry actions.",
     results: "A sharper WBYB presence with a premium first impression, clearer lead-generation message, and direct booking flow.",
-    image: "/WBYB website.png",
+    image: "/WBYB website.webp",
     category: "Website Design",
     accent: "from-[#4c078e] to-[#00ff5a]",
     liveUrl: "https://www.webuildyourbrands.com/"
@@ -419,7 +419,7 @@ export const projects = [
     solution:
       "Created a clean service website with direct service sections, trust-focused messaging, and a simple inquiry path for local customers.",
     results: "A practical service website that makes plumbing help easier to understand, trust, and request.",
-    image: "/PlumbingServices.png",
+    image: "/PlumbingServices.webp",
     category: "Website Design",
     accent: "from-[#16d8ff] to-[#0f766e]",
     liveUrl: "https://plumbing-services-wbyb.vercel.app/"
@@ -432,7 +432,7 @@ export const projects = [
     solution:
       "Built a real estate website experience with strong visual hierarchy, property-focused presentation, and polished browsing flow.",
     results: "A sharper property website that supports trust, discovery, and stronger real estate inquiries.",
-    image: "/Emlak.png",
+    image: "/Emlak.webp",
     category: "Website Design",
     accent: "from-[#d6b36a] to-[#8c6a3b]",
     liveUrl: "https://emlakrealestatellc.vercel.app/"

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -49,23 +49,25 @@ export function FloatingSectionNav() {
   const pathname = usePathname();
 
   return (
-    <motion.nav
-      aria-label="Floating section navigation"
-      className="fixed right-2 top-1/2 z-50 hidden -translate-y-1/2 xl:block 2xl:right-4"
-      initial={{ opacity: 0, x: 24, filter: "blur(10px)" }}
-      animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-      transition={{ duration: 0.8, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-    >
-      <div className="grid gap-3">
-        {navItems.map((item) => (
-          <NavItem
-            key={item.href}
-            href={item.href}
-            label={item.label}
-            active={item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)}
-          />
-        ))}
-      </div>
-    </motion.nav>
+    <LazyMotion features={domAnimation}>
+      <m.nav
+        aria-label="Floating section navigation"
+        className="fixed right-2 top-1/2 z-50 hidden -translate-y-1/2 xl:block 2xl:right-4"
+        initial={{ opacity: 0, x: 24, filter: "blur(10px)" }}
+        animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.8, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <div className="grid gap-3">
+          {navItems.map((item) => (
+            <NavItem
+              key={item.href}
+              href={item.href}
+              label={item.label}
+              active={item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)}
+            />
+          ))}
+        </div>
+      </m.nav>
+    </LazyMotion>
   );
 }

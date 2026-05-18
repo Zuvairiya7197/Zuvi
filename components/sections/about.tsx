@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import { ArrowRight, Quote } from "lucide-react";
 import Link from "next/link";
 import { stats, testimonials } from "@/lib/social-proof";
 
 export function AboutPreview() {
   return (
+    <LazyMotion features={domAnimation}>
     <section className="section-line relative overflow-hidden px-5 py-[clamp(3rem,8svh,6rem)] md:px-8">
       <div className="mx-auto grid max-w-7xl gap-[clamp(2rem,5vw,3rem)] lg:grid-cols-[0.78fr_1.45fr_1fr] lg:items-center">
         <div>
@@ -24,7 +25,7 @@ export function AboutPreview() {
           </Link>
         </div>
         <div className="relative min-h-[clamp(22rem,52svh,32rem)]">
-          <motion.div
+          <m.div
             className="absolute left-0 top-0 h-full w-[72%] overflow-hidden rounded-[1.8rem] border border-[#d5ad6f]/28 md:w-[68%] md:rounded-[2.6rem]"
             whileHover={{ y: -10, rotate: -1.5 }}
           >
@@ -36,8 +37,8 @@ export function AboutPreview() {
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
-          </motion.div>
-          <motion.div
+          </m.div>
+          <m.div
             className="glass absolute bottom-0 left-0 w-[clamp(7.5rem,32vw,9rem)] rounded-[1.5rem] p-4 text-center md:rounded-[2rem] md:p-6"
             whileHover={{ y: -10, rotate: 1.5 }}
           >
@@ -46,11 +47,11 @@ export function AboutPreview() {
               <span className="text-3xl">+</span>
             </p>
             <p className="mt-2 text-xs font-semibold md:text-sm">Years of Experience</p>
-          </motion.div>
+          </m.div>
           <div className="absolute right-0 top-0 grid w-[32%] gap-3 md:w-[30%] md:gap-4">
             <div className="relative aspect-square overflow-hidden rounded-[1.6rem] border border-[#d5ad6f]/18">
               <Image
-                src="/AC Repair.png"
+                src="/AC Repair.webp"
                 alt="Designer workspace with monitor"
                 fill
                 sizes="20vw"
@@ -59,7 +60,7 @@ export function AboutPreview() {
             </div>
             <div className="relative aspect-square overflow-hidden rounded-[1.6rem] border border-[#d5ad6f]/18">
               <Image
-                src="/Plumbing sevices.png"
+                src="/Plumbing sevices.webp"
                 alt="Brand sketch and design process"
                 fill
                 sizes="20vw"
@@ -103,5 +104,6 @@ export function AboutPreview() {
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

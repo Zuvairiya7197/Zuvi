@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, type PanInfo } from "framer-motion";
+import { LazyMotion, domMax, m, type PanInfo } from "framer-motion";
 import { useEffect, useState } from "react";
 import { testimonials } from "@/lib/social-proof";
 
@@ -66,9 +66,10 @@ export function Testimonials() {
   };
 
   return (
+    <LazyMotion features={domMax}>
     <section className="section-line testimonial-luxe-stage relative overflow-hidden px-4 py-[clamp(3rem,7svh,4rem)] text-[#f7efe0] sm:px-[clamp(1rem,5vw,4.5rem)] lg:py-[clamp(2.5rem,6svh,4.25rem)]">
       <div className="relative z-10 mx-auto max-w-[1500px] px-0 py-0 sm:px-[clamp(1.25rem,4vw,4rem)] lg:min-h-[clamp(38rem,78svh,43rem)] lg:py-[clamp(3.5rem,6svh,5.25rem)]">
-        <motion.div
+        <m.div
           className="relative mx-auto max-w-[620px] text-center"
           initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -84,7 +85,7 @@ export function Testimonials() {
           <p className="mx-auto mt-4 max-w-[28rem] text-sm leading-6 text-[#f8edd7]/54 sm:mt-5 sm:max-w-[31rem] md:text-base">
             Refined brand systems, precise execution, and digital moments that feel unmistakably considered.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="relative -mx-4 mt-[clamp(2.25rem,4svh,3rem)] h-[17rem] sm:-mx-[clamp(1.25rem,4vw,4rem)] sm:mt-[clamp(2rem,4svh,3rem)] sm:h-[clamp(16rem,28svh,18.75rem)] md:h-[20rem] lg:h-[clamp(16rem,28svh,18.75rem)]">
           <svg
@@ -93,7 +94,7 @@ export function Testimonials() {
             fill="none"
             aria-hidden="true"
           >
-            <motion.path
+            <m.path
               d="M-70 142 C 54 154, 104 101, 188 61 C 271 21, 351 52, 358 155 C 365 257, 433 314, 522 273 C 618 229, 535 79, 648 40 C 745 6, 809 85, 787 178 C 767 264, 842 293, 923 236 C 1002 181, 983 41, 1101 53 C 1231 66, 1190 205, 1191 222 C 1197 316, 1291 303, 1338 242 C 1384 181, 1369 71, 1488 63 C 1598 56, 1570 184, 1668 188"
               stroke="rgba(244,215,157,0.16)"
               strokeWidth="1.15"
@@ -105,7 +106,7 @@ export function Testimonials() {
               transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
               animate={{ y: [0, -2, 0] }}
             />
-            <motion.path
+            <m.path
               d="M-70 142 C 54 154, 104 101, 188 61 C 271 21, 351 52, 358 155 C 365 257, 433 314, 522 273 C 618 229, 535 79, 648 40 C 745 6, 809 85, 787 178 C 767 264, 842 293, 923 236 C 1002 181, 983 41, 1101 53 C 1231 66, 1190 205, 1191 222 C 1197 316, 1291 303, 1338 242 C 1384 181, 1369 71, 1488 63 C 1598 56, 1570 184, 1668 188"
               stroke="url(#testimonialGoldShimmer)"
               strokeWidth="0.95"
@@ -127,7 +128,7 @@ export function Testimonials() {
           </svg>
 
           {dotPositions.map((position, index) => (
-            <motion.span
+            <m.span
               key={position}
               className={`absolute z-20 size-3.5 rounded-full bg-[#f4d79d] shadow-[0_0_12px_rgba(244,215,157,0.56),0_0_22px_rgba(214,179,106,0.24)] ${position}`}
               initial={{ opacity: 0, scale: 0 }}
@@ -139,7 +140,7 @@ export function Testimonials() {
           ))}
 
           <div className="absolute left-1/2 top-1/2 z-40 size-[6.7rem] -translate-x-1/2 -translate-y-1/2 sm:hidden">
-            <motion.button
+            <m.button
               key={featured.name}
               type="button"
               aria-label={`Current testimonial from ${featured.name}. Swipe to change testimonial.`}
@@ -154,7 +155,7 @@ export function Testimonials() {
             >
               <TestimonialAvatarImage src={featured.image} sizes="108px" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_20%,rgba(255,255,255,0.22),transparent_28%),linear-gradient(180deg,transparent,rgba(0,0,0,0.24))]" />
-            </motion.button>
+            </m.button>
           </div>
 
           {testimonials.map((testimonial, index) => {
@@ -162,7 +163,7 @@ export function Testimonials() {
             const isActive = index === activeAvatarIndex;
 
             return (
-            <motion.button
+            <m.button
               key={testimonial.name}
               type="button"
               aria-label={`Show testimonial from ${testimonial.name}`}
@@ -181,19 +182,19 @@ export function Testimonials() {
             >
               <TestimonialAvatarImage src={testimonial.image} sizes="128px" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_20%,rgba(255,255,255,0.22),transparent_28%),linear-gradient(180deg,transparent,rgba(0,0,0,0.24))]" />
-            </motion.button>
+            </m.button>
             );
           })}
         </div>
 
-        <motion.div
+        <m.div
           className="relative mx-auto mt-[clamp(1.25rem,3svh,2.15rem)] grid max-w-[980px] grid-cols-[auto_1fr_auto] items-center gap-3 px-0 py-3 text-center sm:gap-[clamp(1rem,3vw,2rem)] sm:px-[clamp(0.75rem,2vw,1rem)] sm:py-[clamp(0.75rem,2vw,1rem)]"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.75, delay: 0.28 }}
         >
-          <motion.button
+          <m.button
             aria-label="Previous testimonial"
             className="grid size-10 shrink-0 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/25 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8 sm:size-11 md:size-12"
             onClick={previousTestimonial}
@@ -202,8 +203,8 @@ export function Testimonials() {
             transition={{ type: "spring", stiffness: 260, damping: 18 }}
           >
             <ChevronLeft size={24} />
-          </motion.button>
-          <motion.div
+          </m.button>
+          <m.div
             key={featured.quote}
             className="mx-auto max-w-[52rem]"
             initial={{ opacity: 0, y: 12, filter: "blur(8px)" }}
@@ -219,8 +220,8 @@ export function Testimonials() {
                 {featured.role}
               </p>
             </div>
-          </motion.div>
-          <motion.button
+          </m.div>
+          <m.button
             aria-label="Next testimonial"
             className="grid size-10 shrink-0 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/25 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8 sm:size-11 md:size-12"
             onClick={nextTestimonial}
@@ -229,9 +230,10 @@ export function Testimonials() {
             transition={{ type: "spring", stiffness: 260, damping: 18 }}
           >
             <ChevronRight size={24} />
-          </motion.button>
-        </motion.div>
+          </m.button>
+        </m.div>
       </div>
     </section>
+    </LazyMotion>
   );
 }
