@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { LazyMotion, domAnimation, m, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   CreditCard,
   FileText,
@@ -212,7 +212,7 @@ function ServiceChip({
   const isRight = item.className.includes("right");
 
   return (
-    <motion.article
+    <m.article
       className={`absolute z-30 hidden min-h-14 w-[clamp(13.5rem,17vw,17rem)] items-center gap-2.5 rounded-[0.95rem] border border-white/10 bg-[#1d1c1a]/92 p-2 pr-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_18px_56px_rgba(0,0,0,0.34)] backdrop-blur-xl xl:flex ${item.className}`}
       initial={{ opacity: 0, y: 20, x: isRight ? 18 : -18 }}
       whileInView={{ opacity: 1, y: 0, x: 0 }}
@@ -235,7 +235,7 @@ function ServiceChip({
           {item.text}
         </p>
       </span>
-    </motion.article>
+    </m.article>
   );
 }
 
@@ -250,7 +250,7 @@ function DesignImageFrame({
   const orbY = useTransform(y, [-0.5, 0.5], [-10, 10]);
 
   return (
-    <motion.div
+    <m.div
       style={{ x: orbX, y: orbY }}
       className="absolute left-1/2 top-[58%] z-20 aspect-[3/2] w-[clamp(30rem,60svh,50rem)] -translate-x-1/2 -translate-y-1/2"
       initial={{ opacity: 0, y: 80, scale: 0.94 }}
@@ -269,16 +269,17 @@ function DesignImageFrame({
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,transparent,rgba(0,0,0,0.18)_54%,rgba(0,0,0,0.72)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black to-transparent" />
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
 export function ServicesPreview() {
   return (
-    <section
-      id="services"
-      className="section-line relative overflow-hidden bg-black px-5 py-[clamp(2.25rem,5svh,3.25rem)] md:px-8 lg:min-h-screen lg:py-[clamp(3rem,6svh,4.5rem)]"
-    >
+    <LazyMotion features={domAnimation}>
+      <section
+        id="services"
+        className="section-line relative overflow-hidden bg-black px-5 py-[clamp(2.25rem,5svh,3.25rem)] md:px-8 lg:min-h-screen lg:py-[clamp(3rem,6svh,4.5rem)]"
+      >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.12]"
         style={{
@@ -296,7 +297,7 @@ export function ServicesPreview() {
       />
 
       <div className="relative z-10 mx-auto grid max-w-[1680px] gap-6 lg:min-h-[calc(100svh-9rem)] lg:grid-cols-[minmax(15rem,0.55fr)_minmax(34rem,40rem)_0.35fr] lg:items-end lg:gap-8">
-        <motion.div
+        <m.div
           className="max-w-[18rem] pt-2 lg:pb-3"
           initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -316,13 +317,13 @@ export function ServicesPreview() {
             Premium visual systems for brands that need clarity, presence, and
             momentum.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="relative mx-auto flex w-full max-w-[640px] flex-col gap-4 pt-5 lg:pt-0">
           {serviceCards.map((item, index) => {
             const Icon = item.icon;
             return (
-              <motion.article
+              <m.article
                 key={item.title}
                 className="group relative ml-auto min-h-[3.8rem] w-[min(100%,40rem)] overflow-hidden rounded-[1.65rem] border border-white/7 bg-[#1b1a18]/88 px-5 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_18px_56px_rgba(0,0,0,0.34)] backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-[#d6b36a]/28 hover:bg-[#211f1b]/94 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_22px_66px_rgba(0,0,0,0.42),0_0_24px_rgba(214,179,106,0.08)]"
                 initial={{ opacity: 0, x: 50, filter: "blur(8px)" }}
@@ -417,13 +418,14 @@ export function ServicesPreview() {
                     </p>
                   </div>
                 </div>
-              </motion.article>
+              </m.article>
             );
           })}
         </div>
         <div aria-hidden="true" />
       </div>
-    </section>
+      </section>
+    </LazyMotion>
   );
 }
 
@@ -443,17 +445,18 @@ export function AboutServicesOrbit() {
   const headlineY = useTransform(smoothY, [-0.5, 0.5], [5, -5]);
 
   return (
-    <section
-      id="about-services"
-      className="services-orbit-section section-line relative overflow-hidden px-4 py-[clamp(2rem,5svh,3rem)] md:px-8 lg:min-h-[92svh] lg:py-[clamp(2.5rem,6svh,4rem)]"
-      onPointerMove={(event) => {
-        const rect = event.currentTarget.getBoundingClientRect();
-        pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
-        pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
-      }}
-    >
+    <LazyMotion features={domAnimation}>
+      <section
+        id="about-services"
+        className="services-orbit-section section-line relative overflow-hidden px-4 py-[clamp(2rem,5svh,3rem)] md:px-8 lg:min-h-[92svh] lg:py-[clamp(2.5rem,6svh,4rem)]"
+        onPointerMove={(event) => {
+          const rect = event.currentTarget.getBoundingClientRect();
+          pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
+          pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
+        }}
+      >
       <div className="relative z-10 mx-auto min-h-0 max-w-[1540px] lg:min-h-[clamp(40rem,84svh,48rem)]">
-        <motion.div
+        <m.div
           className="mx-auto flex w-fit items-center rounded-full border border-white/28 bg-black/20 px-6 py-3 text-sm text-[#f5f1e8] backdrop-blur-md"
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -461,9 +464,9 @@ export function AboutServicesOrbit() {
           transition={{ duration: 0.6 }}
         >
           About Zuvairiya Maryam
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           style={{ y: headlineY }}
           className="mx-auto mt-[clamp(2rem,5svh,3.2rem)] max-w-[780px] text-center"
           initial={{ opacity: 0, y: 34, filter: "blur(10px)" }}
@@ -501,7 +504,7 @@ export function AboutServicesOrbit() {
             work, thoughtful revisions, and designs clients can feel fully
             satisfied with.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="relative mx-auto mt-[clamp(1.5rem,3svh,2rem)] h-[clamp(25rem,54svh,35rem)] max-w-[min(94vw,1280px)]">
           {[...aboutLeftItems, ...aboutRightItems].map((item, index) => (
@@ -535,6 +538,7 @@ export function AboutServicesOrbit() {
           })}
         </div>
       </div>
-    </section>
+      </section>
+    </LazyMotion>
   );
 }

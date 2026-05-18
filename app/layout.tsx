@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
-import Script from "next/script";
 import { CustomCursorLoader } from "@/components/custom-cursor-loader";
 import { FloatingSectionNavLoader } from "@/components/floating-section-nav-loader";
 import { Header } from "@/components/header";
@@ -91,7 +90,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${display.variable}`}>
       <body>
-        <Script
+        <script
           id="organization-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
