@@ -182,7 +182,7 @@ export function FeaturedProjects() {
         >
           <div
             ref={numberRef}
-            className="pointer-events-none absolute left-[2vw] top-0 z-0 font-sans text-[clamp(7rem,38vw,10rem)] font-black leading-none tracking-[-0.08em] text-[#f5f1e8]/[0.06] md:left-[8vw] md:top-[2svh] md:text-[clamp(8rem,18vw,19rem)] md:tracking-[-0.09em] md:text-[#f5f1e8]/[0.075]"
+            className="pointer-events-none absolute right-[-0.5rem] top-[-3.5rem] z-10 font-sans text-[clamp(5.75rem,28vw,8rem)] font-black leading-none tracking-[-0.08em] text-[#f5f1e8]/[0.12] md:right-[2vw] md:top-[-4.75rem] md:text-[clamp(8rem,22vw,14rem)] md:text-[#f5f1e8]/[0.1] lg:left-[8vw] lg:right-auto lg:top-[2svh] lg:z-0 lg:text-[clamp(8rem,18vw,19rem)] lg:tracking-[-0.09em] lg:text-[#f5f1e8]/[0.075]"
           >
             {String(activeIndex + 1).padStart(2, "0")}
           </div>
