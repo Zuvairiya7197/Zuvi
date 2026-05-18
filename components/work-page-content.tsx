@@ -138,10 +138,10 @@ function TabButton({
     <button
       type="button"
       onClick={onClick}
-      className={`group flex h-14 items-center justify-center overflow-hidden rounded-full border text-sm font-medium transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+      className={`group flex h-11 items-center justify-center overflow-hidden rounded-full border text-xs font-medium transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:h-12 sm:text-[0.82rem] ${
         active
-          ? "min-w-0 flex-[1_1_0] border-[#d5ad6f]/45 bg-[#d5ad6f] px-7 text-black shadow-[0_14px_42px_rgba(213,173,111,0.18)]"
-          : "flex-[0_0_3.75rem] border-white/10 bg-white/[0.025] px-0 text-neutral-300 hover:border-[#d5ad6f]/30 hover:bg-white/[0.045] hover:text-[#f5f1e8] md:flex-[0_0_4.5rem]"
+          ? "min-w-0 flex-[1_1_0] border-[#d5ad6f]/45 bg-[#d5ad6f] px-4 text-black shadow-[0_14px_42px_rgba(213,173,111,0.18)] sm:px-5"
+          : "flex-[0_0_3rem] border-white/10 bg-white/[0.025] px-0 text-neutral-300 hover:border-[#d5ad6f]/30 hover:bg-white/[0.045] hover:text-[#f5f1e8] md:flex-[0_0_3.75rem]"
       }`}
     >
       <span className={`whitespace-nowrap transition-all duration-500 ${active ? "max-w-[18rem] opacity-100" : "max-w-0 opacity-0"}`}>
@@ -169,7 +169,7 @@ function CategoryButton({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-full border px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] transition duration-300 ${
+      className={`rounded-full border px-3 py-1.5 text-[0.56rem] font-semibold uppercase tracking-[0.12em] transition duration-300 sm:px-3.5 sm:text-[0.62rem] ${
         active
           ? "border-[#d5ad6f]/50 bg-[#d5ad6f]/12 text-[#f5d89d]"
           : "border-white/10 bg-black/10 text-neutral-500 hover:border-[#d5ad6f]/25 hover:bg-white/[0.025] hover:text-neutral-200"
@@ -277,8 +277,8 @@ export function WorkPageContent({
         </section>
 
         <section className="mt-[clamp(3rem,7svh,5rem)]">
-          <div className="mb-9 flex flex-col items-center gap-5 border-y border-white/[0.08] py-6">
-            <div className="flex w-full max-w-[42rem] justify-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.025] p-1.5">
+          <div className="mb-8 flex flex-col items-center gap-4 border-y border-white/[0.08] py-5">
+            <div className="flex w-full max-w-[36rem] justify-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.025] p-1.5">
               <TabButton active={activeMode === "website"} icon={<Laptop size={18} strokeWidth={1.8} />} onClick={() => setActiveMode("website")}>
                 Website Design Work
               </TabButton>
@@ -287,7 +287,7 @@ export function WorkPageContent({
               </TabButton>
             </div>
 
-            <div className="flex max-w-6xl flex-wrap justify-center gap-2.5">
+            <div className="flex max-w-5xl flex-wrap justify-center gap-2">
               {activeMode === "website"
                 ? websiteCategories.map((category) => {
                     const count = websiteProjects.filter((project) => project.category === category).length;
@@ -320,8 +320,8 @@ export function WorkPageContent({
             <div>
               <div className="mb-6 flex items-end justify-between gap-4">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#d5ad6f]">We Build Your Brands</p>
-                  <h2 className="mt-2 font-display text-[clamp(2rem,5vw,3.2rem)] font-semibold leading-none text-[#f5f1e8]">
+                  <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#d5ad6f]">We Build Your Brands</p>
+                  <h2 className="mt-2 font-display text-[clamp(1.55rem,4vw,2.55rem)] font-semibold leading-none text-[#f5f1e8]">
                     {activeWebsiteCategory}
                   </h2>
                 </div>
