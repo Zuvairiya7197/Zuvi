@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { LazyMotion, domMax, m, type PanInfo } from "framer-motion";
-import { useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { testimonials } from "@/lib/social-proof";
 
 const avatarSlots = [
@@ -17,7 +17,7 @@ function getAvatarSlot(index: number, activeIndex: number) {
   return avatarSlots[(index - activeIndex + testimonials.length) % testimonials.length];
 }
 
-function TestimonialAvatarImage({ src, sizes }: { src?: string; sizes: string }) {
+const TestimonialAvatarImage = memo(function TestimonialAvatarImage({ src, sizes }: { src?: string; sizes: string }) {
   const [failed, setFailed] = useState(!src);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ function TestimonialAvatarImage({ src, sizes }: { src?: string; sizes: string })
       onError={() => setFailed(true)}
     />
   );
-}
+});
 
 const dotPositions = [
   "left-[23%] top-[58%] md:left-[18%] md:top-[59%] lg:left-[23%]",
@@ -58,12 +58,16 @@ export function Testimonials() {
   const [activeAvatarIndex, setActiveAvatarIndex] = useState(0);
   const activeIndex = activeAvatarIndex % testimonials.length;
   const featured = testimonials[activeIndex];
-  const nextTestimonial = () => setActiveAvatarIndex((index) => (index + 1) % testimonials.length);
-  const previousTestimonial = () => setActiveAvatarIndex((index) => (index - 1 + testimonials.length) % testimonials.length);
-  const handleAvatarDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+  const nextTestimonial = useCallback(() => {
+    setActiveAvatarIndex((index) => (index + 1) % testimonials.length);
+  }, []);
+  const previousTestimonial = useCallback(() => {
+    setActiveAvatarIndex((index) => (index - 1 + testimonials.length) % testimonials.length);
+  }, []);
+  const handleAvatarDragEnd = useCallback((_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     if (info.offset.x < -42) nextTestimonial();
     if (info.offset.x > 42) previousTestimonial();
-  };
+  }, [nextTestimonial, previousTestimonial]);
 
   return (
     <LazyMotion features={domMax}>

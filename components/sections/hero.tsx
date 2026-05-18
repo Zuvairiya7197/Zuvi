@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { LazyMotion, domAnimation, m, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Sparkle } from "lucide-react";
+import { useCallback } from "react";
 
 const traits = ["Strategic", "Creative", "Impactful"];
 
@@ -22,17 +23,20 @@ export function Hero() {
   });
   const headlineX = useTransform(smoothX, [-0.5, 0.5], [-10, 10]);
   const headlineY = useTransform(smoothY, [-0.5, 0.5], [-7, 7]);
+  const handlePointerMove = useCallback((event: React.PointerEvent<HTMLElement>) => {
+    if (event.pointerType !== "mouse") return;
+
+    const rect = event.currentTarget.getBoundingClientRect();
+    pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
+    pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
+  }, [pointerX, pointerY]);
 
   return (
     <LazyMotion features={domAnimation}>
       <section
         id="top"
         className="story-hero relative min-h-[100svh] overflow-hidden px-4 pb-5 pt-[clamp(5.9rem,15svh,7.5rem)] md:px-6 md:pt-[clamp(6.25rem,13svh,7.5rem)] xl:px-8 2xl:pt-32"
-        onPointerMove={(event) => {
-          const rect = event.currentTarget.getBoundingClientRect();
-          pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
-          pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
-        }}
+        onPointerMove={handlePointerMove}
       >
       <div className="pointer-events-none absolute bottom-0 left-1/2 z-0 aspect-[1672/941] w-[min(160vw,34rem)] -translate-x-1/2 md:w-[min(175vw,76rem)] xl:w-[min(160vw,58rem)]">
         <Image

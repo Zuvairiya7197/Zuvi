@@ -6,10 +6,9 @@ import { ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion, type PanInfo } from "framer-motion";
 import { gsap } from "gsap";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { projects } from "@/lib/data";
+import { homeProjects } from "@/lib/home-projects";
 
 const AUTOPLAY_DELAY = 6200;
-const homeProjectCategories = ["Social Media Designs", "Costumised Print Design"];
 
 function mod(index: number, length: number) {
   return ((index % length) + length) % length;
@@ -23,10 +22,7 @@ function splitTitle(title: string) {
 }
 
 export function FeaturedProjects() {
-  const featuredProjects = useMemo(
-    () => projects.filter((project) => homeProjectCategories.includes(project.category)),
-    []
-  );
+  const featuredProjects = homeProjects;
   const initialIndex = useMemo(() => {
     const socialIndex = featuredProjects.findIndex((project) => project.category === "Social Media Designs");
     return socialIndex >= 0 ? socialIndex : 0;
@@ -34,6 +30,7 @@ export function FeaturedProjects() {
   const [activeIndex, setActiveIndex] = useState(initialIndex);
   const [direction, setDirection] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isSectionActive, setIsSectionActive] = useState(false);
   const sectionRef = useRef<HTMLElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const numberRef = useRef<HTMLDivElement | null>(null);
@@ -44,7 +41,7 @@ export function FeaturedProjects() {
   const wheelLockRef = useRef(false);
   const activeProject = featuredProjects[activeIndex];
   const nextProject = featuredProjects[mod(activeIndex + 1, featuredProjects.length)];
-  const titleLines = splitTitle(activeProject.title);
+  const titleLines = useMemo(() => splitTitle(activeProject.title), [activeProject.title]);
   const activeProjectHref =
     activeProject.industry === "Graphic Design"
       ? `/work?mode=graphic&category=${encodeURIComponent(activeProject.category)}`
@@ -67,11 +64,28 @@ export function FeaturedProjects() {
   const goToPrevious = useCallback(() => changeSlide(activeIndex - 1), [activeIndex, changeSlide]);
 
   useEffect(() => {
-    const interval = window.setInterval(goToNext, AUTOPLAY_DELAY);
-    return () => window.clearInterval(interval);
-  }, [goToNext]);
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsSectionActive(entry.isIntersecting),
+      { rootMargin: "360px 0px 360px 0px" }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
+    if (!isSectionActive) return;
+
+    const interval = window.setInterval(goToNext, AUTOPLAY_DELAY);
+    return () => window.clearInterval(interval);
+  }, [goToNext, isSectionActive]);
+
+  useEffect(() => {
+    if (!isSectionActive) return;
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") goToNext();
       if (event.key === "ArrowLeft") goToPrevious();
@@ -79,9 +93,11 @@ export function FeaturedProjects() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [goToNext, goToPrevious]);
+  }, [goToNext, goToPrevious, isSectionActive]);
 
   useEffect(() => {
+    if (!isSectionActive) return;
+
     const ctx = gsap.context(() => {
       const timeline = gsap.timeline({
         defaults: { ease: "power3.out" },
@@ -143,7 +159,7 @@ export function FeaturedProjects() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [activeIndex, direction]);
+  }, [activeIndex, direction, isSectionActive]);
 
   const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     if (info.offset.x < -70) goToNext();
@@ -151,6 +167,7 @@ export function FeaturedProjects() {
   };
 
   const handleWheel = (event: React.WheelEvent<HTMLElement>) => {
+    if (!isSectionActive) return;
     if (Math.abs(event.deltaY) < 18 || wheelLockRef.current) return;
     wheelLockRef.current = true;
     if (event.deltaY > 0) goToNext();
