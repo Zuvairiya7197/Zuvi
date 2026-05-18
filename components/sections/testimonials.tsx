@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, type PanInfo } from "framer-motion";
 import { useState } from "react";
 import { testimonials } from "@/lib/data";
 
@@ -28,6 +28,10 @@ export function Testimonials() {
   const featured = testimonials[activeIndex];
   const nextTestimonial = () => setActiveAvatarIndex((index) => (index + 1) % testimonials.length);
   const previousTestimonial = () => setActiveAvatarIndex((index) => (index - 1 + testimonials.length) % testimonials.length);
+  const handleAvatarDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    if (info.offset.x < -42) nextTestimonial();
+    if (info.offset.x > 42) previousTestimonial();
+  };
 
   return (
     <section className="section-line testimonial-luxe-stage relative overflow-hidden px-4 pb-[clamp(3rem,7svh,4.25rem)] pt-[clamp(6.5rem,14svh,7.5rem)] text-[#f7efe0] sm:px-[clamp(1rem,5vw,4.5rem)] md:py-[clamp(2.5rem,6svh,4.25rem)]">
@@ -62,7 +66,7 @@ export function Testimonials() {
 
         <div className="relative -mx-4 mt-[clamp(2.25rem,4svh,3rem)] h-[17rem] sm:-mx-[clamp(1.25rem,4vw,4rem)] sm:mt-[clamp(2rem,4svh,3rem)] sm:h-[clamp(16rem,28svh,18.75rem)] md:h-[20rem] lg:h-[clamp(16rem,28svh,18.75rem)]">
           <svg
-            className="absolute left-1/2 top-[50%] hidden h-full w-[112%] -translate-x-1/2 -translate-y-1/2 overflow-visible drop-shadow-[0_0_10px_rgba(214,179,106,0.18)] sm:block md:w-[104%] lg:w-[112%]"
+            className="absolute left-1/2 top-[50%] h-full w-[145%] -translate-x-1/2 -translate-y-1/2 overflow-visible drop-shadow-[0_0_10px_rgba(214,179,106,0.18)] sm:w-[112%] md:w-[104%] lg:w-[112%]"
             viewBox="0 0 1600 360"
             fill="none"
             aria-hidden="true"
@@ -103,7 +107,7 @@ export function Testimonials() {
           {dotPositions.map((position, index) => (
             <motion.span
               key={position}
-              className={`absolute z-20 hidden size-2.5 rounded-full bg-[#f4d79d] shadow-[0_0_12px_rgba(244,215,157,0.56),0_0_22px_rgba(214,179,106,0.24)] sm:block md:size-3.5 ${position}`}
+              className={`absolute z-20 size-2.5 rounded-full bg-[#f4d79d] shadow-[0_0_12px_rgba(244,215,157,0.56),0_0_22px_rgba(214,179,106,0.24)] md:size-3.5 ${position}`}
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
               animate={{ opacity: [0.45, 0.85, 0.45], scale: [1, 1.12, 1] }}
@@ -111,6 +115,31 @@ export function Testimonials() {
               transition={{ delay: 0.35 + index * 0.08, duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
             />
           ))}
+
+          <div className="absolute left-1/2 top-1/2 z-40 size-[5.8rem] -translate-x-1/2 -translate-y-1/2 sm:hidden">
+            <motion.button
+              key={featured.name}
+              type="button"
+              aria-label={`Current testimonial from ${featured.name}. Swipe to change testimonial.`}
+              className="relative size-full overflow-hidden rounded-full border border-[#f8dca5]/80 bg-[#060503] shadow-[0_18px_48px_rgba(0,0,0,0.5),0_0_28px_rgba(244,215,157,0.2)] ring-2 ring-[#f8dca5]/70 ring-offset-[3px] ring-offset-[#080604] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f8dca5]/80"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.16}
+              onDragEnd={handleAvatarDragEnd}
+              initial={{ opacity: 0, scale: 0.88 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <Image
+                src={featured.image}
+                alt=""
+                fill
+                sizes="96px"
+                className="object-cover saturate-[0.82] contrast-[1.08]"
+              />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_20%,rgba(255,255,255,0.22),transparent_28%),linear-gradient(180deg,transparent,rgba(0,0,0,0.24))]" />
+            </motion.button>
+          </div>
 
           {testimonials.map((testimonial, index) => {
             const position = avatarPositions[index];
@@ -121,7 +150,7 @@ export function Testimonials() {
               key={testimonial.name}
               type="button"
               aria-label={`Show testimonial from ${testimonial.name}`}
-              className={`absolute z-30 overflow-hidden rounded-full border bg-[#060503] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f8dca5]/80 ${isActive ? "border-[#f8dca5]/80 ring-2 ring-[#f8dca5]/70 ring-offset-[3px] ring-offset-[#080604] shadow-[0_18px_48px_rgba(0,0,0,0.5),0_0_28px_rgba(244,215,157,0.2)]" : "border-[#f4d79d]/42 shadow-[0_14px_34px_rgba(0,0,0,0.42),0_0_16px_rgba(214,179,106,0.1)]"} ${position}`}
+              className={`absolute z-30 hidden overflow-hidden rounded-full border bg-[#060503] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f8dca5]/80 sm:block ${isActive ? "border-[#f8dca5]/80 ring-2 ring-[#f8dca5]/70 ring-offset-[3px] ring-offset-[#080604] shadow-[0_18px_48px_rgba(0,0,0,0.5),0_0_28px_rgba(244,215,157,0.2)]" : "border-[#f4d79d]/42 shadow-[0_14px_34px_rgba(0,0,0,0.42),0_0_16px_rgba(214,179,106,0.1)]"} ${position}`}
               onClick={() => setActiveAvatarIndex(index)}
               initial={{ opacity: 0, y: 24, scale: 0.88 }}
               whileInView={{ opacity: 1 }}
@@ -164,15 +193,23 @@ export function Testimonials() {
           >
             <ChevronLeft size={24} />
           </motion.button>
-          <motion.p
+          <motion.div
             key={featured.quote}
-            className="mx-auto max-w-[52rem] text-sm leading-6 text-[#f8edd7]/68 md:text-[1.02rem] md:leading-7"
+            className="mx-auto max-w-[52rem]"
             initial={{ opacity: 0, y: 12, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           >
-            "{featured.quote}"
-          </motion.p>
+            <p className="text-sm leading-6 text-[#f8edd7]/68 md:text-[1.02rem] md:leading-7">
+              "{featured.quote}"
+            </p>
+            <div className="mt-4">
+              <p className="text-sm font-semibold text-[#f5f1e8]">{featured.name}</p>
+              <p className="mt-1 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[#d6b36a]/70">
+                {featured.role}
+              </p>
+            </div>
+          </motion.div>
           <motion.button
             aria-label="Next testimonial"
             className="grid size-10 shrink-0 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/25 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8 sm:size-11 md:size-12"
