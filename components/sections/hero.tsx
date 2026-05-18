@@ -10,8 +10,16 @@ const traits = ["Strategic", "Creative", "Impactful"];
 export function Hero() {
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
-  const smoothX = useSpring(pointerX, { stiffness: 80, damping: 22, mass: 0.6 });
-  const smoothY = useSpring(pointerY, { stiffness: 80, damping: 22, mass: 0.6 });
+  const smoothX = useSpring(pointerX, {
+    stiffness: 80,
+    damping: 22,
+    mass: 0.6,
+  });
+  const smoothY = useSpring(pointerY, {
+    stiffness: 80,
+    damping: 22,
+    mass: 0.6,
+  });
   const headlineX = useTransform(smoothX, [-0.5, 0.5], [-10, 10]);
   const headlineY = useTransform(smoothY, [-0.5, 0.5], [-7, 7]);
 
@@ -25,7 +33,7 @@ export function Hero() {
         pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
       }}
     >
-      <div className="pointer-events-none absolute bottom-0 left-1/2 z-0 aspect-[1672/941] w-[min(122vw,34rem)] -translate-x-1/2 md:w-[min(82vw,58rem)]">
+      <div className="pointer-events-none absolute bottom-0 left-1/2 z-0 aspect-[1672/941] w-[min(150vw,34rem)] -translate-x-1/2 md:w-[min(82vw,58rem)]">
         <Image
           src="/Hero Image.png"
           alt=""
@@ -50,7 +58,10 @@ export function Hero() {
           <h1 className="mt-4 font-sans text-[clamp(3.35rem,13.4vw,8rem)] font-black uppercase leading-[0.9] tracking-[-0.035em] text-[#f5f1e8] md:text-[clamp(4rem,9vw,8rem)] md:tracking-[-0.045em] xl:text-[clamp(3.2rem,5.7vw,6.8rem)] 2xl:mt-6 2xl:text-[clamp(4rem,6.9vw,8.4rem)] 2xl:leading-[0.96]">
             Designs that
             <span className="block">
-              tell <span className="bg-gradient-to-b from-[#f8ddb0] to-[#9a6a30] bg-clip-text text-transparent">stories.</span>
+              tell{" "}
+              <span className="bg-gradient-to-b from-[#f8ddb0] to-[#9a6a30] bg-clip-text text-transparent">
+                stories.
+              </span>
             </span>
           </h1>
           <Link
@@ -81,7 +92,9 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.9 }}
           >
-            <h2 className="text-[clamp(1.45rem,1.9vw,1.9rem)] font-semibold leading-[1.08] tracking-[-0.035em] text-[#f5f1e8]">From Concept to Connection.</h2>
+            <h2 className="text-[clamp(1.45rem,1.9vw,1.9rem)] font-semibold leading-[1.08] tracking-[-0.035em] text-[#f5f1e8]">
+              From Concept to Connection.
+            </h2>
             <p className="mt-3 text-sm leading-5 text-[#f5f1e8]/46">
               I create visual experiences that inspire, engage & elevate brands.
             </p>
