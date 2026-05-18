@@ -7,19 +7,19 @@ import { useState } from "react";
 import { testimonials } from "@/lib/data";
 
 const avatarPositions = [
-  "left-[7%] top-[16%] size-[3.85rem] sm:left-[18%] sm:top-[20%] sm:size-[4rem] md:size-[4.7rem]",
-  "left-[29%] top-[58%] size-[4.1rem] sm:left-[36%] sm:size-[4.5rem] md:size-[5.15rem]",
-  "left-[50%] top-[29%] size-[4.85rem] -translate-x-1/2 sm:top-[32%] sm:size-[5.2rem] md:size-[5.9rem]",
-  "right-[7%] top-[17%] size-[4.05rem] sm:right-[18%] sm:top-[22%] sm:size-[4.55rem] md:size-[5.25rem]"
+  "left-[12%] top-[10%] size-[3.45rem] sm:left-[14%] sm:top-[20%] sm:size-[4rem] md:left-[8%] md:top-[20%] md:size-[4.7rem] lg:left-[16%] lg:top-[16%]",
+  "left-[18%] top-[58%] size-[3.65rem] sm:left-[34%] sm:top-[60%] sm:size-[4.5rem] md:left-[31%] md:top-[61%] md:size-[5.15rem] lg:left-[36%] lg:top-[62%]",
+  "right-[23%] top-[22%] size-[4rem] sm:left-[50%] sm:right-auto sm:top-[32%] sm:size-[5.2rem] sm:-translate-x-1/2 md:left-[55%] md:top-[30%] md:size-[5.9rem] lg:left-1/2 lg:top-[33%]",
+  "right-[12%] top-[60%] size-[3.6rem] sm:right-[14%] sm:top-[22%] sm:size-[4.55rem] md:right-[8%] md:top-[22%] md:size-[5.25rem] lg:right-[16%] lg:top-[18%]"
 ];
 
 const dotPositions = [
-  "left-[12%] top-[62%] sm:left-[23%] sm:top-[58%]",
-  "left-[31%] top-[34%] sm:left-[37.4%]",
-  "left-[58%] top-[42%] sm:left-[56%] sm:top-[41%]",
-  "right-[25%] top-[70%] sm:right-[31%]",
-  "right-[12%] top-[25%] sm:right-[21%] sm:top-[24%]",
-  "right-[3%] top-[48%] sm:right-[7.5%] sm:top-[47%]"
+  "left-[23%] top-[58%] md:left-[18%] md:top-[59%] lg:left-[23%]",
+  "left-[37.4%] top-[34%] md:left-[39%] md:top-[35%] lg:left-[37.4%]",
+  "left-[56%] top-[41%] md:left-[59%] md:top-[42%] lg:left-[56%]",
+  "right-[31%] top-[70%] md:right-[28%] md:top-[70%] lg:right-[31%]",
+  "right-[21%] top-[24%] md:right-[18%] md:top-[25%] lg:right-[21%]",
+  "right-[7.5%] top-[47%] md:right-[6%] md:top-[48%] lg:right-[7.5%]"
 ];
 
 export function Testimonials() {
@@ -60,9 +60,9 @@ export function Testimonials() {
           </motion.a>
         </motion.div>
 
-        <div className="relative -mx-4 mt-[clamp(2.25rem,4svh,3rem)] h-[clamp(15rem,29svh,18.75rem)] sm:-mx-[clamp(1.25rem,4vw,4rem)] sm:mt-[clamp(2rem,4svh,3rem)] sm:h-[clamp(16rem,28svh,18.75rem)]">
+        <div className="relative -mx-4 mt-[clamp(2.25rem,4svh,3rem)] h-[17rem] sm:-mx-[clamp(1.25rem,4vw,4rem)] sm:mt-[clamp(2rem,4svh,3rem)] sm:h-[clamp(16rem,28svh,18.75rem)] md:h-[20rem] lg:h-[clamp(16rem,28svh,18.75rem)]">
           <svg
-            className="absolute left-1/2 top-[50%] h-full w-[145%] -translate-x-1/2 -translate-y-1/2 overflow-visible drop-shadow-[0_0_10px_rgba(214,179,106,0.18)] sm:w-[112%]"
+            className="absolute left-1/2 top-[50%] hidden h-full w-[112%] -translate-x-1/2 -translate-y-1/2 overflow-visible drop-shadow-[0_0_10px_rgba(214,179,106,0.18)] sm:block md:w-[104%] lg:w-[112%]"
             viewBox="0 0 1600 360"
             fill="none"
             aria-hidden="true"
@@ -103,7 +103,7 @@ export function Testimonials() {
           {dotPositions.map((position, index) => (
             <motion.span
               key={position}
-              className={`absolute z-20 size-2.5 rounded-full bg-[#f4d79d] shadow-[0_0_12px_rgba(244,215,157,0.56),0_0_22px_rgba(214,179,106,0.24)] md:size-3.5 ${position}`}
+              className={`absolute z-20 hidden size-2.5 rounded-full bg-[#f4d79d] shadow-[0_0_12px_rgba(244,215,157,0.56),0_0_22px_rgba(214,179,106,0.24)] sm:block md:size-3.5 ${position}`}
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
               animate={{ opacity: [0.45, 0.85, 0.45], scale: [1, 1.12, 1] }}
