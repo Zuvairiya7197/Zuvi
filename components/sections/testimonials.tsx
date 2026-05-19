@@ -200,7 +200,7 @@ export function Testimonials() {
         >
           <m.button
             aria-label="Previous testimonial"
-            className="grid size-10 shrink-0 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/25 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8 sm:size-11 md:size-12"
+            className="grid size-12 shrink-0 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/25 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8"
             onClick={previousTestimonial}
             whileHover={{ x: -3, scale: 1.06 }}
             whileTap={{ scale: 0.94 }}
@@ -227,7 +227,7 @@ export function Testimonials() {
           </m.div>
           <m.button
             aria-label="Next testimonial"
-            className="grid size-10 shrink-0 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/25 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8 sm:size-11 md:size-12"
+            className="grid size-12 shrink-0 place-items-center rounded-full border border-[#f4d79d]/22 bg-black/25 text-[#f8dca5] shadow-[0_10px_30px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors hover:border-[#f8dca5]/55 hover:bg-[#f4d79d]/8"
             onClick={nextTestimonial}
             whileHover={{ x: 3, scale: 1.06 }}
             whileTap={{ scale: 0.94 }}

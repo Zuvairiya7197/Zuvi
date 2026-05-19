@@ -132,12 +132,12 @@ export function ContactSection() {
           <div className="flex flex-col gap-1 md:items-center">
             <a
               href="mailto:zuvairiyamaryam@gmail.com"
-              className="transition hover:text-[#d6b36a]"
+              className="inline-flex min-h-12 items-center transition hover:text-[#d6b36a]"
             >
               zuvairiyamaryam@gmail.com
             </a>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3.5">
             {footerSocials.map((social) => {
               const Icon = social.icon;
               return (
@@ -149,7 +149,7 @@ export function ContactSection() {
                   rel={
                     social.href.startsWith("http") ? "noreferrer" : undefined
                   }
-                  className="grid size-9 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-[#d6b36a] transition hover:border-[#d6b36a]/50 hover:bg-[#d6b36a] hover:text-black"
+                  className="grid size-12 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-[#d6b36a] transition hover:border-[#d6b36a]/50 hover:bg-[#d6b36a] hover:text-black"
                 >
                   <Icon className="size-4" />
                 </a>

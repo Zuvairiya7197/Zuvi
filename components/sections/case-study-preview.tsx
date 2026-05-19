@@ -38,7 +38,7 @@ export function CaseStudyPreview() {
           </p>
           <a
             href={`/work/${featured.slug}`}
-            className="mt-8 inline-flex items-center gap-3 rounded-full border border-[#d6b36a]/35 px-5 py-3 text-xs font-black uppercase tracking-[0.16em] text-[#d6b36a] transition hover:bg-[#d6b36a] hover:text-black"
+            className="mt-8 inline-flex min-h-12 items-center gap-3 rounded-full border border-[#d6b36a]/35 px-5 py-3 text-xs font-black uppercase tracking-[0.16em] text-[#d6b36a] transition hover:bg-[#d6b36a] hover:text-black"
           >
             Open full story <ArrowUpRight size={15} />
           </a>

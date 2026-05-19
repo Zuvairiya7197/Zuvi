@@ -77,7 +77,7 @@ function GraphicPreviewLightbox({
         type="button"
         aria-label="Close preview"
         onClick={onClose}
-        className="absolute right-5 top-5 grid size-11 place-items-center rounded-full border border-white/12 bg-white/[0.04] text-[#f5f1e8] transition hover:border-[#d5ad6f]/45 hover:bg-[#d5ad6f] hover:text-black"
+        className="absolute right-5 top-5 grid size-12 place-items-center rounded-full border border-white/12 bg-white/[0.04] text-[#f5f1e8] transition hover:border-[#d5ad6f]/45 hover:bg-[#d5ad6f] hover:text-black"
       >
         <X size={18} />
       </button>
@@ -138,7 +138,7 @@ function TabButton({
     <button
       type="button"
       onClick={onClick}
-      className={`group flex h-11 items-center justify-center overflow-hidden rounded-full border text-xs font-medium transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:h-12 sm:text-[0.82rem] ${
+      className={`group flex h-12 items-center justify-center overflow-hidden rounded-full border text-xs font-medium transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:text-[0.82rem] ${
         active
           ? "min-w-0 flex-[1_1_0] border-[#d5ad6f]/45 bg-[#d5ad6f] px-4 text-black shadow-[0_14px_42px_rgba(213,173,111,0.18)] sm:px-5"
           : "flex-[0_0_3rem] border-white/10 bg-white/[0.025] px-0 text-neutral-300 hover:border-[#d5ad6f]/30 hover:bg-white/[0.045] hover:text-[#f5f1e8] md:flex-[0_0_3.75rem]"
@@ -169,7 +169,7 @@ function CategoryButton({
     <button
       type="button"
       onClick={onClick}
-      className={`whitespace-nowrap rounded-full border px-2 py-1.5 text-[0.44rem] font-semibold tracking-[0.06em] transition duration-300 sm:px-3 sm:text-[0.58rem] sm:tracking-[0.1em] md:px-3.5 md:text-[0.62rem] md:tracking-[0.12em] ${
+      className={`min-h-12 whitespace-nowrap rounded-full border px-4 py-2 text-[0.58rem] font-semibold tracking-[0.08em] transition duration-300 sm:px-3.5 sm:text-[0.58rem] sm:tracking-[0.1em] md:px-4 md:text-[0.62rem] md:tracking-[0.12em] ${
         active
           ? "border-[#d5ad6f]/50 bg-[#d5ad6f]/12 text-[#f5d89d]"
           : "border-white/10 bg-black/10 text-neutral-500 hover:border-[#d5ad6f]/25 hover:bg-white/[0.025] hover:text-neutral-200"

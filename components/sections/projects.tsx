@@ -315,9 +315,9 @@ export function FeaturedProjects() {
                 type="button"
                 aria-label={`Show ${project.title}`}
                 onClick={() => changeSlide(index)}
-                className="group h-6 w-10 py-2 sm:w-14"
+                className="group grid h-12 min-w-12 place-items-center sm:w-14"
               >
-                <span className="block h-px origin-left rounded-full bg-white/22">
+                <span className="block h-px w-10 origin-left rounded-full bg-white/22 sm:w-14">
                   <span
                     ref={(node) => {
                       progressRefs.current[index] = node;

@@ -20,7 +20,7 @@ export function AboutPreview() {
             Zuvi Studio blends editorial taste, brand strategy, UI systems and motion direction into visual worlds
             that feel considered, elevated and commercially useful.
           </p>
-          <Link href="/about" className="mt-8 inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.16em] text-[#d5ad6f]">
+          <Link href="/about" className="mt-8 inline-flex min-h-12 items-center gap-3 text-xs font-black uppercase tracking-[0.16em] text-[#d5ad6f]">
             More about me <ArrowRight size={15} />
           </Link>
         </div>
