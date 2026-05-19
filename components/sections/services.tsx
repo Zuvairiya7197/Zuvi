@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { LazyMotion, domAnimation, m, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { AnimatePresence, LazyMotion, domAnimation, m, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useState } from "react";
 import {
   CreditCard,
@@ -329,6 +329,7 @@ export function ServicesPreview() {
             return (
               <m.article
                 key={item.title}
+                layout
                 role="button"
                 tabIndex={0}
                 aria-expanded={isExpanded}
@@ -340,7 +341,7 @@ export function ServicesPreview() {
                   }
                 }}
                 data-expanded={isExpanded}
-                className="group relative ml-auto min-h-[3.8rem] w-[min(100%,40rem)] cursor-pointer overflow-hidden rounded-[1.65rem] border border-white/7 bg-[#1b1a18]/88 px-5 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_18px_56px_rgba(0,0,0,0.34)] backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-[#d6b36a]/28 hover:bg-[#211f1b]/94 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_22px_66px_rgba(0,0,0,0.42),0_0_24px_rgba(214,179,106,0.08)] focus:outline-none focus-visible:border-[#d6b36a]/45 data-[expanded=true]:border-[#d6b36a]/28 data-[expanded=true]:bg-[#211f1b]/94 data-[expanded=true]:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_22px_66px_rgba(0,0,0,0.42),0_0_24px_rgba(214,179,106,0.08)]"
+                className="group relative ml-auto min-h-[3.8rem] w-[min(100%,40rem)] cursor-pointer overflow-hidden rounded-[1.65rem] border border-white/7 bg-[#1b1a18]/88 px-5 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_18px_56px_rgba(0,0,0,0.34)] backdrop-blur-xl transition-colors duration-300 ease-out hover:border-[#d6b36a]/28 hover:bg-[#211f1b]/94 focus:outline-none focus-visible:border-[#d6b36a]/45 data-[expanded=true]:border-[#d6b36a]/28 data-[expanded=true]:bg-[#211f1b]/94 data-[expanded=true]:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_22px_66px_rgba(0,0,0,0.42),0_0_24px_rgba(214,179,106,0.08)]"
                 initial={{ opacity: 0, x: 50, filter: "blur(8px)" }}
                 whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, margin: "-120px" }}
@@ -349,6 +350,8 @@ export function ServicesPreview() {
                   delay: index * 0.1,
                   ease: [0.16, 1, 0.3, 1],
                 }}
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.995 }}
               >
                 <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(214,179,106,0.14),rgba(245,241,232,0.035))] opacity-75 transition duration-500 group-hover:opacity-100 group-data-[expanded=true]:opacity-100" />
                 <div className="relative flex items-center justify-between gap-5">
@@ -365,74 +368,81 @@ export function ServicesPreview() {
                   </span>
                 </div>
 
-                <div className="relative grid max-h-0 gap-4 overflow-hidden text-[#f5f1e8]/0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mt-4 group-hover:max-h-[22rem] group-hover:text-[#f5f1e8] group-data-[expanded=true]:mt-4 group-data-[expanded=true]:max-h-[22rem] group-data-[expanded=true]:text-[#f5f1e8]">
-                  <div className="relative grid gap-4">
-                    <div className="grid gap-4 border-t border-white/0 pt-0 transition-all duration-500 group-hover:border-white/10 group-hover:pt-4 group-data-[expanded=true]:border-white/10 group-data-[expanded=true]:pt-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
-                      <div>
-                        <p className="text-[0.65rem] text-white/0 transition duration-500 group-hover:text-white/46 group-data-[expanded=true]:text-white/46">
-                          Core focus
-                        </p>
-                        <p className="mt-1 text-[clamp(1.45rem,3vw,2rem)] font-light leading-none tracking-[-0.04em] text-white/0 transition duration-500 group-hover:text-white group-data-[expanded=true]:text-white">
-                          {item.current}
-                        </p>
-                      </div>
-                      <div className="hidden h-14 w-14 place-items-center rounded-full border-[3px] border-white/0 text-xs font-semibold transition duration-500 group-hover:border-white/38 group-hover:text-white group-data-[expanded=true]:border-white/38 group-data-[expanded=true]:text-white sm:grid">
-                        {item.metric}
-                      </div>
-                      <div className="sm:text-right">
-                        <p className="text-[0.65rem] text-white/0 transition duration-500 group-hover:text-white/46 group-data-[expanded=true]:text-white/46">
-                          Outcome
-                        </p>
-                        <p className="mt-1 text-[clamp(1.45rem,3vw,2rem)] font-light leading-none tracking-[-0.04em] text-white/0 transition duration-500 group-hover:text-white group-data-[expanded=true]:text-white">
-                          {item.ideal}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="relative h-5 rounded-full bg-black/0 transition duration-500 group-hover:bg-black/22 group-data-[expanded=true]:bg-black/22">
-                      <div className="absolute inset-y-0 left-0 w-[68%] rounded-full bg-gradient-to-r from-[#8c6a3b] via-[#d6b36a] to-[#f5e7bd] opacity-0 transition duration-500 group-hover:opacity-100 group-data-[expanded=true]:opacity-100" />
-                      <div className="absolute left-[66%] top-1/2 h-8 w-8 -translate-y-1/2 rounded-full border-[5px] border-[#f2d694]/0 bg-[#fff2d2]/0 shadow-[0_0_0_rgba(214,179,106,0)] transition duration-500 group-hover:border-[#f2d694] group-hover:bg-[#fff2d2] group-hover:shadow-[0_0_28px_rgba(214,179,106,0.45)] group-data-[expanded=true]:border-[#f2d694] group-data-[expanded=true]:bg-[#fff2d2] group-data-[expanded=true]:shadow-[0_0_28px_rgba(214,179,106,0.45)]" />
-                    </div>
-
-                    <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
-                      <div className="border-l-4 border-[#d6b36a]/0 pl-5 transition duration-500 group-hover:border-[#d6b36a] group-data-[expanded=true]:border-[#d6b36a]">
-                        {item.meals.map(([label, value]) => (
-                          <div
-                            key={label}
-                            className="grid grid-cols-[4.5rem_1fr] gap-3 py-1 text-xs"
-                          >
-                            <span className="text-white/0 transition duration-500 group-hover:text-white/46 group-data-[expanded=true]:text-white/46">
-                              {label}
-                            </span>
-                            <span className="text-white/0 transition duration-500 group-hover:text-white/82 group-data-[expanded=true]:text-white/82">
-                              {value}
-                            </span>
+                <AnimatePresence initial={false}>
+                  {isExpanded ? (
+                    <m.div
+                      key="service-details"
+                      className="relative overflow-hidden"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      <div className="mt-4 grid gap-4 border-t border-white/10 pt-4 text-[#f5f1e8]">
+                        <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
+                          <div>
+                            <p className="text-[0.65rem] text-white/46">
+                              Core focus
+                            </p>
+                            <p className="mt-1 text-[clamp(1.45rem,3vw,2rem)] font-light leading-none tracking-[-0.04em] text-white">
+                              {item.current}
+                            </p>
                           </div>
-                        ))}
-                      </div>
-                      <div className="flex gap-2">
-                        {item.images.map((src) => (
-                          <div
-                            key={src}
-                            className="relative h-0 w-20 overflow-hidden rounded-2xl opacity-0 transition-all duration-500 group-hover:h-20 group-hover:opacity-100 group-data-[expanded=true]:h-20 group-data-[expanded=true]:opacity-100 md:w-24 group-hover:md:h-24 group-data-[expanded=true]:md:h-24"
-                          >
-                            <Image
-                              src={src}
-                              alt=""
-                              fill
-                              sizes="96px"
-                              className="object-cover saturate-75"
-                            />
-                            <div className="absolute inset-0 bg-black/12" />
+                          <div className="hidden h-14 w-14 place-items-center rounded-full border-[3px] border-white/38 text-xs font-semibold text-white sm:grid">
+                            {item.metric}
                           </div>
-                        ))}
+                          <div className="sm:text-right">
+                            <p className="text-[0.65rem] text-white/46">
+                              Outcome
+                            </p>
+                            <p className="mt-1 text-[clamp(1.45rem,3vw,2rem)] font-light leading-none tracking-[-0.04em] text-white">
+                              {item.ideal}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="relative h-5 rounded-full bg-black/22">
+                          <div className="absolute inset-y-0 left-0 w-[68%] rounded-full bg-gradient-to-r from-[#8c6a3b] via-[#d6b36a] to-[#f5e7bd]" />
+                          <div className="absolute left-[66%] top-1/2 h-8 w-8 -translate-y-1/2 rounded-full border-[5px] border-[#f2d694] bg-[#fff2d2] shadow-[0_0_28px_rgba(214,179,106,0.45)]" />
+                        </div>
+
+                        <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
+                          <div className="border-l-4 border-[#d6b36a] pl-5">
+                            {item.meals.map(([label, value]) => (
+                              <div
+                                key={label}
+                                className="grid grid-cols-[4.5rem_1fr] gap-3 py-1 text-xs"
+                              >
+                                <span className="text-white/46">{label}</span>
+                                <span className="text-white/82">{value}</span>
+                              </div>
+                            ))}
+                          </div>
+                          <div className="flex gap-2">
+                            {item.images.map((src) => (
+                              <div
+                                key={src}
+                                className="relative h-20 w-20 overflow-hidden rounded-2xl md:h-24 md:w-24"
+                              >
+                                <Image
+                                  src={src}
+                                  alt=""
+                                  fill
+                                  sizes="96px"
+                                  className="object-cover saturate-75"
+                                />
+                                <div className="absolute inset-0 bg-black/12" />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        <p className="text-xs leading-5 text-white/58">
+                          {item.detail}
+                        </p>
                       </div>
-                    </div>
-                    <p className="text-xs leading-5 text-white/0 transition duration-500 group-hover:text-white/58 group-data-[expanded=true]:text-white/58">
-                      {item.detail}
-                    </p>
-                  </div>
-                </div>
+                    </m.div>
+                  ) : null}
+                </AnimatePresence>
               </m.article>
             );
           })}
