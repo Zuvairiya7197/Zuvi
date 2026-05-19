@@ -24,11 +24,6 @@ const socialMediaProjects = [
     image: "/mz-social-cover-smm.webp"
   },
   {
-    slug: "social-cover-contact",
-    title: "Contact Social Cover",
-    image: "/mz-social-cover-contact.webp"
-  },
-  {
     slug: "wbyb-social-media-cover",
     title: "WBYB Social Media Cover",
     image: "/WBYB Social media cover.webp"

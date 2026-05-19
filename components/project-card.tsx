@@ -53,7 +53,7 @@ export function ProjectCard({
             </span>
           </div>
           <div className="mt-5 grid gap-4 text-sm leading-6 text-neutral-400">
-            <p className="line-clamp-2">{project.solution}</p>
+            <p className="sm:line-clamp-2">{project.solution}</p>
             <p className="border-t border-white/[0.07] pt-4 text-neutral-500">
               <span className="text-[#d5ad6f]/82">Result</span>
               <span className="mx-2 text-white/18">/</span>

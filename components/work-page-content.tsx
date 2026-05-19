@@ -25,15 +25,15 @@ function GraphicGalleryTile({
       className="group mb-8 block w-full break-inside-avoid text-left focus:outline-none"
       aria-label={`Preview ${project.title}`}
     >
-      <figure className="relative overflow-hidden transition duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 group-focus-visible:ring-2 group-focus-visible:ring-[#d5ad6f]/55">
+      <figure className="relative overflow-hidden transition duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1 group-focus-visible:ring-2 group-focus-visible:ring-[#d5ad6f]/55">
         <img
           src={project.image}
           alt={`${project.title} ${project.category}`}
           loading={index < 6 ? "eager" : "lazy"}
           className="h-auto w-full object-contain transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.018]"
         />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(0,0,0,0.58))] opacity-0 transition duration-500 group-hover:opacity-100" />
-        <div className="pointer-events-none absolute bottom-6 left-6 right-6 flex translate-y-3 items-center justify-between gap-4 opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(0,0,0,0.58))] opacity-100 transition duration-500 md:opacity-0 md:group-hover:opacity-100" />
+        <div className="pointer-events-none absolute bottom-4 left-4 right-4 flex translate-y-0 items-center justify-between gap-4 opacity-100 transition duration-500 md:bottom-6 md:left-6 md:right-6 md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
           <div>
             <p className="text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-[#f5d89d]">
               {project.category}

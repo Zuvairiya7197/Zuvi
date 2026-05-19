@@ -203,18 +203,6 @@ export const projects = [
     accent: "from-[#d6b36a] to-[#111111]",
     liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/fbcoverdesign"
   },
-  {
-    slug: "social-cover-contact",
-    title: "Contact Social Cover",
-    industry: "Graphic Design",
-    problem: "The brand needed a contact-focused social cover that could make inquiry details easy to find.",
-    solution: "Designed a clean social cover layout with clear contact hierarchy, soft visual styling, and direct information flow.",
-    results: "A practical social media cover that presents contact details with a more polished brand impression.",
-    image: "/mz-social-cover-contact.webp",
-    category: "Social Media Designs",
-    accent: "from-[#d6b36a] to-[#8c6a3b]",
-    liveUrl: "https://zuvairiyamaryam.wixsite.com/my-site/fbcoverdesign"
-  },
   ...socialMediaDesignProjects,
   {
     slug: "sm-classes-poster",

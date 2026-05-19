@@ -31,6 +31,7 @@ export function FeaturedProjects() {
   const [direction, setDirection] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isSectionActive, setIsSectionActive] = useState(false);
+  const [isCompactViewport, setIsCompactViewport] = useState(false);
   const sectionRef = useRef<HTMLElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const numberRef = useRef<HTMLDivElement | null>(null);
@@ -77,11 +78,20 @@ export function FeaturedProjects() {
   }, []);
 
   useEffect(() => {
-    if (!isSectionActive) return;
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const updateViewport = () => setIsCompactViewport(mediaQuery.matches);
+
+    updateViewport();
+    mediaQuery.addEventListener("change", updateViewport);
+    return () => mediaQuery.removeEventListener("change", updateViewport);
+  }, []);
+
+  useEffect(() => {
+    if (!isSectionActive || isCompactViewport) return;
 
     const interval = window.setInterval(goToNext, AUTOPLAY_DELAY);
     return () => window.clearInterval(interval);
-  }, [goToNext, isSectionActive]);
+  }, [goToNext, isCompactViewport, isSectionActive]);
 
   useEffect(() => {
     if (!isSectionActive) return;
@@ -97,6 +107,10 @@ export function FeaturedProjects() {
 
   useEffect(() => {
     if (!isSectionActive) return;
+    if (isCompactViewport) {
+      setIsAnimating(false);
+      return;
+    }
 
     const ctx = gsap.context(() => {
       const timeline = gsap.timeline({
@@ -159,7 +173,7 @@ export function FeaturedProjects() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [activeIndex, direction, isSectionActive]);
+  }, [activeIndex, direction, isCompactViewport, isSectionActive]);
 
   const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     if (info.offset.x < -70) goToNext();
@@ -254,10 +268,10 @@ export function FeaturedProjects() {
                   <motion.div
                     key={activeProject.image}
                     className="absolute inset-0"
-                    initial={{ x: direction * 120, opacity: 0, scale: 1.08, filter: "blur(10px)" }}
-                    animate={{ x: 0, opacity: 1, scale: 1, filter: "blur(0px)" }}
-                    exit={{ x: direction * -80, opacity: 0, scale: 0.98, filter: "blur(10px)" }}
-                    transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
+                    initial={isCompactViewport ? { opacity: 0, scale: 1.01 } : { x: direction * 120, opacity: 0, scale: 1.08, filter: "blur(10px)" }}
+                    animate={isCompactViewport ? { opacity: 1, scale: 1 } : { x: 0, opacity: 1, scale: 1, filter: "blur(0px)" }}
+                    exit={isCompactViewport ? { opacity: 0, scale: 0.99 } : { x: direction * -80, opacity: 0, scale: 0.98, filter: "blur(10px)" }}
+                    transition={{ duration: isCompactViewport ? 0.32 : 1.05, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <Image
                       src={activeProject.image}
