@@ -35,10 +35,10 @@ export function Hero() {
     <LazyMotion features={domAnimation}>
       <section
         id="top"
-        className="story-hero relative min-h-[100svh] overflow-hidden px-4 pb-5 pt-[clamp(5.9rem,15svh,7.5rem)] md:px-6 md:pt-[clamp(6.25rem,13svh,7.5rem)] xl:px-8 2xl:pt-32"
+        className="story-hero relative min-h-[100svh] overflow-hidden px-4 pb-5 pt-[clamp(5.7rem,13svh,6.9rem)] md:px-6 md:pt-[clamp(6.25rem,13svh,7.5rem)] xl:px-8 2xl:pt-32"
         onPointerMove={handlePointerMove}
       >
-      <div className="pointer-events-none absolute bottom-0 left-1/2 z-0 aspect-[1672/941] w-[min(160vw,34rem)] -translate-x-1/2 md:w-[min(175vw,76rem)] xl:w-[min(160vw,58rem)]">
+      <div className="pointer-events-none absolute bottom-0 left-1/2 z-0 aspect-[1672/941] w-[min(178vw,38rem)] -translate-x-1/2 md:w-[min(175vw,76rem)] xl:w-[min(160vw,58rem)]">
         <Image
           src="/hero-image.webp"
           alt=""
@@ -49,21 +49,21 @@ export function Hero() {
           aria-hidden="true"
         />
       </div>
-      <div className="relative z-10 mx-auto min-h-[calc(100svh-6.25rem)] max-w-[1680px] max-xl:flex max-xl:flex-col max-xl:items-center max-xl:justify-between md:min-h-[calc(100svh-6.75rem)] 2xl:min-h-[calc(100svh-9rem)] 2xl:max-w-[1820px]">
+      <div className="relative z-10 mx-auto min-h-[calc(100svh-6rem)] max-w-[1680px] max-xl:flex max-xl:flex-col max-xl:items-center md:min-h-[calc(100svh-6.75rem)] 2xl:min-h-[calc(100svh-9rem)] 2xl:max-w-[1820px]">
         <m.div
           style={{ x: headlineX, y: headlineY }}
-          className="mx-auto max-w-[760px] pt-8 text-center sm:pt-10 md:pt-12 xl:pt-6 2xl:max-w-[940px]"
+          className="mx-auto max-w-[min(100%,38rem)] pt-[clamp(2.25rem,7svh,3.1rem)] text-center md:max-w-[760px] md:pt-12 xl:pt-6 2xl:max-w-[940px]"
           initial={{ opacity: 0, y: 36, filter: "blur(12px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="mx-auto flex max-w-[92vw] items-center justify-center gap-2 text-[0.56rem] font-black uppercase tracking-[0.18em] text-[#d6b36a] sm:gap-3 sm:text-[0.68rem] sm:tracking-[0.28em] md:text-xs md:tracking-[0.34em] 2xl:text-sm">
+          <p className="mx-auto flex max-w-[92vw] items-center justify-center gap-2 text-[0.56rem] font-black uppercase tracking-[0.16em] text-[#d6b36a] sm:gap-3 sm:text-[0.66rem] sm:tracking-[0.24em] md:text-xs md:tracking-[0.34em] 2xl:text-sm">
             Design is thinking made visual. <Sparkle size={18} />
           </p>
-          <h1 className="mt-4 font-sans text-[clamp(2.8rem,11.5vw,4.2rem)] font-black uppercase leading-[0.92] tracking-normal text-[#f5f1e8] sm:text-[clamp(3.4rem,10vw,5.25rem)] md:text-[clamp(4.35rem,8vw,6.15rem)] xl:text-[clamp(3.2rem,5.7vw,6.8rem)] 2xl:mt-6 2xl:text-[clamp(4rem,6.9vw,8.4rem)] 2xl:leading-[0.96]">
-            Designs that
-            <span className="block">
-              tell{" "}
+          <h1 className="mt-4 font-sans text-[clamp(2.48rem,10.6vw,3.45rem)] font-black uppercase leading-[0.9] tracking-normal text-[#f5f1e8] sm:text-[clamp(3rem,10vw,4.25rem)] md:text-[clamp(4.35rem,8vw,6.15rem)] xl:text-[clamp(3.2rem,5.7vw,6.8rem)] 2xl:mt-6 2xl:text-[clamp(4rem,6.9vw,8.4rem)] 2xl:leading-[0.96]">
+            <span className="block whitespace-nowrap">Designs that</span>
+            <span className="block whitespace-nowrap">
+              Tell{" "}
               <span className="bg-gradient-to-b from-[#f8ddb0] to-[#9a6a30] bg-clip-text text-transparent">
                 stories.
               </span>
