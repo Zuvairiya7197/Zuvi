@@ -2,9 +2,19 @@
 
 import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { useLayoutEffect } from "react";
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+
+  useLayoutEffect(() => {
+    const html = document.documentElement;
+    const previousScrollBehavior = html.style.scrollBehavior;
+
+    html.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    html.style.scrollBehavior = previousScrollBehavior;
+  }, [pathname]);
 
   return (
     <LazyMotion features={domAnimation}>
