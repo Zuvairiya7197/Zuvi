@@ -275,7 +275,8 @@ function DesignImageFrame({
 }
 
 export function ServicesPreview() {
-  const [expandedServiceIndex, setExpandedServiceIndex] = useState(0);
+  const [expandedServiceIndex, setExpandedServiceIndex] = useState(-1);
+  const [hoveredServiceIndex, setHoveredServiceIndex] = useState(-1);
 
   return (
     <LazyMotion features={domAnimation}>
@@ -326,21 +327,28 @@ export function ServicesPreview() {
           {serviceCards.map((item, index) => {
             const Icon = item.icon;
             const isExpanded = expandedServiceIndex === index;
+            const isOpen = isExpanded || hoveredServiceIndex === index;
             return (
               <m.article
                 key={item.title}
                 layout
                 role="button"
                 tabIndex={0}
-                aria-expanded={isExpanded}
+                aria-expanded={isOpen}
                 onClick={() => setExpandedServiceIndex(isExpanded ? -1 : index)}
+                onPointerEnter={(event) => {
+                  if (event.pointerType === "mouse") setHoveredServiceIndex(index);
+                }}
+                onPointerLeave={(event) => {
+                  if (event.pointerType === "mouse") setHoveredServiceIndex(-1);
+                }}
                 onKeyDown={(event) => {
                   if (event.key === "Enter" || event.key === " ") {
                     event.preventDefault();
                     setExpandedServiceIndex(isExpanded ? -1 : index);
                   }
                 }}
-                data-expanded={isExpanded}
+                data-expanded={isOpen}
                 className="group relative ml-auto min-h-[3.8rem] w-[min(100%,40rem)] cursor-pointer overflow-hidden rounded-[1.65rem] border border-white/7 bg-[#1b1a18]/88 px-5 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_18px_56px_rgba(0,0,0,0.34)] backdrop-blur-xl transition-colors duration-300 ease-out hover:border-[#d6b36a]/28 hover:bg-[#211f1b]/94 focus:outline-none focus-visible:border-[#d6b36a]/45 data-[expanded=true]:border-[#d6b36a]/28 data-[expanded=true]:bg-[#211f1b]/94 data-[expanded=true]:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_22px_66px_rgba(0,0,0,0.42),0_0_24px_rgba(214,179,106,0.08)]"
                 initial={{ opacity: 0, x: 50, filter: "blur(8px)" }}
                 whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
@@ -369,7 +377,7 @@ export function ServicesPreview() {
                 </div>
 
                 <AnimatePresence initial={false}>
-                  {isExpanded ? (
+                  {isOpen ? (
                     <m.div
                       key="service-details"
                       className="relative overflow-hidden"
