@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="pb-[clamp(4rem,8svh,6rem)] pt-[clamp(5.5rem,12svh,7rem)]">
+    <main className="pb-[clamp(4rem,8svh,6rem)] pt-[clamp(4.75rem,8svh,5.75rem)]">
       <AboutServicesOrbit />
     </main>
   );

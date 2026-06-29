@@ -39,4 +39,11 @@ export const stats = [
   { value: "92", suffix: "%", label: "repeat client rate" }
 ];
 
-export const trustLogos = ["BRANDING", "UI/UX", "MOTION", "EDITORIAL", "PACKAGING", "VISUALS", "IDENTITY", "DIGITAL"];
+export const trustLogos = [
+  "PRINT CAMPAIGNS",
+  "BRAND IDENTITIES",
+  "SOCIAL MEDIA SYSTEMS",
+  "WEB EXPERIENCES",
+  "DESIGN SYSTEMS",
+  "VISUAL EXPERIENCES"
+];

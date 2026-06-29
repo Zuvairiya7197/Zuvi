@@ -15,7 +15,16 @@ const heroNavItems = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 12);
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -31,7 +40,14 @@ export function Header() {
   }, [open]);
 
   return (
-    <header ref={headerRef} className="fixed left-0 right-0 top-0 z-50 border-b border-[#d6b36a]/12 bg-black/78 px-4 pb-3 pt-3 shadow-[0_16px_45px_rgba(0,0,0,0.28)] backdrop-blur-xl md:px-6 md:pb-4 md:pt-4 xl:px-8 xl:pb-4 xl:pt-5">
+    <header
+      ref={headerRef}
+      className={`fixed left-0 right-0 top-0 z-50 border-b px-4 pb-3 pt-3 transition-all duration-500 md:px-6 md:pb-4 md:pt-4 xl:px-8 xl:pb-4 xl:pt-5 ${
+        scrolled || open
+          ? "border-[#d6b36a]/12 bg-black/78 shadow-[0_16px_45px_rgba(0,0,0,0.28)] backdrop-blur-xl"
+          : "border-transparent bg-transparent shadow-none backdrop-blur-0"
+      }`}
+    >
       <div className="mx-auto grid max-w-[1820px] grid-cols-[1fr_auto] items-start gap-4 xl:grid-cols-[auto_1fr_auto]">
         <div className="hidden items-start gap-5 xl:flex">
           <button

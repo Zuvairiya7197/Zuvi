@@ -244,7 +244,7 @@ export function WorkPageContent({
   };
 
   return (
-    <main className="relative overflow-hidden bg-black px-4 pb-[clamp(4rem,8svh,6rem)] pt-[clamp(7rem,14svh,8rem)] md:px-8">
+    <main className="relative overflow-hidden bg-black px-4 pb-[clamp(4rem,8svh,6rem)] pt-[clamp(4.75rem,8svh,5.75rem)] md:px-8">
 
       <div className="relative mx-auto max-w-7xl">
         <section className="relative overflow-hidden rounded-[1.25rem] border border-white/[0.07] bg-black/34 px-[clamp(1.5rem,5vw,4.5rem)] py-[clamp(2.25rem,6svh,4.5rem)] shadow-[0_28px_90px_rgba(0,0,0,0.28)] backdrop-blur-sm">

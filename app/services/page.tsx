@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <main className="bg-black pt-[clamp(5.5rem,10svh,7rem)]">
+    <main className="bg-black pt-[clamp(4.75rem,8svh,5.75rem)]">
       <ServicesPreview />
     </main>
   );

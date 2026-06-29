@@ -46,7 +46,7 @@ export default async function CaseStudyPage({ params }: CaseStudyProps) {
 
   return (
     <main>
-      <section className="min-h-[100svh] px-4 pb-[clamp(3rem,7svh,4rem)] pt-[clamp(7rem,14svh,8rem)] md:px-8">
+      <section className="min-h-[100svh] px-4 pb-[clamp(3rem,7svh,4rem)] pt-[clamp(4.75rem,8svh,5.75rem)] md:px-8">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#d5ad6f]">{project.industry}</p>
