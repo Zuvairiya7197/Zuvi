@@ -100,6 +100,9 @@ export function Hero() {
               </span>
             </span>
           </h1>
+          <div className="mt-5 xl:hidden">
+            <SocialFlipButton items={contactItems} />
+          </div>
         </m.div>
 
         <div className="absolute bottom-[clamp(1.75rem,5svh,3.5rem)] left-0 z-40 hidden max-w-[18rem] flex-col items-start xl:flex 2xl:max-w-[20rem]">
