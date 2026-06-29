@@ -1,340 +1,197 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { AnimatePresence, motion, type PanInfo } from "framer-motion";
-import { gsap } from "gsap";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { homeProjects } from "@/lib/home-projects";
+import { motion, AnimatePresence, type Transition } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useCallback, useState } from "react";
 
-const AUTOPLAY_DELAY = 6200;
+const TRANSITION: Transition = {
+  type: "spring",
+  bounce: 0.14,
+  duration: 0.9,
+};
 
-function mod(index: number, length: number) {
-  return ((index % length) + length) % length;
-}
+const featuredItems = [
+  { src: "/mz-logo-01.webp",                        title: "Logo Design",              category: "Logo Design" },
+  { src: "/mz-flyer-jewellery-workshop.webp",        title: "Jewellery Workshop Flyer", category: "Flyer Design" },
+  { src: "/sm classes post.webp",                    title: "SM Classes Post",          category: "Social Media" },
+  { src: "/mz-business-card-01.jpg",                 title: "Business Card",            category: "Print Identity" },
+  { src: "/project-graphic-educational-flyer.webp",  title: "Educational Flyer",        category: "Flyer Design" },
+  { src: "/6th post.webp",                           title: "Social Post",              category: "Social Media" },
+  { src: "/mz-customised-print-01.jpg",              title: "Custom Print",             category: "Print Design" },
+  { src: "/mz-logo-04.webp",                         title: "Logo Design",              category: "Logo Design" },
+  { src: "/mz-flyer-real-estate.webp",               title: "Real Estate Flyer",        category: "Flyer Design" },
+  { src: "/post 12.webp",                            title: "Social Post",              category: "Social Media" },
+];
 
-function splitTitle(title: string) {
-  const words = title.split(" ");
-  if (words.length <= 2) return [title];
-  const midpoint = Math.ceil(words.length / 2);
-  return [words.slice(0, midpoint).join(" "), words.slice(midpoint).join(" ")];
+const SLIDE_SIZE = 300;
+const ROTATION_STEP = 28;
+const VERTICAL_STEP = 140;
+const INACTIVE_SCALE = 0.58;
+
+function clamp(v: number, min: number, max: number) {
+  return Math.min(Math.max(v, min), max);
 }
 
 export function FeaturedProjects() {
-  const featuredProjects = homeProjects;
-  const initialIndex = useMemo(() => {
-    const socialIndex = featuredProjects.findIndex((project) => project.category === "Social Media Designs");
-    return socialIndex >= 0 ? socialIndex : 0;
-  }, [featuredProjects]);
-  const [activeIndex, setActiveIndex] = useState(initialIndex);
-  const [direction, setDirection] = useState(1);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [isSectionActive, setIsSectionActive] = useState(false);
-  const [isCompactViewport, setIsCompactViewport] = useState(false);
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const titleRef = useRef<HTMLHeadingElement | null>(null);
-  const numberRef = useRef<HTMLDivElement | null>(null);
-  const imageShellRef = useRef<HTMLAnchorElement | null>(null);
-  const previewRef = useRef<HTMLDivElement | null>(null);
-  const lightRef = useRef<HTMLDivElement | null>(null);
-  const progressRefs = useRef<Array<HTMLSpanElement | null>>([]);
-  const wheelLockRef = useRef(false);
-  const activeProject = featuredProjects[activeIndex];
-  const nextProject = featuredProjects[mod(activeIndex + 1, featuredProjects.length)];
-  const titleLines = useMemo(() => splitTitle(activeProject.title), [activeProject.title]);
-  const activeProjectHref =
-    activeProject.industry === "Graphic Design"
-      ? `/work?mode=graphic&category=${encodeURIComponent(activeProject.category)}`
-      : activeProject.liveUrl;
-  const activeProjectTarget = activeProject.industry === "Graphic Design" ? undefined : "_blank";
-  const activeProjectRel = activeProject.industry === "Graphic Design" ? undefined : "noopener noreferrer";
+  const [activeIndex, setActiveIndex] = useState(0);
+  const maxIndex = featuredItems.length - 1;
 
-  const changeSlide = useCallback((nextIndex: number) => {
-    setActiveIndex((current) => {
-      const normalized = mod(nextIndex, featuredProjects.length);
-      if (normalized === current) return current;
-      const forwardDistance = mod(normalized - current, featuredProjects.length);
-      const backwardDistance = mod(current - normalized, featuredProjects.length);
-      setDirection(forwardDistance <= backwardDistance ? 1 : -1);
-      return normalized;
-    });
-  }, [featuredProjects.length]);
+  const selectSlide = useCallback((next: number) => {
+    setActiveIndex(clamp(next, 0, maxIndex));
+  }, [maxIndex]);
 
-  const goToNext = useCallback(() => changeSlide(activeIndex + 1), [activeIndex, changeSlide]);
-  const goToPrevious = useCallback(() => changeSlide(activeIndex - 1), [activeIndex, changeSlide]);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsSectionActive(entry.isIntersecting),
-      { rootMargin: "360px 0px 360px 0px" }
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 767px)");
-    const updateViewport = () => setIsCompactViewport(mediaQuery.matches);
-
-    updateViewport();
-    mediaQuery.addEventListener("change", updateViewport);
-    return () => mediaQuery.removeEventListener("change", updateViewport);
-  }, []);
-
-  useEffect(() => {
-    if (!isSectionActive || isCompactViewport) return;
-
-    const interval = window.setInterval(goToNext, AUTOPLAY_DELAY);
-    return () => window.clearInterval(interval);
-  }, [goToNext, isCompactViewport, isSectionActive]);
-
-  useEffect(() => {
-    if (!isSectionActive) return;
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "ArrowRight") goToNext();
-      if (event.key === "ArrowLeft") goToPrevious();
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [goToNext, goToPrevious, isSectionActive]);
-
-  useEffect(() => {
-    if (!isSectionActive) return;
-    if (isCompactViewport) {
-      setIsAnimating(false);
-      return;
-    }
-
-    const ctx = gsap.context(() => {
-      const timeline = gsap.timeline({
-        defaults: { ease: "power3.out" },
-        onStart: () => setIsAnimating(true),
-        onComplete: () => setIsAnimating(false)
-      });
-
-      timeline
-        .fromTo(
-          lightRef.current,
-          { xPercent: direction > 0 ? -8 : 8, opacity: 0.45 },
-          { xPercent: direction > 0 ? 5 : -5, opacity: 0.78, duration: 1.35 },
-          0
-        )
-        .fromTo(
-          numberRef.current,
-          { x: direction * 120, opacity: 0, filter: "blur(10px)" },
-          { x: 0, opacity: 1, filter: "blur(0px)", duration: 1.05 },
-          0.02
-        )
-        .fromTo(
-          imageShellRef.current,
-          { x: direction * 150, opacity: 0, scale: 1.08, filter: "blur(12px)" },
-          { x: 0, opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.2 },
-          0.08
-        )
-        .fromTo(
-          titleRef.current?.querySelectorAll("[data-title-line]") ?? [],
-          { y: -92, opacity: 0, filter: "blur(12px)" },
-          { y: 0, opacity: 1, filter: "blur(0px)", stagger: 0.08, duration: 0.95 },
-          0.18
-        )
-        .fromTo(
-          sectionRef.current?.querySelectorAll("[data-project-meta], [data-project-cta]") ?? [],
-          { y: 58, opacity: 0, filter: "blur(10px)" },
-          { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.85 },
-          0.36
-        )
-        .fromTo(
-          previewRef.current,
-          { x: direction * 70, opacity: 0, filter: "blur(10px)" },
-          { x: 0, opacity: 1, filter: "blur(0px)", duration: 0.9 },
-          0.26
-        );
-
-      progressRefs.current.forEach((line, index) => {
-        if (!line) return;
-        timeline.to(
-          line,
-          {
-            scaleX: index === activeIndex ? 1 : 0.24,
-            opacity: index === activeIndex ? 1 : 0.42,
-            boxShadow: index === activeIndex ? "0 0 20px rgba(214,179,106,0.42)" : "0 0 0 rgba(0,0,0,0)",
-            duration: 0.85
-          },
-          0.1
-        );
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, [activeIndex, direction, isCompactViewport, isSectionActive]);
-
-  const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    if (info.offset.x < -70) goToNext();
-    if (info.offset.x > 70) goToPrevious();
-  };
-
-  const handleWheel = (event: React.WheelEvent<HTMLElement>) => {
-    if (!isSectionActive) return;
-    if (Math.abs(event.deltaY) < 18 || wheelLockRef.current) return;
-    wheelLockRef.current = true;
-    if (event.deltaY > 0) goToNext();
-    if (event.deltaY < 0) goToPrevious();
-    window.setTimeout(() => {
-      wheelLockRef.current = false;
-    }, 950);
-  };
+  const active = featuredItems[activeIndex];
 
   return (
     <section
-      ref={sectionRef}
       id="projects"
-      className="section-line relative overflow-hidden bg-black px-[clamp(1.25rem,4vw,4rem)] py-[clamp(3rem,7svh,4rem)] text-[#f5f1e8] lg:min-h-[116svh] lg:py-[clamp(3rem,6vw,5rem)]"
-      onWheel={handleWheel}
+      className="section-line relative h-svh overflow-hidden bg-black text-[#f5f1e8]"
     >
-      <div ref={lightRef} className="pointer-events-none absolute inset-0 bg-black" />
-      <div className="pointer-events-none absolute -left-[18vw] top-0 h-[140vh] w-[70vw] rotate-[-42deg] bg-black/18" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent" />
+      {/* subtle grid bg */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(245,241,232,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(245,241,232,0.1) 1px, transparent 1px)",
+          backgroundSize: "72px 72px",
+        }}
+        aria-hidden="true"
+      />
 
-      <div className="relative z-10 mx-auto flex max-w-[1700px] flex-col lg:min-h-[calc(116svh-10rem)]">
-        <motion.div
-          className="relative flex flex-1 cursor-grab items-center active:cursor-grabbing max-lg:items-start"
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.12}
-          onDragEnd={handleDragEnd}
-          data-drag-cursor
+      {/* Header row — absolutely positioned top */}
+      <div className="absolute inset-x-0 top-0 z-20 flex flex-col items-center px-5 py-6 text-center md:px-10">
+        <p className="mb-1 text-[0.62rem] font-black uppercase tracking-[0.2em] text-[#d6b36a]">
+          Featured Work
+        </p>
+        <h2 className="font-sans text-[clamp(1.6rem,2.8vw,2.5rem)] font-medium leading-none tracking-[-0.045em] text-[#f5f1e8]">
+          Selected
+          <span className="ml-2 bg-linear-to-b from-[#f5f1e8] to-[#d6b36a] bg-clip-text text-transparent">
+            Projects
+          </span>
+        </h2>
+        <Link
+          href="/work"
+          className="mt-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#d6b36a]/70 transition hover:text-[#d6b36a]"
         >
-          <div
-            ref={numberRef}
-            className="pointer-events-none absolute right-[-0.5rem] top-[-3.5rem] z-10 font-sans text-[clamp(5.75rem,28vw,8rem)] font-black leading-none tracking-[-0.08em] text-[#f5f1e8]/[0.12] md:right-[2vw] md:top-[-4.75rem] md:text-[clamp(8rem,22vw,14rem)] md:text-[#f5f1e8]/[0.1] lg:left-[8vw] lg:right-auto lg:top-[2svh] lg:z-0 lg:text-[clamp(8rem,18vw,19rem)] lg:tracking-[-0.09em] lg:text-[#f5f1e8]/[0.075]"
-          >
-            {String(activeIndex + 1).padStart(2, "0")}
-          </div>
+          View all <ArrowUpRight size={14} />
+        </Link>
+      </div>
 
-          <div className="relative z-10 mx-auto grid w-full max-w-[1360px] items-start gap-8 lg:grid-cols-[1fr_minmax(28rem,48rem)_0.52fr] lg:items-center">
-            <div className="relative z-30 min-h-0 lg:-mr-[11rem] lg:min-h-[12rem]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeProject.slug}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+      {/* Full-screen carousel */}
+      <div
+        className="relative h-svh w-full overflow-hidden"
+        role="region"
+        aria-label="Projects carousel"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowLeft") { e.preventDefault(); selectSlide(activeIndex - 1); }
+          if (e.key === "ArrowRight") { e.preventDefault(); selectSlide(activeIndex + 1); }
+        }}
+      >
+        {/* Slides track */}
+        <motion.div
+          className="absolute left-1/2 top-[38%] flex w-fit"
+          animate={{ x: -(activeIndex * SLIDE_SIZE + SLIDE_SIZE / 2) }}
+          transition={TRANSITION}
+        >
+          {featuredItems.map((item, index) => {
+            const isActive = activeIndex === index;
+            const distance = index - activeIndex;
+
+            return (
+              <motion.div
+                key={item.src}
+                className="flex shrink-0 flex-col items-center gap-3 will-change-transform"
+                style={{ width: SLIDE_SIZE }}
+                animate={{
+                  rotate: distance * ROTATION_STEP,
+                  scale: isActive ? 1 : INACTIVE_SCALE,
+                  y: distance * VERTICAL_STEP,
+                }}
+                transition={TRANSITION}
+              >
+                {/* Label above */}
+                <motion.p
+                  className="whitespace-nowrap text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[#d6b36a]"
+                  animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 0.7 }}
+                  transition={{ duration: 0.25 }}
                 >
-                  <p data-project-meta className="mb-5 text-[0.68rem] font-black uppercase tracking-[0.22em] text-[#d6b36a] sm:text-xs">
-                    {activeProject.industry}
-                  </p>
-                  <h2 ref={titleRef} className="max-w-[44rem] font-sans text-[clamp(3rem,15.5vw,4.7rem)] font-black leading-[0.9] tracking-[-0.055em] text-white drop-shadow-[0_14px_24px_rgba(0,0,0,0.55)] md:text-[clamp(3.6rem,8vw,7.9rem)] md:leading-[0.88] md:tracking-[-0.075em]">
-                    {titleLines.map((line) => (
-                      <span key={line} data-title-line className="block">
-                        {line}
-                      </span>
-                    ))}
-                  </h2>
-                  <Link
-                    data-project-cta
-                    href={activeProjectHref}
-                    target={activeProjectTarget}
-                    rel={activeProjectRel}
-                    className="group mt-7 inline-flex items-center gap-3 text-[0.68rem] font-black uppercase tracking-[0.16em] text-[#f5f1e8] sm:text-xs"
-                  >
-                    View Project
-                    <span className="relative h-px w-14 overflow-hidden bg-white/28 sm:w-20">
-                      <span className="absolute inset-y-0 left-0 w-full origin-left scale-x-50 bg-[#d6b36a] transition duration-500 group-hover:scale-x-100" />
-                    </span>
-                    <ArrowUpRight size={16} className="text-[#d6b36a] transition duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                  </Link>
-                </motion.div>
-              </AnimatePresence>
-            </div>
+                  {item.category}
+                </motion.p>
 
-            <Link
-              ref={imageShellRef}
-              href={activeProjectHref}
-              target={activeProjectTarget}
-              rel={activeProjectRel}
-              aria-label={`Open ${activeProject.title}`}
-              className="relative z-20 block w-full"
-            >
-              <div className={`relative aspect-[1.55] overflow-hidden border border-white/10 bg-black shadow-[0_24px_70px_rgba(0,0,0,0.52)] transition duration-700 md:shadow-[0_38px_120px_rgba(0,0,0,0.58)] ${isAnimating ? "blur-[1px]" : "blur-0"}`}>
-                <AnimatePresence initial={false} mode="popLayout">
-                  <motion.div
-                    key={activeProject.image}
-                    className="absolute inset-0"
-                    initial={isCompactViewport ? { opacity: 0, scale: 1.01 } : { x: direction * 120, opacity: 0, scale: 1.08, filter: "blur(10px)" }}
-                    animate={isCompactViewport ? { opacity: 1, scale: 1 } : { x: 0, opacity: 1, scale: 1, filter: "blur(0px)" }}
-                    exit={isCompactViewport ? { opacity: 0, scale: 0.99 } : { x: direction * -80, opacity: 0, scale: 0.98, filter: "blur(10px)" }}
-                    transition={{ duration: isCompactViewport ? 0.32 : 1.05, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <Image
-                      src={activeProject.image}
-                      alt={`${activeProject.title} featured project`}
-                      fill
-                      sizes="(min-width: 1024px) 48rem, 92vw"
-                      className={`saturate-[0.82] transition duration-1400 ease-out hover:scale-[1.035] ${activeProject.category === "Social Media Designs" ? "object-contain" : "object-cover"}`}
-                    />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_58%_26%,transparent,rgba(0,0,0,0.24)_45%,rgba(0,0,0,0.76)_100%)]" />
-                  </motion.div>
-                </AnimatePresence>
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/55 to-transparent" />
-              </div>
-              <div className="pointer-events-none absolute inset-x-10 -bottom-8 h-14 rounded-full bg-[#d6b36a]/14 blur-2xl" />
-            </Link>
-
-            <div ref={previewRef} className="relative z-10 hidden h-[18rem] overflow-hidden border border-white/8 bg-black/50 shadow-[0_24px_80px_rgba(0,0,0,0.4)] lg:block">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={nextProject.slug}
-                  className="absolute inset-0"
-                  initial={{ x: 80, opacity: 0, filter: "blur(12px)" }}
-                  animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
-                  exit={{ x: -50, opacity: 0, filter: "blur(12px)" }}
-                  transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+                <button
+                  type="button"
+                  aria-label={`Show ${item.title}`}
+                  aria-current={isActive ? "true" : undefined}
+                  className="aspect-square w-full cursor-pointer"
+                  onClick={() => selectSlide(index)}
                 >
-                  <Image src={nextProject.image} alt="" fill sizes="22rem" className={`opacity-58 saturate-50 ${nextProject.category === "Social Media Designs" ? "object-contain" : "object-cover"}`} />
-                  <div className="absolute inset-0 bg-black/38" />
-                  <p className="absolute bottom-5 left-5 max-w-[12rem] text-sm font-medium text-white/56">{nextProject.title}</p>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    draggable={false}
+                    className="h-full w-full select-none rounded-2xl object-cover shadow-[0_32px_90px_rgba(0,0,0,0.65)] ring-1 ring-white/10"
+                  />
+                </button>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
-        <div className="pb-2 pt-5 lg:pt-0">
-          <div className="flex items-center justify-center gap-2 sm:justify-start sm:gap-3">
-            {featuredProjects.map((project, index) => (
-              <button
-                key={project.slug}
-                type="button"
-                aria-label={`Show ${project.title}`}
-                onClick={() => changeSlide(index)}
-                className="group grid h-12 min-w-12 place-items-center sm:w-14"
-              >
-                <span className="block h-px w-10 origin-left rounded-full bg-white/22 sm:w-14">
-                  <span
-                    ref={(node) => {
-                      progressRefs.current[index] = node;
-                    }}
-                    className={`block h-px origin-left rounded-full bg-[#d6b36a] ${index === activeIndex ? "scale-x-100" : "scale-x-[0.24]"}`}
-                  />
-                </span>
-              </button>
-            ))}
-            <Link
-              href="/work"
-              className="ml-3 hidden text-[0.65rem] font-black uppercase tracking-[0.18em] text-[#f5f1e8]/44 transition hover:text-[#d6b36a] sm:inline-flex"
+        {/* Active title overlay */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-black/90 via-black/40 to-transparent pb-20 pt-16 text-center">
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={active.title + activeIndex}
+              className="text-xl font-semibold tracking-[-0.02em] text-[#f5f1e8]"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
             >
-              View all projects
-            </Link>
+              {active.title}
+            </motion.p>
+          </AnimatePresence>
+        </div>
+
+        {/* Controls */}
+        <div className="absolute inset-x-0 bottom-6 z-10 flex items-center justify-center gap-3">
+          <button
+            type="button"
+            aria-label="Previous"
+            disabled={activeIndex === 0}
+            onClick={() => selectSlide(activeIndex - 1)}
+            className="inline-flex size-10 items-center justify-center rounded-full border border-white/12 bg-black/50 text-[#f5f1e8] backdrop-blur-sm transition hover:border-[#d6b36a]/40 hover:bg-[#d6b36a]/12 disabled:cursor-not-allowed disabled:opacity-25"
+          >
+            <ChevronLeft className="size-4" />
+          </button>
+
+          <div className="flex items-center gap-1.5">
+            {featuredItems.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                aria-label={`Slide ${index + 1}`}
+                aria-current={activeIndex === index ? "true" : undefined}
+                onClick={() => selectSlide(index)}
+                className={`h-1.5 rounded-full bg-[#d6b36a] transition-all duration-300 ${
+                  activeIndex === index ? "w-6 opacity-100" : "w-1.5 opacity-25"
+                }`}
+              />
+            ))}
           </div>
 
+          <button
+            type="button"
+            aria-label="Next"
+            disabled={activeIndex === maxIndex}
+            onClick={() => selectSlide(activeIndex + 1)}
+            className="inline-flex size-10 items-center justify-center rounded-full border border-white/12 bg-black/50 text-[#f5f1e8] backdrop-blur-sm transition hover:border-[#d6b36a]/40 hover:bg-[#d6b36a]/12 disabled:cursor-not-allowed disabled:opacity-25"
+          >
+            <ChevronRight className="size-4" />
+          </button>
         </div>
       </div>
     </section>

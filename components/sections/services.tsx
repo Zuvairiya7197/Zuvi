@@ -275,188 +275,117 @@ function DesignImageFrame({
 }
 
 export function ServicesPreview() {
-  const [expandedServiceIndex, setExpandedServiceIndex] = useState(-1);
-  const [hoveredServiceIndex, setHoveredServiceIndex] = useState(-1);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <LazyMotion features={domAnimation}>
       <section
         id="services"
-        className="section-line relative overflow-hidden bg-black px-5 py-[clamp(2.25rem,5svh,3.25rem)] md:px-8 lg:min-h-screen lg:py-[clamp(3rem,6svh,4.5rem)]"
+        className="section-line relative bg-black px-5 py-[clamp(3rem,7svh,5rem)] md:px-8"
       >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.12]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(245,241,232,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(245,241,232,0.09) 1px, transparent 1px)",
-          backgroundSize: "88px 88px",
-          maskImage:
-            "linear-gradient(90deg, transparent, black 18%, black 82%, transparent)",
-        }}
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_58%_38%,rgba(214,179,106,0.1),transparent_34%),linear-gradient(90deg,rgba(0,0,0,0.98),transparent_40%,rgba(0,0,0,0.9))]"
-        aria-hidden="true"
-      />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.12]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(245,241,232,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(245,241,232,0.09) 1px, transparent 1px)",
+            backgroundSize: "88px 88px",
+            maskImage:
+              "linear-gradient(90deg, transparent, black 18%, black 82%, transparent)",
+          }}
+          aria-hidden="true"
+        />
 
-      <div className="relative z-10 mx-auto grid max-w-[1680px] gap-6 lg:min-h-[calc(100svh-9rem)] lg:grid-cols-[minmax(15rem,0.55fr)_minmax(34rem,40rem)_0.35fr] lg:items-end lg:gap-8">
-        <m.div
-          className="max-w-[18rem] pt-2 lg:pb-3"
-          initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <p className="mb-3 text-[0.62rem] font-black uppercase tracking-[0.2em] text-[#d6b36a]">
-            Services
-          </p>
-          <h2 className="font-sans text-[clamp(2rem,3.2vw,2.85rem)] font-medium leading-[1.02] tracking-[-0.045em] text-[#f5f1e8]">
-            Whatever Your
-            <span className="block bg-gradient-to-b from-[#f5f1e8] to-[#d6b36a] bg-clip-text text-transparent">
-              Design Goal
-            </span>
-          </h2>
-          <p className="mt-3 max-w-[15rem] text-xs leading-5 text-[#f5f1e8]/42">
-            Premium visual systems for brands that need clarity, presence, and
-            momentum.
-          </p>
-        </m.div>
+        <div className="relative z-10 mx-auto max-w-2xl">
+          <m.div
+            className="mb-10 lg:mb-12"
+            initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <p className="mb-3 text-[0.62rem] font-black uppercase tracking-[0.2em] text-[#d6b36a]">
+              Services
+            </p>
+            <h2 className="font-sans text-[clamp(2rem,3.2vw,2.85rem)] font-medium leading-[1.02] tracking-[-0.045em] text-[#f5f1e8]">
+              Whatever Your
+              <span className="block bg-linear-to-b from-[#f5f1e8] to-[#d6b36a] bg-clip-text text-transparent">
+                Design Goal
+              </span>
+            </h2>
+            <p className="mt-3 max-w-xl text-xs leading-5 text-[#f5f1e8]/42">
+              Premium visual systems for brands that need clarity, presence, and momentum.
+            </p>
+          </m.div>
 
-        <div className="relative mx-auto flex w-full max-w-[640px] flex-col gap-4 pt-5 lg:pt-0">
-          {serviceCards.map((item, index) => {
-            const Icon = item.icon;
-            const isExpanded = expandedServiceIndex === index;
-            const isOpen = isExpanded || hoveredServiceIndex === index;
-            return (
-              <m.article
-                key={item.title}
-                layout
-                role="button"
-                tabIndex={0}
-                aria-expanded={isOpen}
-                onClick={() => setExpandedServiceIndex(isExpanded ? -1 : index)}
-                onPointerEnter={(event) => {
-                  if (event.pointerType === "mouse") setHoveredServiceIndex(index);
-                }}
-                onPointerLeave={(event) => {
-                  if (event.pointerType === "mouse") setHoveredServiceIndex(-1);
-                }}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    setExpandedServiceIndex(isExpanded ? -1 : index);
-                  }
-                }}
-                data-expanded={isOpen}
-                className="group relative ml-auto min-h-[3.8rem] w-[min(100%,40rem)] cursor-pointer overflow-hidden rounded-[1.65rem] border border-white/7 bg-[#1b1a18]/88 px-5 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_18px_56px_rgba(0,0,0,0.34)] backdrop-blur-xl transition-colors duration-300 ease-out hover:border-[#d6b36a]/28 hover:bg-[#211f1b]/94 focus:outline-none focus-visible:border-[#d6b36a]/45 data-[expanded=true]:border-[#d6b36a]/28 data-[expanded=true]:bg-[#211f1b]/94 data-[expanded=true]:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_22px_66px_rgba(0,0,0,0.42),0_0_24px_rgba(214,179,106,0.08)]"
-                initial={{ opacity: 0, x: 50, filter: "blur(8px)" }}
-                whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                viewport={{ once: true, margin: "-120px" }}
-                transition={{
-                  duration: 0.72,
-                  delay: index * 0.1,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                whileHover={{ y: -3 }}
-                whileTap={{ scale: 0.995 }}
-              >
-                <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(214,179,106,0.14),rgba(245,241,232,0.035))] opacity-75 transition duration-500 group-hover:opacity-100 group-data-[expanded=true]:opacity-100" />
-                <div className="relative flex items-center justify-between gap-5">
-                  <div className="flex items-center gap-3">
-                    <span className="grid h-8 w-8 place-items-center rounded-[0.7rem] bg-white/[0.06] text-[#d6b36a]/70 transition duration-500 group-hover:bg-[#d6b36a]/16 group-hover:text-[#f3d694] group-data-[expanded=true]:bg-[#d6b36a]/16 group-data-[expanded=true]:text-[#f3d694]">
-                      <Icon size={17} strokeWidth={1.7} />
+          <m.ul
+            className="relative overflow-visible rounded-2xl border border-white/8 bg-white/[0.03] p-2 backdrop-blur-sm"
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {serviceCards.map((item, index) => {
+              const Icon = item.icon;
+              const isHovered = hoveredIndex === index;
+              const previewImage = item.images[0];
+
+              return (
+                <li key={item.title} className="relative">
+                  <m.div
+                    className="group flex cursor-default items-center gap-4 rounded-xl px-4 py-4 transition-colors duration-200 hover:bg-white/[0.06]"
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
+                    {/* Floating preview image */}
+                    <AnimatePresence>
+                      {isHovered && (
+                        <m.div
+                          className="pointer-events-none absolute -left-30 top-1/2 z-50 h-26 w-20 overflow-hidden rounded-xl shadow-[0_24px_60px_rgba(0,0,0,0.6)] ring-1 ring-[#d6b36a]/20"
+                          initial={{ opacity: 0, y: "-50%", x: 12, scale: 0.88 }}
+                          animate={{ opacity: 1, y: "-50%", x: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: "-50%", x: 8, scale: 0.9 }}
+                          transition={{ duration: 0.28, ease: [0.34, 1.56, 0.64, 1] }}
+                        >
+                          <img
+                            src={previewImage}
+                            alt={item.title}
+                            className="h-full w-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                        </m.div>
+                      )}
+                    </AnimatePresence>
+
+                    {/* Number */}
+                    <span className="w-6 shrink-0 text-[0.72rem] font-medium text-[#f5f1e8]/28 tabular-nums">
+                      {String(index + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="text-sm font-medium text-[#f5f1e8] md:text-base">
+
+                    {/* Icon */}
+                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-white/[0.06] text-[#d6b36a]/60 transition-colors duration-200 group-hover:bg-[#d6b36a]/14 group-hover:text-[#d6b36a]">
+                      <Icon size={15} strokeWidth={1.7} />
+                    </span>
+
+                    {/* Title */}
+                    <span className="flex-1 text-[0.95rem] font-medium text-[#f5f1e8]/80 transition-colors duration-200 group-hover:text-[#f5f1e8]">
                       {item.title}
-                    </h3>
-                  </div>
-                  <span className="hidden rounded-full border border-white/20 px-4 py-1.5 text-xs font-medium text-[#f5f1e8] transition duration-500 group-hover:border-[#d6b36a]/38 group-hover:bg-[#d6b36a]/8 group-data-[expanded=true]:border-[#d6b36a]/38 group-data-[expanded=true]:bg-[#d6b36a]/8 sm:inline-flex">
-                    • {item.pill}
-                  </span>
-                </div>
+                    </span>
 
-                <AnimatePresence initial={false}>
-                  {isOpen ? (
-                    <m.div
-                      key="service-details"
-                      className="relative overflow-hidden"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                      <div className="mt-4 grid gap-4 border-t border-white/10 pt-4 text-[#f5f1e8]">
-                        <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
-                          <div>
-                            <p className="text-[0.65rem] text-white/46">
-                              Core focus
-                            </p>
-                            <p className="mt-1 text-[clamp(1.45rem,3vw,2rem)] font-light leading-none tracking-[-0.04em] text-white">
-                              {item.current}
-                            </p>
-                          </div>
-                          <div className="hidden h-14 w-14 place-items-center rounded-full border-[3px] border-white/38 text-xs font-semibold text-white sm:grid">
-                            {item.metric}
-                          </div>
-                          <div className="sm:text-right">
-                            <p className="text-[0.65rem] text-white/46">
-                              Outcome
-                            </p>
-                            <p className="mt-1 text-[clamp(1.45rem,3vw,2rem)] font-light leading-none tracking-[-0.04em] text-white">
-                              {item.ideal}
-                            </p>
-                          </div>
-                        </div>
+                    {/* Pill */}
+                    <span className="hidden shrink-0 rounded-full border border-white/10 px-3 py-1 text-[0.65rem] font-medium text-[#f5f1e8]/38 transition-colors duration-200 group-hover:border-[#d6b36a]/28 group-hover:text-[#d6b36a]/70 sm:inline-flex">
+                      {item.pill}
+                    </span>
+                  </m.div>
 
-                        <div className="relative h-5 rounded-full bg-black/22">
-                          <div className="absolute inset-y-0 left-0 w-[68%] rounded-full bg-gradient-to-r from-[#8c6a3b] via-[#d6b36a] to-[#f5e7bd]" />
-                          <div className="absolute left-[66%] top-1/2 h-8 w-8 -translate-y-1/2 rounded-full border-[5px] border-[#f2d694] bg-[#fff2d2] shadow-[0_0_28px_rgba(214,179,106,0.45)]" />
-                        </div>
-
-                        <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
-                          <div className="border-l-4 border-[#d6b36a] pl-5">
-                            {item.meals.map(([label, value]) => (
-                              <div
-                                key={label}
-                                className="grid grid-cols-[4.5rem_1fr] gap-3 py-1 text-xs"
-                              >
-                                <span className="text-white/46">{label}</span>
-                                <span className="text-white/82">{value}</span>
-                              </div>
-                            ))}
-                          </div>
-                          <div className="flex gap-2">
-                            {item.images.map((src) => (
-                              <div
-                                key={src}
-                                className="relative h-20 w-20 overflow-hidden rounded-2xl md:h-24 md:w-24"
-                              >
-                                <Image
-                                  src={src}
-                                  alt=""
-                                  fill
-                                  sizes="96px"
-                                  className="object-cover saturate-75"
-                                />
-                                <div className="absolute inset-0 bg-black/12" />
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                        <p className="text-xs leading-5 text-white/58">
-                          {item.detail}
-                        </p>
-                      </div>
-                    </m.div>
-                  ) : null}
-                </AnimatePresence>
-              </m.article>
-            );
-          })}
+                  {/* Divider (skip last) */}
+                  {index < serviceCards.length - 1 && (
+                    <div className="mx-4 h-px bg-white/[0.05]" />
+                  )}
+                </li>
+              );
+            })}
+          </m.ul>
         </div>
-        <div aria-hidden="true" />
-      </div>
       </section>
     </LazyMotion>
   );

@@ -29,7 +29,7 @@ export const testimonials = [
       "I own an appointment setting agency and get a lot of my leads from Facebook and LinkedIn, so I had an urgent requirement for professional covers. Zuvairiya delivered exceptionally beautiful and professional designs in no time, making sure everything matched my brand palette perfectly. Her turnaround time, quick edits, and patience were amazing. I can't recommend her enough - she's my go-to for all things graphic design.",
     name: "Shreya Batra",
     role: "Co-Founder @ Organic Appointments Agency",
-    image: "/avatar-shreya.svg"
+    image: "/Shreya Batra.jpeg"
   }
 ];
 

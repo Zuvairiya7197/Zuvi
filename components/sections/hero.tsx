@@ -19,11 +19,6 @@ const contactItems = [
   { letter: "C", icon: <FaInstagram />, label: "Instagram", href: "https://www.instagram.com/_zuvi___/" },
   { letter: "T", icon: <FaEnvelope />, label: "Email", href: "mailto:zuvairiyamaryam@gmail.com" },
 ];
-const metrics = [
-  { value: "42+", label: "visual launches" },
-  { value: "8", label: "active categories" },
-  { value: "360", label: "brand thinking" },
-];
 
 export function Hero() {
   const pointerX = useMotionValue(0);
@@ -139,20 +134,6 @@ export function Hero() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-[clamp(1.75rem,5svh,3.5rem)] left-1/2 z-40 hidden -translate-x-1/2 gap-3 xl:flex">
-          {metrics.map((metric, index) => (
-            <m.div
-              key={metric.label}
-              className="min-w-[8.25rem] rounded-2xl border border-white/12 bg-black/44 px-4 py-3 text-center shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-md"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.58, delay: 0.82 + index * 0.1 }}
-            >
-              <div className="text-2xl font-black leading-none text-[#f5f1e8]">{metric.value}</div>
-              <div className="mt-1 text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#d6b36a]/80">{metric.label}</div>
-            </m.div>
-          ))}
-        </div>
 
         <m.div
           className="absolute bottom-0 right-0 z-40 hidden xl:block"

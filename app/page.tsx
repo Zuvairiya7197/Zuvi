@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/hero";
 import { Trust } from "@/components/sections/trust";
+import { StatsStrip } from "@/components/sections/stats-strip";
 
 const ServicesPreview = dynamic(() => import("@/components/sections/services").then((mod) => mod.ServicesPreview));
 const FeaturedProjects = dynamic(() => import("@/components/sections/projects").then((mod) => mod.FeaturedProjects));
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <Trust />
       <ServicesPreview />
+      <StatsStrip />
       <FeaturedProjects />
       <Testimonials />
       <ContactSection />
