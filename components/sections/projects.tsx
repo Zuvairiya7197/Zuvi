@@ -67,8 +67,8 @@ export function FeaturedProjects() {
         aria-hidden="true"
       />
 
-      {/* Header row — absolutely positioned top */}
-      <div className="absolute inset-x-0 top-0 z-20 flex flex-col items-center px-5 py-6 text-center md:px-10">
+      {/* Header — in normal flow, tight bottom margin */}
+      <div className="relative z-20 flex flex-col items-center pb-4 text-center">
         <p className="mb-1 text-[0.62rem] font-black uppercase tracking-[0.2em] text-[#d6b36a]">
           Featured Work
         </p>
@@ -78,12 +78,6 @@ export function FeaturedProjects() {
             Projects
           </span>
         </h2>
-        <Link
-          href="/work"
-          className="mt-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#d6b36a]/70 transition hover:text-[#d6b36a]"
-        >
-          View all <ArrowUpRight size={14} />
-        </Link>
       </div>
 
       {/* Full-screen carousel */}
@@ -200,6 +194,16 @@ export function FeaturedProjects() {
         >
           <ChevronRight className="size-4" />
         </button>
+      </div>
+
+      {/* View all — below carousel */}
+      <div className="flex justify-center pt-3">
+        <Link
+          href="/work"
+          className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#d6b36a]/70 transition hover:text-[#d6b36a]"
+        >
+          View all <ArrowUpRight size={14} />
+        </Link>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 export interface SocialItem {
@@ -24,6 +24,7 @@ function SocialFlipNode({
   item,
   index,
   isHovered,
+  autoFlipIndex,
   setTooltipIndex,
   tooltipIndex,
   itemClassName,
@@ -33,6 +34,7 @@ function SocialFlipNode({
   item: SocialItem;
   index: number;
   isHovered: boolean;
+  autoFlipIndex: number | null;
   setTooltipIndex: (val: number | null) => void;
   tooltipIndex: number | null;
   itemClassName?: string;
@@ -43,6 +45,9 @@ function SocialFlipNode({
   const wrapperProps = item.href
     ? { href: item.href, target: "_blank", rel: "noopener noreferrer" }
     : { onClick: item.onClick };
+
+  // Flip when hovered (desktop) OR when auto-cycling reaches this index (mobile)
+  const flipped = isHovered || autoFlipIndex === index;
 
   return (
     <Wrapper
@@ -70,13 +75,13 @@ function SocialFlipNode({
       <motion.div
         className="relative h-full w-full"
         initial={false}
-        animate={{ rotateY: isHovered ? 180 : 0 }}
+        animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{
           duration: 0.8,
           type: "spring",
           stiffness: 120,
           damping: 15,
-          delay: index * 0.06,
+          delay: isHovered ? index * 0.06 : 0,
         }}
         style={{ transformStyle: "preserve-3d" }}
       >
@@ -115,6 +120,41 @@ export function SocialFlipButton({
 }: SocialFlipButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [tooltipIndex, setTooltipIndex] = useState<number | null>(null);
+  const [autoFlipIndex, setAutoFlipIndex] = useState<number | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const cycleRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    if (isHovered) {
+      // Stop auto-cycle when hovered
+      if (cycleRef.current) clearInterval(cycleRef.current);
+      if (timerRef.current) clearTimeout(timerRef.current);
+      setAutoFlipIndex(null);
+      return;
+    }
+
+    // Cycle each letter one at a time: flip in, pause, flip out, next
+    let currentIndex = 0;
+
+    const step = () => {
+      setAutoFlipIndex(currentIndex);
+      timerRef.current = setTimeout(() => {
+        setAutoFlipIndex(null);
+        timerRef.current = setTimeout(() => {
+          currentIndex = (currentIndex + 1) % items.length;
+          step();
+        }, 200);
+      }, 700);
+    };
+
+    // Start after a short initial delay
+    timerRef.current = setTimeout(step, 800);
+
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+      if (cycleRef.current) clearInterval(cycleRef.current);
+    };
+  }, [isHovered, items.length]);
 
   return (
     <div className={cn("inline-flex items-center justify-center", className)}>
@@ -146,6 +186,7 @@ export function SocialFlipButton({
             item={item}
             index={index}
             isHovered={isHovered}
+            autoFlipIndex={autoFlipIndex}
             setTooltipIndex={setTooltipIndex}
             tooltipIndex={tooltipIndex}
             itemClassName={itemClassName}
