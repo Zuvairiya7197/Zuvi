@@ -278,7 +278,7 @@ export function FeaturedProjects() {
                       alt={`${activeProject.title} featured project`}
                       fill
                       sizes="(min-width: 1024px) 48rem, 92vw"
-                      className="object-cover saturate-[0.82] transition duration-[1400ms] ease-out hover:scale-[1.035]"
+                      className={`saturate-[0.82] transition duration-1400 ease-out hover:scale-[1.035] ${activeProject.category === "Social Media Designs" ? "object-contain" : "object-cover"}`}
                     />
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_58%_26%,transparent,rgba(0,0,0,0.24)_45%,rgba(0,0,0,0.76)_100%)]" />
                   </motion.div>
@@ -298,7 +298,7 @@ export function FeaturedProjects() {
                   exit={{ x: -50, opacity: 0, filter: "blur(12px)" }}
                   transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <Image src={nextProject.image} alt="" fill sizes="22rem" className="object-cover opacity-58 saturate-50" />
+                  <Image src={nextProject.image} alt="" fill sizes="22rem" className={`opacity-58 saturate-50 ${nextProject.category === "Social Media Designs" ? "object-contain" : "object-cover"}`} />
                   <div className="absolute inset-0 bg-black/38" />
                   <p className="absolute bottom-5 left-5 max-w-[12rem] text-sm font-medium text-white/56">{nextProject.title}</p>
                 </motion.div>

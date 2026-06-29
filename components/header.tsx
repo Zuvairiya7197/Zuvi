@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const heroNavItems = [
   { href: "/", label: "Home" },
@@ -14,16 +15,43 @@ const heroNavItems = [
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [hovered, setHovered] = useState(false);
   const headerRef = useRef<HTMLElement | null>(null);
+  const idleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 12);
+    const clearIdle = () => {
+      if (idleTimer.current) clearTimeout(idleTimer.current);
+    };
+
+    const startIdle = () => {
+      clearIdle();
+      idleTimer.current = setTimeout(() => {
+        if (window.scrollY > 12) setVisible(false);
+      }, 2000);
+    };
+
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 12;
+      setScrolled(isScrolled);
+      setVisible(true);
+      if (isScrolled) {
+        startIdle();
+      } else {
+        clearIdle();
+      }
+    };
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearIdle();
+    };
   }, []);
 
   useEffect(() => {
@@ -39,14 +67,20 @@ export function Header() {
     return () => document.removeEventListener("pointerdown", handlePointerDown);
   }, [open]);
 
+  const isVisible = visible || hovered || open || !scrolled;
+
+  if (pathname === "/contact") return null;
+
   return (
     <header
       ref={headerRef}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       className={`fixed left-0 right-0 top-0 z-50 border-b px-4 pb-3 pt-3 transition-all duration-500 md:px-6 md:pb-4 md:pt-4 xl:px-8 xl:pb-4 xl:pt-5 ${
         scrolled || open
           ? "border-[#d6b36a]/12 bg-black/78 shadow-[0_16px_45px_rgba(0,0,0,0.28)] backdrop-blur-xl"
           : "border-transparent bg-transparent shadow-none backdrop-blur-0"
-      }`}
+      } ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
     >
       <div className="mx-auto grid max-w-[1820px] grid-cols-[1fr_auto] items-start gap-4 xl:grid-cols-[auto_1fr_auto]">
         <div className="hidden items-start gap-5 xl:flex">

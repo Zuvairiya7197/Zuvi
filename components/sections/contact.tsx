@@ -2,6 +2,7 @@
 
 import { ArrowUpRight } from "lucide-react";
 import { LazyMotion, domAnimation, m } from "framer-motion";
+import { SocialFlipButton } from "@/components/ui/social-flip-button";
 
 type SocialIconProps = {
   className?: string;
@@ -91,6 +92,26 @@ export function ContactSection() {
         className="contact-stage section-line relative overflow-hidden px-5 py-[clamp(2rem,5svh,3rem)] md:px-8 lg:py-[clamp(2rem,5svh,3.5rem)]"
       >
       <div className="relative z-10 mx-auto flex min-h-[clamp(25rem,62svh,34rem)] max-w-[min(94vw,1660px)] flex-col lg:min-h-[clamp(36rem,82svh,48rem)] 2xl:max-w-[min(94vw,1760px)]">
+        <m.div
+          className="relative z-10 flex justify-center pt-[clamp(1.5rem,4svh,2.5rem)]"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <SocialFlipButton
+            items={[
+              { letter: "C", icon: <WhatsAppLogo className="size-4" />, label: "WhatsApp", href: "https://wa.me/919987448073" },
+              { letter: "O", icon: <InstagramLogo className="size-4" />, label: "Instagram", href: "https://www.instagram.com/_zuvi___/" },
+              { letter: "N", icon: <MailLogo className="size-4" />, label: "Email", href: "mailto:zuvairiyamaryam@gmail.com" },
+              { letter: "T", icon: <LinkedInLogo className="size-4" />, label: "LinkedIn", href: "https://www.linkedin.com/in/zuvairiya-maryam/" },
+              { letter: "A", icon: <WhatsAppLogo className="size-4" />, label: "WhatsApp", href: "https://wa.me/919987448073" },
+              { letter: "C", icon: <InstagramLogo className="size-4" />, label: "Instagram", href: "https://www.instagram.com/_zuvi___/" },
+              { letter: "T", icon: <MailLogo className="size-4" />, label: "Email", href: "mailto:zuvairiyamaryam@gmail.com" },
+            ]}
+          />
+        </m.div>
+
         <div className="relative mt-auto flex flex-1 items-end justify-center pb-[clamp(1.75rem,4svh,2.75rem)] pt-[clamp(1.5rem,4svh,2.5rem)] lg:pb-[clamp(2.75rem,6svh,4.5rem)] lg:pt-[clamp(2.25rem,6svh,4rem)]">
           <m.h2
             className="relative z-10 max-w-[min(92vw,1120px)] text-center text-[clamp(3.3rem,13vw,10rem)] font-black uppercase leading-[0.82] tracking-[-0.065em] sm:text-[clamp(4rem,9.2vw,10rem)] 2xl:max-w-[min(92vw,1340px)] 2xl:text-[clamp(4.5rem,10.5vw,12.5rem)]"

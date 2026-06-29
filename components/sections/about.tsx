@@ -24,7 +24,7 @@ export function AboutPreview() {
             More about me <ArrowRight size={15} />
           </Link>
         </div>
-        <div className="relative min-h-[clamp(22rem,52svh,32rem)]">
+        <div className="relative h-[clamp(22rem,52svh,32rem)]">
           <m.div
             className="absolute left-0 top-0 h-full w-[72%] overflow-hidden rounded-[1.8rem] border border-[#d5ad6f]/28 md:w-[68%] md:rounded-[2.6rem]"
             whileHover={{ y: -10, rotate: -1.5 }}
@@ -33,8 +33,8 @@ export function AboutPreview() {
               src="/project-zarrar-palekar.webp"
               alt="Graphic designer portrait in dark studio"
               fill
-              sizes="(min-width: 1024px) 32vw, 80vw"
-              className="object-cover"
+              sizes="(min-width: 1024px) 28vw, (min-width: 768px) 55vw, 72vw"
+              className="object-cover object-top"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
           </m.div>
@@ -54,7 +54,7 @@ export function AboutPreview() {
                 src="/AC Repair.webp"
                 alt="Designer workspace with monitor"
                 fill
-                sizes="20vw"
+                sizes="(min-width: 1024px) 12vw, (min-width: 768px) 22vw, 32vw"
                 className="object-cover"
               />
             </div>
@@ -63,7 +63,7 @@ export function AboutPreview() {
                 src="/Plumbing sevices.webp"
                 alt="Brand sketch and design process"
                 fill
-                sizes="20vw"
+                sizes="(min-width: 1024px) 12vw, (min-width: 768px) 22vw, 32vw"
                 className="object-cover"
               />
             </div>
@@ -92,7 +92,7 @@ export function AboutPreview() {
                   alt="Client headshot"
                   fill
                   sizes="40px"
-                  className="object-cover"
+                  className="object-cover object-center"
                 />
               </div>
               <div>

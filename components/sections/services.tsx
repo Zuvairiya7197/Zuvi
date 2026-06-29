@@ -264,7 +264,7 @@ function DesignImageFrame({
           src="/About Image.webp"
           alt="Premium graphic design work preview"
           fill
-          sizes="(min-width: 1024px) 24rem, 15rem"
+          sizes="(min-width: 1024px) clamp(30rem, 60svh, 50rem), 90vw"
           className="object-cover opacity-86 saturate-75"
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,transparent,rgba(0,0,0,0.18)_54%,rgba(0,0,0,0.72)_100%)]" />

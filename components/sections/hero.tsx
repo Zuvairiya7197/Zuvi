@@ -3,10 +3,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import { LazyMotion, domAnimation, m, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Sparkle } from "lucide-react";
+import { Sparkle } from "lucide-react";
 import { useCallback } from "react";
+import { SocialFlipButton } from "@/components/ui/social-flip-button";
+import { FaWhatsapp, FaInstagram, FaEnvelope, FaLinkedin } from "react-icons/fa";
 
 const traits = ["Strategic", "Creative", "Impactful"];
+
+const contactItems = [
+  { letter: "C", icon: <FaWhatsapp />, label: "WhatsApp", href: "https://wa.me/919987448073" },
+  { letter: "O", icon: <FaInstagram />, label: "Instagram", href: "https://www.instagram.com/_zuvi___/" },
+  { letter: "N", icon: <FaEnvelope />, label: "Email", href: "mailto:zuvairiyamaryam@gmail.com" },
+  { letter: "T", icon: <FaLinkedin />, label: "LinkedIn", href: "https://www.linkedin.com/in/zuvairiya-maryam/" },
+  { letter: "A", icon: <FaWhatsapp />, label: "WhatsApp", href: "https://wa.me/919987448073" },
+  { letter: "C", icon: <FaInstagram />, label: "Instagram", href: "https://www.instagram.com/_zuvi___/" },
+  { letter: "T", icon: <FaEnvelope />, label: "Email", href: "mailto:zuvairiyamaryam@gmail.com" },
+];
 const metrics = [
   { value: "42+", label: "visual launches" },
   { value: "8", label: "active categories" },
@@ -93,12 +105,9 @@ export function Hero() {
               </span>
             </span>
           </h1>
-          <Link
-            href="/contact"
-            className="mx-auto mt-5 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-gradient-to-br from-[#f7d79a] to-[#a67235] px-6 py-3 text-sm font-bold text-black shadow-[0_18px_55px_rgba(0,0,0,0.32)] sm:px-7 xl:hidden"
-          >
-            Start a Project <ArrowRight size={18} />
-          </Link>
+          <div className="mt-5 xl:hidden">
+            <SocialFlipButton items={contactItems} />
+          </div>
         </m.div>
 
         <div className="absolute bottom-[clamp(1.75rem,5svh,3.5rem)] left-0 z-40 hidden max-w-[18rem] flex-col items-start xl:flex 2xl:max-w-[20rem]">
@@ -151,13 +160,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.05 }}
         >
-          <Link
-            href="/contact"
-            className="inline-flex min-w-[12.5rem] items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-[#f7d79a] to-[#a67235] px-6 py-4 text-base font-bold text-black shadow-[0_22px_70px_rgba(0,0,0,0.32)] transition hover:-translate-y-1 hover:shadow-[0_28px_90px_rgba(0,0,0,0.42)] 2xl:min-w-[15rem] 2xl:gap-5 2xl:px-8 2xl:py-5 2xl:text-lg"
-          >
-            <ArrowUpRight size={30} />
-            Start a Project
-          </Link>
+          <SocialFlipButton items={contactItems} />
         </m.div>
       </div>
       </section>
