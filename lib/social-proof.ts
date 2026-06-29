@@ -13,7 +13,7 @@ export const testimonials = [
       "WBYB (we build your brands) develop our classes website (smclasses.in) which exceeds our expectations.. Website covers all informative content which were basically required for growth of any coaching classes..the best part is whenever modifications required they do immediately and with lots of ideas.. We recommend WBYB for anyone who like to build best website for their business..",
     name: "Saquib Dalvi",
     role: "Education Brand",
-    image: "/wbyb-sm-classes-founder.webp"
+    image: "/wbyb-sm-classes-founder.jpeg"
   },
   {
     title: "My website was live in two days, without the stress.",
