@@ -74,7 +74,7 @@ export function ContactSection() {
     <LazyMotion features={domAnimation}>
       <section
         id="contact"
-        className="contact-stage section-line relative overflow-hidden px-5 py-[clamp(3rem,7svh,5rem)] md:px-8 lg:py-[clamp(3rem,7svh,5rem)]"
+        className="contact-stage section-line relative overflow-hidden px-5 py-[clamp(2.5rem,6svh,5rem)] md:px-8"
       >
       <div className="relative z-10 mx-auto flex min-h-[clamp(25rem,62svh,34rem)] max-w-[min(94vw,1660px)] flex-col lg:min-h-[clamp(36rem,82svh,48rem)] 2xl:max-w-[min(94vw,1760px)]">
 
@@ -111,7 +111,7 @@ export function ContactSection() {
           </m.a>
         </div>
 
-        <div className="relative z-10 flex flex-col gap-4 pb-[clamp(1rem,2svh,1.4rem)] text-xs leading-6 text-neutral-400 sm:text-sm md:flex-row md:items-center md:justify-between">
+        <div className="relative z-10 flex flex-col items-center gap-4 pb-[clamp(1rem,2svh,1.4rem)] text-xs leading-6 text-neutral-400 sm:text-sm md:flex-row md:items-center md:justify-between">
           <p>
             <span className="text-[#d6b36a]">(c)</span> Zuvairiya Maryam. All
             rights reserved 2026

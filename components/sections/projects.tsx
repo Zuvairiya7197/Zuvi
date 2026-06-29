@@ -13,16 +13,23 @@ const TRANSITION: Transition = {
 };
 
 const featuredItems = [
-  { src: "/mz-logo-01.webp",                        title: "Logo Design",              category: "Logo Design" },
-  { src: "/mz-flyer-jewellery-workshop.webp",        title: "Jewellery Workshop Flyer", category: "Flyer Design" },
-  { src: "/sm classes post.webp",                    title: "SM Classes Post",          category: "Social Media" },
-  { src: "/mz-business-card-01.jpg",                 title: "Business Card",            category: "Print Identity" },
-  { src: "/project-graphic-educational-flyer.webp",  title: "Educational Flyer",        category: "Flyer Design" },
-  { src: "/6th post.webp",                           title: "Social Post",              category: "Social Media" },
-  { src: "/mz-customised-print-01.jpg",              title: "Custom Print",             category: "Print Design" },
-  { src: "/mz-logo-04.webp",                         title: "Logo Design",              category: "Logo Design" },
+  { src: "/project-zarrar-palekar.webp",             title: "Zarrar Palekar",           category: "Website Design" },
+  { src: "/project-sm-classes.webp",                 title: "SM Classes",               category: "Website Design" },
+  { src: "/project-little-ilmies.webp",              title: "Little Ilmies",            category: "Website Design" },
+  { src: "/project-organise-with-kopal.webp",        title: "Organise With Kopal",      category: "Website Design" },
+  { src: "/WBYB website.webp",                       title: "WBYB",                     category: "Website Design" },
+  { src: "/mz-logo-06.jpg",                          title: "Logo Design",              category: "Logo Design" },
+  { src: "/SM Classes Score card flyer 4.webp",      title: "SM Classes Score Card",    category: "Flyer Design" },
   { src: "/mz-flyer-real-estate.webp",               title: "Real Estate Flyer",        category: "Flyer Design" },
-  { src: "/post 12.webp",                            title: "Social Post",              category: "Social Media" },
+  { src: "/mz-flyer-mhj.jpeg",                       title: "MHJ Flyer",                category: "Flyer Design" },
+  { src: "/mz-flyer-sm-classes-4.webp",              title: "SM Classes Poster",        category: "Flyer Design" },
+  { src: "/mz-business-card-02.webp",                title: "Business Card",            category: "Print Identity" },
+  { src: "/mz-customised-print-01.jpg",              title: "Custom Print",             category: "Print Design" },
+  { src: "/mz-customised-print-03.jpg",              title: "Custom Print",             category: "Print Design" },
+  { src: "/mz-customised-print-17.jpg",              title: "Custom Print",             category: "Print Design" },
+  { src: "/mz-customised-print-19.jpg",              title: "Custom Print",             category: "Print Design" },
+  { src: "/mz-customised-print-22.jpg",              title: "Custom Print",             category: "Print Design" },
+  { src: "/mz-customised-print-24.jpg",              title: "Custom Print",             category: "Print Design" },
 ];
 
 const SLIDE_SIZE = 300;
@@ -47,7 +54,7 @@ export function FeaturedProjects() {
   return (
     <section
       id="projects"
-      className="section-line relative h-svh overflow-hidden bg-black text-[#f5f1e8]"
+      className="section-line relative overflow-hidden bg-black py-[clamp(2.5rem,6svh,5rem)] text-[#f5f1e8]"
     >
       {/* subtle grid bg */}
       <div
@@ -65,7 +72,7 @@ export function FeaturedProjects() {
         <p className="mb-1 text-[0.62rem] font-black uppercase tracking-[0.2em] text-[#d6b36a]">
           Featured Work
         </p>
-        <h2 className="font-sans text-[clamp(1.6rem,2.8vw,2.5rem)] font-medium leading-none tracking-[-0.045em] text-[#f5f1e8]">
+        <h2 className="font-sans text-[clamp(1.4rem,5vw,2.5rem)] font-medium leading-none tracking-[-0.045em] text-[#f5f1e8]">
           Selected
           <span className="ml-2 bg-linear-to-b from-[#f5f1e8] to-[#d6b36a] bg-clip-text text-transparent">
             Projects
@@ -132,7 +139,7 @@ export function FeaturedProjects() {
                     src={item.src}
                     alt={item.title}
                     draggable={false}
-                    className="h-full w-full select-none rounded-2xl object-cover shadow-[0_32px_90px_rgba(0,0,0,0.65)] ring-1 ring-white/10"
+                    className="h-full w-full select-none rounded-2xl object-contain shadow-[0_32px_90px_rgba(0,0,0,0.65)] ring-1 ring-white/10"
                   />
                 </button>
               </motion.div>
@@ -141,7 +148,7 @@ export function FeaturedProjects() {
         </motion.div>
 
         {/* Active title overlay */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-black/90 via-black/40 to-transparent pb-20 pt-16 text-center">
+        <div className="pointer-events-none absolute inset-x-0 bottom-16 text-center">
           <AnimatePresence mode="wait">
             <motion.p
               key={active.title + activeIndex}
@@ -155,44 +162,44 @@ export function FeaturedProjects() {
             </motion.p>
           </AnimatePresence>
         </div>
+      </div>
 
-        {/* Controls */}
-        <div className="absolute inset-x-0 bottom-6 z-10 flex items-center justify-center gap-3">
-          <button
-            type="button"
-            aria-label="Previous"
-            disabled={activeIndex === 0}
-            onClick={() => selectSlide(activeIndex - 1)}
-            className="inline-flex size-10 items-center justify-center rounded-full border border-white/12 bg-black/50 text-[#f5f1e8] backdrop-blur-sm transition hover:border-[#d6b36a]/40 hover:bg-[#d6b36a]/12 disabled:cursor-not-allowed disabled:opacity-25"
-          >
-            <ChevronLeft className="size-4" />
-          </button>
+      {/* Controls — outside carousel so dots never overlap the image */}
+      <div className="flex items-center justify-center gap-3 pb-2 pt-4">
+        <button
+          type="button"
+          aria-label="Previous"
+          disabled={activeIndex === 0}
+          onClick={() => selectSlide(activeIndex - 1)}
+          className="inline-flex size-10 items-center justify-center rounded-full border border-white/12 bg-black/50 text-[#f5f1e8] backdrop-blur-sm transition hover:border-[#d6b36a]/40 hover:bg-[#d6b36a]/12 disabled:cursor-not-allowed disabled:opacity-25"
+        >
+          <ChevronLeft className="size-4" />
+        </button>
 
-          <div className="flex items-center gap-1.5">
-            {featuredItems.map((_, index) => (
-              <button
-                key={index}
-                type="button"
-                aria-label={`Slide ${index + 1}`}
-                aria-current={activeIndex === index ? "true" : undefined}
-                onClick={() => selectSlide(index)}
-                className={`h-1.5 rounded-full bg-[#d6b36a] transition-all duration-300 ${
-                  activeIndex === index ? "w-6 opacity-100" : "w-1.5 opacity-25"
-                }`}
-              />
-            ))}
-          </div>
-
-          <button
-            type="button"
-            aria-label="Next"
-            disabled={activeIndex === maxIndex}
-            onClick={() => selectSlide(activeIndex + 1)}
-            className="inline-flex size-10 items-center justify-center rounded-full border border-white/12 bg-black/50 text-[#f5f1e8] backdrop-blur-sm transition hover:border-[#d6b36a]/40 hover:bg-[#d6b36a]/12 disabled:cursor-not-allowed disabled:opacity-25"
-          >
-            <ChevronRight className="size-4" />
-          </button>
+        <div className="flex items-center gap-1.5">
+          {featuredItems.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              aria-label={`Slide ${index + 1}`}
+              aria-current={activeIndex === index ? "true" : undefined}
+              onClick={() => selectSlide(index)}
+              className={`h-1.5 rounded-full bg-[#d6b36a] transition-all duration-300 ${
+                activeIndex === index ? "w-6 opacity-100" : "w-1.5 opacity-25"
+              }`}
+            />
+          ))}
         </div>
+
+        <button
+          type="button"
+          aria-label="Next"
+          disabled={activeIndex === maxIndex}
+          onClick={() => selectSlide(activeIndex + 1)}
+          className="inline-flex size-10 items-center justify-center rounded-full border border-white/12 bg-black/50 text-[#f5f1e8] backdrop-blur-sm transition hover:border-[#d6b36a]/40 hover:bg-[#d6b36a]/12 disabled:cursor-not-allowed disabled:opacity-25"
+        >
+          <ChevronRight className="size-4" />
+        </button>
       </div>
     </section>
   );

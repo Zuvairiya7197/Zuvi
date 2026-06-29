@@ -281,7 +281,7 @@ export function ServicesPreview() {
     <LazyMotion features={domAnimation}>
       <section
         id="services"
-        className="section-line relative bg-black px-5 py-[clamp(3rem,7svh,5rem)] md:px-8"
+        className="section-line relative bg-black px-5 py-[clamp(2.5rem,6svh,5rem)] md:px-8"
       >
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.12]"

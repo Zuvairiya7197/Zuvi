@@ -71,7 +71,7 @@ export function Testimonials() {
 
   return (
     <LazyMotion features={domMax}>
-    <section className="section-line testimonial-luxe-stage relative overflow-hidden px-4 py-[clamp(3rem,7svh,5rem)] text-[#f7efe0] sm:px-[clamp(1rem,5vw,4.5rem)] lg:py-[clamp(3rem,7svh,5rem)]">
+    <section className="section-line testimonial-luxe-stage relative overflow-hidden px-4 py-[clamp(2.5rem,6svh,5rem)] text-[#f7efe0] sm:px-[clamp(1rem,5vw,4.5rem)]">
       <div className="relative z-10 mx-auto max-w-[1500px] px-0 py-0 sm:px-[clamp(1.25rem,4vw,4rem)] lg:min-h-[clamp(38rem,78svh,43rem)] lg:py-[clamp(3.5rem,6svh,5.25rem)]">
         <m.div
           className="relative mx-auto max-w-[620px] text-center"
