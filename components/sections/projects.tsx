@@ -161,9 +161,12 @@ export function FeaturedProjects() {
       <div className="flex justify-center pt-3">
         <Link
           href="/work"
-          className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#d6b36a]/70 transition hover:text-[#d6b36a]"
+          className="group inline-flex items-center gap-3 rounded-full bg-[#242424] py-1 pl-5 pr-1 text-sm font-medium text-[#f5f1e8] shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_18px_38px_rgba(0,0,0,0.28)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#2c2c2c] hover:text-white hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_22px_46px_rgba(0,0,0,0.36)]"
         >
-          View all <ArrowUpRight size={14} />
+          View all
+          <span className="grid h-9 w-9 place-items-center rounded-full bg-linear-to-br from-[#f2d27e] via-[#d6b36a] to-[#b68035] text-black shadow-[0_0_18px_rgba(214,179,106,0.24)] transition duration-300 group-hover:scale-105">
+            <ArrowUpRight size={18} />
+          </span>
         </Link>
       </div>
     </section>
