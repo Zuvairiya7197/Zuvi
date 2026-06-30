@@ -70,7 +70,6 @@ export function Hero() {
         animate={{ y: [0, -12, 0], scale: [1, 1.012, 1] }}
         transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}
       >
-        <div className="hero-image-aura absolute inset-x-[8%] bottom-[2%] h-[34%]" aria-hidden="true" />
         <Image
           src="/hero-image.webp"
           alt=""
