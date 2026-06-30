@@ -1,16 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { motion, type Transition, type PanInfo } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useCallback, useState } from "react";
-
-const TRANSITION: Transition = {
-  type: "spring",
-  bounce: 0.14,
-  duration: 0.9,
-};
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { CylinderCarousel } from "@/components/ui/cylinder-carousel";
 
 const featuredItems = [
   { src: "/project-zarrar-palekar.webp",             title: "Zarrar Palekar",           category: "Website Design" },
@@ -32,27 +25,42 @@ const featuredItems = [
   { src: "/mz-customised-print-24.jpg",              title: "Custom Print",             category: "Print Design" },
 ];
 
-const SLIDE_SIZE = 300;
-const ROTATION_STEP = 28;
-const VERTICAL_STEP = 140;
-const INACTIVE_SCALE = 0.58;
-
-function clamp(v: number, min: number, max: number) {
-  return Math.min(Math.max(v, min), max);
-}
+const AUTO_ROTATE_INTERVAL = 2600;
+const RESUME_DELAY = 4000;
 
 export function FeaturedProjects() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const maxIndex = featuredItems.length - 1;
+  const [paused, setPaused] = useState(false);
+  const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const selectSlide = useCallback((next: number) => {
-    setActiveIndex(clamp(next, 0, maxIndex));
-  }, [maxIndex]);
+    setActiveIndex(((next % featuredItems.length) + featuredItems.length) % featuredItems.length);
+  }, []);
 
-  const handleDragEnd = useCallback((_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    if (info.offset.x < -40) selectSlide(activeIndex + 1);
-    else if (info.offset.x > 40) selectSlide(activeIndex - 1);
-  }, [activeIndex, selectSlide]);
+  const pauseThenResume = useCallback(() => {
+    setPaused(true);
+    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+    resumeTimeoutRef.current = setTimeout(() => setPaused(false), RESUME_DELAY);
+  }, []);
+
+  const handleSelectSlide = useCallback((next: number) => {
+    selectSlide(next);
+    pauseThenResume();
+  }, [selectSlide, pauseThenResume]);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      setActiveIndex((index) => (index + 1) % featuredItems.length);
+    }, AUTO_ROTATE_INTERVAL);
+    return () => clearInterval(id);
+  }, [paused]);
+
+  useEffect(() => {
+    return () => {
+      if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+    };
+  }, []);
 
   return (
     <section
@@ -83,70 +91,29 @@ export function FeaturedProjects() {
         </h2>
       </div>
 
-      {/* Full-screen carousel */}
+      {/* 3D cylinder carousel */}
       <div
-        className="relative h-svh w-full overflow-hidden"
+        className="relative w-full"
         role="region"
         aria-label="Projects carousel"
         tabIndex={0}
         onKeyDown={(e) => {
-          if (e.key === "ArrowLeft") { e.preventDefault(); selectSlide(activeIndex - 1); }
-          if (e.key === "ArrowRight") { e.preventDefault(); selectSlide(activeIndex + 1); }
+          if (e.key === "ArrowLeft") { e.preventDefault(); handleSelectSlide(activeIndex - 1); }
+          if (e.key === "ArrowRight") { e.preventDefault(); handleSelectSlide(activeIndex + 1); }
         }}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={pauseThenResume}
       >
-        {/* Slides track */}
-        <motion.div
-          className="absolute left-1/2 top-[38%] flex w-fit touch-pan-y"
-          animate={{ x: -(activeIndex * SLIDE_SIZE + SLIDE_SIZE / 2) }}
-          transition={TRANSITION}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.12}
-          onDragEnd={handleDragEnd}
-        >
-          {featuredItems.map((item, index) => {
-            const isActive = activeIndex === index;
-            const distance = index - activeIndex;
-
-            return (
-              <motion.div
-                key={item.src}
-                className="flex shrink-0 flex-col items-center gap-3 will-change-transform"
-                style={{ width: SLIDE_SIZE }}
-                animate={{
-                  rotate: distance * ROTATION_STEP,
-                  scale: isActive ? 1 : INACTIVE_SCALE,
-                  y: distance * VERTICAL_STEP,
-                }}
-                transition={TRANSITION}
-              >
-                {/* Label above */}
-                <motion.p
-                  className="whitespace-nowrap text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[#d6b36a]"
-                  animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 0.7 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  {item.category}
-                </motion.p>
-
-                <button
-                  type="button"
-                  aria-label={`Show ${item.title}`}
-                  aria-current={isActive ? "true" : undefined}
-                  className="aspect-square w-full cursor-pointer"
-                  onClick={() => selectSlide(index)}
-                >
-                  <img
-                    src={item.src}
-                    alt={item.title}
-                    draggable={false}
-                    className="h-full w-full select-none rounded-2xl object-contain shadow-[0_32px_90px_rgba(0,0,0,0.65)] ring-1 ring-white/10"
-                  />
-                </button>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+        <CylinderCarousel
+          images={featuredItems.map((item) => ({ src: item.src, alt: item.title }))}
+          activeIndex={activeIndex}
+          onActiveIndexChange={handleSelectSlide}
+          cardWidth={220}
+          className="min-h-[20rem] sm:min-h-[26rem]"
+        />
+        <p className="pointer-events-none mt-2 text-center text-sm font-semibold tracking-[-0.02em] text-[#f5f1e8]">
+          {featuredItems[activeIndex]?.title}
+        </p>
       </div>
 
       {/* Controls — outside carousel so dots never overlap the image; hidden on mobile in favor of swipe */}
@@ -154,9 +121,8 @@ export function FeaturedProjects() {
         <button
           type="button"
           aria-label="Previous"
-          disabled={activeIndex === 0}
-          onClick={() => selectSlide(activeIndex - 1)}
-          className="inline-flex size-10 items-center justify-center rounded-full border border-white/12 bg-black/50 text-[#f5f1e8] backdrop-blur-sm transition hover:border-[#d6b36a]/40 hover:bg-[#d6b36a]/12 disabled:cursor-not-allowed disabled:opacity-25"
+          onClick={() => handleSelectSlide(activeIndex - 1)}
+          className="inline-flex size-10 items-center justify-center rounded-full border border-white/12 bg-black/50 text-[#f5f1e8] backdrop-blur-sm transition hover:border-[#d6b36a]/40 hover:bg-[#d6b36a]/12"
         >
           <ChevronLeft className="size-4" />
         </button>
@@ -168,7 +134,7 @@ export function FeaturedProjects() {
               type="button"
               aria-label={`Slide ${index + 1}`}
               aria-current={activeIndex === index ? "true" : undefined}
-              onClick={() => selectSlide(index)}
+              onClick={() => handleSelectSlide(index)}
               className={`h-1.5 rounded-full bg-[#d6b36a] transition-all duration-300 ${
                 activeIndex === index ? "w-6 opacity-100" : "w-1.5 opacity-25"
               }`}
@@ -179,9 +145,8 @@ export function FeaturedProjects() {
         <button
           type="button"
           aria-label="Next"
-          disabled={activeIndex === maxIndex}
-          onClick={() => selectSlide(activeIndex + 1)}
-          className="inline-flex size-10 items-center justify-center rounded-full border border-white/12 bg-black/50 text-[#f5f1e8] backdrop-blur-sm transition hover:border-[#d6b36a]/40 hover:bg-[#d6b36a]/12 disabled:cursor-not-allowed disabled:opacity-25"
+          onClick={() => handleSelectSlide(activeIndex + 1)}
+          className="inline-flex size-10 items-center justify-center rounded-full border border-white/12 bg-black/50 text-[#f5f1e8] backdrop-blur-sm transition hover:border-[#d6b36a]/40 hover:bg-[#d6b36a]/12"
         >
           <ChevronRight className="size-4" />
         </button>

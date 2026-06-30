@@ -84,7 +84,7 @@ export function Hero() {
       <div className="relative z-10 mx-auto min-h-[calc(100svh-5.25rem)] max-w-[1680px] max-xl:flex max-xl:flex-col max-xl:items-center md:min-h-[calc(100svh-5.75rem)] 2xl:min-h-[calc(100svh-7rem)] 2xl:max-w-[1820px]">
         <m.div
           style={{ x: headlineX, y: headlineY }}
-          className="mx-auto max-w-[min(100%,38rem)] pt-0 text-center md:max-w-[760px] xl:pt-0 2xl:max-w-[940px]"
+          className="mx-auto max-w-[min(100%,38rem)] pt-6 text-center sm:pt-0 md:max-w-[760px] xl:pt-0 2xl:max-w-[940px]"
           initial={{ opacity: 0, y: 36, filter: "blur(12px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
