@@ -41,9 +41,24 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
     const n = images.length;
     const dragState = React.useRef<{ startX: number; rotated: boolean } | null>(null);
     const [dragDeltaTurns, setDragDeltaTurns] = React.useState(0);
+    const sceneRef = React.useRef<HTMLDivElement | null>(null);
+    const [measuredCardWidth, setMeasuredCardWidth] = React.useState<number | null>(null);
 
     const cardWidthCss = typeof cardWidth === "number" ? `${cardWidth}px` : cardWidth;
-    const cardWidthPx = typeof cardWidth === "number" ? cardWidth : 380;
+    const cardWidthFallback = typeof cardWidth === "number" ? cardWidth : 380;
+    const cardWidthPx = measuredCardWidth ?? cardWidthFallback;
+    const radiusPx = n > 0 ? 0.5 * cardWidthPx / Math.tan(Math.PI / n) : cardWidthPx;
+
+    React.useEffect(() => {
+      const probe = sceneRef.current?.querySelector<HTMLElement>("[data-carousel-card]");
+      if (!probe || typeof ResizeObserver === "undefined") return;
+      const observer = new ResizeObserver((entries) => {
+        const width = entries[0]?.contentRect.width;
+        if (width) setMeasuredCardWidth(width);
+      });
+      observer.observe(probe);
+      return () => observer.disconnect();
+    }, [cardWidth]);
 
     const customStyle = {
       "--n": n,
@@ -78,19 +93,29 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
       }
     };
 
+    const setRefs = React.useCallback(
+      (node: HTMLDivElement | null) => {
+        sceneRef.current = node;
+        if (typeof ref === "function") ref(node);
+        else if (ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
+      },
+      [ref]
+    );
+
     return (
       <div
-        ref={ref}
+        ref={setRefs}
         className={cn(
           "w-full h-full min-h-[500px] grid place-items-center overflow-hidden touch-pan-y",
           className
         )}
         style={{
-          perspective: "35em",
+          ...customStyle,
+          perspective: `${radiusPx * 9}px`,
           maskImage: "linear-gradient(90deg, transparent, #000 20% 80%, transparent)",
           WebkitMaskImage: "linear-gradient(90deg, transparent, #000 20% 80%, transparent)",
           cursor: "grab",
-        }}
+        } as React.CSSProperties}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
@@ -119,6 +144,7 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
             return (
               <img
                 key={i}
+                data-carousel-card={isActive ? "" : undefined}
                 src={img.src}
                 alt={img.alt || `Carousel image ${i}`}
                 draggable={false}

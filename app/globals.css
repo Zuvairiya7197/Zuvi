@@ -390,30 +390,6 @@ textarea {
   }
 }
 
-@keyframes hero-sweep {
-  0%,
-  100% {
-    opacity: 0.34;
-    transform: translateX(-14%);
-  }
-  50% {
-    opacity: 0.72;
-    transform: translateX(12%);
-  }
-}
-
-@keyframes hero-aura-breathe {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scaleX(0.86);
-  }
-  50% {
-    opacity: 0.86;
-    transform: scaleX(1.08);
-  }
-}
-
 @keyframes brand-orbit-spin-a {
   from {
     transform: rotateX(68deg) rotateZ(18deg);
