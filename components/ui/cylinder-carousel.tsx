@@ -40,9 +40,12 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
   ) => {
     const n = images.length;
     const dragState = React.useRef<{ startX: number; rotated: boolean } | null>(null);
+    const justDraggedRef = React.useRef(false);
     const [dragDeltaTurns, setDragDeltaTurns] = React.useState(0);
     const sceneRef = React.useRef<HTMLDivElement | null>(null);
     const [measuredCardWidth, setMeasuredCardWidth] = React.useState<number | null>(null);
+    const [hoverPos, setHoverPos] = React.useState<{ x: number; y: number } | null>(null);
+    const [hoveringActiveCard, setHoveringActiveCard] = React.useState(false);
 
     const cardWidthCss = typeof cardWidth === "number" ? `${cardWidth}px` : cardWidth;
     const cardWidthFallback = typeof cardWidth === "number" ? cardWidth : 380;
@@ -75,6 +78,12 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
     };
 
     const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+      if (sceneRef.current) {
+        const rect = sceneRef.current.getBoundingClientRect();
+        setHoverPos({ x: event.clientX - rect.left, y: event.clientY - rect.top });
+      }
+      const target = event.target as HTMLElement;
+      setHoveringActiveCard(target.hasAttribute("data-carousel-card") && Boolean(target.dataset.href));
       if (!dragState.current) return;
       const dx = event.clientX - dragState.current.startX;
       if (Math.abs(dx) > 3) dragState.current.rotated = true;
@@ -85,6 +94,7 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
       if (!dragState.current) return;
       const dx = event.clientX - dragState.current.startX;
       const stepsMoved = Math.round(-dx / (cardWidthPx * 0.6));
+      justDraggedRef.current = dragState.current.rotated;
       setDragDeltaTurns(0);
       dragState.current = null;
       if (stepsMoved !== 0 && onActiveIndexChange && n > 0) {
@@ -106,7 +116,7 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
       <div
         ref={setRefs}
         className={cn(
-          "w-full h-full min-h-[500px] grid place-items-center overflow-hidden touch-pan-y",
+          "relative w-full h-full min-h-[500px] grid place-items-center overflow-hidden touch-pan-y",
           className
         )}
         style={{
@@ -114,16 +124,17 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
           perspective: `${radiusPx * 2.4}px`,
           maskImage: "linear-gradient(90deg, transparent, #000 20% 80%, transparent)",
           WebkitMaskImage: "linear-gradient(90deg, transparent, #000 20% 80%, transparent)",
-          cursor: "grab",
+          cursor: hoveringActiveCard ? "none" : "grab",
         } as React.CSSProperties}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
+        onPointerLeave={() => setHoveringActiveCard(false)}
         {...props}
       >
         <div
-          className={cn("grid place-items-center [transform-style:preserve-3d]", containerClassName)}
+          className={cn("pointer-events-none grid place-items-center [transform-style:preserve-3d]", containerClassName)}
           style={{
             ...customStyle,
             transform: `rotateY(${rotationTurns}turn)`,
@@ -134,6 +145,10 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
             const isActive = i === activeIndex;
 
             const handleClick = () => {
+              if (justDraggedRef.current) {
+                justDraggedRef.current = false;
+                return;
+              }
               if (isActive && img.href) {
                 window.open(img.href, "_blank", "noopener,noreferrer");
                 return;
@@ -145,12 +160,13 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
               <img
                 key={i}
                 data-carousel-card={isActive ? "" : undefined}
+                data-href={isActive ? img.href : undefined}
                 src={img.src}
                 alt={img.alt || `Carousel image ${i}`}
                 draggable={false}
                 onClick={handleClick}
                 className={cn(
-                  "[grid-area:1/1] object-cover rounded-2xl [backface-visibility:hidden] select-none",
+                  "pointer-events-auto [grid-area:1/1] object-cover rounded-2xl [backface-visibility:hidden] select-none",
                   isActive && img.href ? "cursor-alias" : "cursor-pointer",
                   isActive ? "ring-2 ring-[#d6b36a]/80" : "ring-1 ring-white/10",
                   cardClassName
@@ -165,6 +181,14 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
             );
           })}
         </div>
+        {hoveringActiveCard && hoverPos && (
+          <div
+            className="pointer-events-none absolute z-50 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-[#d6b36a] px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-black shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
+            style={{ left: hoverPos.x, top: hoverPos.y }}
+          >
+            Click to visit
+          </div>
+        )}
       </div>
     );
   }

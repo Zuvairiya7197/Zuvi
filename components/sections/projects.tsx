@@ -113,11 +113,6 @@ export function FeaturedProjects() {
         />
         <p className="pointer-events-none mt-2 text-center text-sm font-semibold tracking-[-0.02em] text-[#f5f1e8]">
           {featuredItems[activeIndex]?.title}
-          {featuredItems[activeIndex]?.liveUrl && (
-            <span className="ml-2 text-xs font-medium uppercase tracking-[0.16em] text-[#d6b36a]/70">
-              Click to visit
-            </span>
-          )}
         </p>
       </div>
 
