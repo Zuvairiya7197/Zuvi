@@ -3,9 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { LazyMotion, domAnimation, m, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowRight, Sparkle } from "lucide-react";
+import { Sparkle } from "lucide-react";
 import { useCallback } from "react";
 import { SocialFlipButton } from "@/components/ui/social-flip-button";
+import { CornerButton } from "@/components/ui/corner-button";
 import { FaWhatsapp, FaInstagram, FaEnvelope, FaLinkedin } from "react-icons/fa";
 
 const traits = ["Strategic", "Creative", "Impactful"];
@@ -100,12 +101,14 @@ export function Hero() {
               </span>
             </span>
           </h1>
-          <Link
+          <CornerButton
+            as={Link}
             href="/contact"
-            className="mx-auto mt-5 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-linear-to-br from-[#f7d79a] to-[#a67235] px-6 py-3 text-sm font-bold text-black shadow-[0_18px_55px_rgba(0,0,0,0.32)] xl:hidden"
+            wrapperClassName="mx-auto mt-5 xl:hidden"
+            showIcon={false}
           >
-            Start a Project <ArrowRight size={18} />
-          </Link>
+            Let's Design
+          </CornerButton>
         </m.div>
 
         <div className="absolute bottom-[clamp(1.75rem,5svh,3.5rem)] left-0 z-40 hidden max-w-[18rem] flex-col items-start xl:flex 2xl:max-w-[20rem]">
