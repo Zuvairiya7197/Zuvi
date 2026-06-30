@@ -108,8 +108,8 @@ export function FeaturedProjects() {
           images={featuredItems.map((item) => ({ src: item.src, alt: item.title, href: item.liveUrl }))}
           activeIndex={activeIndex}
           onActiveIndexChange={handleSelectSlide}
-          cardWidth={380}
-          className="min-h-[26rem] sm:min-h-[34rem]"
+          cardWidth="clamp(280px, 72vw, 380px)"
+          className="min-h-[30rem] sm:min-h-[34rem]"
         />
         <p className="pointer-events-none mt-2 text-center text-sm font-semibold tracking-[-0.02em] text-[#f5f1e8]">
           {featuredItems[activeIndex]?.title}

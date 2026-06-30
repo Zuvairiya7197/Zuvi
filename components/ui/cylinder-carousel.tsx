@@ -18,7 +18,8 @@ export interface CylinderCarouselProps extends React.HTMLAttributes<HTMLDivEleme
   onActiveIndexChange?: (index: number) => void;
   containerClassName?: string;
   cardClassName?: string;
-  cardWidth?: number; // in pixels
+  /** Card width in pixels, or any valid CSS width value (e.g. a clamp() string for responsive sizing). */
+  cardWidth?: number | string;
 }
 
 const TRANSITION = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
@@ -41,9 +42,12 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
     const dragState = React.useRef<{ startX: number; rotated: boolean } | null>(null);
     const [dragDeltaTurns, setDragDeltaTurns] = React.useState(0);
 
+    const cardWidthCss = typeof cardWidth === "number" ? `${cardWidth}px` : cardWidth;
+    const cardWidthPx = typeof cardWidth === "number" ? cardWidth : 380;
+
     const customStyle = {
       "--n": n,
-      "--w": `${cardWidth}px`,
+      "--w": cardWidthCss,
       "--ba": `calc(1turn / var(--n))`,
     } as React.CSSProperties;
 
@@ -59,13 +63,13 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
       if (!dragState.current) return;
       const dx = event.clientX - dragState.current.startX;
       if (Math.abs(dx) > 3) dragState.current.rotated = true;
-      setDragDeltaTurns(dx / (cardWidth * 3));
+      setDragDeltaTurns(dx / (cardWidthPx * 3));
     };
 
     const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
       if (!dragState.current) return;
       const dx = event.clientX - dragState.current.startX;
-      const stepsMoved = Math.round(-dx / (cardWidth * 0.6));
+      const stepsMoved = Math.round(-dx / (cardWidthPx * 0.6));
       setDragDeltaTurns(0);
       dragState.current = null;
       if (stepsMoved !== 0 && onActiveIndexChange && n > 0) {
