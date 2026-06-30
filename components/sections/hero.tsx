@@ -88,7 +88,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="mx-auto flex max-w-[92vw] items-center justify-center gap-2 text-[0.56rem] font-black uppercase tracking-[0.16em] text-[#d6b36a] sm:gap-3 sm:text-[0.66rem] sm:tracking-[0.24em] md:text-xs md:tracking-[0.34em] 2xl:text-sm">
+          <p className="mx-auto flex max-w-[92vw] items-center justify-center gap-2 pt-3 text-[0.56rem] font-black uppercase tracking-[0.16em] text-[#d6b36a] sm:gap-3 sm:pt-0 sm:text-[0.66rem] sm:tracking-[0.24em] md:text-xs md:tracking-[0.34em] 2xl:text-sm">
             Design is thinking made visual. <Sparkle size={18} />
           </p>
           <h1 className="mt-4 font-sans text-[clamp(2.48rem,10.6vw,3.45rem)] font-black uppercase leading-[0.9] tracking-normal text-[#f5f1e8] sm:text-[clamp(3rem,10vw,4.25rem)] md:text-[clamp(4.35rem,8vw,6.15rem)] xl:text-[clamp(3.2rem,5.7vw,6.8rem)] 2xl:mt-6 2xl:text-[clamp(4rem,6.9vw,8.4rem)] 2xl:leading-[0.96]">
