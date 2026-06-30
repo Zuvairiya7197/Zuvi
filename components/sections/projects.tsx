@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { motion, AnimatePresence, type Transition } from "framer-motion";
+import { motion, AnimatePresence, type Transition, type PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useState } from "react";
 
@@ -49,6 +49,11 @@ export function FeaturedProjects() {
     setActiveIndex(clamp(next, 0, maxIndex));
   }, [maxIndex]);
 
+  const handleDragEnd = useCallback((_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    if (info.offset.x < -40) selectSlide(activeIndex + 1);
+    else if (info.offset.x > 40) selectSlide(activeIndex - 1);
+  }, [activeIndex, selectSlide]);
+
   const active = featuredItems[activeIndex];
 
   return (
@@ -93,9 +98,13 @@ export function FeaturedProjects() {
       >
         {/* Slides track */}
         <motion.div
-          className="absolute left-1/2 top-[38%] flex w-fit"
+          className="absolute left-1/2 top-[38%] flex w-fit touch-pan-y"
           animate={{ x: -(activeIndex * SLIDE_SIZE + SLIDE_SIZE / 2) }}
           transition={TRANSITION}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.12}
+          onDragEnd={handleDragEnd}
         >
           {featuredItems.map((item, index) => {
             const isActive = activeIndex === index;
@@ -158,8 +167,8 @@ export function FeaturedProjects() {
         </div>
       </div>
 
-      {/* Controls — outside carousel so dots never overlap the image */}
-      <div className="flex items-center justify-center gap-3 pb-2 pt-4">
+      {/* Controls — outside carousel so dots never overlap the image; hidden on mobile in favor of swipe */}
+      <div className="hidden items-center justify-center gap-3 pb-2 pt-4 sm:flex">
         <button
           type="button"
           aria-label="Previous"
