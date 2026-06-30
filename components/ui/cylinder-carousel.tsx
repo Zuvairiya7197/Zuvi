@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 export interface CarouselImage {
   src: string;
   alt?: string;
+  /** When set, clicking the centered/active card opens this URL in a new tab. */
+  href?: string;
 }
 
 export interface CylinderCarouselProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -30,7 +32,7 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
       className,
       containerClassName,
       cardClassName,
-      cardWidth = 250,
+      cardWidth = 380,
       ...props
     },
     ref
@@ -99,27 +101,39 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
             transition: dragState.current ? "none" : TRANSITION,
           }}
         >
-          {images.map((img, i) => (
-            <img
-              key={i}
-              src={img.src}
-              alt={img.alt || `Carousel image ${i}`}
-              draggable={false}
-              onClick={() => onActiveIndexChange?.(i)}
-              className={cn(
-                "[grid-area:1/1] object-cover rounded-2xl [backface-visibility:hidden] cursor-pointer select-none",
-                i === activeIndex ? "ring-2 ring-[#d6b36a]/80" : "ring-1 ring-white/10",
-                cardClassName
-              )}
-              style={{
-                width: "var(--w)",
-                aspectRatio: "7/10",
-                "--i": i,
-                transform:
-                  "rotateY(calc(var(--i) * var(--ba))) translateZ(calc(-1 * (0.5 * var(--w) + 0.5em) / tan(0.5 * var(--ba))))",
-              } as React.CSSProperties}
-            />
-          ))}
+          {images.map((img, i) => {
+            const isActive = i === activeIndex;
+
+            const handleClick = () => {
+              if (isActive && img.href) {
+                window.open(img.href, "_blank", "noopener,noreferrer");
+                return;
+              }
+              onActiveIndexChange?.(i);
+            };
+
+            return (
+              <img
+                key={i}
+                src={img.src}
+                alt={img.alt || `Carousel image ${i}`}
+                draggable={false}
+                onClick={handleClick}
+                className={cn(
+                  "[grid-area:1/1] object-cover rounded-2xl [backface-visibility:hidden] select-none",
+                  isActive && img.href ? "cursor-alias" : "cursor-pointer",
+                  isActive ? "ring-2 ring-[#d6b36a]/80" : "ring-1 ring-white/10",
+                  cardClassName
+                )}
+                style={{
+                  width: "var(--w)",
+                  aspectRatio: "7/10",
+                  "--i": i,
+                  transform: `rotateY(calc(var(--i) * var(--ba))) translateZ(calc(-1 * (0.5 * var(--w) + 0.5em) / tan(0.5 * var(--ba))))`,
+                } as React.CSSProperties}
+              />
+            );
+          })}
         </div>
       </div>
     );

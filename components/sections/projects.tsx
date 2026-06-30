@@ -6,11 +6,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { CylinderCarousel } from "@/components/ui/cylinder-carousel";
 
 const featuredItems = [
-  { src: "/project-zarrar-palekar.webp",             title: "Zarrar Palekar",           category: "Website Design" },
-  { src: "/project-sm-classes.webp",                 title: "SM Classes",               category: "Website Design" },
-  { src: "/project-little-ilmies.webp",              title: "Little Ilmies",            category: "Website Design" },
-  { src: "/project-organise-with-kopal.webp",        title: "Organise With Kopal",      category: "Website Design" },
-  { src: "/WBYB website.webp",                       title: "WBYB",                     category: "Website Design" },
+  { src: "/project-zarrar-palekar.webp",             title: "Zarrar Palekar",           category: "Website Design", liveUrl: "https://zarrarpalekar.vercel.app/" },
+  { src: "/project-sm-classes.webp",                 title: "SM Classes",               category: "Website Design", liveUrl: "https://smclasses.in/" },
+  { src: "/project-little-ilmies.webp",              title: "Little Ilmies",            category: "Website Design", liveUrl: "https://littleilmies.com/" },
+  { src: "/project-organise-with-kopal.webp",        title: "Organise With Kopal",      category: "Website Design", liveUrl: "https://www.organisewithkopal.com/" },
+  { src: "/WBYB website.webp",                       title: "WBYB",                     category: "Website Design", liveUrl: "https://www.webuildyourbrands.com/" },
   { src: "/mz-logo-06.jpg",                          title: "Logo Design",              category: "Logo Design" },
   { src: "/SM Classes Score card flyer 4.webp",      title: "SM Classes Score Card",    category: "Flyer Design" },
   { src: "/mz-flyer-real-estate.webp",               title: "Real Estate Flyer",        category: "Flyer Design" },
@@ -105,14 +105,19 @@ export function FeaturedProjects() {
         onMouseLeave={pauseThenResume}
       >
         <CylinderCarousel
-          images={featuredItems.map((item) => ({ src: item.src, alt: item.title }))}
+          images={featuredItems.map((item) => ({ src: item.src, alt: item.title, href: item.liveUrl }))}
           activeIndex={activeIndex}
           onActiveIndexChange={handleSelectSlide}
-          cardWidth={220}
-          className="min-h-[20rem] sm:min-h-[26rem]"
+          cardWidth={380}
+          className="min-h-[26rem] sm:min-h-[34rem]"
         />
         <p className="pointer-events-none mt-2 text-center text-sm font-semibold tracking-[-0.02em] text-[#f5f1e8]">
           {featuredItems[activeIndex]?.title}
+          {featuredItems[activeIndex]?.liveUrl && (
+            <span className="ml-2 text-xs font-medium uppercase tracking-[0.16em] text-[#d6b36a]/70">
+              Click to visit
+            </span>
+          )}
         </p>
       </div>
 
