@@ -111,7 +111,7 @@ export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouse
         )}
         style={{
           ...customStyle,
-          perspective: `${radiusPx * 9}px`,
+          perspective: `${radiusPx * 2.4}px`,
           maskImage: "linear-gradient(90deg, transparent, #000 20% 80%, transparent)",
           WebkitMaskImage: "linear-gradient(90deg, transparent, #000 20% 80%, transparent)",
           cursor: "grab",
