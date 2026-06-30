@@ -74,7 +74,7 @@ export function FeaturedProjects() {
 
       {/* Header — in normal flow, tight bottom margin */}
       <div className="relative z-20 flex flex-col items-center pb-4 text-center">
-        <p className="mb-1 text-[0.62rem] font-black uppercase tracking-[0.2em] text-[#d6b36a]">
+        <p className="mb-1 hidden text-[0.62rem] font-black uppercase tracking-[0.2em] text-[#d6b36a] sm:block">
           Featured Work
         </p>
         <h2 className="font-sans text-[clamp(1.4rem,5vw,2.5rem)] font-medium leading-none tracking-[-0.045em] text-[#f5f1e8]">
@@ -87,7 +87,7 @@ export function FeaturedProjects() {
 
       {/* Full-screen carousel */}
       <div
-        className="relative h-[62svh] w-full overflow-hidden sm:h-svh"
+        className="relative h-svh w-full overflow-hidden"
         role="region"
         aria-label="Projects carousel"
         tabIndex={0}
