@@ -192,7 +192,7 @@ export function Testimonials() {
         </div>
 
         <m.div
-          className="relative mx-auto mt-[clamp(1.25rem,3svh,2.15rem)] grid max-w-[980px] grid-cols-[auto_1fr_auto] items-center gap-3 px-0 py-3 text-center sm:gap-[clamp(1rem,3vw,2rem)] sm:px-[clamp(0.75rem,2vw,1rem)] sm:py-[clamp(0.75rem,2vw,1rem)]"
+          className="relative mx-auto mt-[clamp(1.25rem,3svh,2.15rem)] grid max-w-[980px] grid-cols-1 items-center gap-3 px-0 py-3 text-center sm:grid-cols-[auto_1fr_auto] sm:gap-[clamp(1rem,3vw,2rem)] sm:px-[clamp(0.75rem,2vw,1rem)] sm:py-[clamp(0.75rem,2vw,1rem)]"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
