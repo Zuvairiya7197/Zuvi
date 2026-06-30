@@ -87,7 +87,7 @@ export function FeaturedProjects() {
 
       {/* Full-screen carousel */}
       <div
-        className="relative h-svh w-full overflow-hidden"
+        className="relative h-[62svh] w-full overflow-hidden sm:h-svh"
         role="region"
         aria-label="Projects carousel"
         tabIndex={0}
