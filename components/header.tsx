@@ -138,12 +138,12 @@ export function Header() {
           </span>
         </Link>
 
-        <div className="hidden items-start justify-end gap-3 xl:col-start-3 xl:flex 2xl:gap-4">
+        <div className="hidden items-center justify-end gap-3 xl:col-start-3 xl:flex 2xl:gap-4">
           <Link
             href="https://www.webuildyourbrands.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative mt-1 inline-flex h-12 items-center overflow-hidden rounded-full border border-[#d6b36a]/18 bg-black/28 px-4 text-sm font-medium leading-none text-[#d6b36a]/88 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_14px_34px_rgba(0,0,0,0.24)] backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] before:absolute before:inset-[-1px] before:rounded-full before:bg-[linear-gradient(115deg,rgba(214,179,106,0.34),rgba(22,216,255,0),rgba(124,60,255,0),rgba(214,179,106,0.28))] before:opacity-0 before:transition-opacity before:duration-500 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-transparent hover:bg-[#0b0b0b]/86 hover:text-white hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_18px_48px_rgba(0,0,0,0.38),0_0_30px_rgba(214,179,106,0.16)] hover:before:opacity-100 2xl:text-[0.95rem]"
+            className="group relative inline-flex h-12 items-center overflow-hidden rounded-full border border-[#d6b36a]/18 bg-black/28 px-4 text-sm font-medium leading-none text-[#d6b36a]/88 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_14px_34px_rgba(0,0,0,0.24)] backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] before:absolute before:inset-[-1px] before:rounded-full before:bg-[linear-gradient(115deg,rgba(214,179,106,0.34),rgba(22,216,255,0),rgba(124,60,255,0),rgba(214,179,106,0.28))] before:opacity-0 before:transition-opacity before:duration-500 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-transparent hover:bg-[#0b0b0b]/86 hover:text-white hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_18px_48px_rgba(0,0,0,0.38),0_0_30px_rgba(214,179,106,0.16)] hover:before:opacity-100 2xl:text-[0.95rem]"
           >
             <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(214,179,106,0.16),transparent_36%),radial-gradient(circle_at_82%_15%,rgba(124,60,255,0),transparent_38%)] opacity-0 transition duration-500 group-hover:opacity-100 group-hover:bg-[radial-gradient(circle_at_20%_50%,rgba(214,179,106,0.2),transparent_36%),radial-gradient(circle_at_82%_15%,rgba(124,60,255,0.16),transparent_38%)]" />
             <span className="pointer-events-none absolute inset-y-0 -left-14 w-12 rotate-12 bg-white/18 blur-md transition-transform duration-700 ease-out group-hover:translate-x-44" />
