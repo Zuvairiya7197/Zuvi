@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { motion, AnimatePresence, type Transition, type PanInfo } from "framer-motion";
+import { motion, type Transition, type PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useState } from "react";
 
@@ -53,8 +53,6 @@ export function FeaturedProjects() {
     if (info.offset.x < -40) selectSlide(activeIndex + 1);
     else if (info.offset.x > 40) selectSlide(activeIndex - 1);
   }, [activeIndex, selectSlide]);
-
-  const active = featuredItems[activeIndex];
 
   return (
     <section
@@ -149,22 +147,6 @@ export function FeaturedProjects() {
             );
           })}
         </motion.div>
-
-        {/* Active title overlay */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-16 text-center">
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={active.title + activeIndex}
-              className="text-xl font-semibold tracking-[-0.02em] text-[#f5f1e8]"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
-            >
-              {active.title}
-            </motion.p>
-          </AnimatePresence>
-        </div>
       </div>
 
       {/* Controls — outside carousel so dots never overlap the image; hidden on mobile in favor of swipe */}
