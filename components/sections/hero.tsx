@@ -52,7 +52,6 @@ export function Hero() {
         onPointerMove={handlePointerMove}
       >
       <div className="hero-kinetic-grid pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
-      <div className="hero-sweep pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
       <m.div
         className="pointer-events-none absolute left-[6vw] top-[18svh] z-0 hidden h-28 w-px bg-gradient-to-b from-transparent via-[#f7d79a]/40 to-transparent xl:block"
         aria-hidden="true"
