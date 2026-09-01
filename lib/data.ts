@@ -446,7 +446,7 @@ export const projects = [
     solution:
       "Designed a friendly learning platform with simple pathways that make exploring and understanding easy for users.",
     results: "Clearer learner pathways and a smoother first experience that keeps families moving forward.",
-    image: "/project-little-ilmies.webp",
+    image: "/Little Ilmies.png",
     category: "Website Design",
     accent: "from-[#7c3cff] to-[#16d8ff]",
     liveUrl: "https://littleilmies.com/"

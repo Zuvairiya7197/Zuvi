@@ -88,7 +88,7 @@ export function AboutPreview() {
             <div className="mt-8 flex items-center gap-3">
               <div className="relative h-10 w-10 overflow-hidden rounded-full">
                 <Image
-                  src="/project-little-ilmies.webp"
+                  src="/Little Ilmies.png"
                   alt="Client headshot"
                   fill
                   sizes="40px"

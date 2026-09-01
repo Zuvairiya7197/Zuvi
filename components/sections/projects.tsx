@@ -8,7 +8,7 @@ import { CylinderCarousel } from "@/components/ui/cylinder-carousel";
 const featuredItems = [
   { src: "/project-zarrar-palekar.webp",             title: "Zarrar Palekar",           category: "Website Design", liveUrl: "https://zarrarpalekar.vercel.app/" },
   { src: "/project-sm-classes.webp",                 title: "SM Classes",               category: "Website Design", liveUrl: "https://smclasses.in/" },
-  { src: "/project-little-ilmies.webp",              title: "Little Ilmies",            category: "Website Design", liveUrl: "https://littleilmies.com/" },
+  { src: "/Little Ilmies.png",                       title: "Little Ilmies",            category: "Website Design", liveUrl: "https://littleilmies.com/" },
   { src: "/project-organise-with-kopal.webp",        title: "Organise With Kopal",      category: "Website Design", liveUrl: "https://www.organisewithkopal.com/" },
   { src: "/WBYB website.webp",                       title: "WBYB",                     category: "Website Design", liveUrl: "https://www.webuildyourbrands.com/" },
   { src: "/mz-logo-06.jpg",                          title: "Logo Design",              category: "Logo Design" },
